@@ -12,7 +12,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
     [SerializeField] private float acceleration;
     [SerializeField] private float deceleration;
 
-    private Rigidbody2D rb;
+
     Controls input;
     bool isInitialised;
     Vector2 movementDir;
@@ -34,7 +34,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         input.Movement.Move.canceled += _ => BeginStop();
         isInitialised = true;
 
-        rb = GetComponent<Rigidbody2D>();
+    
 
     }
     private void Update()
@@ -52,7 +52,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
 
 
             float direction = movementDir.x * currentSpeed;
-            rb.velocity = new Vector2(direction, rb.velocity.y);
+    
             if (currentSpeed <= 0.01f)
             {
 
@@ -60,12 +60,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
             }
         }
     }
-    //private void FixedUpdate()
-    //{
 
-   
-
-    //}
 
 
 
@@ -77,7 +72,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
     private void Stop()
     {
         currentSpeed = 0f;
-        Debug.Log("Stop");
+
         isStopping = false;
         isMoving = false;
         currentSpeed = 0.0f;
