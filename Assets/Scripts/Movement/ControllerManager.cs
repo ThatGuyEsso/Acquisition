@@ -18,6 +18,7 @@ public class ControllerManager : MonoBehaviour, IInitialisable
     {
         if (inDebug) Init();
     }
+
     public void Init()
     {
         input = new Controls();
