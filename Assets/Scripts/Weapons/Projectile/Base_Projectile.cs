@@ -17,9 +17,12 @@ public class Base_Projectile : MonoBehaviour,IInitialisable
     public void Init()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(settings.projectileSpeed, 0);
+        
     }
 
-
+    public void SetUp(Vector3 Direction)
+    {
+        rb.velocity = Direction * settings.projectileSpeed;
+    }
 
 }
