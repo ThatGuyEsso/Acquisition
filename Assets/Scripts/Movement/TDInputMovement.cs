@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
+[RequireComponent(typeof(Rigidbody2D))]
 public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitialisable
 {
     [SerializeField] private bool inDebug =false;
@@ -20,7 +20,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
     private float magnitude = 0f;
     private bool isStopping;
 
-
+    private Rigidbody2D rb;
     private void Awake()
     {
         if (inDebug) Init();
@@ -34,25 +34,31 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         input.Movement.Move.canceled += _ => BeginStop();
         isInitialised = true;
 
-    
+        rb = gameObject.GetComponent<Rigidbody2D>();
+
+
+
 
     }
-    private void Update()
+
+
+    private void FixedUpdate()
     {
+    
         if (isMoving)
         {
-            currentSpeed = Mathf.Lerp(currentSpeed, maxSpeed, Time.deltaTime * acceleration);
+            currentSpeed = Mathf.Lerp(currentSpeed, maxSpeed, Time.fixedDeltaTime * acceleration);
             if (Mathf.Abs(maxSpeed - currentSpeed) <= 0.01f) currentSpeed = maxSpeed;
 
             Move();
         }
         else if (isStopping)
         {
-            currentSpeed = Mathf.Lerp(currentSpeed, 0.0f, Time.deltaTime * deceleration);
+            currentSpeed = Mathf.Lerp(currentSpeed, 0.0f, Time.fixedDeltaTime * deceleration);
 
 
-            float direction = movementDir.x * currentSpeed;
-    
+            Vector2 direction = movementDir * currentSpeed;
+            rb.velocity = direction;
             if (currentSpeed <= 0.01f)
             {
 
@@ -60,9 +66,6 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
             }
         }
     }
-
-
-
 
 
     private void OnEnable()
@@ -76,6 +79,8 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         isStopping = false;
         isMoving = false;
         currentSpeed = 0.0f;
+        movementDir = Vector2.zero;
+        rb.velocity = Vector2.zero;
     }
     private void BeginStop()
     {
@@ -118,9 +123,9 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
     public void Move()
     {
 
-        Vector2 velocity = movementDir * currentSpeed * magnitude*Time.deltaTime;
+        Vector2 velocity = movementDir * currentSpeed * magnitude;
 
-        transform.position += new Vector3(velocity.x, velocity.y, 0.0f);
+        rb.velocity = velocity;
 
     }
 
@@ -145,6 +150,11 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         }
     }
 
+    public float GetMaxSpeed() { return maxSpeed; }
+    public float GetCurrentSpeed() { return currentSpeed; }
 
+    public Vector2 GetMoveDirection() { return movementDir; }
+    public void SetCurrentSpeed(float newSpeed) { currentSpeed = newSpeed; }
+    public void SetIsMoving(bool moving ) { isMoving = moving; }
 }
 

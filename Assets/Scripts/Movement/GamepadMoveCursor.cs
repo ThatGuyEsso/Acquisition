@@ -45,7 +45,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         }
     }
 
-    public void Update()
+    public void LateUpdate()
     {
         if (isMoving) MoveCursor();
     }
