@@ -115,6 +115,12 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
     {
         throw new NotImplementedException();
     }
+
+    public Vector3 GetVCusorPosition()
+    {
+        return vCursor.position;
+    }
+
 }
 
 

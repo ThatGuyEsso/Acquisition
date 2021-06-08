@@ -27,18 +27,19 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
         inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
         boxCollider = GetComponentInChildren<BoxCollider2D>();
+        canFire = false;
     }
 
     protected virtual void PrimaryAttack()
     {
         Debug.Log("PrimaryAttack");
-        StartCoroutine(WaitForFireRate(settings.primaryAttackTime));
+        StartCoroutine(WaitForFireRate(settings.primaryAttackTimeBetween));
     }
 
     protected virtual void SecondaryAttack()
     {
         Debug.Log("SecondAttack");
-        StartCoroutine(WaitForFireRate(settings.secondaryAttackTime));
+        StartCoroutine(WaitForFireRate(settings.secondaryAttackTimeBetweem));
     }
 
     protected IEnumerator WaitForFireRate(float time)
@@ -46,6 +47,12 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         canFire = false;
         yield return new WaitForSeconds(time);
         canFire = true;
+        AfterFireRate();
+    }
+
+    protected virtual void AfterFireRate()
+    {
+        Debug.Log("AfterFireRate");
     }
 
     public virtual Base_Weapon GetWeapon()
