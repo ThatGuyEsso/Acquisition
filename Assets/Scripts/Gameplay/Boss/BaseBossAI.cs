@@ -35,6 +35,9 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable
     protected BossStage currentStage;
     protected AIState currentAIState;
 
+    [SerializeField] protected BaseBossAbility transitionAbility;
+    [SerializeField] protected BaseBossAbility closeCombatAbility;
+
     [SerializeField] protected bool inDebug=false;
     protected void Awake()
     {

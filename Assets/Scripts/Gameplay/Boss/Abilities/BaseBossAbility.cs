@@ -15,8 +15,7 @@ public abstract class BaseBossAbility : MonoBehaviour, IInitialisable
     [SerializeField] protected GameObject attackAreaPrefab;
     [SerializeField] protected GameObject projectilePrefab;
 
-    [SerializeField] protected List<base> transitionAbility;
-    [SerializeField] protected List<GameObject> closeCombatAbility;
+
     protected int attacksLeft;
 
     virtual public void Init()
