@@ -130,6 +130,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab6f86c43b54254388d2367c05177b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inDebug: 1
+  maxRollSpeed: 25
+  dodgeCooldown: 1
+  canDodge: 0
+  rollTime: 0.3
+  acceleration: 50
+  deceleration: 25
+  inactiveComponentsDuringRoll:
+  - {fileID: 8957915617564251555}
+  tdMovement: {fileID: 8957915617564251555}
 --- !u!50 &6091688810172074442
 Rigidbody2D:
   serializedVersion: 4
@@ -145,12 +155,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!58 &1708286639
 CircleCollider2D:
   m_ObjectHideFlags: 0
