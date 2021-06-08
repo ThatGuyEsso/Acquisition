@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Boss Stages")]
 public class BossStageData : ScriptableObject
 {
-    [SerializeField] private List<GameObject> initialStageAbilities = new List<GameObject>();
-    [SerializeField] private List<GameObject> middleStageAbilities = new List<GameObject>();
-    [SerializeField] private List<GameObject> finalStageAbiilities = new List<GameObject>();
+    [SerializeField] public List<GameObject> initialStageAbilities = new List<GameObject>();
+    [SerializeField] public List<GameObject> middleStageAbilities = new List<GameObject>();
+    [SerializeField] public List<GameObject> finalStageAbiilities = new List<GameObject>();
 
-    
+   
 }

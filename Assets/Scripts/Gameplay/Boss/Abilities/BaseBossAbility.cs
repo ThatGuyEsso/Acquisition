@@ -11,15 +11,33 @@ public abstract class BaseBossAbility : MonoBehaviour, IInitialisable
     [SerializeField] protected float attackRate;
     [Tooltip("Cooldown until ability Refreshes")]
     [SerializeField] protected float coolDown;
+    [SerializeField] protected float attackRange;
+
+    [SerializeField] protected bool isPriority=false;
+    [SerializeField] protected bool isSuperCloseRange = false;
     [SerializeField] protected string attackAnimationName;
-    [SerializeField] protected GameObject attackAreaPrefab;
-    [SerializeField] protected GameObject projectilePrefab;
 
 
+    protected bool canAttack;
+    protected GameObject attackZone;
+    public BaseBossAI owner;
     protected int attacksLeft;
+    public AttackAnimEventListener eventListener;
 
+
+    
     virtual public void Init()
     {
         attacksLeft = maxAttackCount;
+        canAttack = true;
+
+
     }
+
+    public bool IsCloseRange() { return isSuperCloseRange; }
+    public bool IsPriority() { return isPriority; }
+    public bool CanAttack() { return canAttack; }
+    public float Range() { return attackRange; }
+    public string AnimationName() { return attackAnimationName; }
+
 }

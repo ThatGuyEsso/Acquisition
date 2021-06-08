@@ -12,6 +12,7 @@ TagManager:
   - Water
   - UI
   - Shield
+  - Walls
   - 
   - 
   - 
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 3099448019
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3728740081
     locked: 0
   - name: Cursor
     uniqueID: 2079890351

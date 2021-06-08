@@ -2,34 +2,79 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Base_Projectile : MonoBehaviour,IInitialisable
+[RequireComponent(typeof(Rigidbody2D))]
+public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 {
-    [SerializeField] public float damagerPerProjectile = 1.0f;
-    [SerializeField] private float projectileSpeed = 10.0f;
-    [SerializeField] private bool inDebug = false;
+    protected float projectileDamage;
+    [SerializeField] protected bool inDebug = false;
+    protected int blockCount = 0;//How much damage projectile can take be getting destroyed
 
-    private Rigidbody2D rb;
+    [SerializeField] protected LayerMask destroyProjectileLayer;
+    protected GameObject owner;
+    protected Rigidbody2D rb;
 
-    private void Awake()
+    protected void Awake()
     {
         if (inDebug)
             Init();
     }
 
-    public void Init()
+    virtual public void Init()
     {
-        rb = GetComponent<Rigidbody2D>();
+        if(!rb)
+            rb = GetComponent<Rigidbody2D>();
         
     }
 
-    public void SetUp(Vector3 Direction)
+    public void SetUp(Vector3 direction,float speed)
     {
-        rb.velocity = Direction * projectileSpeed;
+        rb.velocity = direction * speed;
+        OrientateToMovement();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(((1 << other.gameObject.layer) & destroyProjectileLayer) != 0)
+        {
+            KillProjectile();
+        }
+    }
+
+
+
+    protected void KillProjectile()
     {
         Destroy(gameObject);
     }
 
+    public void SetUpProjectile(float damage, Vector2 dir, float speed, float lifeTime, int blockCount, GameObject owner)
+    {
+        if (rb)
+        {
+            SetUp(dir, speed);
+            projectileDamage = damage;
+        }
+        this.owner = owner;
+        this.blockCount = blockCount;
+    }
+
+    public GameObject GetOwner()
+    {
+        return owner;
+    }
+
+    public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
+    {
+        if (attacker != owner) blockCount--;
+        if (blockCount <= 0) KillProjectile();
+    }
+
+    public void OrientateToMovement()
+    {
+
+        float targetAngle = EssoUtility.GetAngleFromVector((rb.velocity.normalized));
+        /// turn offset -Due to converting between forward vector and up vector
+        if (targetAngle < 0) targetAngle += 360f;
+        transform.rotation = Quaternion.Euler(0.0f, 0f, targetAngle);
+    }
 }

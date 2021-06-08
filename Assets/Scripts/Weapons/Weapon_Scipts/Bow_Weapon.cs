@@ -14,7 +14,7 @@ public class Bow_Weapon : Base_Weapon
             return;
 
         GameObject go = Instantiate(settings.primaryProjectile.gameObject, firePoint.transform.position, Quaternion.identity);
-        go.GetComponent<Base_Projectile>().SetUp(firePoint.transform.up.normalized);
+        go.GetComponent<IProjectile>().SetUpProjectile(0f,firePoint.transform.up.normalized,10f,10f,0,transform.parent.gameObject);
 
         base.PrimaryAttack();
     }

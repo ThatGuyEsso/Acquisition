@@ -6,6 +6,7 @@ public class KnightBoss : BaseBossAI
 {
     protected override void ProcessAI()
     {
+      
         switch (currentAIState)
         {
             case AIState.Idle:
@@ -15,13 +16,46 @@ public class KnightBoss : BaseBossAI
                 {
               
                     navigation.SetDestination();
+                    if (InRange())
+                    {
+                        OnNewState(AIState.Attack);
+                    }
+                    else
+                    {
+                        if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
+                        else
+                        {
+                            CycleToNextAttack();
+                            OnNewState(AIState.Chase);
+                        }
+                    }
                 }
                 break;
             case AIState.Attack:
+
+                if (currentStageAbilities[currentAttackIndex].CanAttack())
+                {
+                    DoAttack();
+                }
                 break;
         }
     }
 
+    private void Update()
+    {
+        switch (currentAIState)
+        {
+            case AIState.Idle:
+                break;
+            case AIState.Chase:
+             
+                break;
+            case AIState.Attack:
+        
+
+                break;
+        }
+    }
     private void LateUpdate()
     {
         switch (currentAIState)
@@ -32,6 +66,11 @@ public class KnightBoss : BaseBossAI
                 faceMovementDirection.SmoothRotToMovement(navigation.navAgent.velocity);
                 break;
             case AIState.Attack:
+
+                if (!isBusy)
+                {
+                    faceTarget.FaceCurrentTarget();
+                }
                 break;
         }
     }
@@ -52,10 +91,18 @@ public class KnightBoss : BaseBossAI
                     navigation.StartAgent(target);
                 break;
             case AIState.Attack:
+                navigation.Stop();
                 navigation.enabled = false;
                 faceTarget.enabled = true;
                 faceTarget.SetTarget(target);
+
+                if (currentStageAbilities[currentAttackIndex].CanAttack())
+                {
+                    DoAttack();
+                }
                 break;
         }
     }
+
+  
 }
