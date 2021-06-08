@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Base_Projectile : MonoBehaviour,IInitialisable
 {
-    [SerializeField] protected ProjectileSettings settings;
+    [SerializeField] public float damagerPerProjectile = 1.0f;
+    [SerializeField] private float projectileSpeed = 10.0f;
     [SerializeField] private bool inDebug = false;
+
     private Rigidbody2D rb;
 
     private void Awake()
@@ -22,7 +24,12 @@ public class Base_Projectile : MonoBehaviour,IInitialisable
 
     public void SetUp(Vector3 Direction)
     {
-        rb.velocity = Direction * settings.projectileSpeed;
+        rb.velocity = Direction * projectileSpeed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
     }
 
 }

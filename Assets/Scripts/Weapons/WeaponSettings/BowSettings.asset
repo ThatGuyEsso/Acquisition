@@ -16,4 +16,4 @@ MonoBehaviour:
   secondaryProjectile: {fileID: 0}
   timeBetweenAttacks: 0.5
   primaryAttackTime: 0.3
-  secondaryAttackTime: 0.5
+  secondaryAttackTime: 1.5

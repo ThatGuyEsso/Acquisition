@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9a54c1292c440429e480d1605a4398, type: 3}
-  m_Name: BowArrows_Proj
+  m_Script: {fileID: 11500000, guid: bdb20885d32479943b478f1ca0f35018, type: 3}
+  m_Name: StaffSettings
   m_EditorClassIdentifier: 
-  ProjectilerSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  damagerPerProjectile: 1
-  projectileSpeed: 10
-  projectileSlowing: 0.5
+  primaryProjectile: {fileID: 0}
+  secondaryProjectile: {fileID: 0}
+  timeBetweenAttacks: 0.5
+  primaryAttackTime: 1
+  secondaryAttackTime: 1
