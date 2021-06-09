@@ -297,7 +297,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""c8120645-639e-4052-9f11-b16a8be74f6d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(pressPoint=0.1,behavior=2)""
                 },
                 {
                     ""name"": ""SecondaryAttack"",

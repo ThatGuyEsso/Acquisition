@@ -187,8 +187,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Staff
   firePoint: {fileID: 6952797532672273709}
+  primaryProjectile: {fileID: 0}
+  secondaryProjectile: {fileID: 0}
+  primaryAttackTimeBetween: 1.2
+  secondaryAttackTimeBetweem: 5
   settings: {fileID: 11400000, guid: 71fc899dbbf7dd04bbe914dc4657de68, type: 2}
   inDebug: 1
+  beamDuration: 2
+  sheild: {fileID: 2626508111857248113, guid: 81be4e8b9c1542246a0e6e16687c8d01, type: 3}
 --- !u!120 &-8837503333671568053
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -196,7 +202,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8018739849535731035}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

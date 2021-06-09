@@ -4,76 +4,80 @@ using UnityEngine;
 
 public class Staff_Weapon : Base_Weapon
 {
+    [Header("Staff Settings")]
     [SerializeField] private float beamDuration;
+    [SerializeField] private float sheildDuration = 5.0f;
     [SerializeField] private GameObject sheild;
+
     private LineRenderer line;
     private MouseMoveCursor vCursor;
     private GameObject currentShield;
-    private bool isFireing = false;
+
+
 
     public override void Init()
     {
         base.Init();
         line = GetComponent<LineRenderer>();
         vCursor = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseMoveCursor>();
-
     }
 
     protected override void PrimaryAttack()
     {
-        if (canFire == false)
+        if (!isWeaponActive)
             return;
 
-        line.enabled = true;
-        isFireing = true;
+        if (canPrimaryFire == true)
+        {
+            isFiringPrimary = true;
+            canPrimaryFire = false;
 
-        StartCoroutine(PrimaryAttackDuration());
-        base.PrimaryAttack();
+            line.enabled = true;
+            StartCoroutine(PrimaryAttackDuration());
+        }
+        else if (canPrimaryFire == false)
+        {
+            isFiringPrimary = false;
+            canPrimaryFire = true;
+            line.enabled = false;
+            StopCoroutine(PrimaryAttackDuration());
+            StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+        }
+
+
+        
     }
 
-    IEnumerator PrimaryAttackDuration()
+    IEnumerator PrimaryAttackDuration() //The time the beam fires for
     {
         yield return new WaitForSeconds(beamDuration);
-        isFireing = false;
+        isFiringPrimary = false;
         line.enabled = false;
+        StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
     }
 
     private void Update()
     {
-        if(isFireing)
+        if(isFiringPrimary) //When Beam is fired it is updated here
             FireRay();
     }
 
-    protected override void SecondaryAttack()
-    {
-        if (canFire == false)
-            return;
-
-        currentShield = Instantiate(sheild, transform.position, Quaternion.identity);
-
-        base.SecondaryAttack();
-    }
-
-    protected override void AfterFireRate()
-    {
-        Destroy(currentShield);
-    }
 
     private void FireRay()
     {
         RaycastHit2D hit;
-        hit = Physics2D.Raycast(firePoint.transform.position, firePoint.transform.up);
+        hit = Physics2D.Raycast(firePoint.transform.position, firePoint.transform.up); //fire ray
 
-        if (hit != false)
+        if (hit != false) //if the ray hits somthing then the line is drawn to that point   
         {
             Vector3 startPos = firePoint.transform.position;
 
             line.SetPosition(0, startPos);
             line.SetPosition(1, hit.transform.position);
-            
+
         }
         else
-        {
+        { // if the ray does not hit anything it is drawn for a far distance
             Vector3 startPos = firePoint.transform.position;
             Vector3 dir = vCursor.GetVCusorPosition() - startPos;
 
@@ -84,6 +88,23 @@ public class Staff_Weapon : Base_Weapon
         }
 
 
+    }
+
+    protected override void SecondaryAttack()
+    {
+        if (!isWeaponActive)
+            return;
+        currentShield = ObjectPoolManager.Spawn(sheild, transform.position, Quaternion.identity);
+
+        base.SecondaryAttack();
+        StartCoroutine(ShieldDuration());
+
+    }
+
+    private IEnumerator ShieldDuration()
+    {
+        yield return new WaitForSeconds(sheildDuration);
+        ObjectPoolManager.Recycle(currentShield);
     }
 
 

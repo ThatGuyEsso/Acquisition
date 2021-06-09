@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 {
+    
     [SerializeField] protected string weaponName;
     [SerializeField] protected GameObject firePoint;
-    [SerializeField] protected WeaponSettings settings;
+
+    [Header("Projectiles")]
+    [SerializeField] protected Base_Projectile primaryProjectile;
+    [SerializeField] protected Base_Projectile secondaryProjectile;
+
+    [Header("TimeFireFrate")]
+    [SerializeField] protected float primaryFireRate = 1.0f;
+    [SerializeField] protected float secondaryFireRate = 1.0f;
+
+    [Header("Debug")]
     [SerializeField] private bool inDebug = false;
 
     private Controls inputAction;
     private BoxCollider2D boxCollider;
 
-    protected bool canFire = false;
+    protected bool isWeaponActive = false;
+    protected bool canPrimaryFire = false;
+    protected bool canSecondaryFire = false;
+
+    protected bool isFiringPrimary = false;
+    protected bool isFiringSecondary = false;
+
 
     private void Awake()
     {
@@ -27,32 +43,51 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
         inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
         boxCollider = GetComponentInChildren<BoxCollider2D>();
-        canFire = false;
+        SetCanFire(false);
     }
 
     protected virtual void PrimaryAttack()
     {
         Debug.Log("PrimaryAttack");
-        StartCoroutine(WaitForFireRate(settings.primaryAttackTimeBetween));
+        StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
     }
 
     protected virtual void SecondaryAttack()
     {
         Debug.Log("SecondAttack");
-        StartCoroutine(WaitForFireRate(settings.secondaryAttackTimeBetweem));
+        StartCoroutine(WaitForFirePrimaryRate(secondaryFireRate));
     }
 
-    protected IEnumerator WaitForFireRate(float time)
+    protected IEnumerator WaitForFirePrimaryRate(float time)
     {
-        canFire = false;
+        canPrimaryFire= false;
         yield return new WaitForSeconds(time);
-        canFire = true;
-        AfterFireRate();
+        canPrimaryFire = true;
     }
 
-    protected virtual void AfterFireRate()
+    protected IEnumerator WaitForFireSecondaryRate(float time)
     {
-        Debug.Log("AfterFireRate");
+        canSecondaryFire = false;
+        yield return new WaitForSeconds(time);
+        canSecondaryFire = true;
+    }
+
+    protected void SetCanFire(bool status)
+    {
+        isWeaponActive = status;
+
+        if (status == false)
+        {
+            canPrimaryFire = false;
+            canSecondaryFire = false;
+            
+        }
+        else if (status == true)
+        {
+            canPrimaryFire = true;
+            canSecondaryFire = true;
+            
+        }
     }
 
     public virtual Base_Weapon GetWeapon()
@@ -70,7 +105,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         transform.parent = slot.transform;
         transform.position = slot.GetSlotPos();
         transform.localRotation = Quaternion.identity;
-        canFire = true;
+        SetCanFire(true);
         boxCollider.enabled = false;
     }
 

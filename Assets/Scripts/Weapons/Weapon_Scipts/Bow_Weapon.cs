@@ -4,40 +4,74 @@ using UnityEngine;
 
 public class Bow_Weapon : Base_Weapon
 {
-    [SerializeField] private float SecondaryCharge = 5;
-    [SerializeField] private float SecondaryChargeAfterDuration = 2;
+    [Header("Bow Settings")]
+    [SerializeField] private float SecondaryChargeTime = 5;
+    [SerializeField] private float SecondaryAfterDuration = 2;
     [SerializeField] private float chargeDistance = 100;
+
+    private float nextTimeToFire = 0;
+    private LineRenderer line;
+
+    public override void Init()
+    {
+        base.Init();
+        line = GetComponent<LineRenderer>();
+        line.enabled = false;
+    }
 
     protected override void PrimaryAttack()
     {
-        if (canFire == false)
+        if (!isWeaponActive)
             return;
 
-        GameObject go = Instantiate(settings.primaryProjectile.gameObject, firePoint.transform.position, Quaternion.identity);
-        go.GetComponent<IProjectile>().SetUpProjectile(0f,firePoint.transform.up.normalized,10f,10f,0,transform.parent.gameObject);
+        if(canPrimaryFire == true)
+        {
+            isFiringPrimary = true;
+            canPrimaryFire = false;
+            
+        }
+        else if(canPrimaryFire == false)
+        {
+            isFiringPrimary = false;
+            canPrimaryFire = true;
+            
+        }
 
-        base.PrimaryAttack();
+
     }
 
+    private void Update()
+    {
+        if(isFiringPrimary == true && Time.time >= nextTimeToFire)
+        {
+            //Spawn Projectile
+            GameObject go = ObjectPoolManager.Spawn(primaryProjectile.gameObject, firePoint.transform.position, Quaternion.identity);
+            go.GetComponent<IProjectile>().SetUpProjectile(0f, firePoint.transform.up.normalized, 10f, 10f, 0, transform.parent.gameObject);
+
+            nextTimeToFire = Time.time + primaryFireRate; //Added Time onto firerate
+        }
+    }
     protected override void SecondaryAttack()
     {
-        if (canFire == false)
+        if (isWeaponActive == false)
+            return;
+
+        if (!canSecondaryFire)
             return;
 
         StartCoroutine(ChargeDuration());
-        canFire = false;
-
         base.SecondaryAttack();
     }
 
-    
     private IEnumerator ChargeDuration()
     {
-        yield return new WaitForSeconds(SecondaryCharge);
+        canSecondaryFire = false;
+        yield return new WaitForSeconds(SecondaryChargeTime);
         ChargeShot();
 
-        yield return new WaitForSeconds(SecondaryChargeAfterDuration);
-        canFire = true;
+        yield return new WaitForSeconds(SecondaryAfterDuration);
+        line.enabled = false;
+        canSecondaryFire = true;
     }
 
     private void ChargeShot()
@@ -49,6 +83,12 @@ public class Bow_Weapon : Base_Weapon
 
         if (hits == null)
             return;
+
+        //Enable Line and set origin and destination of line
+        line.enabled = true;
+        line.SetPosition(0, firePoint.transform.position);
+        Vector3 dest = firePoint.transform.position + firePoint.transform.up * chargeDistance;
+        line.SetPosition(1, dest);
 
         foreach(RaycastHit2D hit in hits)
         {
