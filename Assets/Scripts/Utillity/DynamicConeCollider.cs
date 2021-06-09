@@ -8,8 +8,11 @@ public class DynamicConeCollider : MonoBehaviour
     [SerializeField] private LayerMask ViewBlockingLayers;
     [SerializeField] public float offset;
     [SerializeField] private int nPoints = 20;
+ 
+    public bool inDebug=false;
 
     private PolygonCollider2D polyCol;
+ 
 
     private void Awake() {
 
@@ -46,13 +49,16 @@ public class DynamicConeCollider : MonoBehaviour
                 if (hitInfo)
                 {
                     points[i] = hitInfo.point;
-                    Debug.DrawLine(polyCol.points[0], hitInfo.point);
+                    if (inDebug)
+                    Debug.DrawLine(polyCol.points[0], hitInfo.point,Color.red,2f);
+                 
                 }
                 else
                 {
                   
                     points[i] = origin + (Vector2) EssoUtility.GetVectorFromAngle(currentAngle) * radius;
-                    Debug.DrawRay(points[0], points[0] + (Vector2)EssoUtility.GetVectorFromAngle(currentAngle) * radius);
+                    if (inDebug)
+                    Debug.DrawRay(points[0], points[0] + (Vector2)EssoUtility.GetVectorFromAngle(currentAngle) * radius, Color.red, 2f);
                 }
 
 

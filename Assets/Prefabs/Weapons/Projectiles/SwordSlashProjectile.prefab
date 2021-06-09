@@ -131,7 +131,7 @@ MonoBehaviour:
   inDebug: 0
   destroyProjectileLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
 --- !u!50 &1087995828118112652
 Rigidbody2D:
   serializedVersion: 4

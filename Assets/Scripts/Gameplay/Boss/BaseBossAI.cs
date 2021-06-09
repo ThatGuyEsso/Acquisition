@@ -17,7 +17,7 @@ public enum AIState
     Chase,
     Attack
 };
-public abstract class BaseBossAI : MonoBehaviour,IInitialisable
+public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss
 {
 
     [Header("Settings")]
@@ -41,7 +41,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable
     protected int currentAttackIndex;
     protected BossStage currentStage;
     protected AIState currentAIState;
-
+    protected bool canAttack;
+    protected bool canLockOn=false;
     [SerializeField] protected BaseBossAbility transitionAbility;
     [SerializeField] protected BaseBossAbility closeCombatAbility;
 
@@ -70,12 +71,14 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable
         if (!attackAnimEvents) attackAnimEvents = GetComponent<AttackAnimEventListener>();
         else
         {
-            attackAnimEvents.OnShowAttackZone += OnAttackBegin;
-            attackAnimEvents.OnShowAttackZone += OnAttackEnd;
+            attackAnimEvents.OnAnimStart += OnAttackBegin;
+            attackAnimEvents.OnAnimEnd += OnAttackEnd;
         }
         SetUpNextStage();
         isInitialised = true;
+        ToggleCanAttack(true);
         InvokeRepeating("ProcessAI", 0.0f, aiTickRate);
+        isBusy = false;
     }
 
     virtual public bool InRange()
@@ -83,6 +86,13 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable
         if (currentStageAbilities.Count <= 0) return false;
         if (!target) return false;
         return Vector2.Distance(target.position, transform.position) <= currentStageAbilities[currentAttackIndex].Range();
+
+    }
+    virtual public bool InCloseRange()
+    {
+        if (!closeCombatAbility) return false;
+        if (!target) return false;
+        return Vector2.Distance(target.position, transform.position) <= closeCombatAbility.Range();
 
     }
     virtual protected void ProcessAI()
@@ -105,10 +115,12 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable
     }
 
 
-    virtual protected void CycleToNextAttack()
+    virtual public void CycleToNextAttack()
     {
+        currentStageAbilities[currentAttackIndex].DisableAbility();
         currentAttackIndex++;
         if (currentAttackIndex >= currentStageAbilities.Count) currentAttackIndex = 0;
+        currentStageAbilities[currentAttackIndex].EnableAbility();
     }
  
     virtual protected void SetUpNextStage()
@@ -121,6 +133,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable
             }
             currentStageAbilities.Clear();
         }
+
    
 
         switch (currentStage)
@@ -142,17 +155,19 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable
         for(int i = 0; i < abilities.Count; i++)
         {
 
-            BaseBossAbility ability = abilities[i].GetComponent<BaseBossAbility>();
-            if (ability)
+      
+            if (abilities[i].GetComponent<BaseBossAbility>())
             {
-                ObjectPoolManager.Spawn(ability.gameObject, transform, Vector3.zero);
+                BaseBossAbility ability= ObjectPoolManager.Spawn(abilities[i].gameObject, transform).GetComponent<BaseBossAbility>();
                 if (ability.IsCloseRange()) closeCombatAbility = ability;
                 ability.eventListener = attackAnimEvents;
                 ability.owner = this;
-                ability.Init();
+                ability.GetComponent<IInitialisable>().Init();
                 currentStageAbilities.Add(ability);
             }
         }
+
+        currentStageAbilities[currentAttackIndex].EnableAbility();
     }
 
 
@@ -163,32 +178,57 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable
     }
 
 
-    public void BeginLongCooldown(float cooldown)
-    {
-        OnNewState(AIState.Idle);
-        StopAllCoroutines();
-        StartCoroutine(LongCooldown(cooldown));
-
-    }
-
-
-    protected IEnumerator LongCooldown(float time)
-    {
-        yield return new WaitForSeconds(time);
-        CycleToNextAttack();
-        OnNewState(AIState.Chase);
-    }
-    protected void OnDisable()
+  
+    virtual protected void OnDisable()
     {
         if (isInitialised)
         {
-            attackAnimEvents.OnShowAttackZone -= OnAttackBegin;
-            attackAnimEvents.OnShowAttackZone -= OnAttackEnd;
+            attackAnimEvents.OnAnimStart -= OnAttackBegin;
+            attackAnimEvents.OnAnimEnd -= OnAttackEnd;
         }
 
     }
     public void DoAttack()
     {
+        if (!currentStageAbilities[currentAttackIndex].enabled) currentStageAbilities[currentAttackIndex].EnableAbility();
+        if (currentStageAbilities[currentAttackIndex].IsManagingAttack()) canLockOn = true;
+        else canLockOn = false;
         animator.Play(currentStageAbilities[currentAttackIndex].AnimationName());
+    }
+    public void DoCloseQuarters()
+    {
+        closeCombatAbility.EnableAbility();
+        if (closeCombatAbility.IsManagingAttack()) canLockOn = true;
+        else canLockOn = false;
+        animator.Play(closeCombatAbility.AnimationName());
+    }
+
+
+    virtual public Transform GetFirePoint()
+    {
+        return transform;
+    }
+
+    public void ToggleCanAttack(bool can)
+    {
+        canAttack = true;
+    }
+
+    virtual public void SetUseRigidBody(bool use)
+    {
+        //
+    }
+
+    public void SetCanLockOn(bool canLock) { canLockOn = canLock; }
+
+    virtual public Rigidbody2D GetRigidBody()
+    {
+        return null;
+    }
+
+    public void SetIsBusy(bool busy) { isBusy = busy; }
+    public void PlayAnimation(string animName)
+    {
+        animator.Play(animName);
     }
 }

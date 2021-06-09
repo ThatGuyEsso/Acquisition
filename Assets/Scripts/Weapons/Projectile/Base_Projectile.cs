@@ -6,6 +6,7 @@ using UnityEngine;
 public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 {
     protected float projectileDamage;
+    protected float knockback;
     [SerializeField] protected bool inDebug = false;
     protected int blockCount = 0;//How much damage projectile can take be getting destroyed
 
@@ -34,9 +35,43 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(((1 << other.gameObject.layer) & destroyProjectileLayer) != 0)
+        if (((1 << other.gameObject.layer) & destroyProjectileLayer) != 0)
         {
             KillProjectile();
+        }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
+        {
+            if (other.GetComponent<IProjectile>().GetOwner() != owner)
+            {
+                if (other.GetComponent<IDamage>() != null)
+                {
+                    other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
+
+                }
+            }
+        }
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+
+            if (other.gameObject != owner)
+            {
+                if (other.GetComponent<IDamage>()!=null)
+                {
+                    other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
+
+                }
+               
+            }
+        }else if (other.gameObject.CompareTag("Enemy")){
+            if (other.gameObject != owner)
+            {
+                if (other.GetComponent<IDamage>() != null)
+                {
+                    other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
+
+                }
+            }
         }
     }
 
@@ -44,7 +79,10 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 
     protected void KillProjectile()
     {
-        Destroy(gameObject);
+        if (ObjectPoolManager.instance)
+            ObjectPoolManager.Recycle(gameObject);
+        else
+            Destroy(gameObject);
     }
 
     public void SetUpProjectile(float damage, Vector2 dir, float speed, float lifeTime, int blockCount, GameObject owner)
@@ -56,6 +94,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         }
         this.owner = owner;
         this.blockCount = blockCount;
+        Invoke("KillProjectile", lifeTime);
     }
 
     public GameObject GetOwner()
@@ -75,6 +114,11 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         float targetAngle = EssoUtility.GetAngleFromVector((rb.velocity.normalized));
         /// turn offset -Due to converting between forward vector and up vector
         if (targetAngle < 0) targetAngle += 360f;
-        transform.rotation = Quaternion.Euler(0.0f, 0f, targetAngle);
+        transform.rotation = Quaternion.Euler(0.0f, 0f, targetAngle-90f);
+    }
+
+    virtual public void SetRotationSpeed(float rotSpeed)
+    {
+        //
     }
 }

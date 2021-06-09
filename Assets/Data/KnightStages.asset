@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: KnightStages
   m_EditorClassIdentifier: 
   initialStageAbilities:
-  - {fileID: 8290753865192258741, guid: 96c9357e396e2fa4e8f64833d94b39ce, type: 3}
+  - {fileID: 3382950496971785112, guid: a723b43fe1352b54a84a88fc354fca1e, type: 3}
+  - {fileID: 2896135866123084263, guid: 0a7c9ae7f419491478a474e075c967d2, type: 3}
   middleStageAbilities: []
   finalStageAbiilities: []

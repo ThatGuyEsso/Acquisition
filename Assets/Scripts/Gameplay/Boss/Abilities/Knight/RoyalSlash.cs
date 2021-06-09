@@ -1,27 +1,37 @@
 using UnityEngine;
 
-public class RoyalSlash : BaseBossAbility
+public class RoyalSlash : BaseBossAbility,IInitialisable
 {
 
     [SerializeField] protected GameObject attackAreaPrefab;
     [SerializeField] protected GameObject projectilePrefab;
     [SerializeField] protected float attackRadius;
     [SerializeField] protected float maxAttackAngle;
-    [SerializeField] protected Transform fp;
+
     [SerializeField] protected float projectileLifeTime;
     [SerializeField] protected float projectileSpeed;
     [SerializeField] protected int projectileBlockCount;
+    public override void Init()
+    {
+        base.Init();
+        canAttack = true;
+
+    }
     public void ShootProjectile()
     {
-        GameObject projectile = ObjectPoolManager.Spawn(projectilePrefab, fp.position, Quaternion.identity);
-        projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.transform.up, projectileSpeed, projectileLifeTime, projectileBlockCount,owner.gameObject);
+        GameObject projectile = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
+        projectile.GetComponent<IInitialisable>().Init();
+        projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, projectileBlockCount,owner.gameObject);
     }
     public void CreateAttackZone()
     {
         canAttack = false;
+        Debug.Log("Attack left before= "+attacksLeft);
         attacksLeft--;
-        DynamicConeCollider attackZone = ObjectPoolManager.Spawn(attackAreaPrefab, Vector3.zero, Quaternion.identity).GetComponent<DynamicConeCollider>();
-        attackZone.SetColliderShape(owner.transform.up, attackRadius, maxAttackAngle, owner.transform.position);
+        Debug.Log("Attack left after= " + attacksLeft);
+        dynamicAttackZone = ObjectPoolManager.Spawn(attackAreaPrefab, Vector3.zero, Quaternion.identity).GetComponent<DynamicConeCollider>();
+      
+        dynamicAttackZone.SetColliderShape(owner.GetFirePoint().up, attackRadius, maxAttackAngle, owner.GetFirePoint().position);
     }
 
 
@@ -29,32 +39,40 @@ public class RoyalSlash : BaseBossAbility
 
     public void RemoveAttackZone()
     {
-        if (attackZone)
+        if (dynamicAttackZone)
         {
-            ObjectPoolManager.Recycle(attackZone.gameObject);
+            ObjectPoolManager.Recycle(dynamicAttackZone.gameObject);
 
-            attackZone = null;
+            dynamicAttackZone = null;
         }
-          
+
         if (attacksLeft <= 0)
         {
-            owner.BeginLongCooldown(coolDown);
+            StopAllCoroutines();
+            owner.CycleToNextAttack();
+            StartCoroutine(BeginResetAbility(coolDown));
+          
         }
         else
         {
-            Invoke("ResetAttack",attackRate);
+            StopAllCoroutines();
+            StartCoroutine(BeginRefreshAttack(attackRate));
         }
+
+       
     }
 
-    public void ResetAttack()
+    override public void DisableAbility()
     {
-        canAttack = true;
+        base.DisableAbility();
+        eventListener.OnShowAttackZone -= CreateAttackZone;
+        eventListener.OnHideAttackZone -= RemoveAttackZone;
+        eventListener.OnShootProjectile -= ShootProjectile;
     }
 
-
-
-    virtual protected void OnEnable()
+    override public void EnableAbility()
     {
+        base.EnableAbility();
         if (eventListener)
         {
             eventListener.OnShowAttackZone += CreateAttackZone;
@@ -62,15 +80,6 @@ public class RoyalSlash : BaseBossAbility
             eventListener.OnShootProjectile += ShootProjectile;
         }
     }
- 
 
-    protected void OnDisable()
-    {
-        if (eventListener)
-        {
-            eventListener.OnShowAttackZone -= CreateAttackZone;
-            eventListener.OnHideAttackZone -= RemoveAttackZone;
-            eventListener.OnShootProjectile -= ShootProjectile;
-        }
-    }
+
 }
