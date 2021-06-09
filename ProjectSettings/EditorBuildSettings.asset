@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Testing Scenes/Esso'sPlayground.unity
-    guid: 9ff2d3e46e5a733478bf136b7194ee45
+    path: Assets/Scenes/RootScene.unity
+    guid: 06e87c7d370596c48bf116aa90be0e53
+  - enabled: 1
+    path: Assets/Scenes/Menus/MainMenu.unity
+    guid: 58949c79d38d9be4e9daf1e7c5b956c9
+  - enabled: 1
+    path: Assets/Scenes/Components/PlayerScene.unity
+    guid: 48b451c94121edc4ba51382f9fc7d360
+  - enabled: 1
+    path: Assets/Scenes/Components/PauseUI.unity
+    guid: cd4f1d4f45a7233439a918189717056a
+  - enabled: 1
+    path: Assets/Scenes/Level Segments/SpawnHub.unity
+    guid: d85b6bdc1f4bc8b4a8d62fccf1ba4579
+  - enabled: 1
+    path: Assets/Scenes/Level Segments/HubRoom.unity
+    guid: bb7ab86761c15f543bdd663611c35cd9
+  - enabled: 1
+    path: Assets/Scenes/Level Segments/BasicCorridor.unity
+    guid: bd8bdaaa384f57f4cbbea5211bc578d0
   m_configObjects: {}

@@ -44,4 +44,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startupPoolMode: 2
-  startupPools: []
+  startupPools:
+  - size: 5
+    prefab: {fileID: 1087995828118112649, guid: 2bf055af662a1ce4e87d7dc1bc98ef05, type: 3}
+  - size: 1
+    prefab: {fileID: 8290753865192258741, guid: 96c9357e396e2fa4e8f64833d94b39ce, type: 3}
+  - size: 5
+    prefab: {fileID: 3035194022987544037, guid: 8e47a7b652a80e743ba4b4d5ac34db75, type: 3}
+  - size: 1
+    prefab: {fileID: 8269005349974401674, guid: b12b46211fbbbdc4a9ef1459842b2a9c, type: 3}
+  - size: 1
+    prefab: {fileID: 8769350043832397294, guid: a36765750d3e9eb4198e8b008f11148e, type: 3}
+  - size: 2
+    prefab: {fileID: 5738252167346591164, guid: 37c955ae4a583a1408712173c4622cf5, type: 3}

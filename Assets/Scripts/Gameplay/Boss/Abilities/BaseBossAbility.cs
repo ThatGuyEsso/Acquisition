@@ -75,6 +75,7 @@ public class BaseBossAbility : MonoBehaviour, IInitialisable
     virtual public void EnableAbility()
     {
         isEnabled = true;
+       
     }
 
 
