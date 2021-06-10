@@ -20,6 +20,8 @@ public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager instance;
     [SerializeField] private GameObject[] managersToInit;
+    [SerializeField] private GameObject roomManagerPrefab;
+    [SerializeField] private GameObject GameManagerPrefab;
     public Action<GameState> OnNewGameState;
     public GameState currentGameState;
     public void Awake()
@@ -28,7 +30,7 @@ public class GameStateManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            Init();
+           
         }
         else
         {
@@ -80,11 +82,28 @@ public class GameStateManager : MonoBehaviour
                 LoadingScreen.instance.BeginFadeOut();
                 OnNewGameState?.Invoke(currentGameState);
                 break;
+            case GameState.LoadingHubWorld:
+                InitManager(roomManagerPrefab);
+
+                  OnNewGameState?.Invoke(currentGameState);
+                break;
+
+            case GameState.HubWorldLoadComplete:
+
+                InitManager(GameManagerPrefab);
+                OnNewGameState?.Invoke(currentGameState);
+                break;
+
         }
     }
-    public void Init()
+    public void InitManager(GameObject managerPrefab)
     {
+        GameObject manager = Instantiate(managerPrefab, Vector3.zero, Quaternion.identity);
+        IInitialisable init = manager.GetComponent<IInitialisable>();
+        if (init != null) init.Init();
 
+        IManager iManager = manager.GetComponent<IManager>();
+        if (iManager != null) { iManager.BindToGameStateManager(); }
     }
     
 }

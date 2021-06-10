@@ -26,6 +26,9 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
             case GameState.StartGame:
                 BeginLoadMenuScreen(SceneIndex.MainMenu);
             break;
+            case GameState.LoadingHubWorld:
+                BeginHubLoad();
+                break;
         }
     }
 
@@ -61,11 +64,11 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
     }
     public void BeginSceneLoad(SceneIndex sceneIndex)
     {
-        LoadScene(sceneIndex);
+        StartCoroutine( LoadScene(sceneIndex));
     }
     public void BeginSceneUnLoad(Scene scene)
     {
-        UnLoadScene(scene);
+        StartCoroutine( UnLoadScene(scene));
     }
     private IEnumerator LoadScene(SceneIndex sceneIndex)
     {
@@ -93,14 +96,14 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
         StopAllCoroutines();
         StartCoroutine(LoadMenuScreen(menuSceneIndex));    
     }
-    public void BeginHubLoad(SceneIndex sceneIndex)
+    public void BeginHubLoad()
     {
         StopAllCoroutines();
         StartCoroutine(LoadLevelStartingZOne());
     }
     private IEnumerator LoadLevelStartingZOne()
     {
-        GameStateManager.instance.BeginNewState(GameState.LoadingHubWorld);
+       
         if (!LoadingScreen.instance.IsLoadingScreenOn())
         {
             isFading = true;
@@ -113,11 +116,7 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
         }
         yield return new WaitForSeconds(0.5f);
         sceneLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndex.MainMenu));
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndex.SpawnHub, LoadSceneMode.Additive));
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndex.BasicCorridor, LoadSceneMode.Additive));
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndex.HubRoom, LoadSceneMode.Additive));
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndex.PlayerScene, LoadSceneMode.Additive));
-        sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndex.PauseScreen, LoadSceneMode.Additive));
+   
 
         //wait until every scene has unloaded
         for (int i = 0; i < sceneLoading.Count; i++)
@@ -130,7 +129,11 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
 
         //clear scens loading
         sceneLoading.Clear();
-        GameStateManager.instance.BeginNewState(GameState.HubWorldLoadComplete);
+        if (RoomManager.instance) RoomManager.instance.BeginStartingRoomsLoad();
+        else
+        {
+            Debug.LogError("RoomManager Doesn't Exist");
+        }
 
     }
     private IEnumerator LoadMenuScreen(SceneIndex menuSceneIndex)
@@ -197,4 +200,6 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
         isFading = false;
         LoadingScreen.instance.OnFadeComplete -= OnFadeComplete;
     }
+
+   
 }
