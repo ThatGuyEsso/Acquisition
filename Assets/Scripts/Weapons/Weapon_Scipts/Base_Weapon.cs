@@ -60,7 +60,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     protected IEnumerator WaitForFirePrimaryRate(float time)
     {
-        canPrimaryFire= false;
+        canPrimaryFire = false;
         yield return new WaitForSeconds(time);
         canPrimaryFire = true;
     }
