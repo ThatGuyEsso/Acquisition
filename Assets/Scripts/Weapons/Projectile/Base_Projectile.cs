@@ -92,6 +92,12 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
             SetUp(dir, speed);
             projectileDamage = damage;
         }
+        else
+        {
+            Init();
+            SetUp(dir, speed);
+            projectileDamage = damage;
+        }
         this.owner = owner;
         this.blockCount = blockCount;
         Invoke("KillProjectile", lifeTime);

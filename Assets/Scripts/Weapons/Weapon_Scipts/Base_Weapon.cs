@@ -14,11 +14,19 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 {
     
     [SerializeField] protected WeaponType weaponType;
-    [SerializeField] protected GameObject firePoint;
+    protected Transform firePoint;
+    protected Transform playerTransform;
+    protected AttackAnimEventListener attackEvents;
+    protected TopPlayerGFXSolver animSolver;
+    [Header("Attack Settings")]
+    [SerializeField] protected float primaryAttackDamage;
+    [SerializeField] protected float secondaryAttackDamage;
 
     [Header("Projectiles")]
-    [SerializeField] protected Base_Projectile primaryProjectile;
-    [SerializeField] protected Base_Projectile secondaryProjectile;
+    [SerializeField] protected GameObject primaryProjectile;
+    [SerializeField] protected GameObject secondaryProjectile;
+    [SerializeField] protected float primaryProjectileDamage;
+    [SerializeField] protected float secondaryProjectileDamage;
 
     [Header("TimeFireFrate")]
     [SerializeField] protected float primaryFireRate = 1.0f;
@@ -47,9 +55,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     public virtual void Init()
     {
         inputAction = new Controls();
-        inputAction.Enable();
-        inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
-        inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
+    
         boxCollider = GetComponentInChildren<BoxCollider2D>();
         SetCanFire(false);
     }
@@ -117,5 +123,29 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         boxCollider.enabled = false;
     }
 
+    virtual public void OnFireProjectile()
+    {
 
+    }
+
+    virtual public void Equip(Transform firePoint, AttackAnimEventListener eventListener,Transform player, TopPlayerGFXSolver solver)
+    {
+        inputAction.Enable();
+        inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
+        inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
+        this.firePoint = firePoint;
+        attackEvents = eventListener;
+        playerTransform = player;
+        SetCanFire(true);
+        animSolver = solver;
+
+    }
+
+    virtual public void UnEquip()
+    {
+        inputAction.Disable();
+        inputAction.Attack.PrimaryAttack.performed -= ctx => PrimaryAttack();
+        inputAction.Attack.SecondaryAttack.performed -= ctx => SecondaryAttack();
+        SetCanFire(false);
+    }
 }

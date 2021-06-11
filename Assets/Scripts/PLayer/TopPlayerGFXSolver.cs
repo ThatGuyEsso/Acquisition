@@ -18,6 +18,7 @@ public class TopPlayerGFXSolver : MonoBehaviour, IInitialisable
         {
             weaponManager.OnWeaponEquipped += EvalauteWeaponEquipped;
             isInitialised =true;
+            EvalauteWeaponEquipped(WeaponType.none);
         }
     }
 
@@ -58,6 +59,10 @@ public class TopPlayerGFXSolver : MonoBehaviour, IInitialisable
         }
     }
 
+    public void PlayAnimation(string animName)
+    {
+        animator.Play(animName);
+    }
     public void OnDestroy()
     {
         if(isInitialised)

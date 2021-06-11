@@ -8,6 +8,9 @@ public interface Equipable
     Base_Weapon GetWeapon();
     void SetSlot(WeaponSlots slot);
 
+    void Equip(Transform firePoint,AttackAnimEventListener eventListener,Transform player, TopPlayerGFXSolver solver);
+
+    void UnEquip();
 
 
 }

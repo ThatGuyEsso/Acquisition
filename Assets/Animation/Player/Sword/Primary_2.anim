@@ -21,8 +21,6 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: -8221177891604678250, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
-    - time: 0.05
-      value: {fileID: -1912118052769613491, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
     - time: 0.083333336
       value: {fileID: 7194430195594625521, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
     - time: 0.16666667
@@ -30,6 +28,8 @@ AnimationClip:
     - time: 0.25
       value: {fileID: 2268463465039882578, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
     - time: 0.33333334
+      value: {fileID: -1912118052769613491, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
+    - time: 0.5833333
       value: {fileID: -1912118052769613491, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
     attribute: m_Sprite
     path: 
@@ -51,17 +51,17 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: -8221177891604678250, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
-    - {fileID: -1912118052769613491, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
     - {fileID: 7194430195594625521, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
     - {fileID: -3732652013783170520, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
     - {fileID: 2268463465039882578, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
+    - {fileID: -1912118052769613491, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
     - {fileID: -1912118052769613491, guid: 9839c74a4777af14e973e04b0b235ba8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.35000002
+    m_StopTime: 0.59999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -80,4 +80,39 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: OnAnimBegun
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.16666667
+    functionName: OnSpawnAttackZone
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.25
+    functionName: OnSpawnProjectile
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.56666666
+    functionName: OnDespawnAttackZone
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5833333
+    functionName: OnAnimFinished
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
