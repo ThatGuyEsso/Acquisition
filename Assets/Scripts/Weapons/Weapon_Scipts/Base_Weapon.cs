@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum WeaponType
+{
+    Sword,
+    Bow,
+    Staff,
+    none
+};
 public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 {
     
-    [SerializeField] protected string weaponName;
+    [SerializeField] protected WeaponType weaponType;
     [SerializeField] protected GameObject firePoint;
 
     [Header("Projectiles")]
@@ -95,9 +103,9 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         return this;
     }
 
-    public virtual string GetWeaponName()
+    public virtual WeaponType GetWeaponType()
     {
-        return weaponName;
+        return weaponType;
     }
 
     public void SetSlot(WeaponSlots slot)

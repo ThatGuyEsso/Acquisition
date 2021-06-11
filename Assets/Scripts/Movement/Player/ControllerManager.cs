@@ -53,8 +53,12 @@ public class ControllerManager : MonoBehaviour, IInitialisable
 
     private void OnEnable()
     {
-        input.Aiming.Aim.performed += _ => SwitchToGampadControls();
-        input.MouseActivity.Move.performed += _ => SwitchToMouseControls();
+        if (isInitialised)
+        {
+            input.Aiming.Aim.performed += _ => SwitchToGampadControls();
+            input.MouseActivity.Move.performed += _ => SwitchToMouseControls();
+        }
+ 
     }
     private void OnDisable()
     {

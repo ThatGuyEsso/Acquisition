@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +13,11 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
     [SerializeField] private float deceleration;
 
 
+
+    public Action<Vector2> OnNewMoveDirection;
+
+    public Action OnWalk;
+    public Action OnStop;
     Controls input;
     bool isInitialised;
     Vector2 movementDir;
@@ -81,6 +86,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         currentSpeed = 0.0f;
         movementDir = Vector2.zero;
         rb.velocity = Vector2.zero;
+        OnStop?.Invoke();
     }
     private void BeginStop()
     {
@@ -93,9 +99,10 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         Vector2 dir = context.ReadValue<Vector2>();
         if (context.performed && dir != Vector2.zero)
         {
-
             magnitude = dir.magnitude;
             movementDir = dir.normalized;
+            OnNewMoveDirection?.Invoke(movementDir);
+            OnWalk?.Invoke();
             isMoving = true;
         }
     }

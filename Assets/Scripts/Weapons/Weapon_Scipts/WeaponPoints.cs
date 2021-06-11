@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public struct WeaponPoints
 {
-    public string weaponNameSlot;
+    public WeaponType weaponSlotType;
     public WeaponSlots slot;
 }

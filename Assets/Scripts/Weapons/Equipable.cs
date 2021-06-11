@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface Equipable 
 {
-    string GetWeaponName();
+    WeaponType GetWeaponType();
     Base_Weapon GetWeapon();
     void SetSlot(WeaponSlots slot);
 
