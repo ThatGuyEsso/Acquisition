@@ -44,7 +44,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     protected bool isFiringPrimary = false;
     protected bool isFiringSecondary = false;
-
+    private bool isInitialised;
 
     private void Awake()
     {
@@ -55,9 +55,10 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     public virtual void Init()
     {
         inputAction = new Controls();
-    
+        inputAction.Enable();
         boxCollider = GetComponentInChildren<BoxCollider2D>();
         SetCanFire(false);
+        isInitialised=true;
     }
 
     protected virtual void PrimaryAttack()
@@ -130,7 +131,9 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     virtual public void Equip(Transform firePoint, AttackAnimEventListener eventListener,Transform player, TopPlayerGFXSolver solver)
     {
-        inputAction.Enable();
+        if (!isInitialised) Init();
+        else
+             inputAction.Enable();
         inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
         inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
         this.firePoint = firePoint;

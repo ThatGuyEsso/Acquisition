@@ -17,7 +17,7 @@ public enum AIState
     Chase,
     Attack
 };
-public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss
+public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 {
 
     [Header("Settings")]
@@ -31,7 +31,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss
     [SerializeField] protected FaceMovementDirection faceMovementDirection;
     [SerializeField] protected Animator animator;
 
-
+    [SerializeField] protected float maxHurtTime;
     [SerializeField] protected AttackAnimEventListener attackAnimEvents;
     [SerializeField] protected List<Component> componentsToInit = new List<Component>();
     [SerializeField] protected List<BaseBossAbility> currentStageAbilities = new List<BaseBossAbility>();
@@ -43,6 +43,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss
     protected AIState currentAIState;
     protected bool canAttack;
     protected bool canLockOn=false;
+    protected float currHurtTime;
+    protected bool isHurt;
     [SerializeField] protected BaseBossAbility transitionAbility;
     [SerializeField] protected BaseBossAbility closeCombatAbility;
 
@@ -230,5 +232,10 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss
     public void PlayAnimation(string animName)
     {
         animator.Play(animName);
+    }
+
+    public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
+    {
+       
     }
 }

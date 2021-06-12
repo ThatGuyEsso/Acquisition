@@ -22,6 +22,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject[] managersToInit;
     [SerializeField] private GameObject roomManagerPrefab;
     [SerializeField] private GameObject GameManagerPrefab;
+    [SerializeField] private RunTimeData runtimeData;
     public Action<GameState> OnNewGameState;
     public GameState currentGameState;
     public void Awake()
@@ -29,8 +30,8 @@ public class GameStateManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            runtimeData.ResetData();
             DontDestroyOnLoad(gameObject);
-           
         }
         else
         {
@@ -85,7 +86,7 @@ public class GameStateManager : MonoBehaviour
             case GameState.LoadingHubWorld:
                 InitManager(roomManagerPrefab);
 
-                  OnNewGameState?.Invoke(currentGameState);
+                OnNewGameState?.Invoke(currentGameState);
                 break;
 
             case GameState.HubWorldLoadComplete:

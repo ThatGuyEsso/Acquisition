@@ -195,7 +195,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -624,22 +624,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bow
       objectReference: {fileID: 0}
-    - target: {fileID: 6750200819787671401, guid: 42462954fc822294492e33b825cdf81a, type: 3}
-      propertyPath: weaponType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6750200819787671401, guid: 42462954fc822294492e33b825cdf81a, type: 3}
-      propertyPath: chargeDistance
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6750200819787671401, guid: 42462954fc822294492e33b825cdf81a, type: 3}
-      propertyPath: SecondaryCharge
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6750200819787671401, guid: 42462954fc822294492e33b825cdf81a, type: 3}
-      propertyPath: primaryFireRate
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42462954fc822294492e33b825cdf81a, type: 3}
 --- !u!1 &816572253
@@ -1065,85 +1049,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: timeToIdle
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: primaryFireRate
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: primaryProjectile
-      value: 
-      objectReference: {fileID: 1087995828118112649, guid: 2bf055af662a1ce4e87d7dc1bc98ef05, type: 3}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: primarySlashSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: secondaryFireRate
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: primaryAttackDamage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: secondaryProjectile
-      value: 
-      objectReference: {fileID: 1087995828118112649, guid: 2bf055af662a1ce4e87d7dc1bc98ef05, type: 3}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: primarySlashLifeTIme
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: secondaryAttackDamage
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: primaryProjectileDamage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: secondaryCollisionRadius
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: secondaryProjectileDamage
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 4738161762782294094, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
       propertyPath: m_Name
       value: Sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612800871640311194, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: offset
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612800871640311194, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: nPoints
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772784033426048896, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772784033426048896, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772784033426048898, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: offset
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772784033426048898, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: nPoints
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772784033426048898, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-      propertyPath: ViewBlockingLayers.m_Bits
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
@@ -1154,38 +1062,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8837503333671568053, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: m_Positions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8837503333671568053, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: m_Positions.Array.data[1].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8837503333671568053, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: m_Positions.Array.data[2].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8837503333671568053, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: m_Positions.Array.data[2].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8837503333671568053, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: m_Positions.Array.data[2].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8837503333671568053, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: m_Parameters.colorGradient.m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8837503333671568053, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0.029496863
-      objectReference: {fileID: 0}
-    - target: {fileID: -8837503333671568053, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.19999982
-      objectReference: {fileID: 0}
     - target: {fileID: 223764434999141560, guid: a81e2a7bfd36e064682731514670e606, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1229,26 +1105,6 @@ PrefabInstance:
     - target: {fileID: 223764434999141560, guid: a81e2a7bfd36e064682731514670e606, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4635157803987727434, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: sheild
-      value: 
-      objectReference: {fileID: 2626508111857248113, guid: 81be4e8b9c1542246a0e6e16687c8d01, type: 3}
-    - target: {fileID: 4635157803987727434, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: weaponType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4635157803987727434, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: beamDuration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4635157803987727434, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: primaryFireRate
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4635157803987727434, guid: a81e2a7bfd36e064682731514670e606, type: 3}
-      propertyPath: secondaryAttackTimeBetweem
-      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8018739849535731035, guid: a81e2a7bfd36e064682731514670e606, type: 3}
       propertyPath: m_Name

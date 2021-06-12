@@ -1,7 +1,17 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum GameEvents
+{
+   WeaponsSpawned,
+   WeaponPicked,
+   BossRoomsSpawned,
+   BossFightStarts
+
+};
 public class GameManager : MonoBehaviour,IInitialisable,IManager
 {
     public static GameManager instance;
@@ -10,6 +20,9 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
     private Transform spawn;
     private GameObject playerObject;
     private bool isBound;
+
+    public GameEvents lastEvent;
+    public Action<GameEvents> OnNewEvent;
     public void BindToGameStateManager()
     {
         GameStateManager.instance.OnNewGameState += EvaluateGameState;
@@ -46,6 +59,7 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
         StopAllCoroutines();
         StartCoroutine(InitiateGame());
     }
+   
 
     private IEnumerator InitiateGame()
     {
@@ -100,5 +114,31 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
     {
         if(isBound)
             GameStateManager.instance.OnNewGameState -= EvaluateGameState;
+    }
+
+
+    public void BeginNewEvent(GameEvents newEvents)
+    {
+        lastEvent = newEvents;
+
+        switch (lastEvent)
+        {
+            case GameEvents.WeaponsSpawned:
+     
+
+                OnNewEvent?.Invoke(lastEvent);
+         
+                break;
+            case GameEvents.WeaponPicked:
+                OnNewEvent?.Invoke(lastEvent);
+                break;
+            case GameEvents.BossRoomsSpawned:
+                OnNewEvent?.Invoke(lastEvent);
+
+                break;
+            case GameEvents.BossFightStarts:
+                OnNewEvent?.Invoke(lastEvent);
+                break;
+        }
     }
 }

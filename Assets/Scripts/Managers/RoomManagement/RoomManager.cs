@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class RoomManager : MonoBehaviour, IInitialisable, IManager
 {
 
@@ -12,6 +12,8 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
     [SerializeField] private List<LevelRoom> loadedRooms = new List<LevelRoom>();
 
     private bool isAddingRoom;
+
+    public Action OnNewRoomAdded;
     public void BindToGameStateManager()
     {
         GameStateManager.instance.OnNewGameState += EvaluateGameState;
@@ -64,7 +66,31 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         }
     }
 
+    public void BeginLoadInNewSceneAt(Vector3 position,SceneIndex index)
+    {
 
+        StartCoroutine(LoadNewSceneAt(position,index));
+    }
+
+    private IEnumerator LoadNewSceneAt(Vector3 position, SceneIndex index)
+    {
+     
+  
+        isAddingRoom = true;
+        SceneTransitionManager.instance.BeginSceneLoad(index);
+
+        while (isAddingRoom)
+        {
+            yield return null;
+        }
+     
+        loadedRooms[loadedRooms.Count-1].transform.position = position;
+      
+ 
+        OnNewRoomAdded?.Invoke();
+
+
+    }
     public IEnumerator LoadStartingRooms()
     {
         for(int i=0; i < startingRooms.Length; i++)

@@ -45,7 +45,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
    
         if (context.performed && canDodge)
         {
-            Debug.Log("Dodge");
+          
             DoDodgeRoll();
         }
     }

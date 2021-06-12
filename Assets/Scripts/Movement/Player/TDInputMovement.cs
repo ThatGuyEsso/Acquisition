@@ -86,13 +86,14 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         currentSpeed = 0.0f;
         movementDir = Vector2.zero;
         rb.velocity = Vector2.zero;
-        OnStop?.Invoke();
+  
     }
     private void BeginStop()
     {
         magnitude = 0.0f;
         isStopping = true;
         isMoving = false;
+        OnStop?.Invoke();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
