@@ -12,7 +12,6 @@ public enum GameState
     HubWorldLoadComplete,
     GameRunning,
     CreditScene,
-    Paused,
     Transition,
 };
 
@@ -25,6 +24,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private RunTimeData runtimeData;
     public Action<GameState> OnNewGameState;
     public GameState currentGameState;
+
     public void Awake()
     {
         if(instance == null)
@@ -73,8 +73,6 @@ public class GameStateManager : MonoBehaviour
                 OnNewGameState?.Invoke(currentGameState);
                 break;
             case GameState.CreditScene:
-                break;
-            case GameState.Paused:
                 break;
             case GameState.Transition:
                 break;
