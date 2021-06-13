@@ -4,21 +4,9 @@ using UnityEngine;
 
 public class PauseUI : Base_UI
 {
-    public override void InitUI(UIType uiType)
-    {
-        base.InitUI(uiType);
-        Time.timeScale = 0;
-    }
-
-    public override void ExitUI()
-    {
-        base.ExitUI();
-        Time.timeScale = 1;
-    }
-
     public void OnResume()
     {
-        uiManager.SwitchUI(UIType.GameUI);
+        uiManager.SetGameToPause(false);
     }
 
     public void OnOptions()
@@ -30,4 +18,5 @@ public class PauseUI : Base_UI
     {
         Debug.Log("MainMenu");
     }
+
 }

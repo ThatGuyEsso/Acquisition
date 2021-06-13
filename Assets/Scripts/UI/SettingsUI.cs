@@ -10,9 +10,9 @@ public class SettingsUI : Base_UI
 
     Resolution[] allResolutions;
 
-    public override void InitUI(UIType uiType)
+    public override void InitUI(UIType uiType, UIType preUI)
     {
-        base.InitUI(uiType);
+        base.InitUI(uiType, preUI);
 
         allResolutions = Screen.resolutions;
 
@@ -56,4 +56,8 @@ public class SettingsUI : Base_UI
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
+    public void OnBack()
+    {
+        uiManager.SwitchUI(previousUI);
+    }
 }

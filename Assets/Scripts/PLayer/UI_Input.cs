@@ -22,23 +22,42 @@ public class UI_Input : MonoBehaviour, IInitialisable
         inputActions.Enable();
 
         inputActions.UI.Pause.performed += ctx => TogglePauseMenu();
+        UIManager.instance.SetGamePaused += OnPaused;
     }
 
     private void TogglePauseMenu()
     {
-        if(isPaused)
+        if (isPaused)
+        {
+            isPaused = false;
+            UIManager.instance.SetGameToPause(false);
+
+        }
+        else if (!isPaused)
+        {
+            isPaused = true;
+            UIManager.instance.SetGameToPause(true);
+        }
+    }
+
+    private void OnPaused(bool paused)
+    {
+        if (paused)
+        {
+            isPaused = true;
+            virtualCursor.SetActive(false);
+            UIManager.instance.SwitchUI(UIType.PauseMenu);
+
+        }
+        else if (!paused)
         {
             isPaused = false;
             virtualCursor.SetActive(true);
             UIManager.instance.SwitchUI(UIType.GameUI);
         }
-        else if(!isPaused)
-        {
-            isPaused = true;
-            virtualCursor.SetActive(false);
-            UIManager.instance.SwitchUI(UIType.PauseMenu);
-        }
     }
+
+
 
 
 }
