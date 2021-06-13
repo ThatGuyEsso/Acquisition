@@ -5,11 +5,13 @@ using UnityEngine;
 public class Bow_Weapon : Base_Weapon
 {
     [Header("Bow Settings")]
+    [SerializeField] private float primaryShotSpeed;
+    [SerializeField] private float primaryShotKnockBack;
+    [SerializeField] private float primaryShotLifeTime;
     [SerializeField] private float SecondaryChargeTime = 5;
     [SerializeField] private float SecondaryAfterDuration = 2;
     [SerializeField] private float chargeDistance = 100;
 
-    private float nextTimeToFire = 0;
     private LineRenderer line;
 
     public override void Init()
@@ -24,32 +26,60 @@ public class Bow_Weapon : Base_Weapon
         if (!isWeaponActive)
             return;
 
-        if(canPrimaryFire == true)
-        {
-            isFiringPrimary = true;
-            canPrimaryFire = false;
-            
-        }
-        else if(canPrimaryFire == false)
-        {
-            isFiringPrimary = false;
-            canPrimaryFire = true;
-            
-        }
+        if (!canPrimaryFire) return;
 
+        if (isBusy) return;
+
+
+        isBusy = true;
+        isIdle = false;
+        attackEvents.OnShootProjectile += OnFireProjectile;
+        attackEvents.OnAnimEnd += ResetPrimaryFire;
+        animSolver.PlayAnimationFromStart("Primary_Bow");
 
     }
 
+
     private void Update()
     {
-        if(isFiringPrimary == true && Time.time >= nextTimeToFire)
+        if (!isIdle)
         {
-            //Spawn Projectile
-            GameObject go = ObjectPoolManager.Spawn(primaryProjectile.gameObject, firePoint.transform.position, Quaternion.identity);
-            go.GetComponent<IProjectile>().SetUpProjectile(0f, firePoint.transform.up.normalized, 10f, 10f, 0, transform.parent.gameObject);
-
-            nextTimeToFire = Time.time + primaryFireRate; //Added Time onto firerate
+            if (currTimeToIdle <= 0f)
+            {
+                isIdle = true;
+                if (isRunning)
+                {
+                    animSolver.PlayAnimation("Run_Bow");
+                    Debug.Log("run");
+                }
+                else
+                {
+                    animSolver.PlayAnimation("Idle_Bow");
+                }
+                currTimeToIdle = timeToIdle;
+            }
+            else
+            {
+                currTimeToIdle -= Time.deltaTime;
+            }
         }
+    }
+
+    public override void OnFireProjectile()
+    {
+        GameObject go = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
+        go.GetComponent<IProjectile>().SetUpProjectile(primaryAttackDamage, firePoint.transform.up.normalized, primaryShotLifeTime, 10f, 0,playerTransform.gameObject);
+        attackEvents.OnShootProjectile -= OnFireProjectile;
+        Debug.Log("Fire");
+    }
+
+    public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player, TopPlayerGFXSolver solver)
+    {
+        base.Equip(firePoint, eventListener, player, solver);
+    }
+    public override void UnEquip()
+    {
+        base.UnEquip();
     }
     protected override void SecondaryAttack()
     {

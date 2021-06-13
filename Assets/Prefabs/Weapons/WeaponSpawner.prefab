@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3638913933398153259}
-  m_LocalRotation: {x: -0, y: -0, z: 0.000000059604638, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.38268274, w: 0.9238798}
+  m_LocalPosition: {x: 0.06, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8868006858211695066}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!212 &2303776255736663606
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -212,10 +212,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupGFX: {fileID: 2303776255736663606}
-  weapon: {fileID: 0}
+  weaponPrefab: {fileID: 4738161762782294094, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
   swordSprite: {fileID: 21300000, guid: f318aafa91377d646992b51a4ad5e0fd, type: 3}
   bowSprite: {fileID: 21300000, guid: 8eee9ce8c24920744b7523130ddaa950, type: 3}
   staffSprite: {fileID: 21300000, guid: 2c2ed27415816e84d80c1e945591b1a5, type: 3}
+  inDebug: 0
 --- !u!58 &8196851542694498362
 CircleCollider2D:
   m_ObjectHideFlags: 0

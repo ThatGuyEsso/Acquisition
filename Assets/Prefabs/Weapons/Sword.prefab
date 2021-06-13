@@ -51,13 +51,14 @@ MonoBehaviour:
   primaryProjectileDamage: 10
   secondaryProjectileDamage: 50
   primaryFireRate: 0.25
-  secondaryFireRate: 5
+  secondaryFireRate: 0.5
   inDebug: 0
   swordCollider: {fileID: 3035194022987544040, guid: 8e47a7b652a80e743ba4b4d5ac34db75, type: 3}
-  timeToIdle: 5
+  timeToIdle: 3
   primaryCollisionRadius: 1.5
   secondaryCollisionRadius: 3
   primarySlashSpeed: 10
   primarySlashLifeTIme: 0.5
-  SecondarySlashSpeed: 10
-  SecondarySlashLifeTIme: 3
+  SecondarySlashSpeed: 20
+  SecondarySlashLifeTIme: 0.5
+  secondaryProjectileOffset: {x: 0, y: 0}

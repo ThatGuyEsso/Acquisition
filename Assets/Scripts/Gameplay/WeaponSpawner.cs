@@ -13,13 +13,16 @@ public class WeaponSpawner : MonoBehaviour
     WeaponType type;
     bool isWeaponAvailable;
     public Action<WeaponType> OnWeaponReplaced;
-
+    [SerializeField] private bool inDebug;
     private void Awake()
     {
         pickupGFX.gameObject.SetActive(false);
         weapon = ObjectPoolManager.Spawn(weaponPrefab.gameObject, Vector3.zero, Quaternion.identity).GetComponent<Base_Weapon>();
         type = weapon.GetComponent<Equipable>().GetWeaponType();
-
+        if (inDebug)
+        {
+            SpawnWeapon();
+        }
     }
 
     public void ToggleWeaponAvailable(bool isAvailable)
@@ -44,14 +47,16 @@ public class WeaponSpawner : MonoBehaviour
                     OnWeaponReplaced?.Invoke(WeaponManager.instance.equippedWeapon.GetWeaponType());
                     WeaponManager.instance.EquipWeapon(weapon);
                     ToggleWeaponAvailable(false);
-                    GameManager.instance.BeginNewEvent(GameEvents.WeaponPicked);
+                    if (GameManager.instance)
+                        GameManager.instance.BeginNewEvent(GameEvents.WeaponPicked);
                 }
             }
             else
             {
                 WeaponManager.instance.EquipWeapon(weapon);
                 ToggleWeaponAvailable(false);
-                GameManager.instance.BeginNewEvent(GameEvents.WeaponPicked);
+                if(GameManager.instance)
+                    GameManager.instance.BeginNewEvent(GameEvents.WeaponPicked);
             }
        
         }

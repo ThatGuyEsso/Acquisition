@@ -45,15 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
-  primaryAttackDamage: 0
-  secondaryAttackDamage: 0
-  primaryProjectile: {fileID: 0}
+  primaryAttackDamage: 20
+  secondaryAttackDamage: 20
+  primaryProjectile: {fileID: 3647265956065727434, guid: f9579bf0ffa50f14d8f325632febe209, type: 3}
   secondaryProjectile: {fileID: 0}
-  primaryProjectileDamage: 0
-  secondaryProjectileDamage: 0
+  primaryProjectileDamage: 20
+  secondaryProjectileDamage: 20
   primaryFireRate: 0.5
   secondaryFireRate: 1
+  timeToIdle: 3
   inDebug: 0
+  primaryShotSpeed: 25
+  primaryShotKnockBack: 10
+  primaryShotLifeTime: 1.25
   SecondaryChargeTime: 5
   SecondaryAfterDuration: 2
   chargeDistance: 50

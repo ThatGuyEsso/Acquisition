@@ -22,6 +22,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     [SerializeField] protected float primaryAttackDamage;
     [SerializeField] protected float secondaryAttackDamage;
 
+
     [Header("Projectiles")]
     [SerializeField] protected GameObject primaryProjectile;
     [SerializeField] protected GameObject secondaryProjectile;
@@ -31,6 +32,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     [Header("TimeFireFrate")]
     [SerializeField] protected float primaryFireRate = 1.0f;
     [SerializeField] protected float secondaryFireRate = 1.0f;
+    [SerializeField] protected float timeToIdle=3f;
 
     [Header("Debug")]
     [SerializeField] private bool inDebug = false;
@@ -44,8 +46,11 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     protected bool isFiringPrimary = false;
     protected bool isFiringSecondary = false;
-    private bool isInitialised;
-
+    protected bool isInitialised;
+    protected bool isBusy;
+    protected bool isRunning;
+    protected bool isIdle = true;
+    protected float currTimeToIdle;
     private void Awake()
     {
         if(inDebug) 
@@ -141,6 +146,8 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         playerTransform = player;
         SetCanFire(true);
         animSolver = solver;
+        animSolver.movement.OnWalk += OnRun;
+        animSolver.movement.OnStop += OnStop;
 
     }
 
@@ -150,5 +157,32 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         inputAction.Attack.PrimaryAttack.performed -= ctx => PrimaryAttack();
         inputAction.Attack.SecondaryAttack.performed -= ctx => SecondaryAttack();
         SetCanFire(false);
+        animSolver.movement.OnWalk -= OnRun;
+        animSolver.movement.OnStop -= OnStop;
+    }
+
+
+    virtual public void OnRun()
+    {
+        isRunning = true;
+    }
+
+    virtual public void OnStop()
+    {
+        isRunning = false;
+    }
+
+    virtual public void ResetPrimaryFire()
+    {
+        canPrimaryFire = true;
+        isBusy = false;
+        attackEvents.OnAnimEnd -= ResetPrimaryFire;
+    }
+
+    virtual public void ResetSecondaryFire()
+    {
+        attackEvents.OnAnimEnd -= ResetSecondaryFire;
+        isBusy = false;
+
     }
 }

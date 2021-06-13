@@ -3025,6 +3025,7 @@ MonoBehaviour:
   - {fileID: 1822334224}
   - {fileID: 864531646}
   runTimeData: {fileID: 11400000, guid: 20e304c4c394970429831bc02f723f34, type: 2}
+  inDebug: 0
 --- !u!50 &893588437
 Rigidbody2D:
   serializedVersion: 4
@@ -3326,34 +3327,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 893588433}
     m_Modifications:
-    - target: {fileID: 7890977775772744864, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 7890977775772744864, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7890977775772744864, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9238798
-      objectReference: {fileID: 0}
-    - target: {fileID: 7890977775772744864, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.38268274
-      objectReference: {fileID: 0}
-    - target: {fileID: 7890977775772744864, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -45
-      objectReference: {fileID: 0}
-    - target: {fileID: 8868006858211695065, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 4738161762782294093, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
-    - target: {fileID: 8868006858211695065, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
-      propertyPath: weaponPrefab
-      value: 
-      objectReference: {fileID: 4738161762782294094, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
     - target: {fileID: 8868006858211695066, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
       propertyPath: m_RootOrder
       value: 5

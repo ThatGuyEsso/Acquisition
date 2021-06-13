@@ -10,12 +10,14 @@ public class TopPlayerGFXSolver : MonoBehaviour, IInitialisable
     [Header("Components")]
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private Animator animator;
+    public TDInputMovement movement;
 
     bool isInitialised;
     public void Init()
     {
         if (weaponManager)
         {
+          
             weaponManager.OnWeaponEquipped += EvalauteWeaponEquipped;
             isInitialised =true;
             EvalauteWeaponEquipped(WeaponType.none);
@@ -63,10 +65,20 @@ public class TopPlayerGFXSolver : MonoBehaviour, IInitialisable
     {
         animator.Play(animName);
     }
+    public void PlayAnimationFromStart(string animName)
+    {
+        
+        animator.Play(animName,-1,0f);
+    }
     public void OnDestroy()
     {
-        if(isInitialised)
+        if (isInitialised)
+        {
+ 
             weaponManager.OnWeaponEquipped -= EvalauteWeaponEquipped;
+        }
       
     }
+
+
 }

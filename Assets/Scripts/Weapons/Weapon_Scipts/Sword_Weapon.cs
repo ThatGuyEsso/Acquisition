@@ -6,7 +6,7 @@ public class Sword_Weapon : Base_Weapon
 {
     [Header("Sword Settings")]
     [SerializeField] private DynamicConeCollider swordCollider;
-    [SerializeField] private float timeToIdle;
+
     [SerializeField] private float primaryCollisionRadius = 1.5f;
     [SerializeField] private float secondaryCollisionRadius = 2.5f;
 
@@ -16,11 +16,12 @@ public class Sword_Weapon : Base_Weapon
 
     [SerializeField] private float SecondarySlashSpeed = 10f;
     [SerializeField] private float SecondarySlashLifeTIme = 3f;
-
+    [SerializeField] private Vector2 secondaryProjectileOffset;
     private DynamicConeCollider sCollider;
     bool isLeftSwing;
-    bool isIdle=true;
-   float currTimeToIdle;
+
+
+    
     protected override void PrimaryAttack()
     {
         if (!isWeaponActive)
@@ -29,6 +30,8 @@ public class Sword_Weapon : Base_Weapon
         if (!canPrimaryFire)
             return;
 
+        if (isBusy) return;
+        isBusy = true;
         attackEvents.OnShowAttackZone += CreateAttackCollider;
         attackEvents.OnHideAttackZone+= DestroyAttackZone;
         attackEvents.OnShootProjectile += OnFireProjectile;
@@ -58,7 +61,15 @@ public class Sword_Weapon : Base_Weapon
             if (currTimeToIdle <=0f)
             {
                 isIdle = true;
-                animSolver.PlayAnimation("Idle_Sword");
+                if (isRunning)
+                {
+                    animSolver.PlayAnimation("Run_Sword");
+
+                }
+                else
+                {
+                    animSolver.PlayAnimation("Idle_Sword");
+                }
                 currTimeToIdle = timeToIdle;
             }
             else
@@ -70,10 +81,27 @@ public class Sword_Weapon : Base_Weapon
     public void CreateAttackCollider()
     {
         sCollider = Instantiate(swordCollider);
-        sCollider.SetColliderShape(firePoint.transform.up, primaryCollisionRadius, 90, transform.position);
-        if (sCollider.GetComponent<IVolumes>() != null) sCollider.GetComponent<IVolumes>().SetIsPlayerZone(true);
+        sCollider.SetColliderShape(firePoint.transform.up, primaryCollisionRadius, 90f, transform.position);
+        if (sCollider.GetComponent<IVolumes>() != null) {
+            IVolumes volume = sCollider.GetComponent<IVolumes>();
+            volume.SetIsPlayerZone(true);
+            volume.SetUpDamageVolume(primaryAttackDamage, 10f, firePoint.up, playerTransform.gameObject);
+        }
         attackEvents.OnShowAttackZone -= CreateAttackCollider;
      
+    }
+    public void CreateSecondaryAttackCollider()
+    {
+        sCollider = Instantiate(swordCollider);
+        sCollider.SetColliderShape(firePoint.transform.up, secondaryCollisionRadius, 60f, transform.position);
+        if (sCollider.GetComponent<IVolumes>() != null)
+        {
+            IVolumes volume = sCollider.GetComponent<IVolumes>();
+            volume.SetIsPlayerZone(true);
+            volume.SetUpDamageVolume(primaryAttackDamage, 10f, firePoint.up, playerTransform.gameObject);
+        }
+        attackEvents.OnShowAttackZone -= CreateSecondaryAttackCollider;
+
     }
 
     public void DestroyAttackZone()
@@ -98,22 +126,58 @@ public class Sword_Weapon : Base_Weapon
         attackEvents.OnShootProjectile -= OnFireProjectile;
     }
 
-   
+
+    public  void OnFireSecondaryProjectile()
+    {
+        IProjectile projectile = ObjectPoolManager.Spawn(secondaryProjectile, firePoint.transform.position+ (Vector3)secondaryProjectileOffset, Quaternion.identity)
+              .GetComponent<IProjectile>();
+        if (projectile != null)
+        {
+            projectile.SetUpProjectile(secondaryProjectileDamage, firePoint.up,SecondarySlashSpeed, SecondarySlashLifeTIme,3, playerTransform.gameObject);
+        }
+        attackEvents.OnShootProjectile -= OnFireSecondaryProjectile;
+    }
+
 
 
     protected override void SecondaryAttack()
     {
-        if (!isWeaponActive)
-            return;
-
-        if (!canPrimaryFire)
-            return;
-
-        sCollider = Instantiate(swordCollider);
-        sCollider.SetColliderShape(firePoint.transform.up, secondaryCollisionRadius, 90, transform.position);
-
-   
+        if (isBusy)
+        {
+          
+            Debug.Log("BUSY");
            
+            return;
+        }
+        if (!isWeaponActive)
+        {
+
+            Debug.Log("INACTIVE");
+
+            return;
+        }
+
+        if (!canSecondaryFire)
+        {
+            Debug.Log("can't attack");
+            return;
+        }
+
+        isIdle = false;
+        isBusy = true;
+        canSecondaryFire = false;
+        isLeftSwing = true;
+        attackEvents.OnShowAttackZone += CreateSecondaryAttackCollider;
+        attackEvents.OnHideAttackZone += DestroyAttackZone;
+        attackEvents.OnShootProjectile += OnFireSecondaryProjectile;
+        attackEvents.OnAnimEnd += ResetSecondaryFire;
+        currTimeToIdle = timeToIdle;
+        animSolver.PlayAnimationFromStart("Secondary");
+ 
+  
+        Debug.Log("Second Attack");
+
+
     }
 
 
@@ -130,9 +194,35 @@ public class Sword_Weapon : Base_Weapon
 
     }
 
-    public void ResetPrimaryFire()
+    public override void OnStop()
+    {
+        base.OnStop();
+        if (isIdle)
+        {
+            animSolver.PlayAnimation("Idle_Sword");
+        }
+    }
+
+    public override void OnRun()
+    {
+        base.OnRun();
+        if (isIdle)
+        {
+            animSolver.PlayAnimation("Run_Sword");
+        }
+    }
+    override public void ResetPrimaryFire()
     {
         canPrimaryFire = true;
-        attackEvents.OnAnimEnd -= OnFireProjectile;
+        isBusy = false;
+        attackEvents.OnAnimEnd -= ResetPrimaryFire;
+    }
+
+    override public void ResetSecondaryFire()
+    {
+        attackEvents.OnAnimEnd -= ResetSecondaryFire;
+        isBusy = false;
+        StartCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
+        Debug.Log("Not busy");
     }
 }
