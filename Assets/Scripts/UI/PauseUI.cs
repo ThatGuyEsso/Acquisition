@@ -7,12 +7,18 @@ public class PauseUI : Base_UI
     public override void InitUI(UIType uiType)
     {
         base.InitUI(uiType);
-        
+        Time.timeScale = 0;
+    }
+
+    public override void ExitUI()
+    {
+        base.ExitUI();
+        Time.timeScale = 1;
     }
 
     public void OnResume()
     {
-        Debug.Log("Resume");
+        uiManager.SwitchUI(UIType.GameUI);
     }
 
     public void OnOptions()

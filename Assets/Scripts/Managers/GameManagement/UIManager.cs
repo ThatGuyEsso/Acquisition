@@ -85,7 +85,9 @@ public class UIManager : MonoBehaviour, IInitialisable
                 {
                     currentObj.SetActive(false);
                     I_UI ui = currentObj.GetComponent<I_UI>();
-                    ui.ExitUI();
+                    
+                    if(ui != null)
+                        ui.ExitUI();
                 }
             }
             else
