@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 {
-    protected float projectileDamage;
-    protected float knockback;
+    [SerializeField] protected float projectileDamage=0;
+    [SerializeField] protected float knockback =0;
     [SerializeField] protected bool inDebug = false;
-    protected int blockCount = 0;//How much damage projectile can take be getting destroyed
+    [SerializeField] protected int blockCount = 0;//How much damage projectile can take be getting destroyed
 
     [SerializeField] protected LayerMask destroyProjectileLayer;
     protected GameObject owner;
@@ -126,5 +126,14 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     virtual public void SetRotationSpeed(float rotSpeed)
     {
         //
+    }
+
+    public void ShootProjectile(float speed, Vector2 direction, float lifeTime)
+    {
+        if (rb)
+        {
+            SetUp(direction, speed);
+            Invoke("KillProjectile", lifeTime);
+        }
     }
 }

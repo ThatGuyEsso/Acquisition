@@ -8,17 +8,22 @@ public class Bow_Weapon : Base_Weapon
     [SerializeField] private float primaryShotSpeed;
     [SerializeField] private float primaryShotKnockBack;
     [SerializeField] private float primaryShotLifeTime;
-    [SerializeField] private float SecondaryChargeTime = 5;
-    [SerializeField] private float SecondaryAfterDuration = 2;
-    [SerializeField] private float chargeDistance = 100;
 
-    private LineRenderer line;
+    [SerializeField] private float secondaryShotSpeed;
+    [SerializeField] private float secondaryShotLifeTime;
 
+
+
+    [SerializeField] private GameObject weakCharge, midCharge, superCharge;
+
+
+    private int chargeCount=0;
+    bool isCharging = false;
+    bool primaryHeld =false;
     public override void Init()
     {
         base.Init();
-        line = GetComponent<LineRenderer>();
-        line.enabled = false;
+
     }
 
     protected override void PrimaryAttack()
@@ -33,6 +38,9 @@ public class Bow_Weapon : Base_Weapon
 
         isBusy = true;
         isIdle = false;
+        currTimeToIdle = timeToIdle;
+        canPrimaryFire = false;
+        primaryHeld = true;
         attackEvents.OnShootProjectile += OnFireProjectile;
         attackEvents.OnAnimEnd += ResetPrimaryFire;
         animSolver.PlayAnimationFromStart("Primary_Bow");
@@ -42,7 +50,7 @@ public class Bow_Weapon : Base_Weapon
 
     private void Update()
     {
-        if (!isIdle)
+        if (!isIdle&&!isBusy)
         {
             if (currTimeToIdle <= 0f)
             {
@@ -68,7 +76,7 @@ public class Bow_Weapon : Base_Weapon
     public override void OnFireProjectile()
     {
         GameObject go = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
-        go.GetComponent<IProjectile>().SetUpProjectile(primaryAttackDamage, firePoint.transform.up.normalized, primaryShotLifeTime, 10f, 0,playerTransform.gameObject);
+        go.GetComponent<IProjectile>().SetUpProjectile(primaryAttackDamage, firePoint.transform.up.normalized, primaryShotSpeed,primaryShotLifeTime, 0,playerTransform.gameObject);
         attackEvents.OnShootProjectile -= OnFireProjectile;
         Debug.Log("Fire");
     }
@@ -76,55 +84,137 @@ public class Bow_Weapon : Base_Weapon
     public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player, TopPlayerGFXSolver solver)
     {
         base.Equip(firePoint, eventListener, player, solver);
+        inputAction.Attack.SecondaryAttack.canceled += ctx => EvaluateChargeShot();
+        inputAction.Attack.PrimaryAttack.canceled += ctx => OnPrimaryReleased();
     }
     public override void UnEquip()
     {
         base.UnEquip();
+        inputAction.Attack.SecondaryAttack.canceled -= ctx => EvaluateChargeShot();
+        inputAction.Attack.PrimaryAttack.canceled -= ctx => OnPrimaryReleased();
     }
     protected override void SecondaryAttack()
     {
+
         if (isWeaponActive == false)
             return;
 
         if (!canSecondaryFire)
             return;
 
-        StartCoroutine(ChargeDuration());
-        base.SecondaryAttack();
-    }
 
-    private IEnumerator ChargeDuration()
-    {
+        if (isBusy) return;
+
+
+        isBusy = true;
+        isIdle = false;
         canSecondaryFire = false;
-        yield return new WaitForSeconds(SecondaryChargeTime);
-        ChargeShot();
 
-        yield return new WaitForSeconds(SecondaryAfterDuration);
-        line.enabled = false;
-        canSecondaryFire = true;
+        currTimeToIdle = timeToIdle;
+        attackEvents.OnChargeIncrease += IncreaseCharge;
+        isCharging = true;
+        animSolver.PlayAnimationFromStart("Secondary_Bow");
+
     }
 
-    private void ChargeShot()
+
+
+    private void EvaluateChargeShot()
     {
-        RaycastHit2D[] hits;
-        hits = Physics2D.RaycastAll(firePoint.transform.position, firePoint.transform.up, chargeDistance);
 
-        Debug.DrawRay(firePoint.transform.position, firePoint.transform.up * chargeDistance, Color.green, 10);
-
-        if (hits == null)
-            return;
-
-        //Enable Line and set origin and destination of line
-        line.enabled = true;
-        line.SetPosition(0, firePoint.transform.position);
-        Vector3 dest = firePoint.transform.position + firePoint.transform.up * chargeDistance;
-        line.SetPosition(1, dest);
-
-        foreach(RaycastHit2D hit in hits)
+        if (isCharging)
         {
-            Debug.Log(hit.collider.gameObject);
+            attackEvents.OnChargeIncrease -= IncreaseCharge;
+
+
+            if (chargeCount == 1)
+            {
+                IProjectile projectile = ObjectPoolManager.Spawn(weakCharge, firePoint.transform.position, Quaternion.identity)
+                .GetComponent<IProjectile>();
+                if (projectile != null)
+                {
+                    projectile.ShootProjectile(secondaryShotSpeed, firePoint.up, secondaryShotLifeTime);
+                }
+            }
+            else if (chargeCount == 2)
+            {
+                IProjectile projectile = ObjectPoolManager.Spawn(midCharge, firePoint.transform.position, Quaternion.identity)
+              .GetComponent<IProjectile>();
+                if (projectile != null)
+                {
+                    projectile.ShootProjectile(secondaryShotSpeed, firePoint.up, secondaryShotLifeTime);
+                }
+            }
+            else if (chargeCount >= 3)
+            {
+                IProjectile projectile = ObjectPoolManager.Spawn(superCharge, firePoint.transform.position, Quaternion.identity)
+                .GetComponent<IProjectile>();
+                if (projectile != null)
+                {
+                    projectile.ShootProjectile(secondaryShotSpeed, firePoint.up, secondaryShotLifeTime);
+                }
+            }
+
+            attackEvents.OnAnimEnd += ResetSecondaryFire;
+            animSolver.PlayAnimationFromStart("ReleaseCharge");
+           
         }
+       
+
+    }
+    private void IncreaseCharge()
+    {
+
+        chargeCount++;
 
     }
 
+    public override void OnStop()
+    {
+        base.OnStop();
+        if (isIdle)
+        {
+            animSolver.PlayAnimation("Idle_Bow");
+        }
+    }
+
+    public override void OnRun()
+    {
+        base.OnRun();
+        if (isIdle)
+        {
+            animSolver.PlayAnimation("Run_Bow");
+        }
+    }
+
+
+    override public void ResetSecondaryFire()
+    {
+        attackEvents.OnAnimEnd -= ResetSecondaryFire;
+        isBusy = false;
+        isCharging = false;
+
+        if(chargeCount>0)
+             StartCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
+        else
+        {
+            canSecondaryFire = true;
+        }
+        chargeCount = 0;
+    }
+
+    private void OnPrimaryHeld() {
+        primaryHeld = true;
+    }
+
+    private void OnPrimaryReleased()
+    {
+        primaryHeld = false;
+    }
+
+    public override void ResetPrimaryFire()
+    {
+        base.ResetPrimaryFire();
+        if (primaryHeld) PrimaryAttack();
+    }
 }

@@ -52,15 +52,17 @@ MonoBehaviour:
   primaryProjectileDamage: 20
   secondaryProjectileDamage: 20
   primaryFireRate: 0.5
-  secondaryFireRate: 1
+  secondaryFireRate: 1.5
   timeToIdle: 3
   inDebug: 0
   primaryShotSpeed: 25
   primaryShotKnockBack: 10
   primaryShotLifeTime: 1.25
-  SecondaryChargeTime: 5
-  SecondaryAfterDuration: 2
-  chargeDistance: 50
+  secondaryShotSpeed: 15
+  secondaryShotLifeTime: 3
+  weakCharge: {fileID: 3647265956065727434, guid: 0691adcfb7b2c5949a138faec10a6a00, type: 3}
+  midCharge: {fileID: 3647265956065727434, guid: 1b628d14c5727024d8e9cf23eb09c37b, type: 3}
+  superCharge: {fileID: 3647265956065727434, guid: 8e203dfb7b8b79a498998b84efdc42ad, type: 3}
 --- !u!120 &5920651184020283852
 LineRenderer:
   m_ObjectHideFlags: 0

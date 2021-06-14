@@ -37,7 +37,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     [Header("Debug")]
     [SerializeField] private bool inDebug = false;
 
-    private Controls inputAction;
+    protected Controls inputAction;
     private BoxCollider2D boxCollider;
 
     protected bool isWeaponActive = false;
@@ -174,8 +174,8 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     virtual public void ResetPrimaryFire()
     {
-        canPrimaryFire = true;
         isBusy = false;
+        canPrimaryFire = true;
         attackEvents.OnAnimEnd -= ResetPrimaryFire;
     }
 
@@ -183,6 +183,6 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     {
         attackEvents.OnAnimEnd -= ResetSecondaryFire;
         isBusy = false;
-
+       
     }
 }

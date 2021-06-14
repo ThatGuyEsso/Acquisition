@@ -11,6 +11,7 @@ public class AttackAnimEventListener: MonoBehaviour
     public Action OnShootProjectile;
     public Action OnAnimStart;
     public Action OnAnimEnd;
+    public Action OnChargeIncrease;
     public void OnAnimBegun()
     {
         OnAnimStart?.Invoke();
@@ -31,6 +32,12 @@ public class AttackAnimEventListener: MonoBehaviour
         OnHideAttackZone?.Invoke();
 
     }
+    public void OnArrowChargeIncrement()
+    {
+        OnChargeIncrease?.Invoke();
+
+    }
+
 
     public void OnSpawnProjectile()
     {
