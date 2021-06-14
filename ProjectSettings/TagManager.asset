@@ -56,6 +56,9 @@ TagManager:
   - name: Projectiles
     uniqueID: 3728740081
     locked: 0
+  - name: VFX
+    uniqueID: 1498459019
+    locked: 0
   - name: Cursor
     uniqueID: 2079890351
     locked: 0

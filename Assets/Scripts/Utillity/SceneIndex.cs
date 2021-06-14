@@ -10,5 +10,6 @@ public enum SceneIndex
     PauseScreen = 3,
     SpawnHub = 4,
     HubRoom = 5,
-    BasicCorridor =6
+    BasicCorridor =6,
+    LongCorridor =7
 };

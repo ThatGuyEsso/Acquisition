@@ -9,7 +9,7 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
 
     public SceneIndex[] startingRooms;
 
-    [SerializeField] private List<LevelRoom> loadedRooms = new List<LevelRoom>();
+     public List<LevelRoom> loadedRooms = new List<LevelRoom>();
 
     private bool isAddingRoom;
 
@@ -128,6 +128,13 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
             room.SetID("Room" + loadedRooms.Count);
             isAddingRoom = false;
         }
+    }
+
+    public void RemoveRoom(string roomID)
+    {
+        LevelRoom room =loadedRooms.Find(room => room.ID() == roomID);
+        loadedRooms.Remove(room);
+        SceneTransitionManager.instance.BeginSceneUnLoad(room.gameObject.scene);
     }
 
     public Transform GetSpawn()

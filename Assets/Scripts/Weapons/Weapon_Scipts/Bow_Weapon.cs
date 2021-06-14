@@ -84,15 +84,36 @@ public class Bow_Weapon : Base_Weapon
 
     public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player, TopPlayerGFXSolver solver)
     {
-        base.Equip(firePoint, eventListener, player, solver);
-        inputAction.Attack.SecondaryAttack.canceled += ctx => EvaluateChargeShot();
-        inputAction.Attack.PrimaryAttack.canceled += ctx => OnPrimaryReleased();
+        if (!isInitialised)
+        {
+            Init();
+            inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
+            inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
+            inputAction.Attack.SecondaryAttack.canceled += ctx => EvaluateChargeShot();
+            inputAction.Attack.PrimaryAttack.canceled += ctx => OnPrimaryReleased();
+        }
+        else
+            inputAction.Enable();
+
+        this.firePoint = firePoint;
+        attackEvents = eventListener;
+        playerTransform = player;
+        SetCanFire(true);
+        animSolver = solver;
+        animSolver.movement.OnWalk += OnRun;
+        animSolver.movement.OnStop += OnStop;
+     
+        Debug.Log("Equip");
     }
     public override void UnEquip()
     {
         base.UnEquip();
-        inputAction.Attack.SecondaryAttack.canceled -= ctx => EvaluateChargeShot();
-        inputAction.Attack.PrimaryAttack.canceled -= ctx => OnPrimaryReleased();
+        chargeCount = 0;
+        StopAllCoroutines();
+        attackEvents.OnAnimEnd -= ResetSecondaryFire;
+        isBusy = false;
+        isCharging = false;
+        Debug.Log("unequip");
     }
     protected override void SecondaryAttack()
     {

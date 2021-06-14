@@ -136,11 +136,15 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     virtual public void Equip(Transform firePoint, AttackAnimEventListener eventListener,Transform player, TopPlayerGFXSolver solver)
     {
-        if (!isInitialised) Init();
+        if (!isInitialised) 
+        {
+            Init();
+            inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
+            inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
+        }
         else
              inputAction.Enable();
-        inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
-        inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
+
         this.firePoint = firePoint;
         attackEvents = eventListener;
         playerTransform = player;
@@ -154,8 +158,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     virtual public void UnEquip()
     {
         inputAction.Disable();
-        inputAction.Attack.PrimaryAttack.performed -= ctx => PrimaryAttack();
-        inputAction.Attack.SecondaryAttack.performed -= ctx => SecondaryAttack();
+ 
         SetCanFire(false);
         animSolver.movement.OnWalk -= OnRun;
         animSolver.movement.OnStop -= OnStop;

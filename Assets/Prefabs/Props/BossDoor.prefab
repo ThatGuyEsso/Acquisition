@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854745292839887}
   - component: {fileID: 3565854745292839872}
+  - component: {fileID: 4627432300115495745}
   m_Layer: 0
   m_Name: EntryCollider
   m_TagString: Untagged
@@ -87,6 +88,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &4627432300115495745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565854745292839886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7623e831a1a4c46817ff017baa0951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 8945331414826369337}
 --- !u!1 &3565854745561744965
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +171,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1074963159
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 3442411038714031701, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -493,7 +507,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1074963159
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4389315193888251582, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -515,6 +529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854746540659508}
   - component: {fileID: 3565854746540659509}
+  - component: {fileID: 5317323888654938154}
   m_Layer: 0
   m_Name: ExitCollider
   m_TagString: Untagged
@@ -562,6 +577,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &5317323888654938154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565854746540659507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01eed3ae2a0f157459c5437a26081f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossType: 0
 --- !u!1 &3565854746953689030
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +642,9 @@ MonoBehaviour:
   wallMode: {fileID: 3565854746012560691}
   bossDoorType: 0
   corridorSpawn: {fileID: 5174465896849861687}
+  spawnVFX: {fileID: 6481989697002498407, guid: 74186d7bfbb3117419c75581679293cd, type: 3}
+  bossDoor: {fileID: 8945331414826369337}
+  corridorID: 
 --- !u!1 &3565854747016259482
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,6 +654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3565854747016259483}
+  - component: {fileID: 8945331414826369337}
   m_Layer: 0
   m_Name: DoorMode
   m_TagString: Untagged
@@ -646,6 +678,22 @@ Transform:
   m_Father: {fileID: 3565854746953689031}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8945331414826369337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565854747016259482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01353505b4a25f4ea384c7a6123f3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxOpenDistance: 1
+  openSpeed: 1
+  leftDoor: {fileID: 3565854747254880796}
+  rightDoor: {fileID: 3565854747149629981}
 --- !u!1 &3565854747149629980
 GameObject:
   m_ObjectHideFlags: 0

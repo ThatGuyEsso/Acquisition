@@ -7,6 +7,7 @@ public class WeaponSpawner : MonoBehaviour
   
     [SerializeField] private SpriteRenderer pickupGFX;
     [SerializeField] private GameObject weaponPrefab;
+    [SerializeField] private GameObject spawnVFX;
     private Base_Weapon weapon;
     [Header("Sprites")]
     [SerializeField] private Sprite swordSprite, bowSprite,staffSprite;
@@ -66,6 +67,7 @@ public class WeaponSpawner : MonoBehaviour
     
         pickupGFX.gameObject.SetActive(true);
         isWeaponAvailable = true;
+        ObjectPoolManager.Spawn(spawnVFX, pickupGFX.transform.position, Quaternion.identity);
         switch (type)
         {
             case WeaponType.Sword:
@@ -81,6 +83,11 @@ public class WeaponSpawner : MonoBehaviour
             case WeaponType.none:
                 pickupGFX.sprite = null;
                 break;
+        }
+
+        if (CamShake.instance)
+        {
+            CamShake.instance.DoScreenShake(0.15f, 2f, 0.1f, 2f, 2f);
         }
     }
 

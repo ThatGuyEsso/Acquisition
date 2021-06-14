@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class HubManager : MonoBehaviour
 {
+    public static HubManager instance;
     [Header("Room Components")]
     [SerializeField] private BossDoor knightDoor, elderDoor, scholarDoor;
     [SerializeField] private WeaponSpawner[] weaponSpawners;
 
     [Header("Data")]
     [SerializeField] private RunTimeData runTimeData;
+    [SerializeField] private float spawnDelay =0.5f;
     bool hasTriggered;
+    bool bossRoomsSpawned;
     bool isLoadingRoom;
     bool isBound;
+
 
     private void Awake()
     {
         BindToGameStateManager();
+
+        if(instance == false)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     public void BindToGameStateManager()
     {
@@ -37,7 +50,11 @@ public class HubManager : MonoBehaviour
     }
     public void SetUpBossDoors()
     {
-        StartCoroutine(EvaluateRunTimeData());
+        if (!bossRoomsSpawned)
+        {
+
+            StartCoroutine(EvaluateRunTimeData());
+        }
     }
 
 
@@ -46,20 +63,44 @@ public class HubManager : MonoBehaviour
         switch (newEvent)
         {
             case GameEvents.WeaponPicked:
-                SetUpBossDoors();
+              SetUpBossDoors();
                     
                 break;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void LoadSelectedBossRoom(BossType boss)
+    {
+        switch (boss)
+        {
+            case BossType.Knight:
+                scholarDoor.SetIsDoor(false);
+                elderDoor.SetIsDoor(false);
+                RoomManager.instance.RemoveRoom(scholarDoor.corridorID);
+                RoomManager.instance.RemoveRoom(elderDoor.corridorID);
+                break;
+            case BossType.Elder:
+                knightDoor.SetIsDoor(false);
+                scholarDoor.SetIsDoor(false);
+                RoomManager.instance.RemoveRoom(scholarDoor.corridorID);
+                RoomManager.instance.RemoveRoom(knightDoor.corridorID);
+                break;
+            case BossType.Scholar:
+                knightDoor.SetIsDoor(false);
+                elderDoor.SetIsDoor(false);
+                RoomManager.instance.RemoveRoom(elderDoor.corridorID);
+                RoomManager.instance.RemoveRoom(knightDoor.corridorID);
+                break;
+        }
+    }
+        private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")&&!hasTriggered){
             Debug.Log("Player seen ");
             if (runTimeData.hasWeapon == false)
             {
                 Debug.Log("Player has no weapons");
-                SpawnWeapons();
+                StartCoroutine(SpawnWeapons());
                 GameManager.instance.BeginNewEvent(GameEvents.WeaponsSpawned);
                 hasTriggered = true;
             }
@@ -76,47 +117,54 @@ public class HubManager : MonoBehaviour
 
     public IEnumerator EvaluateRunTimeData()
     {
-
+        bossRoomsSpawned = true;
         if (!runTimeData.isKnightDefeated)
         {
             knightDoor.SetIsDoor(true);
             isLoadingRoom = true;
             RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
-            RoomManager.instance.BeginLoadInNewSceneAt(knightDoor.corridorSpawn.position, SceneIndex.BasicCorridor);
+            RoomManager.instance.BeginLoadInNewSceneAt(knightDoor.corridorSpawn.position, SceneIndex.LongCorridor);
+
             while (isLoadingRoom)
             {
                 yield return null;
             }
+            knightDoor.corridorID = RoomManager.instance.loadedRooms[RoomManager.instance.loadedRooms.Count - 1].ID();
         }
         else
         {
             knightDoor.SetIsDoor(false);
         }
+
+        yield return new WaitForSeconds(spawnDelay);
         if (!runTimeData.isElderDefeated)
         {
             elderDoor.SetIsDoor(true);
             isLoadingRoom = true;
             RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
-            RoomManager.instance.BeginLoadInNewSceneAt(elderDoor.corridorSpawn.position, SceneIndex.BasicCorridor);
+            RoomManager.instance.BeginLoadInNewSceneAt(elderDoor.corridorSpawn.position, SceneIndex.LongCorridor);
             while (isLoadingRoom)
             {
                 yield return null;
             }
+            elderDoor.corridorID = RoomManager.instance.loadedRooms[RoomManager.instance.loadedRooms.Count - 1].ID();
         }
         else
         {
             elderDoor.SetIsDoor(false);
         }
+        yield return new WaitForSeconds(spawnDelay);
         if (!runTimeData.isScholarDefeated)
         {
             scholarDoor.SetIsDoor(true);
             isLoadingRoom = true;
             RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
-            RoomManager.instance.BeginLoadInNewSceneAt(scholarDoor.corridorSpawn.position, SceneIndex.BasicCorridor);
+            RoomManager.instance.BeginLoadInNewSceneAt(scholarDoor.corridorSpawn.position, SceneIndex.LongCorridor);
             while (isLoadingRoom)
             {
                 yield return null;
             }
+            scholarDoor.corridorID = RoomManager.instance.loadedRooms[RoomManager.instance.loadedRooms.Count - 1].ID();
         }
         else
         {
@@ -126,7 +174,7 @@ public class HubManager : MonoBehaviour
         GameManager.instance.BeginNewEvent(GameEvents.BossRoomsSpawned);
     }
 
-    public void SpawnWeapons()
+    public IEnumerator SpawnWeapons()
     {
       
     
@@ -136,6 +184,7 @@ public class HubManager : MonoBehaviour
             {
                 spawner.SpawnWeapon();
                 spawner.OnWeaponReplaced += EvaluateWeaponReplaced;
+                yield return new WaitForSeconds(spawnDelay);
             }
         }
 
