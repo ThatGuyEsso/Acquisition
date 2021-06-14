@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -5400245175483028021
     second: PlayerStaffBeam-Sheet_5
+  - first:
+      213: 2992527382580422947
+    second: PlayerStaffBeam-Sheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -154,7 +157,7 @@ TextureImporter:
       name: PlayerStaffBeam-Sheet_2
       rect:
         serializedVersion: 2
-        x: 399
+        x: 400
         y: 0
         width: 200
         height: 178
@@ -230,6 +233,27 @@ TextureImporter:
       bones: []
       spriteID: bcd2157ef997e05b0800000000000000
       internalID: -5400245175483028021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerStaffBeam-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 200
+        height: 178
+      alignment: 9
+      pivot: {x: 0.5, y: 0.275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 329e553acc7978920800000000000000
+      internalID: 2992527382580422947
       vertices: []
       indices: 
       edges: []
