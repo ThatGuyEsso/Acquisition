@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Bits: 385
   sheildDuration: 5
   sheild: {fileID: 2626508111857248113, guid: 81be4e8b9c1542246a0e6e16687c8d01, type: 3}
-  beamDrawSpeed: 30
+  beamDrawSpeed: 25
 --- !u!120 &-8837503333671568053
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -54,12 +54,29 @@ public class Staff_Weapon : Base_Weapon
 
     public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player, TopPlayerGFXSolver solver)
     {
-        base.Equip(firePoint, eventListener, player, solver);
+
+        if (!isInitialised) Init();
+        else
+            inputAction.Enable();
         inputAction.Attack.PrimaryAttack.canceled += ctx => ResetPrimaryFire();
+        inputAction.Attack.PrimaryAttack.started += ctx => PrimaryAttack();
+        inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
+        this.firePoint = firePoint;
+        attackEvents = eventListener;
+        playerTransform = player;
+        SetCanFire(true);
+        animSolver = solver;
+        animSolver.movement.OnWalk += OnRun;
+        animSolver.movement.OnStop += OnStop;
     }
     public override void UnEquip()
     {
-        base.UnEquip();
+        inputAction.Disable();
+        inputAction.Attack.PrimaryAttack.started -= ctx => PrimaryAttack();
+        inputAction.Attack.SecondaryAttack.performed -= ctx => SecondaryAttack();
+        SetCanFire(false);
+        animSolver.movement.OnWalk -= OnRun;
+        animSolver.movement.OnStop -= OnStop;
         inputAction.Attack.PrimaryAttack.canceled -= ctx => ResetPrimaryFire();
     }
     private void Update()
@@ -82,12 +99,14 @@ public class Staff_Weapon : Base_Weapon
                     animSolver.PlayAnimation("Idle_Staff");
                 }
                 currTimeToIdle = timeToIdle;
+          
             }
             else
             {
                 currTimeToIdle -= Time.deltaTime;
             }
         }
+  
     }
 
 
@@ -104,9 +123,9 @@ public class Staff_Weapon : Base_Weapon
     {
         if (line.positionCount == 0) line.positionCount = 2;
 
-        //Vector2 dirToPoint = targetPoint - currentPoint;
-        //currentPoint += dirToPoint.normalized * Time.deltaTime * beamDrawSpeed;
-        //if (Vector2.Distance(currentPoint, targetPoint) <= 0.05f) currentPoint = targetPoint;
+        Vector2 dirToPoint = targetPoint - currentPoint;
+        currentPoint += dirToPoint.normalized * Time.deltaTime * beamDrawSpeed;
+        if (Vector2.Distance(currentPoint, targetPoint) <= 0.05f) currentPoint = targetPoint;
         line.SetPosition(0, firePoint.position);
         line.SetPosition(1, targetPoint);
     }
@@ -114,6 +133,7 @@ public class Staff_Weapon : Base_Weapon
     {
         attackEvents.OnShootProjectile -= BeginBeam;
         currentPoint = firePoint.position;
+        targetPoint = firePoint.position;
         isFiringPrimary = true;
         line.enabled = true;
         isDrawing = true;
@@ -133,7 +153,7 @@ public class Staff_Weapon : Base_Weapon
     private void FireRay()
     {
         RaycastHit2D hit;
-        Vector3 dir = vCursor.GetVCusorPosition() - firePoint.position;
+        Vector3 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
         hit = Physics2D.Raycast(firePoint.position, dir, beamLength,beamLayers); //fire ray
 
         if (hit) targetPoint = hit.point;
@@ -183,16 +203,21 @@ public class Staff_Weapon : Base_Weapon
 
     public override void ResetPrimaryFire()
     {
-        attackEvents.OnAnimEnd -= ResetPrimaryFire;
-        line.positionCount = 0;
-        currentPoint = firePoint.position;
-        isFiringPrimary = false;
-        isDrawing = false;
-        isBusy = false;
-        line.enabled = false;
-        StopCoroutine(PrimaryAttackDuration());
-        StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+        if (isFiringPrimary)
+        {
+            attackEvents.OnAnimEnd -= ResetPrimaryFire;
+            line.positionCount = 0;
+            isFiringPrimary = false;
+            isDrawing = false;
+            isBusy = false;
+            line.enabled = false;
+            StopAllCoroutines();
+            StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+        
+        }
+      
 
+    
     
     }
 }

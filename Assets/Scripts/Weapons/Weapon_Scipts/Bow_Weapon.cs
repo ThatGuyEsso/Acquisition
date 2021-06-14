@@ -16,14 +16,14 @@ public class Bow_Weapon : Base_Weapon
 
     [SerializeField] private GameObject weakCharge, midCharge, superCharge;
 
-
+    private MouseMoveCursor vCursor;
     private int chargeCount=0;
     bool isCharging = false;
     bool primaryHeld =false;
     public override void Init()
     {
         base.Init();
-
+        vCursor = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseMoveCursor>();
     }
 
     protected override void PrimaryAttack()
@@ -75,8 +75,9 @@ public class Bow_Weapon : Base_Weapon
 
     public override void OnFireProjectile()
     {
+        Vector2 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
         GameObject go = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
-        go.GetComponent<IProjectile>().SetUpProjectile(primaryAttackDamage, firePoint.transform.up.normalized, primaryShotSpeed,primaryShotLifeTime, 0,playerTransform.gameObject);
+        go.GetComponent<IProjectile>().SetUpProjectile(primaryAttackDamage, dir, primaryShotSpeed,primaryShotLifeTime, 0,playerTransform.gameObject);
         attackEvents.OnShootProjectile -= OnFireProjectile;
         Debug.Log("Fire");
     }
@@ -126,14 +127,15 @@ public class Bow_Weapon : Base_Weapon
         {
             attackEvents.OnChargeIncrease -= IncreaseCharge;
 
-
+            Vector2 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
             if (chargeCount == 1)
             {
+              
                 IProjectile projectile = ObjectPoolManager.Spawn(weakCharge, firePoint.transform.position, Quaternion.identity)
                 .GetComponent<IProjectile>();
                 if (projectile != null)
                 {
-                    projectile.ShootProjectile(secondaryShotSpeed, firePoint.up, secondaryShotLifeTime);
+                    projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                 }
             }
             else if (chargeCount == 2)
@@ -142,7 +144,7 @@ public class Bow_Weapon : Base_Weapon
               .GetComponent<IProjectile>();
                 if (projectile != null)
                 {
-                    projectile.ShootProjectile(secondaryShotSpeed, firePoint.up, secondaryShotLifeTime);
+                    projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                 }
             }
             else if (chargeCount >= 3)
@@ -151,7 +153,7 @@ public class Bow_Weapon : Base_Weapon
                 .GetComponent<IProjectile>();
                 if (projectile != null)
                 {
-                    projectile.ShootProjectile(secondaryShotSpeed, firePoint.up, secondaryShotLifeTime);
+                    projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                 }
             }
 
