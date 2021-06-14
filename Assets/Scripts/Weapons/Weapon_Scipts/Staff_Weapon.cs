@@ -6,13 +6,22 @@ public class Staff_Weapon : Base_Weapon
 {
     [Header("Staff Settings")]
     [SerializeField] private float beamDuration;
+
+    [SerializeField] private float beamTickRate;
+    [SerializeField] private float beamLength;
+    [SerializeField] private LayerMask beamLayers;
     [SerializeField] private float sheildDuration = 5.0f;
     [SerializeField] private GameObject sheild;
+    [SerializeField] private float beamDrawSpeed;
 
     private LineRenderer line;
     private MouseMoveCursor vCursor;
     private GameObject currentShield;
-
+    private float currenTickTime;
+    Vector2 currentPoint;
+    Vector2 targetPoint;
+    bool isDrawing;
+    bool isBeamDying;
 
 
     public override void Init()
@@ -27,65 +36,108 @@ public class Staff_Weapon : Base_Weapon
         if (!isWeaponActive)
             return;
 
-        if (canPrimaryFire == true)
+        if (!canPrimaryFire)
+            return;
+
+        if (isBusy)
+            return;
+
+        isBusy = true;
+        canPrimaryFire = false;
+        isIdle = false;
+        currTimeToIdle = timeToIdle;
+   
+        attackEvents.OnShootProjectile += BeginBeam;
+        animSolver.PlayAnimationFromStart("Primary_Staff");
+
+    }
+
+    public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player, TopPlayerGFXSolver solver)
+    {
+        base.Equip(firePoint, eventListener, player, solver);
+        inputAction.Attack.PrimaryAttack.canceled += ctx => ResetPrimaryFire();
+    }
+    public override void UnEquip()
+    {
+        base.UnEquip();
+        inputAction.Attack.PrimaryAttack.canceled -= ctx => ResetPrimaryFire();
+    }
+    private void Update()
+    {
+        if (isFiringPrimary) //When Beam is fired it is updated here
+            FireRay();
+
+        if (!isIdle && !isBusy)
         {
-            isFiringPrimary = true;
-            canPrimaryFire = false;
-
-            line.enabled = true;
-            StartCoroutine(PrimaryAttackDuration());
+            if (currTimeToIdle <= 0f)
+            {
+                isIdle = true;
+                if (isRunning)
+                {
+                    animSolver.PlayAnimation("Run_Staff");
+               
+                }
+                else
+                {
+                    animSolver.PlayAnimation("Idle_Staff");
+                }
+                currTimeToIdle = timeToIdle;
+            }
+            else
+            {
+                currTimeToIdle -= Time.deltaTime;
+            }
         }
-        else if (canPrimaryFire == false)
+    }
+
+
+    private void LateUpdate()
+    {
+        if (isDrawing)
         {
-            isFiringPrimary = false;
-            canPrimaryFire = true;
-            line.enabled = false;
-            StopCoroutine(PrimaryAttackDuration());
-            StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+            DrawBeam();
         }
+    }
 
 
-        
+    private void DrawBeam()
+    {
+        if (line.positionCount == 0) line.positionCount = 2;
+
+        //Vector2 dirToPoint = targetPoint - currentPoint;
+        //currentPoint += dirToPoint.normalized * Time.deltaTime * beamDrawSpeed;
+        //if (Vector2.Distance(currentPoint, targetPoint) <= 0.05f) currentPoint = targetPoint;
+        line.SetPosition(0, firePoint.position);
+        line.SetPosition(1, targetPoint);
+    }
+    public void BeginBeam()
+    {
+        attackEvents.OnShootProjectile -= BeginBeam;
+        currentPoint = firePoint.position;
+        isFiringPrimary = true;
+        line.enabled = true;
+        isDrawing = true;
+        StartCoroutine(PrimaryAttackDuration());
+
     }
 
     IEnumerator PrimaryAttackDuration() //The time the beam fires for
     {
         yield return new WaitForSeconds(beamDuration);
-        isFiringPrimary = false;
-        line.enabled = false;
-        StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+        ResetPrimaryFire();
     }
 
-    private void Update()
-    {
-        if(isFiringPrimary) //When Beam is fired it is updated here
-            FireRay();
-    }
+ 
 
 
     private void FireRay()
     {
         RaycastHit2D hit;
-        hit = Physics2D.Raycast(firePoint.transform.position, firePoint.transform.up); //fire ray
+        Vector3 dir = vCursor.GetVCusorPosition() - firePoint.position;
+        hit = Physics2D.Raycast(firePoint.position, dir, beamLength,beamLayers); //fire ray
 
-        if (hit != false) //if the ray hits somthing then the line is drawn to that point   
-        {
-            Vector3 startPos = firePoint.transform.position;
-
-            line.SetPosition(0, startPos);
-            line.SetPosition(1, hit.transform.position);
-
-        }
-        else
-        { // if the ray does not hit anything it is drawn for a far distance
-            Vector3 startPos = firePoint.transform.position;
-            Vector3 dir = vCursor.GetVCusorPosition() - startPos;
-
-            line.SetPosition(0, startPos);
-
-            line.SetPosition(1, dir * 1000);
-
-        }
+        if (hit) targetPoint = hit.point;
+        else targetPoint = firePoint.position + dir * beamLength;
 
 
     }
@@ -110,6 +162,37 @@ public class Staff_Weapon : Base_Weapon
 
 
 
+    public override void OnStop()
+    {
+        base.OnStop();
+        if (isIdle)
+        {
+            animSolver.PlayAnimation("Idle_Staff");
+        }
+    }
+
+    public override void OnRun()
+    {
+        base.OnRun();
+        if (isIdle)
+        {
+            animSolver.PlayAnimation("Run_Staff");
+        }
+    }
 
 
+    public override void ResetPrimaryFire()
+    {
+        attackEvents.OnAnimEnd -= ResetPrimaryFire;
+        line.positionCount = 0;
+        currentPoint = firePoint.position;
+        isFiringPrimary = false;
+        isDrawing = false;
+        isBusy = false;
+        line.enabled = false;
+        StopCoroutine(PrimaryAttackDuration());
+        StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+
+    
+    }
 }

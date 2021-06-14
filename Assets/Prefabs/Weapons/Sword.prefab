@@ -57,8 +57,8 @@ MonoBehaviour:
   swordCollider: {fileID: 3035194022987544040, guid: 8e47a7b652a80e743ba4b4d5ac34db75, type: 3}
   primaryCollisionRadius: 1.5
   secondaryCollisionRadius: 3
-  primarySlashSpeed: 10
+  primarySlashSpeed: 7.5
   primarySlashLifeTIme: 0.5
-  SecondarySlashSpeed: 20
-  SecondarySlashLifeTIme: 0.5
+  SecondarySlashSpeed: 15
+  SecondarySlashLifeTIme: 1
   secondaryProjectileOffset: {x: 0, y: 0}

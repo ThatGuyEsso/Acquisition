@@ -203,9 +203,7 @@ public class Bow_Weapon : Base_Weapon
         chargeCount = 0;
     }
 
-    private void OnPrimaryHeld() {
-        primaryHeld = true;
-    }
+
 
     private void OnPrimaryReleased()
     {

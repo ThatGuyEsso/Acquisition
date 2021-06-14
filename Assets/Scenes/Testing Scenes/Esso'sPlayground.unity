@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &60215417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2223311544884401197, guid: 3e777ee7b590c5a4fbb4a4c6d46a67fb, type: 3}
+  m_PrefabInstance: {fileID: 2223311546196516425}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &274881021
 GameObject:
   m_ObjectHideFlags: 0
@@ -14366,6 +14371,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.089
       objectReference: {fileID: 0}
+    - target: {fileID: 8210388423571382205, guid: 378873da936392f428802512ed3eeb05, type: 3}
+      propertyPath: staffController
+      value: 
+      objectReference: {fileID: 9100000, guid: ec4dd6ceec0cf0c459d9fd844f97d8e3, type: 2}
+    - target: {fileID: 8844177556063991055, guid: 378873da936392f428802512ed3eeb05, type: 3}
+      propertyPath: virtualCursor
+      value: 
+      objectReference: {fileID: 60215417}
     - target: {fileID: 8957915617564251549, guid: 378873da936392f428802512ed3eeb05, type: 3}
       propertyPath: virtualCursor
       value: 
@@ -14430,5 +14443,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8957915619028398270, guid: 378873da936392f428802512ed3eeb05, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ec4dd6ceec0cf0c459d9fd844f97d8e3, type: 2}
+    m_RemovedComponents:
+    - {fileID: 8844177556063991055, guid: 378873da936392f428802512ed3eeb05, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 378873da936392f428802512ed3eeb05, type: 3}
