@@ -69,31 +69,79 @@ public class HubManager : MonoBehaviour
         }
     }
 
-    public void LoadSelectedBossRoom(BossType boss)
+    public void BeginBossRoomLoad(BossType boss)
     {
+        StartCoroutine(LoadSelectedBossRoom(boss));
+    }
+
+    private IEnumerator LoadSelectedBossRoom(BossType boss)
+    {
+        BossRoomManager manager;
+        LevelRoom connectingCorridor;
         switch (boss)
         {
             case BossType.Knight:
                 scholarDoor.SetIsDoor(false);
                 elderDoor.SetIsDoor(false);
+           
+                
                 RoomManager.instance.RemoveRoom(scholarDoor.corridorID);
                 RoomManager.instance.RemoveRoom(elderDoor.corridorID);
+                connectingCorridor = RoomManager.instance.GetRoom(knightDoor.corridorID);
+
+                isLoadingRoom = true;
+                RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
+
+                RoomManager.instance.BeginLoadInNewSceneAt(connectingCorridor.GetConnectionPoint().position,
+                    SceneIndex.BossRoomKnight);
+
+                while (isLoadingRoom) yield return null;
+
+                manager= FindObjectOfType<BossRoomManager>();
+                if (manager) manager.Init();
                 break;
             case BossType.Elder:
                 knightDoor.SetIsDoor(false);
                 scholarDoor.SetIsDoor(false);
                 RoomManager.instance.RemoveRoom(scholarDoor.corridorID);
                 RoomManager.instance.RemoveRoom(knightDoor.corridorID);
+
+                connectingCorridor = RoomManager.instance.GetRoom(elderDoor.corridorID);
+
+                isLoadingRoom = true;
+                RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
+
+                RoomManager.instance.BeginLoadInNewSceneAt(connectingCorridor.GetConnectionPoint().position,
+                    SceneIndex.BossRoomElder);
+
+                while (isLoadingRoom) yield return null;
+
+                manager = FindObjectOfType<BossRoomManager>();
+                if (manager) manager.Init();
                 break;
             case BossType.Scholar:
                 knightDoor.SetIsDoor(false);
                 elderDoor.SetIsDoor(false);
                 RoomManager.instance.RemoveRoom(elderDoor.corridorID);
                 RoomManager.instance.RemoveRoom(knightDoor.corridorID);
+
+                connectingCorridor = RoomManager.instance.GetRoom(scholarDoor.corridorID);
+
+                isLoadingRoom = true;
+                RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
+
+                RoomManager.instance.BeginLoadInNewSceneAt(connectingCorridor.GetConnectionPoint().position,
+                    SceneIndex.BossRoomScholar);
+
+
+                while (isLoadingRoom) yield return null;
+
+                manager = FindObjectOfType<BossRoomManager>();
+                if (manager) manager.Init();
                 break;
         }
     }
-        private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")&&!hasTriggered){
             Debug.Log("Player seen ");
@@ -215,5 +263,13 @@ public class HubManager : MonoBehaviour
     {
         GameStateManager.instance.OnNewGameState -= EvaluateGameState;
         GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
+        if (weaponSpawners.Length > 0)
+        {
+            foreach (WeaponSpawner spawner in weaponSpawners)
+            {
+                spawner.OnWeaponReplaced -= EvaluateWeaponReplaced;
+              
+            }
+        }
     }
 }

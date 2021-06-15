@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable
+public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComponents
 {
     [SerializeField] private int maxHitPoints;
     [SerializeField] private float maxHurtTime;
+    [SerializeField] private GameObject deathMask;
     private float currHurtTime;
     private int currentHitPoint;
     private Rigidbody2D rb;
@@ -60,6 +61,25 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable
     public void KillPlayer()
     {
         OnDie?.Invoke();
+        GameManager.instance.BeginNewEvent(GameEvents.PlayerDefeat);
+        ObjectPoolManager.Spawn(deathMask, transform.position, Quaternion.identity);
         Debug.Log("PlayerDied");
+    }
+
+    public void EnableComponent()
+    {
+        //
+    }
+
+    public void DisableComponent()
+    {
+        isHurt = false;
+    }
+
+    public void ResetComponent()
+    {
+        currHurtTime = maxHurtTime;
+        isHurt = false;
+        currentHitPoint = maxHitPoints;
     }
 }

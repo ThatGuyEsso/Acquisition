@@ -9,7 +9,13 @@ public enum GameEvents
    WeaponsSpawned,
    WeaponPicked,
    BossRoomsSpawned,
-   BossFightStarts
+   BossFightStarts,
+   PlayerDefeat,
+   DeathMaskComplete,
+   DeathAnimationComplete,
+   RespawnPlayer,
+   PlayerRespawned,
+   BossDefeated
 
 };
 public class GameManager : MonoBehaviour,IInitialisable,IManager
@@ -17,6 +23,8 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
     public static GameManager instance;
     private bool isSceneLoading;
     private bool isFading;
+    private bool isRoomClearing;
+ 
     private Transform spawn;
     private GameObject playerObject;
     private bool isBound;
@@ -95,7 +103,15 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
         LoadingScreen.instance.BeginFadeOut();
         while (isFading) yield return null;
 
-        GameStateManager.instance.BeginNewState(GameState.GameRunning);
+        if(GameStateManager.instance.currentGameState == GameState.GameRunning)
+        {
+            BeginNewEvent(GameEvents.PlayerRespawned);
+        }
+        else
+        {
+            GameStateManager.instance.BeginNewState(GameState.GameRunning);
+        }
+
     } 
 
     private void OnSceneLoadComplete()
@@ -139,6 +155,48 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
             case GameEvents.BossFightStarts:
                 OnNewEvent?.Invoke(lastEvent);
                 break;
+            case GameEvents.PlayerDefeat:
+                WeaponManager.instance.RemoveWeapon();
+                OnNewEvent?.Invoke(lastEvent);
+           
+                break;
+
+            case GameEvents.DeathMaskComplete:
+                BeginResetLevel();
+                OnNewEvent?.Invoke(lastEvent);
+                break;
+            case GameEvents.RespawnPlayer:
+                //BeginResetLevel();
+                OnNewEvent?.Invoke(lastEvent);
+
+                break;
         }
+    }
+
+
+
+    public void BeginResetLevel()
+    {
+        StartCoroutine(ResetingLevel());
+    }
+
+    public void OnRoomsCleared()
+    {
+        RoomManager.instance.OnAllRoomsCleared -= OnRoomsCleared;
+        isRoomClearing = false;
+    }
+    public IEnumerator ResetingLevel()
+    {
+        yield return new WaitForSeconds(2.0f);
+        isRoomClearing = true;
+        RoomManager.instance.OnAllRoomsCleared += OnRoomsCleared;
+        RoomManager.instance.BeginClearAllRooms();
+
+        while (isRoomClearing) yield return null;
+
+        GameStateManager.instance.runtimeData.ResetData();
+
+        RoomManager.instance.BeginStartingRoomsLoad();
+
     }
 }

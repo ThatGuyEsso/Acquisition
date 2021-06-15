@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level Segments/LongCorridor.unity
     guid: 10d983960879f3e40b78a717b86c56e5
+  - enabled: 1
+    path: Assets/Scenes/Level Segments/KnightRoom.unity
+    guid: 89a3d48b5a569584c941ad5dfd5073de
+  - enabled: 1
+    path: Assets/Scenes/Level Segments/ElderRoom.unity
+    guid: 3938d9443a87f7f41861ea8e839dfc95
+  - enabled: 1
+    path: Assets/Scenes/Level Segments/ScholarRoom.unity
+    guid: 779b8ac9080641d47af4812ed1f6bf44
   m_configObjects: {}

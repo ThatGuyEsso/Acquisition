@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisable
+public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisable,ICharacterComponents
 {
 
 
@@ -101,7 +101,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         ToggleComponents(false);
         isRolling = true;
 
-        Invoke("EndRoll", rollTime);
+        StartCoroutine(RollTimer());
 
 
 
@@ -128,7 +128,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         if(tdMovement.GetMoveDirection()==Vector2.zero)
             rb.velocity = Vector2.zero;
 
-        Invoke("ResetDodge", dodgeCooldown);
+        StartCoroutine(WaitToRefreshDodge());
     }
 
     public void ResetDodge()
@@ -147,5 +147,35 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
                 comp.enabled = isActive;
             }
         }
+    }
+    private IEnumerator RollTimer()
+    {
+        yield return new WaitForSeconds(rollTime);
+        EndRoll();
+    }
+
+    private IEnumerator WaitToRefreshDodge()
+    {
+        yield return new WaitForSeconds(dodgeCooldown);
+        ResetDodge();
+    }
+    public void EnableComponent()
+    {
+        input.Enable();
+    }
+
+    public void DisableComponent()
+    {
+        input.Disable();
+        StopAllCoroutines();
+    }
+
+    public void ResetComponent()
+    {
+        StopAllCoroutines();
+        isRolling = false;
+        isStopping = false;
+        currentSpeed =0f;
+        canDodge = true;
     }
 }

@@ -12,8 +12,9 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
      public List<LevelRoom> loadedRooms = new List<LevelRoom>();
 
     private bool isAddingRoom;
-
+    private bool isClearingRoom;
     public Action OnNewRoomAdded;
+    public Action OnAllRoomsCleared;
     public void BindToGameStateManager()
     {
         GameStateManager.instance.OnNewGameState += EvaluateGameState;
@@ -22,10 +23,12 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
     [SerializeField] private bool inDebug=false;
     public void EvaluateGameState(GameState newState)
     {
-        //switch (newState)
-        //{
-            
-        //}
+        switch (newState)
+        {
+            case GameState.TitleScreen:
+                Destroy(gameObject);
+                break;
+        }
     }
 
 
@@ -37,6 +40,7 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
             {
                 Init();
                 BeginStartingRoomsLoad();
+
             }
         }
     }
@@ -46,13 +50,15 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         if (instance == false)
         {
             instance = this;
+            BindToGameStateManager();
 
-           
+
         }
         else
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
 
     }
 
@@ -90,6 +96,30 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         OnNewRoomAdded?.Invoke();
 
 
+    }
+
+    public void OnRoomClearComplete()
+    {
+        SceneTransitionManager.instance.OnSceneUnLoadComplete-= OnRoomClearComplete;
+        isClearingRoom = false;
+    }
+    public void BeginClearAllRooms()
+    {
+        StartCoroutine(ClearAllRooms());
+    }
+
+    private IEnumerator ClearAllRooms()
+    {
+        isClearingRoom = true;
+        SceneTransitionManager.instance.OnSceneUnLoadComplete += OnRoomClearComplete;
+        SceneTransitionManager.instance.BeginClearAllScenes();
+        while (isClearingRoom)
+        {
+            yield return null;
+        }
+
+        loadedRooms.Clear();
+        OnAllRoomsCleared?.Invoke();
     }
     public IEnumerator LoadStartingRooms()
     {
@@ -130,6 +160,11 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         }
     }
 
+    public LevelRoom GetRoom(string roomID)
+    {
+        LevelRoom room = loadedRooms.Find(room => room.ID() == roomID);
+        return room;
+    }
     public void RemoveRoom(string roomID)
     {
         LevelRoom room =loadedRooms.Find(room => room.ID() == roomID);

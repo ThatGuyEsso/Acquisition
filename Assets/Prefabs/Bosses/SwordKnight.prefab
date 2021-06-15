@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 118221031589024597}
   - component: {fileID: 118221031589024598}
   - component: {fileID: 118221031589024599}
+  - component: {fileID: 6799094497969091402}
   m_Layer: 0
   m_Name: SwordKnight
   m_TagString: Enemy
@@ -209,6 +210,7 @@ MonoBehaviour:
   faceTarget: {fileID: 118221031589024618}
   faceMovementDirection: {fileID: 118221031589024596}
   animator: {fileID: 118221031589024598}
+  maxHurtTime: 0
   attackAnimEvents: {fileID: 118221031589024597}
   componentsToInit:
   - {fileID: 118221031589024617}
@@ -216,7 +218,7 @@ MonoBehaviour:
   transitionAbility: {fileID: 0}
   closeCombatAbility: {fileID: 0}
   isBusy: 0
-  inDebug: 1
+  inDebug: 0
   firepoint: {fileID: 118221031614647829}
   rb: {fileID: 0}
 --- !u!114 &118221031589024596
@@ -285,6 +287,20 @@ Rigidbody2D:
   m_SleepingMode: 2
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &6799094497969091402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118221031589024621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
 --- !u!1 &118221031614647828
 GameObject:
   m_ObjectHideFlags: 0

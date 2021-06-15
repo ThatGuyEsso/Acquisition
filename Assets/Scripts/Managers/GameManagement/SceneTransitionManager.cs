@@ -201,5 +201,45 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
         LoadingScreen.instance.OnFadeComplete -= OnFadeComplete;
     }
 
-   
+    public void BeginClearAllScenes()
+    {
+        StartCoroutine(ClearAllScenes());
+    }
+
+    public IEnumerator ClearAllScenes()
+    {
+        Scene[] loadedScenes = GetAllActiveScenes();
+
+        if (!LoadingScreen.instance.IsLoadingScreenOn())
+        {
+            isFading = true;
+            LoadingScreen.instance.OnFadeComplete += OnFadeComplete;
+            LoadingScreen.instance.BeginFadeIn();
+            while (isFading)
+            {
+                yield return null;
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        //add and unload operations
+        foreach (Scene scene in loadedScenes)
+        {
+            if (scene.buildIndex != (int)SceneIndex.RootScene)
+                sceneLoading.Add(SceneManager.UnloadSceneAsync(scene));
+        }
+
+        //wait until every scene has unloaded
+        for (int i = 0; i < sceneLoading.Count; i++)
+        {
+            if (sceneLoading[i] != null)
+            {
+                while (!sceneLoading[i].isDone)
+                {
+                    yield return null;
+                }
+            }
+      
+        }
+        OnSceneUnLoadComplete?.Invoke();
+    }
 }

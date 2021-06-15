@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, IInitialisable
+public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, IInitialisable,ICharacterComponents
 {
 
     private Controls input;
@@ -121,6 +121,23 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
         return vCursor.position;
     }
 
+    public void EnableComponent()
+    {
+        input.Enable();
+        vCursor.gameObject.SetActive(true);
+    }
+
+    public void DisableComponent()
+    {
+        input.Disable();
+        StopMovement();
+        vCursor.gameObject.SetActive(false);
+    }
+
+    public void ResetComponent()
+    {
+        //false
+    }
 }
 
 

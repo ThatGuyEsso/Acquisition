@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FaceCursor : MonoBehaviour
+public class FaceCursor : MonoBehaviour,ICharacterComponents
 {
     [SerializeField] private Camera activeCamera;
     [SerializeField] private float rotationRate;
     [SerializeField] private Transform virtualCursor;
     [SerializeField] private bool useVirtualCursor;
     private float smoothRot;
+    private bool isEnabled = true;
 
     public void FacePointer()
     {
@@ -35,6 +36,25 @@ public class FaceCursor : MonoBehaviour
 
     public void LateUpdate()
     {
-        FacePointer();
+        if (isEnabled)
+        {
+            FacePointer();
+        }
+
     }
+
+    public void ResetComponent()
+    {
+        //
+    }
+    public void DisableComponent()
+    {
+        isEnabled = false;
+    }
+
+    public void EnableComponent()
+    {
+        isEnabled = true;
+    }
+
 }

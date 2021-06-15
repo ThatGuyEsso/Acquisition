@@ -55,8 +55,8 @@ public class ControllerManager : MonoBehaviour, IInitialisable
     {
         if (isInitialised)
         {
-            input.Aiming.Aim.performed += _ => SwitchToGampadControls();
-            input.MouseActivity.Move.performed += _ => SwitchToMouseControls();
+            input.Enable();
+           
         }
  
     }
@@ -64,8 +64,8 @@ public class ControllerManager : MonoBehaviour, IInitialisable
     {
         if (isInitialised)
         {
-            input.Aiming.Aim.performed -= _ => SwitchToGampadControls();
-            input.MouseActivity.Move.performed -= _ => SwitchToMouseControls();
+            input.Disable();
+
         }
     }
 
@@ -73,8 +73,8 @@ public class ControllerManager : MonoBehaviour, IInitialisable
     {
         if (isInitialised)
         {
-            input.Aiming.Aim.performed -= _ => SwitchToGampadControls();
-            input.MouseActivity.Move.performed -= _ => SwitchToMouseControls();
+            input.Disable();
+           
         }
     }
 }

@@ -114,4 +114,12 @@ public class WeaponManager : MonoBehaviour,IInitialisable
         }
     }
 
+    public void RemoveWeapon()
+    {
+        if (equippedWeapon != null)
+            equippedWeapon.UnEquip();
+        runTimeData.hasWeapon = false;
+        OnWeaponEquipped?.Invoke(WeaponType.none);
+    }
+
 }

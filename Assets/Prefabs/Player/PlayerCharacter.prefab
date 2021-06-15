@@ -376,6 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 3
   maxHurtTime: 2
+  deathMask: {fileID: 2983974149926587692, guid: 459c94b1d829c014c81306ca4c69dd5a, type: 3}
 --- !u!114 &230482053
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitialisable
+public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitialisable,ICharacterComponents
 {
     private Controls input;
     private bool isInitialised = false;
@@ -79,9 +79,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         if (isInitialised)
         {
             input.Disable();
-            input.Aiming.Aim.canceled -= _ => StopMovement();
-            input.Movement.Move.performed -= _ => SetIsMoving(true);
-            input.Movement.Move.canceled -= _ => SetIsMoving(false);
+        
             isMoving = false;
         }
 
@@ -93,9 +91,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         if (isInitialised)
         {
             input.Enable();
-            input.Aiming.Aim.canceled += _ => StopMovement();
-            input.Movement.Move.performed += _ => SetIsMoving(true);
-            input.Movement.Move.canceled += _ => SetIsMoving(false);
+           
         }
 
     }
@@ -105,13 +101,25 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         if (isInitialised)
         {
             input.Disable();
-            input.Aiming.Aim.canceled -= _ => StopMovement();
-            input.Movement.Move.performed -= _ => SetIsMoving(true);
-            input.Movement.Move.canceled -= _ => SetIsMoving(false);
+          
             isMoving = false;
 
         }
     }
 
-    
+    public void EnableComponent()
+    {
+        input.Enable();
+    }
+
+    public void DisableComponent()
+    {
+        input.Disable();
+        StopMovement();
+    }
+
+    public void ResetComponent()
+    {
+        //
+    }
 }

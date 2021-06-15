@@ -10,7 +10,7 @@ public class BossExit : MonoBehaviour
     {
         if (other.CompareTag("Player")&&!isTriggered)
         {
-            HubManager.instance.LoadSelectedBossRoom(bossType);
+            HubManager.instance.BeginBossRoomLoad(bossType);
             isTriggered = true;
         }
 

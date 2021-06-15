@@ -11,5 +11,8 @@ public enum SceneIndex
     SpawnHub = 4,
     HubRoom = 5,
     BasicCorridor =6,
-    LongCorridor =7
+    LongCorridor =7,
+    BossRoomKnight = 8,
+    BossRoomElder = 9,
+    BossRoomScholar = 10
 };

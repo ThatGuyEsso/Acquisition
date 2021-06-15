@@ -10,6 +10,9 @@ public class SlidingDoor : MonoBehaviour
     bool isOpening;
     bool isClosing;
 
+    [SerializeField] private SpriteRenderer leftGFX, rightGFX;
+    [SerializeField] private Sprite leftLockedSprite, leftOpenSprite,rightLockedSprite, rightOpenSprite;
+
     Vector2 leftDoorClosedPos, rightDoorClosedPos;
     Vector2 leftDoorOpenPos, rightDoorOpenPos;
     public void SetUpDoor()
@@ -18,6 +21,22 @@ public class SlidingDoor : MonoBehaviour
         rightDoorClosedPos = rightDoor.transform.position;
         leftDoorOpenPos = leftDoor.transform.position - transform.right * maxOpenDistance;
         rightDoorOpenPos = rightDoor.transform.position + transform.right * maxOpenDistance;
+    }
+
+
+
+    public void ToggleLock(bool locked)
+    {
+        if (locked)
+        {
+            leftGFX.sprite = leftLockedSprite;
+            rightGFX.sprite = rightLockedSprite;
+        }
+        else
+        {
+            leftGFX.sprite = leftOpenSprite;
+            rightGFX.sprite = rightOpenSprite;
+        }
     }
 
     public void Update()

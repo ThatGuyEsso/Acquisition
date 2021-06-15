@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitialisable
+public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitialisable,ICharacterComponents
 {
     [SerializeField] private bool inDebug =false;
     [SerializeField] private bool isMoving;
@@ -114,13 +114,13 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
             if (isOn)
             {
                 input.Enable();
-                input.Movement.Move.canceled += _ => Stop();
+       
 
             }
             else
             {
                 input.Disable();
-                input.Movement.Move.canceled -= _ => Stop();
+             
 
             }
         }
@@ -145,7 +145,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         if (isInitialised)
         {
             input.Disable();
-            input.Movement.Move.canceled -= _ => Stop();
+            input.Movement.Move.canceled -= _ => BeginStop();
         }
     }
 
@@ -154,7 +154,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         if (isInitialised)
         {
             input.Disable();
-            input.Movement.Move.canceled -= _ => Stop();
+            input.Movement.Move.canceled -= _ => BeginStop();
         }
     }
 
@@ -164,5 +164,21 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
     public Vector2 GetMoveDirection() { return movementDir; }
     public void SetCurrentSpeed(float newSpeed) { currentSpeed = newSpeed; }
     public void SetIsMoving(bool moving ) { isMoving = moving; }
+
+    public void EnableComponent()
+    {
+        input.Enable();
+    }
+
+    public void DisableComponent()
+    {
+        input.Disable();
+        Stop();
+    }
+
+    public void ResetComponent()
+    {
+        Stop();
+    }
 }
 

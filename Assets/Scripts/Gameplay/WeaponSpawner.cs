@@ -92,4 +92,11 @@ public class WeaponSpawner : MonoBehaviour
     }
 
     public WeaponType GetWeaponType() { return type; }
+
+
+    private void OnDestroy()
+    {
+        if(weapon)
+            ObjectPoolManager.Recycle(weapon.gameObject);
+    }
 }
