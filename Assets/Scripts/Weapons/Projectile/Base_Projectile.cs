@@ -59,8 +59,9 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
                 if (other.GetComponent<IDamage>()!=null)
                 {
                     other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
-
+                    KillProjectile();
                 }
+            
                
             }
         }else if (other.gameObject.CompareTag("Enemy")){
@@ -69,7 +70,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
                 if (other.GetComponent<IDamage>() != null)
                 {
                     other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
-
+                    KillProjectile();
                 }
             }
         }

@@ -71,6 +71,7 @@ public class SpriteMaskInteract : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.instance.OnNewEvent -= EvaluateNewEvent;
+        if(GameManager.instance)
+            GameManager.instance.OnNewEvent -= EvaluateNewEvent;
     }
 }

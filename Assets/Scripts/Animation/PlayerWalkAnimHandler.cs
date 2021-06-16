@@ -6,7 +6,7 @@ public class PlayerWalkAnimHandler : MonoBehaviour
 {
     public Animator animator;
     public TDInputMovement movement;
-
+    [SerializeField] private GameObject audioPlayerPrefab;
 
     private void Awake()
     {
@@ -24,6 +24,17 @@ public class PlayerWalkAnimHandler : MonoBehaviour
         animator.SetFloat("PlaySpeed", 0f);
     }
 
+    public void OnStep()
+    {
+        if (AudioManager.instance &&ObjectPoolManager.instance)
+        {
+            IAudio aPlayer= ObjectPoolManager.Spawn(audioPlayerPrefab, transform.position, Quaternion.identity).GetComponent<IAudio>();
+            if (aPlayer != null)
+            {
+                aPlayer.SetUpAudioSource(AudioManager.instance.GetSound("PlayerWalk"));
+            }
+        }
+    }
     public void OnDestroy()
     {
         movement.OnWalk += OnPlayerWalk;

@@ -94,7 +94,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         isStopping = true;
         isMoving = false;
         OnStop?.Invoke();
-        AudioManager.instance.Stop("PlayerWalk");
+
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -106,7 +106,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
             OnNewMoveDirection?.Invoke(movementDir);
             OnWalk?.Invoke();
             isMoving = true;
-            AudioManager.instance.Play("PlayerWalk");
+       
         }
     }
     public void ToggleInputs(bool isOn)
@@ -162,6 +162,12 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
 
     public float GetMaxSpeed() { return maxSpeed; }
     public float GetCurrentSpeed() { return currentSpeed; }
+
+    public bool IsCharacterMoving() 
+    {
+        if (isStopping || isMoving) return true;
+        else return false;
+    }
 
     public Vector2 GetMoveDirection() { return movementDir; }
     public void SetCurrentSpeed(float newSpeed) { currentSpeed = newSpeed; }

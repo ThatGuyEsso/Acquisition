@@ -29,7 +29,8 @@ public class ControllerManager : MonoBehaviour, IInitialisable
         isInitialised = true;
 
         //As player enters the game this sound is playerd 
-        AudioManager.instance.Play("DungeonBoom");
+        if(AudioManager.instance)
+            AudioManager.instance.Play("DungeonBoom");
     }
 
 

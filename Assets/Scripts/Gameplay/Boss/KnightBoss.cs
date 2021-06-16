@@ -58,6 +58,11 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss
     private void Update()
     {
         if (!isFighting) return;
+
+        if (isHurt)
+        {
+            HurTimer();
+        }
         switch (currentAIState)
         {
             case AIState.Idle:

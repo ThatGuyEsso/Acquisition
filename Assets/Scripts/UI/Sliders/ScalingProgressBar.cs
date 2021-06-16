@@ -31,7 +31,7 @@ public class ScalingProgressBar : MonoBehaviour
     {
     
         
-                fill.transform.localScale = new Vector3(targetPercent, fill.transform.localScale.y, fill.transform.localScale.z);
+         fill.transform.localScale = new Vector3(targetPercent, fill.transform.localScale.y, fill.transform.localScale.z);
 
     
     }

@@ -13889,6 +13889,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5259393923356106162, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
+      propertyPath: inDebug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259393923356106162, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 4738161762782294094, guid: 224467b4b3598d7479bc7b8548fbdd4e, type: 3}
     - target: {fileID: 8868006858211695065, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
       propertyPath: inDebug
       value: 1
@@ -13959,6 +13967,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5259393923356106162, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
+      propertyPath: inDebug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259393923356106162, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 8018739849535731035, guid: a81e2a7bfd36e064682731514670e606, type: 3}
     - target: {fileID: 8868006858211695065, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
       propertyPath: inDebug
       value: 1
@@ -14123,6 +14139,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5259393923356106162, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
+      propertyPath: inDebug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259393923356106162, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 6750200819787671400, guid: 42462954fc822294492e33b825cdf81a, type: 3}
     - target: {fileID: 8868006858211695065, guid: d78cab5df1fc18b4ba766b2ed58acd60, type: 3}
       propertyPath: inDebug
       value: 1
@@ -14439,5 +14463,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8844177556063991055, guid: 378873da936392f428802512ed3eeb05, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 378873da936392f428802512ed3eeb05, type: 3}

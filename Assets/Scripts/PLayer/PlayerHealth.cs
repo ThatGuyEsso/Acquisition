@@ -7,12 +7,15 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
 {
     [SerializeField] private int maxHitPoints;
     [SerializeField] private float maxHurtTime;
+    [SerializeField] private float knockbackDecel;
+    [SerializeField] private float knockBackMoveScalar=4f;
+    [SerializeField] private TDInputMovement movement;
     [SerializeField] private GameObject deathMask;
     private float currHurtTime;
     private int currentHitPoint;
     private Rigidbody2D rb;
     private bool isHurt = false;
-
+    Vector2 currentKnockBack;
     public Action OnHurt;
     public Action OnNotHurt;
     public Action OnDie;
@@ -21,6 +24,8 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
         currentHitPoint = maxHitPoints;
         rb = GetComponent<Rigidbody2D>();
         currHurtTime = maxHurtTime;
+        currentKnockBack = Vector2.zero;
+        movement = GetComponent<TDInputMovement>();
     }
 
 
@@ -37,7 +42,8 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
             {
                 isHurt = true;
 
-                rb.AddForce(kBackDir * kBackMag, ForceMode2D.Impulse);
+                currentKnockBack = kBackDir * kBackMag;
+
                 OnHurt?.Invoke();
             }
    
@@ -55,9 +61,35 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
                 isHurt = false;
                 OnNotHurt?.Invoke();
             }
+            else
+            {
+                currHurtTime -= Time.deltaTime;
+            }
+        }
+
+  
+    }
+    private void FixedUpdate()
+    {
+
+        if (currentKnockBack != Vector2.zero)
+        {
+            //if (movement.IsCharacterMoving())
+            //{
+            //    rb.AddForce(currentKnockBack*Time.deltaTime,ForceMode2D.Force);
+
+            //    currentKnockBack = Vector2.Lerp(currentKnockBack, Vector2.zero, Time.deltaTime * knockbackDecel);
+            //    if (currentKnockBack.magnitude <= 0.05f) currentKnockBack = Vector2.zero;
+            //}
+            else
+            {
+                rb.velocity = currentKnockBack * Time.deltaTime;
+
+                currentKnockBack = Vector2.Lerp(currentKnockBack, Vector2.zero, Time.deltaTime * knockbackDecel);
+                if (currentKnockBack.magnitude <= 0.05f) currentKnockBack = Vector2.zero;
+            }
         }
     }
-
     public void KillPlayer()
     {
         OnDie?.Invoke();

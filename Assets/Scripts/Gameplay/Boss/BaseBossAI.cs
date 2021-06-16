@@ -65,6 +65,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         currentAttackIndex = 0;
         currentStage = BossStage.Initial;
         currentAIState = AIState.Chase;
+        currHurtTime = maxHurtTime;
         if (componentsToInit.Count > 0)
         {
             for (int i = 0; i < componentsToInit.Count; i++)
@@ -84,13 +85,19 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         isInitialised = true;
         UI = ObjectPoolManager.Spawn(bossUIPrefab, Vector3.zero, Quaternion.identity).GetComponent<BossUI>();
         if (UI)
+        {
             UI.InitialiseUI(BossName);
+            UI.progressBar.SetMaxValue(maxHealth);
+            UI.OnUISpawned += BeginFight;
+        }
     }
 
     virtual public void BeginFight()
     {
             if (isInitialised)
             {
+
+                UI.OnUISpawned += BeginFight;
                 SetUpNextStage();
                 ToggleCanAttack(true);
                 InvokeRepeating("ProcessAI", 0.0f, aiTickRate);
@@ -98,6 +105,9 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 isFighting = true;
                 if (target)
                     navigation.StartAgent(target);
+
+                if (GameManager.instance)
+                    GameManager.instance.BeginNewEvent(GameEvents.BossFightStarts);
             }
         
     }
@@ -252,8 +262,34 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         animator.Play(animName);
     }
 
-    public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
+    virtual public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
-       
+        if (!isHurt)
+        {
+            isHurt = true;
+            currentHealth -= dmg;
+            if (currentHealth <= 0f)
+            {
+                currentHealth = 0f;
+                UI.DoHurtUpdate(currentHealth);
+            }
+            UI.DoHurtUpdate(currentHealth);
+        }
+    
+    }
+
+    virtual protected void HurTimer()
+    {
+      
+        if(currHurtTime <= 0f)
+        {
+            isHurt = false;
+            currHurtTime = maxHurtTime;
+        }
+        else
+        {
+            currHurtTime -= Time.deltaTime;
+        }
+        
     }
 }

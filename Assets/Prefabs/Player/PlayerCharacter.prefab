@@ -307,7 +307,7 @@ MonoBehaviour:
   canDodge: 0
   rollTime: 0.3
   acceleration: 50
-  deceleration: 25
+  deceleration: 100
   inactiveComponentsDuringRoll:
   - {fileID: 8957915617564251555}
   tdMovement: {fileID: 8957915617564251555}
@@ -376,6 +376,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 3
   maxHurtTime: 2
+  knockbackDecel: 4
+  knockBackMoveScalar: 4
+  movement: {fileID: 0}
   deathMask: {fileID: 2983974149926587692, guid: 459c94b1d829c014c81306ca4c69dd5a, type: 3}
 --- !u!114 &230482053
 MonoBehaviour:

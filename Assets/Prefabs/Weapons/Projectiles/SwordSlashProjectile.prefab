@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -566227215
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e33ec3aea16533440af594947a2904ae, type: 3}
+  m_Sprite: {fileID: 7749246206101411074, guid: 70d298e0d2e74ba458999719c0652166, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,9 +93,11 @@ GameObject:
   - component: {fileID: 1087995828118112654}
   - component: {fileID: 1087995828118112655}
   - component: {fileID: 1087995828118112652}
-  - component: {fileID: 1087995828118112653}
+  - component: {fileID: 5448854139164960551}
+  - component: {fileID: -4804998545174359701}
+  - component: {fileID: 3406924109467353385}
   m_Layer: 0
-  m_Name: SwordKingSlashProjectile
+  m_Name: SwordSlashProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 1087995828118112649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -7.851, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 1087995827106813816}
   m_Father: {fileID: 0}
@@ -129,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 0
-  knockback: 400
+  knockback: 0
   inDebug: 0
   blockCount: 0
   destroyProjectileLayer:
@@ -156,7 +158,40 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!60 &1087995828118112653
+--- !u!95 &5448854139164960551
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087995828118112649}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73177e4bdbbca3944912d616a6957ae9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-4804998545174359701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087995828118112649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95566573c3b0c534c9f5bfc38193c309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5448854139164960551}
+  animName: SlashBurn
+--- !u!60 &3406924109467353385
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,17 +216,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.3859848, y: 0.33325005}
-      - {x: -0.6820423, y: 0.12556866}
-      - {x: -0.8823237, y: -0.110208035}
-      - {x: -0.9527962, y: -0.3023919}
-      - {x: -0.5278024, y: 0.12471771}
-      - {x: -0.19267273, y: 0.2647791}
-      - {x: 0.0011945441, y: 0.28222275}
-      - {x: 0.18605937, y: 0.26338196}
-      - {x: 0.5376831, y: 0.096110344}
-      - {x: 0.9593791, y: -0.30239367}
-      - {x: 0.85864204, y: -0.06978655}
-      - {x: 0.7341356, y: 0.08889723}
-      - {x: 0.37327418, y: 0.32951117}
-      - {x: -0.0019187927, y: 0.42795843}
+    - - {x: 0.4246373, y: 0.10572672}
+      - {x: 0.29165846, y: 0.19470906}
+      - {x: 0.15485206, y: 0.24948406}
+      - {x: 0.011303961, y: 0.28408098}
+      - {x: -0.15301433, y: 0.2561934}
+      - {x: -0.30219516, y: 0.2007966}
+      - {x: -0.4476432, y: 0.09793711}
+      - {x: -0.4838254, y: 0.007577449}
+      - {x: -0.4559054, y: -0.05918634}
+      - {x: -0.26558617, y: 0.12649512}
+      - {x: 0.0018336475, y: 0.21217227}
+      - {x: 0.23259573, y: 0.13330817}
+      - {x: 0.4596735, y: -0.07425809}
+      - {x: 0.49512932, y: 0.022649705}

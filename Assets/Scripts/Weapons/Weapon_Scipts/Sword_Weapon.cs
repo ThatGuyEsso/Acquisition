@@ -80,8 +80,8 @@ public class Sword_Weapon : Base_Weapon
     }
     public void CreateAttackCollider()
     {
-        sCollider = Instantiate(swordCollider);
-        sCollider.SetColliderShape(firePoint.transform.up, primaryCollisionRadius, 90f, transform.position);
+        sCollider = ObjectPoolManager.Spawn(swordCollider.gameObject, Vector3.zero, Quaternion.identity).GetComponent<DynamicConeCollider>();
+        sCollider.SetColliderShape(firePoint.transform.up, primaryCollisionRadius, 90f, playerTransform.position);
         if (sCollider.GetComponent<IVolumes>() != null) {
             IVolumes volume = sCollider.GetComponent<IVolumes>();
             volume.SetIsPlayerZone(true);
@@ -92,8 +92,8 @@ public class Sword_Weapon : Base_Weapon
     }
     public void CreateSecondaryAttackCollider()
     {
-        sCollider = Instantiate(swordCollider);
-        sCollider.SetColliderShape(firePoint.transform.up, secondaryCollisionRadius, 60f, transform.position);
+        sCollider = ObjectPoolManager.Spawn(swordCollider.gameObject, Vector3.zero, Quaternion.identity).GetComponent<DynamicConeCollider>();
+        sCollider.SetColliderShape(firePoint.transform.up, secondaryCollisionRadius, 60f, playerTransform.position);
         if (sCollider.GetComponent<IVolumes>() != null)
         {
             IVolumes volume = sCollider.GetComponent<IVolumes>();
