@@ -94,6 +94,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
         isStopping = true;
         isMoving = false;
         OnStop?.Invoke();
+        AudioManager.instance.Stop("PlayerWalk");
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -105,6 +106,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
             OnNewMoveDirection?.Invoke(movementDir);
             OnWalk?.Invoke();
             isMoving = true;
+            AudioManager.instance.Play("PlayerWalk");
         }
     }
     public void ToggleInputs(bool isOn)

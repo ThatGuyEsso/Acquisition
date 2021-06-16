@@ -67,7 +67,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45b04e1b3b1ecfc4cbbcdf0de85578d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileDamage: 0
+  knockback: 0
   inDebug: 1
+  blockCount: 0
   destroyProjectileLayer:
     serializedVersion: 2
     m_Bits: 128

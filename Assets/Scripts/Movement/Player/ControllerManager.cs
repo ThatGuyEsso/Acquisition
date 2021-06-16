@@ -27,6 +27,9 @@ public class ControllerManager : MonoBehaviour, IInitialisable
         input.Aiming.Aim.performed += _ =>SwitchToGampadControls();
         input.MouseActivity.Move.performed += _ => SwitchToMouseControls();
         isInitialised = true;
+
+        //As player enters the game this sound is playerd 
+        AudioManager.instance.Play("DungeonBoom");
     }
 
 

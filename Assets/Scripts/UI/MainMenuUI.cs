@@ -11,20 +11,24 @@ public class MainMenuUI : MonoBehaviour
 
     public void Play()
     {
+        AudioManager.instance.Play("ButtonPress");
         GameStateManager.instance.BeginNewState(GameState.LoadingHubWorld);
     }
 
     public void Credits()
     {
-        Debug.Log("Credits");
+        AudioManager.instance.Play("ButtonPress");
+        UIManager.instance.SwitchUI(UIType.Credits);
     }
 
     public void Settings()
     {
+        AudioManager.instance.Play("ButtonPress");
         UIManager.instance.SwitchUI(UIType.Settings);
     }
     public void Quit()
     {
+        AudioManager.instance.Play("ButtonPress");
         Application.Quit();
         Debug.Log("Quitting");
 
