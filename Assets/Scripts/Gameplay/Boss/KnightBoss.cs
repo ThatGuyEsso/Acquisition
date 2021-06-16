@@ -17,7 +17,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss
     }
     protected override void ProcessAI()
     {
-      
+        if (!isFighting) return;
         switch (currentAIState)
         {
             case AIState.Idle:
@@ -57,6 +57,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss
 
     private void Update()
     {
+        if (!isFighting) return;
         switch (currentAIState)
         {
             case AIState.Idle:
@@ -72,6 +73,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss
     }
     private void LateUpdate()
     {
+        if (!isFighting) return;
         switch (currentAIState)
         {
             case AIState.Idle:
@@ -91,6 +93,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss
 
     override protected void OnNewState(AIState newState)
     {
+        if (!isFighting) return;
         if (!isBusy)
         {
             currentAIState = newState;

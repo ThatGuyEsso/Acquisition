@@ -21,10 +21,13 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 {
 
     [Header("Settings")]
+
+    [SerializeField] protected string BossName;
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float aiTickRate= 0.25f;
     [SerializeField] protected Transform target;
     [SerializeField] protected BossStageData stageData;
+    [SerializeField] protected GameObject bossUIPrefab;
     [Header("Componeents")]
     [SerializeField] protected TDNavMeshMovement navigation;
     [SerializeField] protected FaceTarget faceTarget;
@@ -45,11 +48,13 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     protected bool canLockOn=false;
     protected float currHurtTime;
     protected bool isHurt;
+    protected BossUI UI;
     [SerializeField] protected BaseBossAbility transitionAbility;
     [SerializeField] protected BaseBossAbility closeCombatAbility;
 
     [SerializeField] protected bool isBusy = false;
     [SerializeField] protected bool inDebug=false;
+    protected bool isFighting;
     protected void Awake()
     {
         if (inDebug) Init();
@@ -68,21 +73,34 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 initialisable.Init();
             }
         }
-        if (target)
-            navigation.StartAgent(target);
+
         if (!attackAnimEvents) attackAnimEvents = GetComponent<AttackAnimEventListener>();
         else
         {
             attackAnimEvents.OnAnimStart += OnAttackBegin;
             attackAnimEvents.OnAnimEnd += OnAttackEnd;
         }
-        SetUpNextStage();
+
         isInitialised = true;
-        ToggleCanAttack(true);
-        InvokeRepeating("ProcessAI", 0.0f, aiTickRate);
-        isBusy = false;
+        UI = ObjectPoolManager.Spawn(bossUIPrefab, Vector3.zero, Quaternion.identity).GetComponent<BossUI>();
+        if (UI)
+            UI.InitialiseUI(BossName);
     }
 
+    virtual public void BeginFight()
+    {
+            if (isInitialised)
+            {
+                SetUpNextStage();
+                ToggleCanAttack(true);
+                InvokeRepeating("ProcessAI", 0.0f, aiTickRate);
+                isBusy = false;
+                isFighting = true;
+                if (target)
+                    navigation.StartAgent(target);
+            }
+        
+    }
     virtual public bool InRange()
     {
         if (currentStageAbilities.Count <= 0) return false;
