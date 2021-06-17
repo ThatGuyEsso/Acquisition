@@ -13,7 +13,77 @@ MonoBehaviour:
   m_Name: KnightStages
   m_EditorClassIdentifier: 
   initialStageAbilities:
-  - {fileID: 3382950496971785112, guid: a723b43fe1352b54a84a88fc354fca1e, type: 3}
-  - {fileID: 2896135866123084263, guid: 0a7c9ae7f419491478a474e075c967d2, type: 3}
-  middleStageAbilities: []
-  finalStageAbiilities: []
+  - maxAttackCount: 3
+    attackRate: 2
+    coolDown: 5
+    attackRange: 5
+    isManagingBossAttack: 0
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 8290753865192258739, guid: 96c9357e396e2fa4e8f64833d94b39ce, type: 3}
+  - maxAttackCount: 2
+    attackRate: 4
+    coolDown: 6
+    attackRange: 15
+    isManagingBossAttack: 0
+    isPriority: 0
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 8769350043832397293, guid: a36765750d3e9eb4198e8b008f11148e, type: 3}
+  middleStageAbilities:
+  - maxAttackCount: 3
+    attackRate: 3
+    coolDown: 10
+    attackRange: 15
+    isManagingBossAttack: 0
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 8769350043832397293, guid: a36765750d3e9eb4198e8b008f11148e, type: 3}
+  - maxAttackCount: 5
+    attackRate: 1
+    coolDown: 5
+    attackRange: 5
+    isManagingBossAttack: 0
+    isPriority: 0
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 8290753865192258739, guid: 96c9357e396e2fa4e8f64833d94b39ce, type: 3}
+  - maxAttackCount: 2
+    attackRate: 2
+    coolDown: 5
+    attackRange: 4
+    isManagingBossAttack: 0
+    isPriority: 0
+    isSuperCloseRange: 1
+    abilityPrefab: {fileID: 2896135866123084262, guid: 0a7c9ae7f419491478a474e075c967d2, type: 3}
+  finalStageAbiilities:
+  - maxAttackCount: 5
+    attackRate: 0.5
+    coolDown: 5
+    attackRange: 5
+    isManagingBossAttack: 0
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 8290753865192258739, guid: 96c9357e396e2fa4e8f64833d94b39ce, type: 3}
+  - maxAttackCount: 1
+    attackRate: 0
+    coolDown: 10
+    attackRange: 20
+    isManagingBossAttack: 1
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 3382950496971785111, guid: a723b43fe1352b54a84a88fc354fca1e, type: 3}
+  - maxAttackCount: 2
+    attackRate: 2
+    coolDown: 5
+    attackRange: 20
+    isManagingBossAttack: 0
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 8769350043832397293, guid: a36765750d3e9eb4198e8b008f11148e, type: 3}
+  - maxAttackCount: 3
+    attackRate: 0.6
+    coolDown: 5
+    attackRange: 5
+    isManagingBossAttack: 0
+    isPriority: 0
+    isSuperCloseRange: 1
+    abilityPrefab: {fileID: 2896135866123084262, guid: 0a7c9ae7f419491478a474e075c967d2, type: 3}

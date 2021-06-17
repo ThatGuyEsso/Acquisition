@@ -78,12 +78,12 @@ MonoBehaviour:
   attackRate: 2
   coolDown: 10
   attackRange: 20
-  isManagingBossAttack: 0
+  isManagingBossAttack: 1
   isPriority: 1
   isSuperCloseRange: 0
   attackAnimationName: BladeChaosBuild
   bossRB: {fileID: 0}
-  isEnabled: 0
+  isEnabled: 1
   owner: {fileID: 0}
   eventListener: {fileID: 0}
   projectilePrefab: {fileID: 1087995828118112649, guid: 2bf055af662a1ce4e87d7dc1bc98ef05, type: 3}
@@ -92,3 +92,4 @@ MonoBehaviour:
   projectileBlockCount: 3
   fireRate: 0.25
   attackDuration: 7.5
+  rotationRate: 250

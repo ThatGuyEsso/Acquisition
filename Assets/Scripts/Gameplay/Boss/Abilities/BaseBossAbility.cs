@@ -13,11 +13,11 @@ public class BaseBossAbility : MonoBehaviour, IInitialisable
     [Tooltip("Cooldown until ability Refreshes")]
     [SerializeField] protected float coolDown;
     [SerializeField] protected float attackRange;
-    [SerializeField] protected bool isManagingBossAttack =false;
+    [SerializeField] protected bool isManagingBossAttack;
 
 
-    [SerializeField] protected bool isPriority=false;
-    [SerializeField] protected bool isSuperCloseRange = false;
+    [SerializeField] protected bool isPriority;
+    [SerializeField] protected bool isSuperCloseRange;
     [SerializeField] protected string attackAnimationName;
 
     public Rigidbody2D bossRB;
@@ -28,6 +28,19 @@ public class BaseBossAbility : MonoBehaviour, IInitialisable
     public AttackAnimEventListener eventListener;
     protected bool canAttack;
 
+
+    public void SetUpAbility(int attackCount,float attackRate,float attackRange, float longCooldown,bool isManagingControls,
+        bool isPriority, bool isCloseRange)
+    {
+        maxAttackCount = attackCount;
+        this.attackRate = attackRate;
+        this.attackRange = attackRange;
+        coolDown = longCooldown;
+        isManagingBossAttack = isManagingControls;
+        this.isPriority = isPriority;
+        isSuperCloseRange = isCloseRange;
+
+    }
     
     virtual public void Init()
     {

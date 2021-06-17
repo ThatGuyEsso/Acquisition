@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnightBoss : BaseBossAI,IInitialisable, IBoss
+public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
 {
 
     [SerializeField] private Transform firepoint;
@@ -43,14 +43,29 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss
                 }
                 break;
             case AIState.Attack:
-                if (!InRange())
+                if(currentStage != BossStage.Transition&&transitionAbility)
                 {
-                    OnNewState(AIState.Chase);
+                    if (!InRange())
+                    {
+                        OnNewState(AIState.Chase);
+                    }
+                    else if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
+                    {
+                        DoAttack();
+                    }
                 }
-                else if (currentStageAbilities[currentAttackIndex].CanAttack()&&!isBusy)
+                else
                 {
-                    DoAttack();
+                    if (!InRange())
+                    {
+                        OnNewState(AIState.Chase);
+                    }
+                    else if (transitionAbility.CanAttack() && !isBusy)
+                    {
+                        DoAttack();
+                    }
                 }
+          
                 break;
         }
     }
@@ -119,25 +134,34 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss
                     navigation.enabled = false;
                     faceTarget.enabled = true;
                     faceTarget.SetTarget(target);
-
-                    if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
+                    if(currentStage != BossStage.Transition)
                     {
-                        if (closeCombatAbility) 
+                        if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
                         {
-                            if (InCloseRange() && closeCombatAbility.CanAttack())
+                            if (closeCombatAbility)
                             {
-                                DoCloseQuarters();
+                                if (InCloseRange() && closeCombatAbility.CanAttack())
+                                {
+                                    DoCloseQuarters();
+                                }
+                                else
+                                {
+                                    DoAttack();
+                                }
                             }
                             else
                             {
                                 DoAttack();
                             }
-                        }else
-                        {
-                            DoAttack();
+
                         }
-                    
                     }
+                    else
+                    {
+                        DoAttack();
+                    }
+
+        
                     break;
             }
         }

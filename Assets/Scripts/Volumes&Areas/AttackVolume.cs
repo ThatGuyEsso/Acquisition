@@ -20,15 +20,15 @@ public class AttackVolume : MonoBehaviour,IVolumes
     {
         if (isPlayerZone)
         {
-            if (other.gameObject.CompareTag("Wall"))
+            if (other.CompareTag("Wall"))
             {
          
                 OnObstacleHit?.Invoke();
                 Debug.Log("Hit wall");
             }
-            else if (other.gameObject.CompareTag("Enemy"))
+            else if (other.CompareTag("Enemy"))
             {
-                IDamage damageable = gameObject.GetComponent<IDamage>();
+                IDamage damageable = other.GetComponent<IDamage>();
                 if (damageable != null)
                 {
                     damageable.OnDamage(damage, direction, knockBack, owner);
@@ -40,7 +40,7 @@ public class AttackVolume : MonoBehaviour,IVolumes
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                IDamage damageable = gameObject.GetComponent<IDamage>();
+                IDamage damageable = other.GetComponent<IDamage>();
                 if (damageable != null)
                 {
                     damageable.OnDamage(damage, direction, knockBack, owner);

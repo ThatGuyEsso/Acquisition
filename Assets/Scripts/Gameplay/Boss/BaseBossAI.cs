@@ -42,6 +42,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     protected bool isInitialised;
     protected float currentHealth;
     protected int currentAttackIndex;
+    protected int currentStageIndex;
     protected BossStage currentStage;
     protected AIState currentAIState;
     protected bool canAttack;
@@ -49,9 +50,10 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     protected float currHurtTime;
     protected bool isHurt;
     protected BossUI UI;
-    [SerializeField] protected BaseBossAbility transitionAbility;
+    [SerializeField] protected GameObject transitionAbilityPrefab;
     [SerializeField] protected BaseBossAbility closeCombatAbility;
 
+    protected BaseBossAbility transitionAbility;
     [SerializeField] protected bool isBusy = false;
     [SerializeField] protected bool inDebug=false;
     protected bool isFighting;
@@ -64,6 +66,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         currentHealth = maxHealth;
         currentAttackIndex = 0;
         currentStage = BossStage.Initial;
+        currentStageIndex = 0;
         currentAIState = AIState.Chase;
         currHurtTime = maxHurtTime;
         if (componentsToInit.Count > 0)
@@ -147,14 +150,24 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 
     virtual public void CycleToNextAttack()
     {
-        currentStageAbilities[currentAttackIndex].DisableAbility();
-        currentAttackIndex++;
-        if (currentAttackIndex >= currentStageAbilities.Count) currentAttackIndex = 0;
-        currentStageAbilities[currentAttackIndex].EnableAbility();
+        if(currentStage!= BossStage.Transition)
+        {
+            currentStageAbilities[currentAttackIndex].DisableAbility();
+            currentAttackIndex++;
+            if (currentAttackIndex >= currentStageAbilities.Count) currentAttackIndex = 0;
+            currentStageAbilities[currentAttackIndex].EnableAbility();
+        }
+        else
+        {
+            SetUpNextStage();
+        }
+ 
     }
  
     virtual protected void SetUpNextStage()
     {
+
+        currentStage = (BossStage)currentStageIndex;
         if (currentStageAbilities.Count<=0)
         {
             foreach (BaseBossAbility ability in currentStageAbilities)
@@ -179,20 +192,29 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 break;
         }
     }
-
-    protected void SetUpStageAbilities(List<GameObject> abilities)
+    protected void InitialiseAbility(BaseBossAbility ability)
+    {
+        ability.eventListener = attackAnimEvents;
+        ability.owner = this;
+        IInitialisable initialise = ability.GetComponent<IInitialisable>();
+        if (initialise != null) initialise.Init();
+        ability.EnableAbility();
+    }
+    protected void SetUpStageAbilities(List<AttackPatternData> abilities)
     {
         for(int i = 0; i < abilities.Count; i++)
         {
 
-      
-            if (abilities[i].GetComponent<BaseBossAbility>())
+
+            if (abilities[i]!=null)
             {
-                BaseBossAbility ability= ObjectPoolManager.Spawn(abilities[i].gameObject, transform).GetComponent<BaseBossAbility>();
+
+                BaseBossAbility ability = abilities[i].CreateNewAbility(transform);
                 if (ability.IsCloseRange()) closeCombatAbility = ability;
                 ability.eventListener = attackAnimEvents;
                 ability.owner = this;
-                ability.GetComponent<IInitialisable>().Init();
+                IInitialisable initialise= ability.GetComponent<IInitialisable>();
+                if (initialise != null) initialise.Init();
                 currentStageAbilities.Add(ability);
             }
         }
@@ -220,10 +242,24 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     }
     public void DoAttack()
     {
-        if (!currentStageAbilities[currentAttackIndex].enabled) currentStageAbilities[currentAttackIndex].EnableAbility();
-        if (currentStageAbilities[currentAttackIndex].IsManagingAttack()) canLockOn = true;
-        else canLockOn = false;
-        animator.Play(currentStageAbilities[currentAttackIndex].AnimationName());
+        if(currentStage != BossStage.Transition)
+        {
+            if (!currentStageAbilities[currentAttackIndex].isEnabled) currentStageAbilities[currentAttackIndex].EnableAbility();
+            if (currentStageAbilities[currentAttackIndex].IsManagingAttack()) canLockOn = true;
+            else canLockOn = false;
+            animator.Play(currentStageAbilities[currentAttackIndex].AnimationName());
+        }
+        else
+        {
+            if (transitionAbility)
+            {
+                if (!transitionAbility.isEnabled) transitionAbility.EnableAbility();
+                if (transitionAbility.IsManagingAttack()) canLockOn = true;
+                else canLockOn = false;
+                animator.Play(transitionAbility.AnimationName());
+            }
+        }
+
     }
     public void DoCloseQuarters()
     {
@@ -264,7 +300,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 
     virtual public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
-        if (!isHurt)
+
+        if (!isHurt &&currentStage != BossStage.Transition)
         {
             isHurt = true;
             currentHealth -= dmg;
@@ -274,6 +311,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 UI.DoHurtUpdate(currentHealth);
             }
             UI.DoHurtUpdate(currentHealth);
+            EvaluateToTransition();
         }
     
     }
@@ -290,6 +328,59 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         {
             currHurtTime -= Time.deltaTime;
         }
+        
+    }
+
+    virtual public void EvaluateToTransition()
+    {
+        float healthPercent;
+        switch (currentStage)
+        {
+            case BossStage.Initial:
+                 healthPercent = currentHealth / maxHealth;
+                if(healthPercent<= 2f/3f)
+                {
+                    currentHealth = maxHealth * (2f / 3);
+
+                    UI.DoHurtUpdate(currentHealth);
+                    BeginTransitionStage();
+                }
+                break;
+            case BossStage.Middle:
+                healthPercent = currentHealth / maxHealth;
+                if (healthPercent <= 1f / 3f)
+                {
+                    currentHealth = maxHealth * (1f / 3);
+
+                    UI.DoHurtUpdate(currentHealth);
+                    BeginTransitionStage();
+                }
+                break;
+        }
+
+    }
+
+    virtual public void BeginTransitionStage()
+    {
+        
+        if (!transitionAbility)
+            transitionAbility = ObjectPoolManager.Spawn(transitionAbilityPrefab.gameObject, transform, Vector3.zero).GetComponent<BaseBossAbility>();
+
+
+        if (currentStageAbilities.Count >0)
+        {
+            foreach (BaseBossAbility ability in currentStageAbilities)
+            {
+                ability.DisableAbility();
+                ObjectPoolManager.Recycle(ability.gameObject);
+            }
+            currentStageAbilities.Clear();
+        }
+        InitialiseAbility(transitionAbility);
+        isBusy = false;
+        currentStage = BossStage.Transition;
+        currentStageIndex++;
+        OnNewState(AIState.Attack);
         
     }
 }

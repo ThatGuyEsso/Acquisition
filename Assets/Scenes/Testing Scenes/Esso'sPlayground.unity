@@ -14253,6 +14253,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 118221031589024619, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
       propertyPath: target
       value: 
@@ -14269,6 +14273,14 @@ PrefabInstance:
       propertyPath: bossUIPrefab
       value: 
       objectReference: {fileID: 3768981126912450485, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
+    - target: {fileID: 118221031589024619, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
+      propertyPath: transitionAbility
+      value: 
+      objectReference: {fileID: 3382950496971785111, guid: a723b43fe1352b54a84a88fc354fca1e, type: 3}
+    - target: {fileID: 118221031589024619, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
+      propertyPath: transitionAbilityPrefab
+      value: 
+      objectReference: {fileID: 3382950496971785112, guid: a723b43fe1352b54a84a88fc354fca1e, type: 3}
     - target: {fileID: 118221031589024621, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
       propertyPath: m_Name
       value: SwordKnight

@@ -55,6 +55,7 @@ public class BladeChaos : BaseBossAbility
         {
             StopAllCoroutines();
             owner.CycleToNextAttack();
+            owner.SetIsBusy(false);
             StartCoroutine(BeginResetAbility(coolDown));
 
         }

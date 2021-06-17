@@ -74,20 +74,20 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
 
         if (currentKnockBack != Vector2.zero)
         {
-            if (movement.IsCharacterMoving())
-            {
-                rb.AddForce(currentKnockBack * Time.deltaTime, ForceMode2D.Force);
+            //if (movement.IsCharacterMoving())
+            //{
+            //    rb.AddForce(currentKnockBack*Time.deltaTime,ForceMode2D.Force);
 
-                currentKnockBack = Vector2.Lerp(currentKnockBack, Vector2.zero, Time.deltaTime * knockbackDecel);
-                if (currentKnockBack.magnitude <= 0.05f) currentKnockBack = Vector2.zero;
-            }
-            else
-            {
-                rb.velocity = currentKnockBack * Time.deltaTime;
+            //    currentKnockBack = Vector2.Lerp(currentKnockBack, Vector2.zero, Time.deltaTime * knockbackDecel);
+            //    if (currentKnockBack.magnitude <= 0.05f) currentKnockBack = Vector2.zero;
+            //}
+        }
+        else
+        {
+            rb.velocity = currentKnockBack * Time.deltaTime;
 
-                currentKnockBack = Vector2.Lerp(currentKnockBack, Vector2.zero, Time.deltaTime * knockbackDecel);
-                if (currentKnockBack.magnitude <= 0.05f) currentKnockBack = Vector2.zero;
-            }
+            currentKnockBack = Vector2.Lerp(currentKnockBack, Vector2.zero, Time.deltaTime * knockbackDecel);
+            if (currentKnockBack.magnitude <= 0.05f) currentKnockBack = Vector2.zero;
         }
     }
     public void KillPlayer()
