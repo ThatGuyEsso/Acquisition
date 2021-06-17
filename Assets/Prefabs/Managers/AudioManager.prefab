@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: DungeonBoom
-    clip: {fileID: 8300000, guid: 999a0756dcc440340b26659a7444702e, type: 3}
+    clip: {fileID: 8300000, guid: 29db2f384b0d0594186f4e157762de58, type: 3}
     volume: 1
     pitch: 1
     loop: 0
