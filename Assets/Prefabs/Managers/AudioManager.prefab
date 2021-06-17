@@ -64,10 +64,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 902ee6cceece6e54c936ce5a19361a39, type: 3}
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0
+  - name: WeaponSpawn
+    clip: {fileID: 8300000, guid: c6eb2fe05fc938442ac77ae5497e56ed, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0
   soundGroups: []
   uiGroup: {fileID: 0}
   soundEffectGroup: {fileID: 0}
+  audioPlayer: {fileID: 7269974362316107315, guid: 46c0e39677c3c754987ad4ead451f95e, type: 3}
+  uiAudioPlayer: {fileID: 5046229521099731773, guid: 38ad2b87e62046d49a4c1f39b539b7ca, type: 3}

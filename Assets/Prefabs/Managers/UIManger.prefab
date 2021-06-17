@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331ad4f8abade1d45959ae005cfa76b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActive: 1
+  startingUI: 1
   uiPool:
   - type: 4
     obj: {fileID: 487660817055627859, guid: aa6cc8a36cc4a7f48b9503939d1ea2f0, type: 3}
@@ -52,6 +52,8 @@ MonoBehaviour:
     obj: {fileID: 7971641662740382853, guid: c678e89e9b6aa8d40a8e6837b5fc1961, type: 3}
   - type: 5
     obj: {fileID: 6638367546987375257, guid: ff22c81c2a7412a4485edcedb04588f8, type: 3}
+  - type: 1
+    obj: {fileID: 3389722106641750471, guid: 37dbd2a678022a24c8c182e06b16ac6a, type: 3}
   inDebug: 0
 --- !u!1 &5796233015514374145
 GameObject:

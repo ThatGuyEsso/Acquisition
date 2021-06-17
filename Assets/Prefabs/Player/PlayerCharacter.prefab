@@ -427,6 +427,10 @@ PrefabInstance:
       propertyPath: movement
       value: 
       objectReference: {fileID: 8957915617564251555}
+    - target: {fileID: 3118048543159838658, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
+      propertyPath: audioPlayerPrefab
+      value: 
+      objectReference: {fileID: 7269974362316107315, guid: 46c0e39677c3c754987ad4ead451f95e, type: 3}
     - target: {fileID: 7733458594290553442, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
       propertyPath: m_Name
       value: PlayerLegs

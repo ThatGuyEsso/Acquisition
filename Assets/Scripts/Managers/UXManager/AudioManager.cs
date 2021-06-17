@@ -10,8 +10,11 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
     public SoundGroup[] soundGroups;
     public static AudioManager instance;
  
-
     [SerializeField] private AudioMixerGroup uiGroup, soundEffectGroup;
+
+    [Header("AudioPlayers")]
+    [SerializeField] private GameObject audioPlayer;
+    [SerializeField] private GameObject uiAudioPlayer;
     public void Init()
     {
         //Initialise Singleton Instance
@@ -168,4 +171,31 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
     {
     ///
     }
+
+    public void PlayThroughAudioPlayer(string name, Vector3 pos)
+    {
+        if (ObjectPoolManager.instance)
+        {
+            IAudio audio = ObjectPoolManager.Spawn(audioPlayer, pos, Quaternion.identity).GetComponent<IAudio>();
+            if (audio != null)
+            {
+                audio.SetUpAudioSource(GetSound(name));
+                audio.Play();
+            }
+        }
+    }
+
+    public void PlayUISound(string name, Vector3 pos)
+    {
+        if (ObjectPoolManager.instance)
+        {
+            IAudio audio = ObjectPoolManager.Spawn(uiAudioPlayer, pos, Quaternion.identity).GetComponent<IAudio>();
+            if (audio != null)
+            {
+                audio.SetUpAudioSource(GetSound(name));
+                audio.Play();
+            }
+        }
+    }
+
 }

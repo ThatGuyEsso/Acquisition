@@ -393,6 +393,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4343620635377232488, guid: 378873da936392f428802512ed3eeb05, type: 3}
+      propertyPath: audioPlayerPrefab
+      value: 
+      objectReference: {fileID: 7269974362316107315, guid: 46c0e39677c3c754987ad4ead451f95e, type: 3}
     - target: {fileID: 8844177556063991055, guid: 378873da936392f428802512ed3eeb05, type: 3}
       propertyPath: virtualCursor
       value: 

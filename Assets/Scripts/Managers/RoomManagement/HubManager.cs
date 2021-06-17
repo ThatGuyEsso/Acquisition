@@ -30,6 +30,9 @@ public class HubManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //As world is started and player enters game audio is playerd
+        if (AudioManager.instance)
+            AudioManager.instance.PlayThroughAudioPlayer("DungeonBoom", transform.position);
     }
     public void BindToGameStateManager()
     {

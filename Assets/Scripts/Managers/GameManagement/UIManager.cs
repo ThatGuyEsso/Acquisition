@@ -28,12 +28,13 @@ public class UIManager : MonoBehaviour, IInitialisable
 
     public static UIManager instance { get; private set; }
 
-    [SerializeField] private UIType currentActive = UIType.MainMenu;
+    [SerializeField] private UIType startingUI;
     [SerializeField] private List<UIPool> uiPool;
     [SerializeField] private bool inDebug = false;
 
     private Dictionary<UIType, GameObject> UIDic;
     private UIType previousUI = UIType.None;
+    private UIType currentActive;
 
     private void Awake()
     {
@@ -58,10 +59,11 @@ public class UIManager : MonoBehaviour, IInitialisable
             ui.SetActive(false);
             UIDic.Add(pool.type, ui);
         }
-        
+
+        SwitchUI(UIType.MainMenu);
     }
 
-    public void SwitchUI(UIType type)
+    public void SwitchUI(UIType type) //changes the UI displayed
     {
         previousUI = currentActive;
         UnloadCurrent();
@@ -70,23 +72,29 @@ public class UIManager : MonoBehaviour, IInitialisable
         currentActive = type;
 
         if (UIDic.TryGetValue(type, out outObj))
+        {
             outObj.SetActive(true);
+        }
+        else if (outObj == false)
+        {
+            Debug.LogError("UIManager can't find gameObject"); // if gameobject of UI does not exits then error is thrown
+            return;
+        }
 
         I_UI ui = outObj.GetComponent<I_UI>();
 
-        if (ui != null)
+        if (ui != null) // Initalizes UI
             ui.InitUI(type, previousUI);
     }
 
-    public void UnloadCurrent()
+    public void UnloadCurrent() //Unloades the current displayed UI
     {
         if(currentActive != UIType.None)
         {
             GameObject currentObj;
-
             if (UIDic.TryGetValue(currentActive, out currentObj))
             {
-                if (currentObj != false)
+                if (currentObj != false) //Null check on gameobject
                 {
                     currentObj.SetActive(false);
                     I_UI ui = currentObj.GetComponent<I_UI>();
@@ -102,12 +110,6 @@ public class UIManager : MonoBehaviour, IInitialisable
             }
             
         }
-    }
-
-    public void SetMainMenu(GameObject menu)
-    {
-        if(menu.tag == "MainMenu")
-            UIDic.Add(UIType.MainMenu, menu);
     }
 
     public void SetGameToPause(bool pause)

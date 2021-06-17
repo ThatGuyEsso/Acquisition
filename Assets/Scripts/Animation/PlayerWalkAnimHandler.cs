@@ -17,6 +17,7 @@ public class PlayerWalkAnimHandler : MonoBehaviour
     {
         animator.SetFloat("PlaySpeed", 1f);
         animator.Play("Run");
+
     }
 
     public void OnStopWalk()
@@ -32,6 +33,7 @@ public class PlayerWalkAnimHandler : MonoBehaviour
             if (aPlayer != null)
             {
                 aPlayer.SetUpAudioSource(AudioManager.instance.GetSound("PlayerWalk"));
+                aPlayer.Play();
             }
         }
     }

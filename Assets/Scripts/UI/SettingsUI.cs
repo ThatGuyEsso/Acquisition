@@ -58,6 +58,7 @@ public class SettingsUI : Base_UI
 
     public void OnBack()
     {
+        AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         uiManager.SwitchUI(previousUI);
     }
 }

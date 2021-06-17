@@ -4,31 +4,29 @@ using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
 {
-    private void Awake()
-    {
-        UIManager.instance.SetMainMenu(gameObject);
-    }
+    
 
     public void Play()
     {
-        AudioManager.instance.Play("ButtonPress");
+        AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         GameStateManager.instance.BeginNewState(GameState.LoadingHubWorld);
+        UIManager.instance.SwitchUI(UIType.None);
     }
 
     public void Credits()
     {
-        AudioManager.instance.Play("ButtonPress");
+        AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         UIManager.instance.SwitchUI(UIType.Credits);
     }
 
     public void Settings()
     {
-        AudioManager.instance.Play("ButtonPress");
+        AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         UIManager.instance.SwitchUI(UIType.Settings);
     }
     public void Quit()
     {
-        AudioManager.instance.Play("ButtonPress");
+        AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         Application.Quit();
         Debug.Log("Quitting");
 
