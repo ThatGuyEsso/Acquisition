@@ -56,13 +56,20 @@ public class ShrinkingSpriteMask : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.instance.OnNewEvent -= EvaluateNewEvent;
-        isBound = false;
+
+        if (isBound)
+        {
+            GameManager.instance.OnNewEvent -= EvaluateNewEvent;
+            isBound = false;
+        }
     }
 
     private void OnDestroy()
     {
-        GameManager.instance.OnNewEvent -= EvaluateNewEvent;
-        isBound = false;
+        if (isBound)
+        {
+            GameManager.instance.OnNewEvent -= EvaluateNewEvent;
+            isBound = false;
+        }
     }
 }

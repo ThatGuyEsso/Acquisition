@@ -54,16 +54,20 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                         DoAttack();
                     }
                 }
-                else
+                else 
                 {
-                    if (!InRange())
+                    if (transitionAbility)
                     {
-                        OnNewState(AIState.Chase);
+                        if (!InRange())
+                        {
+                            OnNewState(AIState.Chase);
+                        }
+                        else if (transitionAbility.CanAttack() && !isBusy)
+                        {
+                            DoAttack();
+                        }
                     }
-                    else if (transitionAbility.CanAttack() && !isBusy)
-                    {
-                        DoAttack();
-                    }
+
                 }
           
                 break;
@@ -122,12 +126,14 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                 case AIState.Idle:
                     navigation.enabled = false;
                     faceTarget.enabled = false;
+                    animator.Play("Idle",0,0f);
                     break;
                 case AIState.Chase:
                     navigation.enabled = true;
                     faceTarget.enabled = false;
                     if (target)
                         navigation.StartAgent(target);
+                    animator.Play("Walking", 0, 0f);
                     break;
                 case AIState.Attack:
                     navigation.Stop();

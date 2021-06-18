@@ -13,45 +13,36 @@ AnimationClip:
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
   m_CompressedRotationCurves: []
-  m_EulerCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: {x: 0, y: 0, z: -90}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.25
-        value: {x: 0, y: 0, z: -180}
-        inSlope: {x: 0, y: 0, z: -360}
-        outSlope: {x: 0, y: 0, z: -360}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.5
-        value: {x: 0, y: 0, z: -270}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: GFX
+  m_EulerCurves: []
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: -3306474508244222970, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - time: 0.083333336
+      value: {fileID: -3360256579350682993, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - time: 0.16666667
+      value: {fileID: -3698771499659876319, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - time: 0.25
+      value: {fileID: -2845234016693903241, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - time: 0.5
+      value: {fileID: -2845234016693903241, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - time: 0.6666667
+      value: {fileID: 7999991498571429975, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - time: 0.7
+      value: {fileID: -5503988670406053514, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - time: 0.73333335
+      value: {fileID: 2726823463763195820, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - time: 0.76666665
+      value: {fileID: 5137588663979591037, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - time: 0.9166667
+      value: {fileID: 5137588663979591037, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    attribute: m_Sprite
+    path: GFX
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -61,18 +52,28 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 1225224978
-      attribute: 4
+      attribute: 0
       script: {fileID: 0}
-      typeID: 4
-      customType: 4
-      isPPtrCurve: 0
-    pptrCurveMapping: []
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: -3306474508244222970, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - {fileID: -3360256579350682993, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - {fileID: -3698771499659876319, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - {fileID: -2845234016693903241, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - {fileID: -2845234016693903241, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - {fileID: 7999991498571429975, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - {fileID: -5503988670406053514, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - {fileID: 2726823463763195820, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - {fileID: 5137588663979591037, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
+    - {fileID: 5137588663979591037, guid: dfc3029b808b67f42b6a5ec109b6c55f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.93333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -87,149 +88,8 @@ AnimationClip:
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0
-  m_EditorCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.25
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.x
-    path: GFX
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.25
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.y
-    path: GFX
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -90
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.25
-        value: -180
-        inSlope: -360
-        outSlope: -360
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: -270
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.z
-    path: GFX
-    classID: 4
-    script: {fileID: 0}
-  m_EulerEditorCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: GFX
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: GFX
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: GFX
-    classID: 4
-    script: {fileID: 0}
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
@@ -240,28 +100,28 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.083333336
+  - time: 0.6666667
     functionName: OnSpawnAttackZone
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.25
+  - time: 0.7
     functionName: OnSpawnProjectile
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.48333332
+  - time: 0.78333336
     functionName: OnDespawnAttackZone
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.48333332
+  - time: 0.9166667
     functionName: OnAnimFinished
     data: 
     objectReferenceParameter: {fileID: 0}

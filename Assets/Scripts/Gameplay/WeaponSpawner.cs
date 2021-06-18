@@ -68,7 +68,8 @@ public class WeaponSpawner : MonoBehaviour
         pickupGFX.gameObject.SetActive(true);
         isWeaponAvailable = true;
         ObjectPoolManager.Spawn(spawnVFX, pickupGFX.transform.position, Quaternion.identity);
-        AudioManager.instance.PlayThroughAudioPlayer("ItemBoom", transform.position); //Plays audio when weapon is spawned
+        if(AudioManager.instance)
+            AudioManager.instance.PlayThroughAudioPlayer("ItemBoom", transform.position); //Plays audio when weapon is spawned
         switch (type)
         {
             case WeaponType.Sword:

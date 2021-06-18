@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: -1195519277
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -624739889265560192, guid: 4f00b63987994174ebc4d3451f00a7d1, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -4862275863476091193, guid: cf7cc2ade6c96c544b60d62d94551e82, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
   m_DrawMode: 0
@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 118221031589024621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.52, y: -6.58, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 118221030609055913}
   - {fileID: 118221031614647829}
@@ -203,12 +203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6dd4d8eef0f1e47a5e191253a94567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossName: 
+  BossName: Sword-King
   maxHealth: 1000
   aiTickRate: 0.25
   target: {fileID: 0}
   stageData: {fileID: 11400000, guid: 08e82186df2413a488b8bf5cbb9fd8a6, type: 2}
-  bossUIPrefab: {fileID: 0}
+  bossUIPrefab: {fileID: 3768981126912450485, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
+  awakenAnimName: Awaken
   navigation: {fileID: 118221031589024617}
   faceTarget: {fileID: 118221031589024618}
   faceMovementDirection: {fileID: 118221031589024596}
@@ -218,10 +219,10 @@ MonoBehaviour:
   componentsToInit:
   - {fileID: 118221031589024617}
   currentStageAbilities: []
-  transitionAbility: {fileID: 0}
+  transitionAbilityPrefab: {fileID: 3382950496971785112, guid: a723b43fe1352b54a84a88fc354fca1e, type: 3}
   closeCombatAbility: {fileID: 0}
   isBusy: 0
-  inDebug: 0
+  inDebug: 1
   firepoint: {fileID: 118221031614647829}
   rb: {fileID: 0}
 --- !u!114 &118221031589024596

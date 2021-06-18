@@ -28,6 +28,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected Transform target;
     [SerializeField] protected BossStageData stageData;
     [SerializeField] protected GameObject bossUIPrefab;
+    [SerializeField] protected string awakenAnimName;
     [Header("Componeents")]
     [SerializeField] protected TDNavMeshMovement navigation;
     [SerializeField] protected FaceTarget faceTarget;
@@ -91,16 +92,21 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         {
             UI.InitialiseUI(BossName);
             UI.progressBar.SetMaxValue(maxHealth);
-            UI.OnUISpawned += BeginFight;
+            UI.OnUISpawned += AwakenBoss;
         }
     }
-
+    public void AwakenBoss()
+    {
+        UI.OnUISpawned -= AwakenBoss;
+        attackAnimEvents.OnAnimEnd += BeginFight;
+        animator.Play(awakenAnimName, 0, 0f);
+    }
     virtual public void BeginFight()
     {
             if (isInitialised)
             {
 
-                UI.OnUISpawned += BeginFight;
+                attackAnimEvents.OnAnimEnd -= BeginFight;
                 SetUpNextStage();
                 ToggleCanAttack(true);
                 InvokeRepeating("ProcessAI", 0.0f, aiTickRate);

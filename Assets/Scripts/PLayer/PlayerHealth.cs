@@ -33,6 +33,8 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     {
         if (!isHurt)
         {
+            if (CamShake.instance)
+                CamShake.instance.DoScreenShake(0.25f, 5f, 0.05f, 0.5f, 5f);
             currentHitPoint--;
             if(currentHitPoint <= 0)
             {
@@ -93,7 +95,8 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     public void KillPlayer()
     {
         OnDie?.Invoke();
-        GameManager.instance.BeginNewEvent(GameEvents.PlayerDefeat);
+        if(GameManager.instance)
+            GameManager.instance.BeginNewEvent(GameEvents.PlayerDefeat);
         ObjectPoolManager.Spawn(deathMask, transform.position, Quaternion.identity);
         Debug.Log("PlayerDied");
     }

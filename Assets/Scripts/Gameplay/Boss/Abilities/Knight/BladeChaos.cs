@@ -46,11 +46,20 @@ public class BladeChaos : BaseBossAbility
         attacksLeft--;
         canAttack = false;
         isAttacking = true;
+        owner.PlayAnimation("BladeChaos");
     }
     public void StopBladeCircus()
     {
         isAttacking = false;
-        owner.PlayAnimation("Idle");
+        eventListener.OnAnimEnd += EvaluateEnd;
+        owner.PlayAnimation("BladeChaosEnd");
+        
+
+    }
+
+    public void EvaluateEnd()
+    {
+        eventListener.OnAnimEnd -= EvaluateEnd;
         if (attacksLeft <= 0)
         {
             StopAllCoroutines();
@@ -64,7 +73,6 @@ public class BladeChaos : BaseBossAbility
             StopAllCoroutines();
             StartCoroutine(BeginRefreshAttack(attackRate));
         }
-
     }
 
     public void ShootProjectile()
