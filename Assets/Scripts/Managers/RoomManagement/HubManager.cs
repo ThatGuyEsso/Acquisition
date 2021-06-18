@@ -181,6 +181,7 @@ public class HubManager : MonoBehaviour
                 yield return null;
             }
             knightDoor.corridorID = RoomManager.instance.loadedRooms[RoomManager.instance.loadedRooms.Count - 1].ID();
+            AudioManager.instance.PlayThroughAudioPlayer("RoomSpawn", knightDoor.gameObject.transform.position); //plays sound when doors are opened
         }
         else
         {
@@ -199,6 +200,7 @@ public class HubManager : MonoBehaviour
                 yield return null;
             }
             elderDoor.corridorID = RoomManager.instance.loadedRooms[RoomManager.instance.loadedRooms.Count - 1].ID();
+            AudioManager.instance.PlayThroughAudioPlayer("RoomSpawn", elderDoor.gameObject.transform.position); //plays sound when doors are opened
         }
         else
         {
@@ -216,6 +218,7 @@ public class HubManager : MonoBehaviour
                 yield return null;
             }
             scholarDoor.corridorID = RoomManager.instance.loadedRooms[RoomManager.instance.loadedRooms.Count - 1].ID();
+            AudioManager.instance.PlayThroughAudioPlayer("RoomSpawn", scholarDoor.gameObject.transform.position); //plays sound when doors are opened
         }
         else
         {
@@ -227,8 +230,6 @@ public class HubManager : MonoBehaviour
 
     public IEnumerator SpawnWeapons()
     {
-      
-    
         if (weaponSpawners.Length > 0)
         {
             foreach (WeaponSpawner spawner in weaponSpawners)
@@ -271,7 +272,6 @@ public class HubManager : MonoBehaviour
             foreach (WeaponSpawner spawner in weaponSpawners)
             {
                 spawner.OnWeaponReplaced -= EvaluateWeaponReplaced;
-              
             }
         }
     }

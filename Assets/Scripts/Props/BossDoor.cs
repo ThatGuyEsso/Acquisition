@@ -40,7 +40,6 @@ public class BossDoor : MonoBehaviour
     {
         bossDoor.BeginToOpen();
     }
-
     public void CloseDoors()
     {
         bossDoor.BeginToClose();

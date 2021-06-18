@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 
+
 public class AudioManager : MonoBehaviour,IManager,IInitialisable
 {
     public Sound[] sounds;
@@ -49,7 +50,6 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
             soundGroups[i].source.loop = soundGroups[i].loop;
             soundGroups[i].source.outputAudioMixerGroup = soundGroups[i].mixerGroup;
         }
- 
     }
 
     public void PlayRandFromGroup(string groupName)
@@ -172,30 +172,42 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
     ///
     }
 
-    public void PlayThroughAudioPlayer(string name, Vector3 pos)
+    public void PlayThroughAudioPlayer(string name, Vector3 pos) //Function Spawns Audio player then players the sound
     {
-        if (ObjectPoolManager.instance)
+        if (ObjectPoolManager.instance) //check instance of object pool
         {
-            IAudio audio = ObjectPoolManager.Spawn(audioPlayer, pos, Quaternion.identity).GetComponent<IAudio>();
+            IAudio audio = ObjectPoolManager.Spawn(audioPlayer, pos, Quaternion.identity).GetComponent<IAudio>(); //Gets the audioplayer
+            if (audio != null)
+            {
+                audio.SetUpAudioSource(GetSound(name)); //set the Audio up
+                audio.Play(); //Then play 
+            }
+        }
+    }
+
+    public void PlayUISound(string name, Vector3 pos) //Function sets up UI Audio player then plays the sound
+    {
+        if (ObjectPoolManager.instance) //check instance
+        {
+            IAudio audio = ObjectPoolManager.Spawn(uiAudioPlayer, pos, Quaternion.identity).GetComponent<IAudio>(); //Get interface from spawned gameobject
             if (audio != null)
             {
                 audio.SetUpAudioSource(GetSound(name));
                 audio.Play();
             }
         }
+
     }
 
-    public void PlayUISound(string name, Vector3 pos)
+    public void PlaySoundAtRandomIntervals(float maxTime, float minTime, string soundName)
     {
-        if (ObjectPoolManager.instance)
-        {
-            IAudio audio = ObjectPoolManager.Spawn(uiAudioPlayer, pos, Quaternion.identity).GetComponent<IAudio>();
-            if (audio != null)
-            {
-                audio.SetUpAudioSource(GetSound(name));
-                audio.Play();
-            }
-        }
+        float num = UnityEngine.Random.Range(minTime, maxTime); //Gets random float
+        StartCoroutine(WaitToPlaySound(num, soundName)); 
     }
 
+    private IEnumerator WaitToPlaySound(float time, string sound) //waits for the time then plays the sound
+    {
+        yield return new WaitForSeconds(time);
+        PlayThroughAudioPlayer(sound, Vector3.zero);
+    }
 }

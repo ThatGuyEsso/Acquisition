@@ -58,10 +58,12 @@ public class SlidingDoor : MonoBehaviour
     {
         isOpening = true;
         isClosing = false;
+        AudioManager.instance.PlayThroughAudioPlayer("DoorOpen", transform.position); //sound to open door
     }
     public void BeginToClose()
     {
         isOpening = false;
         isClosing = true;
+        AudioManager.instance.PlayThroughAudioPlayer("DoorClose", transform.position); //sound to close door
     }
 }
