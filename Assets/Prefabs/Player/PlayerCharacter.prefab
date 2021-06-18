@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 6091688810172074442}
   - component: {fileID: 405417370}
   - component: {fileID: 446790289899539393}
+  - component: {fileID: 4844440243341176881}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -380,6 +381,21 @@ MonoBehaviour:
   knockBackMoveScalar: 4
   movement: {fileID: 0}
   deathMask: {fileID: 2983974149926587692, guid: 459c94b1d829c014c81306ca4c69dd5a, type: 3}
+--- !u!114 &4844440243341176881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8957915617564251558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d36c77da0576546ad0c2c7f3db9408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beginColour: {r: 1, g: 1, b: 1, a: 0}
+  endColour: {r: 1, g: 1, b: 1, a: 1}
+  flashSpeed: 50
 --- !u!114 &230482053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +447,10 @@ PrefabInstance:
       propertyPath: audioPlayerPrefab
       value: 
       objectReference: {fileID: 7269974362316107315, guid: 46c0e39677c3c754987ad4ead451f95e, type: 3}
+    - target: {fileID: 7733458594290553440, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9186f50b69a1c1848b8c2bf260da5517, type: 2}
     - target: {fileID: 7733458594290553442, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
       propertyPath: m_Name
       value: PlayerLegs
@@ -517,7 +537,7 @@ PrefabInstance:
     - target: {fileID: 526065134758007776, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 9186f50b69a1c1848b8c2bf260da5517, type: 2}
     - target: {fileID: 526065134758007777, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
       propertyPath: m_RootOrder
       value: 0

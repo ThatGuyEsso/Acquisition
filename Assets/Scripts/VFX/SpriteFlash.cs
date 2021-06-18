@@ -1,64 +1,82 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-
-public class SpriteFlash : MonoBehaviour
+public class SpriteFlash : MonoBehaviour, IInitialisable
 {
-    [Header("Materials and Shaders")]
-    private Sprite defaultSprite;
-    [SerializeField] private Sprite flashSprite;
+    [SerializeField] private Color beginColour;
+    [SerializeField] private Color endColour;
+    [SerializeField] private float flashSpeed = 0.5f;
 
-    [Header("Effect settings ")]
-    public float timeBeforeFlashShift;
-
-    private float currentFlashTime;
-    private bool isFlashing;
-    private SpriteRenderer spriteRenderer;
-
-    private void Awake()
+    private SpriteRenderer[] spriteRenderers;
+    private bool isFlashing = false;
+    private Color bColour;
+    private Color eColour;
+    private bool begining = true;
+    public void Init()
     {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        if(spriteRenderer)
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        foreach(SpriteRenderer sr in spriteRenderers)
         {
-            currentFlashTime = timeBeforeFlashShift;
-            defaultSprite = spriteRenderer.sprite;
+            sr.material.SetColor("_Tint", beginColour);
         }
-      
+        bColour = beginColour;
+        eColour = endColour;
+    }
+
+    public void Flash()
+    {
+        isFlashing = true;
+    }
+
+
+
+
+    private void FlashToEndColour()
+    {
+        bColour = Color.Lerp(bColour, endColour, flashSpeed * Time.deltaTime);
+
+        foreach (SpriteRenderer sr in spriteRenderers)
+            sr.material.SetColor("_Tint", bColour);
+
+        if (bColour == endColour)
+            begining = false;
+    }
+
+    private void FlashToBegining()
+    {
+        eColour = Color.Lerp(eColour, beginColour, flashSpeed * Time.deltaTime);
+
+        foreach (SpriteRenderer sr in spriteRenderers)
+            sr.material.SetColor("_Tint", eColour);
+
+        if(eColour == beginColour)
+        {
+            begining = true;
+            isFlashing = false;
+            bColour = beginColour;
+            eColour = endColour;
+        }
     }
 
     private void Update()
     {
-        if (isFlashing)
+        Keyboard kb = InputSystem.GetDevice<Keyboard>();
+        if(kb.spaceKey.wasPressedThisFrame)
         {
-            if (currentFlashTime <= 0)
-            {
-                if (spriteRenderer.sprite == flashSprite)
-                {
-                    spriteRenderer.sprite = defaultSprite;
-                }
-                else
-                {
-                    spriteRenderer.sprite = flashSprite;
-                }
-                currentFlashTime = timeBeforeFlashShift;
-            }
-            else
-            {
-                currentFlashTime -= Time.deltaTime;
-            }
+            Flash();
+        }
+
+        if(isFlashing)
+        {
+            if (begining == true)
+                FlashToEndColour();
+            else if (begining == false)
+                FlashToBegining();
         }
     }
 
 
-    public void BeginFlash()
-    {
-        isFlashing = true;
-        spriteRenderer.sprite = flashSprite;
-    }
-    public void EndFlash()
-    {
-        isFlashing = false;
-        spriteRenderer.sprite = defaultSprite;
-    }
 }
