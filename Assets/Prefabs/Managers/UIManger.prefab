@@ -54,6 +54,8 @@ MonoBehaviour:
     obj: {fileID: 6638367546987375257, guid: ff22c81c2a7412a4485edcedb04588f8, type: 3}
   - type: 1
     obj: {fileID: 3389722106641750471, guid: 37dbd2a678022a24c8c182e06b16ac6a, type: 3}
+  - type: 3
+    obj: {fileID: 1612116886706729807, guid: 36500fb42c4d3be4ab2e8310158cef08, type: 3}
   inDebug: 0
 --- !u!1 &5796233015514374145
 GameObject:

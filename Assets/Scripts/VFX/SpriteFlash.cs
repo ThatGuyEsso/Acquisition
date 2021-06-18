@@ -31,9 +31,6 @@ public class SpriteFlash : MonoBehaviour, IInitialisable
         isFlashing = true;
     }
 
-
-
-
     private void FlashToEndColour()
     {
         bColour = Color.Lerp(bColour, endColour, flashSpeed * Time.deltaTime);
@@ -63,11 +60,6 @@ public class SpriteFlash : MonoBehaviour, IInitialisable
 
     private void Update()
     {
-        Keyboard kb = InputSystem.GetDevice<Keyboard>();
-        if(kb.spaceKey.wasPressedThisFrame)
-        {
-            Flash();
-        }
 
         if(isFlashing)
         {
