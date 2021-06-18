@@ -502,9 +502,33 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ec4dd6ceec0cf0c459d9fd844f97d8e3, type: 2}
+    - target: {fileID: 526065134758007776, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -453438725913153679, guid: 5c30fc75a27791c4f93a2da81cdebb10, type: 3}
+    - target: {fileID: 526065134758007776, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526065134758007776, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526065134758007776, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 526065134758007777, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526065134758007777, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 526065134758007777, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 526065134758007777, guid: 0c0a535e31e0b854baa85787363fd508, type: 3}
       propertyPath: m_LocalPosition.x

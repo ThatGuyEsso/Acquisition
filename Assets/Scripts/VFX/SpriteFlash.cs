@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SpriteFlash : MonoBehaviour
 {
     [Header("Materials and Shaders")]
