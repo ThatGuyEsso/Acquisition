@@ -100,6 +100,14 @@ MonoBehaviour:
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0
+  - name: DungeonEcho
+    clip: {fileID: 8300000, guid: 20e57ad88d42d6b42926abbcbb398d3f, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0
   soundGroups: []
   uiGroup: {fileID: 0}
   soundEffectGroup: {fileID: 0}

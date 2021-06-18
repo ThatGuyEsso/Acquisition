@@ -6,6 +6,5 @@ public interface IAudio
 {
     void SetUpAudioSource(Sound sound);
     void Play();
-
     void PlayAtRandomPitch();
 }

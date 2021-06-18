@@ -10,12 +10,13 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
     public Sound[] sounds;
     public SoundGroup[] soundGroups;
     public static AudioManager instance;
- 
+    
     [SerializeField] private AudioMixerGroup uiGroup, soundEffectGroup;
 
     [Header("AudioPlayers")]
     [SerializeField] private GameObject audioPlayer;
     [SerializeField] private GameObject uiAudioPlayer;
+
     public void Init()
     {
         //Initialise Singleton Instance
@@ -50,6 +51,8 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
             soundGroups[i].source.loop = soundGroups[i].loop;
             soundGroups[i].source.outputAudioMixerGroup = soundGroups[i].mixerGroup;
         }
+
+        
     }
 
     public void PlayRandFromGroup(string groupName)
@@ -79,8 +82,6 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
         {
 
             currentSound.source.Play();
-
-
         }
         else
         {
@@ -181,6 +182,7 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
             {
                 audio.SetUpAudioSource(GetSound(name)); //set the Audio up
                 audio.Play(); //Then play 
+                
             }
         }
     }
@@ -199,15 +201,5 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
 
     }
 
-    public void PlaySoundAtRandomIntervals(float maxTime, float minTime, string soundName)
-    {
-        float num = UnityEngine.Random.Range(minTime, maxTime); //Gets random float
-        StartCoroutine(WaitToPlaySound(num, soundName)); 
-    }
 
-    private IEnumerator WaitToPlaySound(float time, string sound) //waits for the time then plays the sound
-    {
-        yield return new WaitForSeconds(time);
-        PlayThroughAudioPlayer(sound, Vector3.zero);
-    }
 }
