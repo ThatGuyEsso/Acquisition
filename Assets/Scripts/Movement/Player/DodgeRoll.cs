@@ -19,6 +19,12 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     [SerializeField] private float deceleration;
     [SerializeField] private List<Behaviour> inactiveComponentsDuringRoll =new List<Behaviour>();
     [SerializeField] private TDInputMovement tdMovement;
+
+    [SerializeField] private int invisibilityLayer;
+    [SerializeField] private int defaultLayer;
+    [SerializeField] private Animator dodgeAnimator;
+    [SerializeField] private GameObject topGFX;
+    [SerializeField] private GameObject legsGFX;
     private Controls input;
     private bool isInitialised;
     private bool isRolling;
@@ -32,6 +38,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     }
     public void Init()
     {
+        dodgeAnimator.gameObject.SetActive(false);
         canDodge = true;
         rb = GetComponent<Rigidbody2D>();
         //Inputs
@@ -92,6 +99,16 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
 
     public void DoDodgeRoll()
     {
+        dodgeAnimator.gameObject.SetActive(true);
+        topGFX.SetActive(false);
+        legsGFX.SetActive(false);
+        if (WeaponManager.instance)
+        {
+            WeaponManager.instance.ToggleWeapon(false);
+        }
+        if(dodgeAnimator)
+            dodgeAnimator.Play("DodgeRoll", 0, 0f);
+        gameObject.layer = invisibilityLayer;
         canDodge = false;
         if (tdMovement.GetMoveDirection() != Vector2.zero) rollDirection = tdMovement.GetMoveDirection().normalized;
         else rollDirection = transform.up;
@@ -128,6 +145,15 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         if(tdMovement.GetMoveDirection()==Vector2.zero)
             rb.velocity = Vector2.zero;
 
+        dodgeAnimator.gameObject.SetActive(false);
+        topGFX.SetActive(true);
+        legsGFX.SetActive(true);
+        gameObject.layer = defaultLayer;
+        if (WeaponManager.instance)
+        {
+            WeaponManager.instance.ToggleWeapon(true);
+        }
+    
         StartCoroutine(WaitToRefreshDodge());
     }
 

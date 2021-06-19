@@ -5,56 +5,74 @@ using UnityEngine.InputSystem;
 
 public class SpriteFlash : MonoBehaviour, IInitialisable
 {
-    [SerializeField] private Color beginColour;
-    [SerializeField] private Color endColour;
+    [SerializeField] private Color flashColour;
     [SerializeField] private float flashSpeed = 0.5f;
-
     private SpriteRenderer[] spriteRenderers;
     private bool isFlashing = false;
-    private Color bColour;
+    private Color currentFlashColour;
     private Color eColour;
     private bool begining = true;
+    private bool isEnding;
     public void Init()
     {
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
         foreach(SpriteRenderer sr in spriteRenderers)
         {
-            sr.material.SetColor("_Tint", beginColour);
+            sr.material.SetColor("_Tint", new Color(1.0f,1.0f,1.0f,0f));
         }
-        bColour = beginColour;
-        eColour = endColour;
+        currentFlashColour = flashColour;
+
     }
 
     public void Flash()
     {
         isFlashing = true;
+        isEnding = false;
+        foreach (SpriteRenderer sr in spriteRenderers)
+        {
+            sr.material.SetColor("_Tint", flashColour);
+        }
+    }
+
+    public void EndFlash()
+    {
+        isEnding = true;
     }
 
     private void FlashToEndColour()
     {
-        bColour = Color.Lerp(bColour, endColour, flashSpeed * Time.deltaTime);
+        currentFlashColour = Vector4.Lerp(currentFlashColour, new Vector4(currentFlashColour.r, currentFlashColour.b, currentFlashColour.g,0.0f), flashSpeed * Time.deltaTime);
 
         foreach (SpriteRenderer sr in spriteRenderers)
-            sr.material.SetColor("_Tint", bColour);
+            sr.material.SetColor("_Tint", currentFlashColour);
 
-        if (bColour == endColour)
-            begining = false;
+        if (Mathf.Abs(currentFlashColour.a) <=0.05f)
+        {
+            isEnding = false;
+            isFlashing = false;
+            foreach (SpriteRenderer sr in spriteRenderers)
+            {
+                sr.material.SetColor("_Tint", currentFlashColour);
+            }
+            currentFlashColour = flashColour;
+        }
+         
     }
 
     private void FlashToBegining()
     {
-        eColour = Color.Lerp(eColour, beginColour, flashSpeed * Time.deltaTime);
+        eColour = Color.Lerp(eColour, currentFlashColour, flashSpeed * Time.deltaTime);
 
         foreach (SpriteRenderer sr in spriteRenderers)
             sr.material.SetColor("_Tint", eColour);
 
-        if(eColour == beginColour)
+        if(eColour == currentFlashColour)
         {
             begining = true;
             isFlashing = false;
-            bColour = beginColour;
-            eColour = endColour;
+            currentFlashColour = currentFlashColour;
+        
         }
     }
 
@@ -63,10 +81,10 @@ public class SpriteFlash : MonoBehaviour, IInitialisable
 
         if(isFlashing)
         {
-            if (begining == true)
+            if (isEnding == true)
+            {
                 FlashToEndColour();
-            else if (begining == false)
-                FlashToBegining();
+            }
         }
     }
 

@@ -46,7 +46,15 @@ public class PlayerBehaviour : MonoBehaviour, IInitialisable
             case GameEvents.PlayerRespawned:
                 ResetCharacterComponents();
                 break;
+            case GameEvents.BossInit:
+                DisableCharacterComponents();
+                WeaponManager.instance.ToggleWeapon(false);
+                break;
 
+            case GameEvents.BossFightStarts:
+                EnableCharacterComponents();
+                WeaponManager.instance.ToggleWeapon(true);
+                break;
         }
     }
     public void Init()

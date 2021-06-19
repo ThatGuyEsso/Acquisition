@@ -122,4 +122,14 @@ public class WeaponManager : MonoBehaviour,IInitialisable
         OnWeaponEquipped?.Invoke(WeaponType.none);
     }
 
+
+    public void ToggleWeapon(bool isOn)
+    {
+        if (equippedWeapon != null)
+        {
+
+            if (isOn) equippedWeapon.EnableWeapon();
+            else equippedWeapon.DisableWeapon();
+        }
+    }
 }

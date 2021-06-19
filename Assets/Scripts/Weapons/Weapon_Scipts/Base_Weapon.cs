@@ -64,6 +64,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         boxCollider = GetComponentInChildren<BoxCollider2D>();
         SetCanFire(false);
         isInitialised=true;
+        DontDestroyOnLoad(gameObject);
     }
 
     protected virtual void PrimaryAttack()
@@ -187,5 +188,15 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         attackEvents.OnAnimEnd -= ResetSecondaryFire;
         isBusy = false;
        
+    }
+
+    public void DisableWeapon()
+    {
+        isWeaponActive = false;
+    }
+
+    public void EnableWeapon()
+    {
+        isWeaponActive = true;
     }
 }

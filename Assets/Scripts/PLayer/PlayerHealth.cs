@@ -11,20 +11,22 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     [SerializeField] private float knockBackMoveScalar=4f;
     [SerializeField] private TDInputMovement movement;
     [SerializeField] private GameObject deathMask;
+    [SerializeField] private SpriteFlash flashVFX;
     private float currHurtTime;
     private int currentHitPoint;
     private Rigidbody2D rb;
-    private bool isHurt = false;
-    Vector2 currentKnockBack;
+
     public Action OnHurt;
     public Action OnNotHurt;
     public Action OnDie;
+    bool isHurt;
     public void Init()
     {
         currentHitPoint = maxHitPoints;
         rb = GetComponent<Rigidbody2D>();
         currHurtTime = maxHurtTime;
-        currentKnockBack = Vector2.zero;
+        if (!flashVFX) flashVFX = GetComponent<SpriteFlash>();
+    
         movement = GetComponent<TDInputMovement>();
     }
 
@@ -45,10 +47,10 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
                 isHurt = true;
 
                 //currentKnockBack = kBackDir * kBackMag;
-
+                if (flashVFX) flashVFX.Flash();
                 OnHurt?.Invoke();
             }
-   
+            
 
         }
 
@@ -61,6 +63,8 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
             if(currHurtTime <= 0)
             {
                 isHurt = false;
+                if (flashVFX) flashVFX.EndFlash();
+                currHurtTime = maxHurtTime;
                 OnNotHurt?.Invoke();
             }
             else

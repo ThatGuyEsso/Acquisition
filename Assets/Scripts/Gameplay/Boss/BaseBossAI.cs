@@ -21,11 +21,11 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 {
 
     [Header("Settings")]
-
+    [SerializeField] protected SpriteFlash flashVFX;
     [SerializeField] protected string BossName;
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float aiTickRate= 0.25f;
-    [SerializeField] protected Transform target;
+    public Transform target;
     [SerializeField] protected BossStageData stageData;
     [SerializeField] protected GameObject bossUIPrefab;
     [SerializeField] protected string awakenAnimName;
@@ -50,7 +50,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     protected bool canLockOn=false;
     protected float currHurtTime;
     protected bool isHurt;
-    protected BossUI UI;
+    public BossUI UI;
     [SerializeField] protected GameObject transitionAbilityPrefab;
     [SerializeField] protected BaseBossAbility closeCombatAbility;
 
@@ -58,6 +58,9 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected bool isBusy = false;
     [SerializeField] protected bool inDebug=false;
     protected bool isFighting;
+
+
+    public System.Action OnAwakened; 
     protected void Awake()
     {
         if (inDebug) Init();
@@ -92,14 +95,36 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         {
             UI.InitialiseUI(BossName);
             UI.progressBar.SetMaxValue(maxHealth);
+         
             UI.OnUISpawned += AwakenBoss;
+        }
+
+        if (!flashVFX)
+        {
+            flashVFX = GetComponent<SpriteFlash>();
+            flashVFX.Init();
+        }
+        else
+        {
+            flashVFX.Init();
         }
     }
     public void AwakenBoss()
     {
         UI.OnUISpawned -= AwakenBoss;
-        attackAnimEvents.OnAnimEnd += BeginFight;
+        if (inDebug)
+            attackAnimEvents.OnAnimEnd += BeginFight;
+        else
+        {
+            attackAnimEvents.OnAnimEnd += CallAwake;
+        }
         animator.Play(awakenAnimName, 0, 0f);
+    }
+
+    public void CallAwake()
+    {
+        attackAnimEvents.OnAnimEnd -= CallAwake;
+        OnAwakened?.Invoke();
     }
     virtual public void BeginFight()
     {
@@ -113,7 +138,10 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 isBusy = false;
                 isFighting = true;
                 if (target)
+                {
+                    navigation.Init();  
                     navigation.StartAgent(target);
+                }
 
                 if (GameManager.instance)
                     GameManager.instance.BeginNewEvent(GameEvents.BossFightStarts);
@@ -316,6 +344,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 currentHealth = 0f;
                 UI.DoHurtUpdate(currentHealth);
             }
+            flashVFX.Flash();
             UI.DoHurtUpdate(currentHealth);
             EvaluateToTransition();
         }
@@ -328,6 +357,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         if(currHurtTime <= 0f)
         {
             isHurt = false;
+            flashVFX.EndFlash();
             currHurtTime = maxHurtTime;
         }
         else

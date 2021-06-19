@@ -11,6 +11,7 @@ public class SlidingDoor : MonoBehaviour
     [SerializeField] private Transform leftDoor, rightDoor;
     bool isOpening;
     bool isClosing;
+    public bool isInteractable =true;
 
 
 
@@ -84,14 +85,22 @@ public class SlidingDoor : MonoBehaviour
 
     public void BeginToOpen()
     {
-        isOpening = true;
-        isClosing = false;
-        AudioManager.instance.PlayThroughAudioPlayer("DoorOpen", transform.position); //sound to open door
+        if (isInteractable)
+        {
+            isOpening = true;
+            isClosing = false;
+            AudioManager.instance.PlayThroughAudioPlayer("DoorOpen", transform.position); //sound to open door
+        }
+     
     }
     public void BeginToClose()
     {
-        isOpening = false;
-        isClosing = true;
-        AudioManager.instance.PlayThroughAudioPlayer("DoorClose", transform.position); //sound to close door
+        if (isInteractable)
+        {
+            isOpening = false;
+            isClosing = true;
+            AudioManager.instance.PlayThroughAudioPlayer("DoorClose", transform.position); //sound to close door
+        }
+    
     }
 }

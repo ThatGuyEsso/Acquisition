@@ -9,6 +9,7 @@ public enum GameEvents
    WeaponsSpawned,
    WeaponPicked,
    BossRoomsSpawned,
+   BossInit,
    BossFightStarts,
    PlayerDefeat,
    DeathMaskComplete,
@@ -166,6 +167,12 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
                 OnNewEvent?.Invoke(lastEvent);
                 break;
             case GameEvents.RespawnPlayer:
+                //BeginResetLevel();
+                OnNewEvent?.Invoke(lastEvent);
+
+                break;
+
+            case GameEvents.BossInit:
                 //BeginResetLevel();
                 OnNewEvent?.Invoke(lastEvent);
 

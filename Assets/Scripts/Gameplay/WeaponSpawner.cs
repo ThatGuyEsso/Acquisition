@@ -15,6 +15,8 @@ public class WeaponSpawner : MonoBehaviour
     bool isWeaponAvailable;
     public Action<WeaponType> OnWeaponReplaced;
     [SerializeField] private bool inDebug;
+
+    public bool isInteractable=false;
     private void Awake()
     {
         pickupGFX.gameObject.SetActive(false);
@@ -23,7 +25,10 @@ public class WeaponSpawner : MonoBehaviour
         if (inDebug)
         {
             SpawnWeapon();
+            isInteractable = true;
         }
+
+      
     }
 
     public void ToggleWeaponAvailable(bool isAvailable)
@@ -39,7 +44,7 @@ public class WeaponSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isWeaponAvailable && other.CompareTag("Player")){
+        if (isWeaponAvailable && other.CompareTag("Player")&&isInteractable){
             if(WeaponManager.instance.equippedWeapon != null)
             {
                 if (WeaponManager.instance.equippedWeapon.GetWeaponType() != type)
@@ -98,7 +103,19 @@ public class WeaponSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(weapon)
-            ObjectPoolManager.Recycle(weapon.gameObject);
+        if (WeaponManager.instance&&WeaponManager.instance.equippedWeapon!=null)
+        {
+            if(weapon.GetType() != WeaponManager.instance.equippedWeapon.GetType())
+            {
+                if (weapon)
+                    ObjectPoolManager.Recycle(weapon.gameObject);
+            }
+        }
+        else
+        {
+            if (weapon)
+                ObjectPoolManager.Recycle(weapon.gameObject);
+        }
+
     }
 }

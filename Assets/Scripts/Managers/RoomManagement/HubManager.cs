@@ -105,7 +105,7 @@ public class HubManager : MonoBehaviour
                 while (isLoadingRoom) yield return null;
 
                 manager= FindObjectOfType<BossRoomManager>();
-                if (manager) manager.Init();
+                if (manager) manager.SetUpDoors();
                 break;
             case BossType.Elder:
                 knightDoor.SetIsDoor(false);
@@ -124,7 +124,7 @@ public class HubManager : MonoBehaviour
                 while (isLoadingRoom) yield return null;
 
                 manager = FindObjectOfType<BossRoomManager>();
-                if (manager) manager.Init();
+                if (manager) manager.SetUpDoors();
                 break;
             case BossType.Scholar:
                 knightDoor.SetIsDoor(false);
@@ -144,7 +144,7 @@ public class HubManager : MonoBehaviour
                 while (isLoadingRoom) yield return null;
 
                 manager = FindObjectOfType<BossRoomManager>();
-                if (manager) manager.Init();
+                if (manager) manager.SetUpDoors();
                 break;
         }
     }
@@ -176,6 +176,7 @@ public class HubManager : MonoBehaviour
         if (!runTimeData.isKnightDefeated)
         {
             knightDoor.SetIsDoor(true);
+            knightDoor.SetIsInteractable(false);
             isLoadingRoom = true;
             RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
             RoomManager.instance.BeginLoadInNewSceneAt(knightDoor.corridorSpawn.position, SceneIndex.LongCorridorLeft);
@@ -196,6 +197,7 @@ public class HubManager : MonoBehaviour
         if (!runTimeData.isElderDefeated)
         {
             elderDoor.SetIsDoor(true);
+            elderDoor.SetIsInteractable(false);
             isLoadingRoom = true;
             RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
             RoomManager.instance.BeginLoadInNewSceneAt(elderDoor.corridorSpawn.position, SceneIndex.LongCorridor);
@@ -214,6 +216,7 @@ public class HubManager : MonoBehaviour
         if (!runTimeData.isScholarDefeated)
         {
             scholarDoor.SetIsDoor(true);
+            scholarDoor.SetIsInteractable(false);
             isLoadingRoom = true;
             RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
             RoomManager.instance.BeginLoadInNewSceneAt(scholarDoor.corridorSpawn.position, SceneIndex.LongCorridorRight);
@@ -228,7 +231,9 @@ public class HubManager : MonoBehaviour
         {
             scholarDoor.SetIsDoor(false);
         }
-
+        knightDoor.SetIsInteractable(knightDoor.GetIsDoor());
+        elderDoor.SetIsInteractable(elderDoor.GetIsDoor());
+        scholarDoor.SetIsInteractable(scholarDoor.GetIsDoor());
         GameManager.instance.BeginNewEvent(GameEvents.BossRoomsSpawned);
     }
 
@@ -241,6 +246,10 @@ public class HubManager : MonoBehaviour
                 spawner.SpawnWeapon();
                 spawner.OnWeaponReplaced += EvaluateWeaponReplaced;
                 yield return new WaitForSeconds(spawnDelay);
+            }
+            foreach (WeaponSpawner spawner in weaponSpawners)
+            {
+                spawner.isInteractable=true;
             }
         }
 

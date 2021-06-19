@@ -121,6 +121,40 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         loadedRooms.Clear();
         OnAllRoomsCleared?.Invoke();
     }
+
+    public void ClearAllRoomNotInSet(List<string> roomsToKeep)
+    {
+
+        List<string> roomsToRemove = new List<string>();
+
+
+        foreach(LevelRoom room in loadedRooms)
+        {
+            bool addToClearList=true;
+
+            for(int i= 0; i < roomsToKeep.Count; i++)
+            {
+                if(room.ID() == roomsToKeep[i])
+                {
+                    addToClearList = false;
+                }
+
+            }
+
+            if (addToClearList)
+            {
+                roomsToRemove.Add(room.ID());
+            }
+        }
+
+
+        foreach(string ID in roomsToRemove)
+        {
+            RemoveRoom(ID);
+        }
+    }
+
+
     public IEnumerator LoadStartingRooms()
     {
         for(int i=0; i < startingRooms.Length; i++)
@@ -172,6 +206,8 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         SceneTransitionManager.instance.BeginSceneUnLoad(room.gameObject.scene);
     }
 
+
+ 
     public Transform GetSpawn()
     {
         LevelRoom spawnRoom = loadedRooms.Find(room => room.GetRoomType() == RoomType.SpawnRoom);
