@@ -25,7 +25,7 @@ MonoBehaviour:
     attackRate: 4
     coolDown: 6
     attackRange: 15
-    isManagingBossAttack: 0
+    isManagingBossAttack: 1
     isPriority: 0
     isSuperCloseRange: 0
     abilityPrefab: {fileID: 8769350043832397293, guid: a36765750d3e9eb4198e8b008f11148e, type: 3}
@@ -34,7 +34,7 @@ MonoBehaviour:
     attackRate: 3
     coolDown: 10
     attackRange: 15
-    isManagingBossAttack: 0
+    isManagingBossAttack: 1
     isPriority: 1
     isSuperCloseRange: 0
     abilityPrefab: {fileID: 8769350043832397293, guid: a36765750d3e9eb4198e8b008f11148e, type: 3}
@@ -67,7 +67,7 @@ MonoBehaviour:
     attackRate: 0
     coolDown: 10
     attackRange: 20
-    isManagingBossAttack: 1
+    isManagingBossAttack: 0
     isPriority: 1
     isSuperCloseRange: 0
     abilityPrefab: {fileID: 3382950496971785111, guid: a723b43fe1352b54a84a88fc354fca1e, type: 3}
@@ -75,7 +75,7 @@ MonoBehaviour:
     attackRate: 2
     coolDown: 5
     attackRange: 20
-    isManagingBossAttack: 0
+    isManagingBossAttack: 1
     isPriority: 1
     isSuperCloseRange: 0
     abilityPrefab: {fileID: 8769350043832397293, guid: a36765750d3e9eb4198e8b008f11148e, type: 3}

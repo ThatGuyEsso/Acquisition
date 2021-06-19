@@ -78,7 +78,7 @@ MonoBehaviour:
   attackRate: 2
   coolDown: 10
   attackRange: 20
-  isManagingBossAttack: 1
+  isManagingBossAttack: 0
   isPriority: 1
   isSuperCloseRange: 0
   attackAnimationName: BladeChaosBuild

@@ -6,6 +6,8 @@ public class SlidingDoor : MonoBehaviour
 {
     [SerializeField] private float maxOpenDistance;
     [SerializeField] private float openSpeed;
+    [SerializeField] private bool isVertical;
+    [SerializeField] private bool isReversed;
     [SerializeField] private Transform leftDoor, rightDoor;
     bool isOpening;
     bool isClosing;
@@ -44,12 +46,38 @@ public class SlidingDoor : MonoBehaviour
             rightDoor.transform.position -= transform.right * Time.deltaTime * openSpeed;
 
             leftDoor.transform.position += transform.right * Time.deltaTime * openSpeed;
-            if (rightDoor.position.x <= rightDoorClosedPos.x && leftDoor.position.x >= leftDoorClosedPos.x)
+            if (!isVertical)
             {
-                isClosing = false;
-                rightDoor.position = rightDoorClosedPos;
-                leftDoor.position = leftDoorClosedPos;
+                if (rightDoor.position.x <= rightDoorClosedPos.x && leftDoor.position.x >= leftDoorClosedPos.x)
+                {
+                    isClosing = false;
+                    rightDoor.position = rightDoorClosedPos;
+                    leftDoor.position = leftDoorClosedPos;
+                }
             }
+            else
+            {
+                if (!isReversed)
+                {
+                    if (rightDoor.position.y <= rightDoorClosedPos.y && leftDoor.position.y >= leftDoorClosedPos.y)
+                    {
+                        isClosing = false;
+                        rightDoor.position = rightDoorClosedPos;
+                        leftDoor.position = leftDoorClosedPos;
+                    }
+                }
+                else
+                {
+                    if (rightDoor.position.y >= rightDoorClosedPos.y && leftDoor.position.y <= leftDoorClosedPos.y)
+                    {
+                        isClosing = false;
+                        rightDoor.position = rightDoorClosedPos;
+                        leftDoor.position = leftDoorClosedPos;
+                    }
+                }
+      
+            }
+   
         }
 
     }

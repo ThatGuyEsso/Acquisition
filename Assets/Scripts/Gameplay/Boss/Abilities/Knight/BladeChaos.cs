@@ -19,7 +19,7 @@ public class BladeChaos : BaseBossAbility
     {
         if (isAttacking)
         {
-            owner.transform.Rotate(new Vector3(0f, 0f, Time.deltaTime * rotationRate));
+            owner.transform.Rotate(new Vector3(0f, 0f, -Time.deltaTime * rotationRate));
             if (curretAttackTime > 0)
             {
                 curretAttackTime -= Time.deltaTime;

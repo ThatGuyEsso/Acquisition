@@ -178,7 +178,7 @@ public class HubManager : MonoBehaviour
             knightDoor.SetIsDoor(true);
             isLoadingRoom = true;
             RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
-            RoomManager.instance.BeginLoadInNewSceneAt(knightDoor.corridorSpawn.position, SceneIndex.LongCorridor);
+            RoomManager.instance.BeginLoadInNewSceneAt(knightDoor.corridorSpawn.position, SceneIndex.LongCorridorLeft);
 
             while (isLoadingRoom)
             {
@@ -216,7 +216,7 @@ public class HubManager : MonoBehaviour
             scholarDoor.SetIsDoor(true);
             isLoadingRoom = true;
             RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
-            RoomManager.instance.BeginLoadInNewSceneAt(scholarDoor.corridorSpawn.position, SceneIndex.LongCorridor);
+            RoomManager.instance.BeginLoadInNewSceneAt(scholarDoor.corridorSpawn.position, SceneIndex.LongCorridorRight);
             while (isLoadingRoom)
             {
                 yield return null;

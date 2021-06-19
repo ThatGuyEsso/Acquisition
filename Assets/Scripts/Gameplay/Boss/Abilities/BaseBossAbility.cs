@@ -58,6 +58,7 @@ public class BaseBossAbility : MonoBehaviour, IInitialisable
     {
         yield return new WaitForSeconds(time);
         ResetAttack();
+        Debug.Log("Reset Attacks");
     }
     public void ResetAbility()
     {

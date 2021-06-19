@@ -14,5 +14,7 @@ public enum SceneIndex
     LongCorridor =7,
     BossRoomKnight = 8,
     BossRoomElder = 9,
-    BossRoomScholar = 10
+    BossRoomScholar = 10,
+    LongCorridorLeft = 11,
+    LongCorridorRight = 12
 };

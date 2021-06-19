@@ -66,7 +66,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     {
         currentHealth = maxHealth;
         currentAttackIndex = 0;
-        currentStage = BossStage.Initial;
+        currentStage = BossStage.Transition;
         currentStageIndex = 0;
         currentAIState = AIState.Chase;
         currHurtTime = maxHurtTime;
@@ -105,8 +105,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     {
             if (isInitialised)
             {
-
                 attackAnimEvents.OnAnimEnd -= BeginFight;
+                currentStage = BossStage.Initial;   
                 SetUpNextStage();
                 ToggleCanAttack(true);
                 InvokeRepeating("ProcessAI", 0.0f, aiTickRate);

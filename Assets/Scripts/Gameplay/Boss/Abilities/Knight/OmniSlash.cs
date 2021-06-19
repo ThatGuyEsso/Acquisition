@@ -6,9 +6,12 @@ public class OmniSlash : BaseBossAbility
 {
 
     [SerializeField] protected GameObject projectilePrefab;
+    [SerializeField] protected GameObject attackZonePrefab;
     [SerializeField] protected float projectileLifeTime;
     [SerializeField] protected int projectileBlockCount;
 
+
+    protected AttackVolume attackZone;
 
     public override void Init()
     {
@@ -20,10 +23,46 @@ public class OmniSlash : BaseBossAbility
     {
         canAttack = false;
         attacksLeft--;
-        GameObject projectile = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
-        projectile.GetComponent<IInitialisable>().Init();
-        projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up, 0.0f, projectileLifeTime, projectileBlockCount, owner.gameObject);
+        eventListener.OnShowAttackZone -= DoOmniSlash;
+        eventListener.OnShootProjectile += SpawnSlashProjectile;
+        eventListener.OnHideAttackZone += RemoveAttackZone;
+        CreateAttackZone();
+        owner.PlayAnimation("OmniSlash");
 
+
+    }
+
+    public void CreateAttackZone()
+    {
+        if (attackZonePrefab)
+        {
+
+            attackZone = ObjectPoolManager.Spawn(attackZonePrefab, owner.transform.position, Quaternion.identity).GetComponent<AttackVolume>();
+            if (attackZone)
+            {
+                attackZone.SetIsPlayerZone(false);
+                attackZone.SetUpDamageVolume(1f, 10f, owner.transform.up, owner.gameObject);
+
+            }
+        }
+    }
+
+
+    public void RemoveAttackZone()
+    {
+        if (attackZone)
+        {
+            ObjectPoolManager.Recycle(attackZone.gameObject);
+            attackZone = null;
+        }
+        eventListener.OnShootProjectile -= SpawnSlashProjectile;
+        eventListener.OnHideAttackZone -= RemoveAttackZone;
+        eventListener.OnAnimEnd += EvaluateAttack;
+        owner.PlayAnimation("BladeChaosEnd");
+    }
+    public void EvaluateAttack()
+    {
+        eventListener.OnAnimEnd -= EvaluateAttack;
         if (attacksLeft <= 0)
         {
             StopAllCoroutines();
@@ -36,6 +75,17 @@ public class OmniSlash : BaseBossAbility
             StopAllCoroutines();
             StartCoroutine(BeginRefreshAttack(attackRate));
         }
+    }
+
+
+    public void SpawnSlashProjectile()
+    {
+        if (ObjectPoolManager.instance)
+        {
+            GameObject projectile = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
+            projectile.GetComponent<IInitialisable>().Init();
+            projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up, 0.0f, projectileLifeTime, projectileBlockCount, owner.gameObject);
+        }
 
     }
     public override void EnableAbility()
@@ -46,7 +96,7 @@ public class OmniSlash : BaseBossAbility
         {
             eventListener.OnAnimEnd += DisableAbility;
         }
-        eventListener.OnShootProjectile += DoOmniSlash;
+        eventListener.OnShowAttackZone += DoOmniSlash;
 
 
     }

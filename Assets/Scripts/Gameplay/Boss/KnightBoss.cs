@@ -43,7 +43,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                 }
                 break;
             case AIState.Attack:
-                if(currentStage != BossStage.Transition&&transitionAbility)
+                if(currentStage != BossStage.Transition)
                 {
                     if (!InRange())
                     {
@@ -82,18 +82,18 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
         {
             HurTimer();
         }
-        switch (currentAIState)
-        {
-            case AIState.Idle:
-                break;
-            case AIState.Chase:
+        //switch (currentAIState)
+        //{
+        //    case AIState.Idle:
+        //        break;
+        //    case AIState.Chase:
              
-                break;
-            case AIState.Attack:
+        //        break;
+        //    case AIState.Attack:
         
 
-                break;
-        }
+        //        break;
+        //}
     }
     private void LateUpdate()
     {
@@ -126,14 +126,15 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                 case AIState.Idle:
                     navigation.enabled = false;
                     faceTarget.enabled = false;
-                    animator.Play("Idle",0,0f);
+                    animator.Play("Idle");
                     break;
                 case AIState.Chase:
                     navigation.enabled = true;
                     faceTarget.enabled = false;
                     if (target)
                         navigation.StartAgent(target);
-                    animator.Play("Walking", 0, 0f);
+                   
+                    animator.Play("Walking");
                     break;
                 case AIState.Attack:
                     navigation.Stop();
@@ -146,7 +147,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                         {
                             if (closeCombatAbility)
                             {
-                                if (InCloseRange() && closeCombatAbility.CanAttack())
+                                if (InCloseRange() && closeCombatAbility.CanAttack()&&!isBusy)
                                 {
                                     DoCloseQuarters();
                                 }
