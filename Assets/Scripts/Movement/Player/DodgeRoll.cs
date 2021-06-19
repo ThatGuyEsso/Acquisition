@@ -203,6 +203,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     public void DisableComponent()
     {
         input.Disable();
+        EndRoll();
         StopAllCoroutines();
     }
 

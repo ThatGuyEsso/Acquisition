@@ -70,6 +70,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
                 RoomManager.instance.ClearAllRoomNotInSet(roomsToKeep);
             }
+            entranceDoor.ToggleLock(true);
             InitRoom();
         }
         else
