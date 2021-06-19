@@ -15,14 +15,21 @@ public class PlayerWalkAnimHandler : MonoBehaviour
     }
     public void OnPlayerWalk()
     {
-        animator.SetFloat("PlaySpeed", 1f);
-        animator.Play("Run");
+        if (animator.isActiveAndEnabled)
+        {
+            animator.SetFloat("PlaySpeed", 1f);
+            animator.Play("Run");
+        }
+
 
     }
 
     public void OnStopWalk()
     {
-        animator.SetFloat("PlaySpeed", 0f);
+        if (animator.isActiveAndEnabled)
+        {
+            animator.SetFloat("PlaySpeed", 0f);
+        }
     }
 
     public void OnStep()

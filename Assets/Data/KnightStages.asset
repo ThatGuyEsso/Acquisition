@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialStageAbilities:
   - maxAttackCount: 3
-    attackRate: 2
+    attackRate: 1
     coolDown: 5
     attackRange: 5
     isManagingBossAttack: 0
@@ -31,19 +31,19 @@ MonoBehaviour:
     abilityPrefab: {fileID: 8769350043832397293, guid: a36765750d3e9eb4198e8b008f11148e, type: 3}
   middleStageAbilities:
   - maxAttackCount: 3
-    attackRate: 3
-    coolDown: 10
+    attackRate: 1.5
+    coolDown: 5
     attackRange: 15
     isManagingBossAttack: 1
     isPriority: 1
     isSuperCloseRange: 0
     abilityPrefab: {fileID: 8769350043832397293, guid: a36765750d3e9eb4198e8b008f11148e, type: 3}
   - maxAttackCount: 5
-    attackRate: 1
+    attackRate: 0.5
     coolDown: 5
     attackRange: 5
     isManagingBossAttack: 0
-    isPriority: 0
+    isPriority: 1
     isSuperCloseRange: 0
     abilityPrefab: {fileID: 8290753865192258739, guid: 96c9357e396e2fa4e8f64833d94b39ce, type: 3}
   - maxAttackCount: 2
@@ -56,7 +56,7 @@ MonoBehaviour:
     abilityPrefab: {fileID: 2896135866123084262, guid: 0a7c9ae7f419491478a474e075c967d2, type: 3}
   finalStageAbiilities:
   - maxAttackCount: 5
-    attackRate: 0.5
+    attackRate: 0.15
     coolDown: 5
     attackRange: 5
     isManagingBossAttack: 0

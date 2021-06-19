@@ -151,7 +151,7 @@ public class HubManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")&&!hasTriggered){
-            Debug.Log("Player seen ");
+     
             if (runTimeData.hasWeapon == false)
             {
                 Debug.Log("Player has no weapons");

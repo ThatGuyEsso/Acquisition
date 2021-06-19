@@ -43,6 +43,11 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
                //
 
                 break;
+
+            case GameEvents.PlayerDefeat:
+                Boss.OnNewState(AIState.Idle);
+
+                break;
         }
     }
 
@@ -65,7 +70,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
                 RoomManager.instance.ClearAllRoomNotInSet(roomsToKeep);
             }
-            StartCoroutine(BuildNavMesh());
+            InitRoom();
         }
         else
         {
@@ -75,7 +80,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
     public void InitRoom()
     {
-
+        Boss.target = player;
         if (GameManager.instance)
             GameManager.instance.BeginNewEvent(GameEvents.BossInit);
 
@@ -89,7 +94,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
        AsyncOperation navBuild= navMesh.BuildNavMeshAsync();
         while (!navBuild.isDone) yield return null;
 
-        Boss.target = player;
+    
 
         InitRoom();
     }

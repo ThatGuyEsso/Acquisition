@@ -63,7 +63,8 @@ public class TopPlayerGFXSolver : MonoBehaviour, IInitialisable
 
     public void PlayAnimation(string animName)
     {
-        animator.Play(animName);
+        if(animator)
+           animator.Play(animName);
     }
     public void PlayAnimationFromStart(string animName)
     {

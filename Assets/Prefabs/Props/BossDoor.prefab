@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854745561744966}
   - component: {fileID: 3565854745561744967}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854745857377618}
   - component: {fileID: 3565854745857377619}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854745880632201}
   - component: {fileID: 3565854745880632202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854745888287369}
   - component: {fileID: 3565854745888287370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rightWall
   m_TagString: Wall
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -447,7 +447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854746290401551}
   - component: {fileID: 3565854746290401536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 3565854746540659508}
   - component: {fileID: 3565854746540659509}
   - component: {fileID: 5317323888654938154}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExitCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,6 +696,11 @@ MonoBehaviour:
   isReversed: 0
   leftDoor: {fileID: 3565854747254880796}
   rightDoor: {fileID: 3565854747149629981}
+  isInteractable: 0
+  leftDoorClosedPos: {x: 0, y: 0}
+  rightDoorClosedPos: {x: 0, y: 0}
+  leftDoorOpenPos: {x: 0, y: 0}
+  rightDoorOpenPos: {x: 0, y: 0}
 --- !u!1 &3565854747149629980
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,7 +711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854747149629981}
   - component: {fileID: 3565854747149629982}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightDoor
   m_TagString: Wall
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -764,7 +769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854747254499248}
   - component: {fileID: 3565854747254499249}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leftWall
   m_TagString: Wall
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -822,7 +827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854747254880796}
   - component: {fileID: 3565854747254880797}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftDoor
   m_TagString: Wall
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}

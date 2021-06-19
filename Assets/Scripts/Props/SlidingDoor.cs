@@ -15,14 +15,16 @@ public class SlidingDoor : MonoBehaviour
 
 
 
-    Vector2 leftDoorClosedPos, rightDoorClosedPos;
-    Vector2 leftDoorOpenPos, rightDoorOpenPos;
+    [SerializeField] Vector2 leftDoorClosedPos, rightDoorClosedPos;
+    [SerializeField] Vector2 leftDoorOpenPos, rightDoorOpenPos;
     public void SetUpDoor()
     {
         leftDoorClosedPos = leftDoor.transform.position;
         rightDoorClosedPos = rightDoor.transform.position;
+  
         leftDoorOpenPos = leftDoor.transform.position - transform.right * maxOpenDistance;
         rightDoorOpenPos = rightDoor.transform.position + transform.right * maxOpenDistance;
+
     }
 
 
@@ -36,12 +38,41 @@ public class SlidingDoor : MonoBehaviour
             rightDoor.transform.position += transform.right * Time.deltaTime * openSpeed;
 
             leftDoor.transform.position -= transform.right * Time.deltaTime * openSpeed;
-            if (rightDoor.position.x >= rightDoorOpenPos.x && leftDoor.position.x <= leftDoorOpenPos.x)
+
+            if (!isVertical)
             {
-                isOpening = false;
-                rightDoor.position = rightDoorOpenPos;
-                leftDoor.position = leftDoorOpenPos;
+                if (rightDoor.position.x >= rightDoorOpenPos.x && leftDoor.position.x <= leftDoorOpenPos.x)
+                {
+                    isOpening = false;
+                    rightDoor.position = rightDoorOpenPos;
+                    leftDoor.position = leftDoorOpenPos;
+                }
             }
+            else
+            {
+                if (!isReversed)
+                {
+                    if (rightDoor.position.y >= rightDoorOpenPos.y && leftDoor.position.y <= leftDoorOpenPos.y)
+                    {
+                        isOpening = false;
+                        rightDoor.position = rightDoorOpenPos;
+                        leftDoor.position = leftDoorOpenPos;
+                    }
+                }
+                else
+                {
+                    if (rightDoor.position.y <= rightDoorOpenPos.y && leftDoor.position.y >= leftDoorOpenPos.y)
+                    {
+                        isOpening = false;
+                        rightDoor.position = rightDoorOpenPos;
+                        leftDoor.position = leftDoorOpenPos;
+                    }
+                }
+            }
+    
+
+
+
         }else if (isClosing)
         {
             rightDoor.transform.position -= transform.right * Time.deltaTime * openSpeed;

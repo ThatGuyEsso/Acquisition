@@ -225,4 +225,27 @@ public class Sword_Weapon : Base_Weapon
         StartCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
         Debug.Log("Not busy");
     }
+
+    public override void DisableWeapon()
+    {
+        base.DisableWeapon();
+        StopAllCoroutines();
+        attackEvents.OnShowAttackZone -= CreateSecondaryAttackCollider;
+        attackEvents.OnHideAttackZone -= DestroyAttackZone;
+        attackEvents.OnShootProjectile -= OnFireSecondaryProjectile;
+        attackEvents.OnAnimEnd -= ResetSecondaryFire;
+
+
+        attackEvents.OnShowAttackZone -= CreateAttackCollider;
+        attackEvents.OnHideAttackZone -= DestroyAttackZone;
+        attackEvents.OnShootProjectile -= OnFireProjectile;
+        attackEvents.OnAnimEnd -= ResetPrimaryFire;
+    }
+
+    public override void EnableWeapon()
+    {
+        base.EnableWeapon();
+        if (!canPrimaryFire) ResetPrimaryFire();
+        if (!canSecondaryFire) ResetSecondaryFire();
+    }
 }

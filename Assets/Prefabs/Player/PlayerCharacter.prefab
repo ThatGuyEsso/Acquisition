@@ -183,7 +183,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9186f50b69a1c1848b8c2bf260da5517, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,7 +205,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6392157}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -385,7 +385,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashColour: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 4
-  spriteRenderers: []
 --- !u!114 &806927797407984219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,11 +496,12 @@ MonoBehaviour:
   maxRollSpeed: 25
   dodgeCooldown: 1
   canDodge: 0
-  rollTime: 0.5
+  rollTime: 0.3
   acceleration: 50
   deceleration: 100
   inactiveComponentsDuringRoll:
   - {fileID: 8957915617564251555}
+  - {fileID: 8957915617564251549}
   tdMovement: {fileID: 8957915617564251555}
   invisibilityLayer: 9
   defaultLayer: 10

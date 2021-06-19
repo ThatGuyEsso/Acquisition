@@ -84,16 +84,27 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     }
     private void OnEnable()
     {
-        if (isInitialised) input.Enable();
+        if (isInitialised)
+        {
+            if(input!=null)
+                input.Enable();
+            if (!canDodge) ResetDodge();
+        }
+
     }
 
     private void OnDisable()
     {
-        if (isInitialised) input.Disable();
+        if (isInitialised)
+        {
+            if (input != null)
+                input.Disable();
+            StopAllCoroutines();
+        }
     }
     private void OnDestroy()
     {
-        if (isInitialised) input.Disable();
+        if (isInitialised&&input != null) input.Disable();
     }
 
 
@@ -117,7 +128,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         else rollEndSpeed = 0f;
         ToggleComponents(false);
         isRolling = true;
-
+        OrientateToMovement();
         StartCoroutine(RollTimer());
 
 
@@ -130,7 +141,9 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     }
     public void EndRoll()
     {
-
+   
+        WeaponManager.instance.ToggleWeapon(true);
+        
         ToggleComponents(true);
         tdMovement.SetCurrentSpeed(rollEndSpeed);
         isRolling = false;
@@ -149,10 +162,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         topGFX.SetActive(true);
         legsGFX.SetActive(true);
         gameObject.layer = defaultLayer;
-        if (WeaponManager.instance)
-        {
-            WeaponManager.instance.ToggleWeapon(true);
-        }
+
     
         StartCoroutine(WaitToRefreshDodge());
     }
@@ -204,4 +214,13 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         currentSpeed =0f;
         canDodge = true;
     }
+    public void OrientateToMovement()
+    {
+
+        float targetAngle = EssoUtility.GetAngleFromVector((rb.velocity.normalized));
+        /// turn offset -Due to converting between forward vector and up vector
+        if (targetAngle < 0) targetAngle += 360f;
+        transform.rotation = Quaternion.Euler(0.0f, 0f, targetAngle - 90f);
+    }
+ 
 }

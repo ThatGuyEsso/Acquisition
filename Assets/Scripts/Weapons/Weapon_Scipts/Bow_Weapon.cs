@@ -87,8 +87,8 @@ public class Bow_Weapon : Base_Weapon
         if (!isInitialised)
         {
             Init();
-            inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
-            inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
+            inputAction.Attack.PrimaryAttack.started += ctx => PrimaryAttack();
+            inputAction.Attack.SecondaryAttack.started += ctx => SecondaryAttack();
             inputAction.Attack.SecondaryAttack.canceled += ctx => EvaluateChargeShot();
             inputAction.Attack.PrimaryAttack.canceled += ctx => OnPrimaryReleased();
         }

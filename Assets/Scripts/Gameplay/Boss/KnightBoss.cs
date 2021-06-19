@@ -115,7 +115,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
         }
     }
 
-    override protected void OnNewState(AIState newState)
+    override public void OnNewState(AIState newState)
     {
         if (!isFighting) return;
         if (!isBusy)

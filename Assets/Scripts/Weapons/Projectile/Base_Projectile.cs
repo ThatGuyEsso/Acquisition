@@ -54,7 +54,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         if (other.gameObject.CompareTag("Player"))
         {
 
-            if (other.gameObject != owner)
+            if (other.gameObject != owner&&owner!=null)
             {
                 if (other.GetComponent<IDamage>()!=null)
                 {

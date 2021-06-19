@@ -190,12 +190,12 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
        
     }
 
-    public void DisableWeapon()
+    virtual public void DisableWeapon()
     {
         isWeaponActive = false;
     }
 
-    public void EnableWeapon()
+    virtual public void EnableWeapon()
     {
         isWeaponActive = true;
     }

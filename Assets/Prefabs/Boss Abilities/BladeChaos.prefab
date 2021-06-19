@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAttackCount: 1
-  attackRate: 2
+  attackRate: 0.4
   coolDown: 10
   attackRange: 20
   isManagingBossAttack: 0

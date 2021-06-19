@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     [SerializeField] private SpriteFlash flashVFX;
     private float currHurtTime;
     private int currentHitPoint;
-    private Rigidbody2D rb;
+    private bool isDead = false;
 
     public Action OnHurt;
     public Action OnNotHurt;
@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     public void Init()
     {
         currentHitPoint = maxHitPoints;
-        rb = GetComponent<Rigidbody2D>();
+     
         currHurtTime = maxHurtTime;
         if (!flashVFX) flashVFX = GetComponent<SpriteFlash>();
     
@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
 
     public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
-        if (!isHurt)
+        if (!isHurt&&!isDead)
         {
             if (CamShake.instance)
                 CamShake.instance.DoScreenShake(0.25f, 5f, 0.05f, 0.5f, 5f);
@@ -98,11 +98,13 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     }
     public void KillPlayer()
     {
+        isDead = true;
         OnDie?.Invoke();
         if(GameManager.instance)
             GameManager.instance.BeginNewEvent(GameEvents.PlayerDefeat);
         ObjectPoolManager.Spawn(deathMask, transform.position, Quaternion.identity);
         Debug.Log("PlayerDied");
+
     }
 
     public void EnableComponent()

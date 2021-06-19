@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854745561744966}
   - component: {fileID: 3565854745561744967}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854746290401551}
   - component: {fileID: 3565854746290401536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,6 +295,11 @@ MonoBehaviour:
   isReversed: 0
   leftDoor: {fileID: 3565854747254880796}
   rightDoor: {fileID: 3565854747149629981}
+  isInteractable: 1
+  leftDoorClosedPos: {x: 0, y: 0}
+  rightDoorClosedPos: {x: 0, y: 0}
+  leftDoorOpenPos: {x: 0, y: 0}
+  rightDoorOpenPos: {x: 0, y: 0}
 --- !u!1 &3565854747149629980
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +311,7 @@ GameObject:
   - component: {fileID: 3565854747149629981}
   - component: {fileID: 3565854747149629982}
   - component: {fileID: 8573870679749077262}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightDoor
   m_TagString: Wall
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -381,7 +386,7 @@ GameObject:
   - component: {fileID: 3565854747254880796}
   - component: {fileID: 3565854747254880797}
   - component: {fileID: 6396826125966546743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftDoor
   m_TagString: Wall
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}

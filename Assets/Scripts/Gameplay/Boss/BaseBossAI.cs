@@ -139,6 +139,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 isFighting = true;
                 if (target)
                 {
+                    navigation.enabled = true;
                     navigation.Init();  
                     navigation.StartAgent(target);
                 }
@@ -167,7 +168,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
      //
     }
 
-    virtual protected void OnNewState(AIState newState)
+    virtual public void OnNewState(AIState newState)
     {
         currentAIState = newState;
         switch (currentAIState)

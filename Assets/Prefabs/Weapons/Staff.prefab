@@ -60,7 +60,7 @@ MonoBehaviour:
   beamLength: 10
   beamLayers:
     serializedVersion: 2
-    m_Bits: 385
+    m_Bits: 1473
   sheildDuration: 5
   sheild: {fileID: 2626508111857248113, guid: 81be4e8b9c1542246a0e6e16687c8d01, type: 3}
   beamDrawSpeed: 25

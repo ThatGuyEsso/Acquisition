@@ -14,7 +14,7 @@ public class TDNavMeshMovement : MonoBehaviour,IInitialisable
     public void Init()
     {
         navAgent = gameObject.GetComponent<NavMeshAgent>();
-
+        navAgent.enabled = true;
         //navmesh2D values
         navAgent.updateRotation = false;
         navAgent.updateUpAxis = false;

@@ -131,5 +131,10 @@ public class WeaponManager : MonoBehaviour,IInitialisable
             if (isOn) equippedWeapon.EnableWeapon();
             else equippedWeapon.DisableWeapon();
         }
+        else
+        {
+            Debug.Log("Couldn't reactivate weapons");
+        }
     }
+
 }

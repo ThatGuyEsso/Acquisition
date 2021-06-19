@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+using UnityEngine.AI;
 public enum GameEvents
 {
    WeaponsSpawned,
@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
  
     private Transform spawn;
     private GameObject playerObject;
+  
     private bool isBound;
-
     public GameEvents lastEvent;
     public Action<GameEvents> OnNewEvent;
     public void BindToGameStateManager()
@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
                 OnNewEvent?.Invoke(lastEvent);
                 break;
             case GameEvents.BossRoomsSpawned:
+     
                 OnNewEvent?.Invoke(lastEvent);
 
                 break;
@@ -167,13 +168,13 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
                 OnNewEvent?.Invoke(lastEvent);
                 break;
             case GameEvents.RespawnPlayer:
-                //BeginResetLevel();
+           
                 OnNewEvent?.Invoke(lastEvent);
 
                 break;
 
             case GameEvents.BossInit:
-                //BeginResetLevel();
+      
                 OnNewEvent?.Invoke(lastEvent);
 
                 break;

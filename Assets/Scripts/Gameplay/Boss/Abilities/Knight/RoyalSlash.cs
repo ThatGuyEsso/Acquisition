@@ -46,10 +46,10 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
             dynamicAttackZone = null;
         }
 
-            Debug.Log("Evaluate Attacks");
+            //Debug.Log("Evaluate Attacks");
         if (attacksLeft <= 0)
         {
-            Debug.Log("NO Attacks left");
+            //Debug.Log("NO Attacks left");
             StopAllCoroutines();
             owner.CycleToNextAttack();
             StartCoroutine(BeginResetAbility(coolDown));
@@ -57,7 +57,7 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
         }
         else
         {
-            Debug.Log("¨Prime next attack");
+            //Debug.Log("¨Prime next attack");
             StopAllCoroutines();
             StartCoroutine(BeginRefreshAttack(attackRate));
         }
