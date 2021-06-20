@@ -10,8 +10,7 @@ public class Staff_Weapon : Base_Weapon
     [SerializeField] private float beamTickRate;
     [SerializeField] private float beamLength;
     [SerializeField] private LayerMask beamLayers;
-    [SerializeField] private float sheildDuration = 5.0f;
-    [SerializeField] private GameObject sheild;
+
     [SerializeField] private float beamDrawSpeed;
 
     private LineRenderer line;
@@ -81,8 +80,21 @@ public class Staff_Weapon : Base_Weapon
     }
     private void Update()
     {
-        if (isFiringPrimary) //When Beam is fired it is updated here
+        if (isFiringPrimary)
+        {
+            //When Beam is fired it is updated here
             FireRay();
+
+            if(currenTickTime <= 0)
+            {
+                FireDamageRay();
+                currenTickTime = beamTickRate;
+            }
+            else
+            {
+                currenTickTime -= Time.deltaTime;
+            }
+        }
 
         if (!isIdle && !isBusy)
         {
@@ -141,6 +153,8 @@ public class Staff_Weapon : Base_Weapon
 
     }
 
+
+
     IEnumerator PrimaryAttackDuration() //The time the beam fires for
     {
         yield return new WaitForSeconds(beamDuration);
@@ -149,7 +163,13 @@ public class Staff_Weapon : Base_Weapon
 
  
 
-
+    public void CreateBubbleShield()
+    {
+        attackEvents.OnShootProjectile -= CreateBubbleShield;
+        attackEvents.OnHideAttackZone += ResetSecondaryFire;
+        GameObject shield = ObjectPoolManager.Spawn(secondaryProjectile, playerTransform);
+        shield.GetComponent<BubbleShield>().owner = playerTransform.gameObject;
+    }
     private void FireRay()
     {
         RaycastHit2D hit;
@@ -161,22 +181,41 @@ public class Staff_Weapon : Base_Weapon
 
 
     }
+    private void FireDamageRay()
+    {
+        RaycastHit2D hit;
+        Vector3 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
+        hit = Physics2D.Raycast(firePoint.position, dir, beamLength, beamLayers); //fire ray
+
+        if (hit.collider)
+        {
+            IDamage target = hit.collider.GetComponent<IDamage>();
+            if (target!=null)
+            {
+                target.OnDamage(primaryAttackDamage, playerTransform.up, 10f, playerTransform.gameObject);
+            }
+        }
+    }
 
     protected override void SecondaryAttack()
     {
         if (!isWeaponActive)
             return;
-        currentShield = ObjectPoolManager.Spawn(sheild, transform.position, Quaternion.identity);
 
-        base.SecondaryAttack();
-        StartCoroutine(ShieldDuration());
+        if (!canSecondaryFire)
+            return;
 
-    }
+        if (isBusy)
+            return;
 
-    private IEnumerator ShieldDuration()
-    {
-        yield return new WaitForSeconds(sheildDuration);
-        ObjectPoolManager.Recycle(currentShield);
+        isBusy = true;
+        canSecondaryFire = false;
+        isIdle = false;
+        currTimeToIdle = timeToIdle;
+
+        attackEvents.OnShowAttackZone += CreateBubbleShield;
+        animSolver.PlayAnimationFromStart("Secondary_Staff");
+
     }
 
 
@@ -203,15 +242,17 @@ public class Staff_Weapon : Base_Weapon
 
     public override void ResetPrimaryFire()
     {
+       
         if (isFiringPrimary)
         {
+            attackEvents.OnShootProjectile -= BeginBeam;
             attackEvents.OnAnimEnd -= ResetPrimaryFire;
             line.positionCount = 0;
             isFiringPrimary = false;
             isDrawing = false;
             isBusy = false;
             line.enabled = false;
-            StopAllCoroutines();
+            StopCoroutine(WaitForFirePrimaryRate(primaryFireRate));
             StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
         
         }
@@ -219,5 +260,13 @@ public class Staff_Weapon : Base_Weapon
 
     
     
+    }
+
+    public override void ResetSecondaryFire()
+    {
+        attackEvents.OnHideAttackZone -= ResetSecondaryFire;
+
+        isBusy = false;
+        StartCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
     }
 }

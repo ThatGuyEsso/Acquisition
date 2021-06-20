@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 30
+  lifeTime: 0
   knockback: 10
   inDebug: 1
   hurtTime: 0.1

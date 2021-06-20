@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 {
-    [SerializeField] protected float projectileDamage=0;
+    [SerializeField] protected float projectileDamage;
+    [SerializeField] protected float lifeTime;
     [SerializeField] protected float knockback =0;
     [SerializeField] protected bool inDebug = false;
     [SerializeField] protected float hurtTime = 0.25f;
@@ -132,6 +133,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         }
         this.owner = owner;
         this.blockCount = blockCount;
+        this.lifeTime = lifeTime;
         StartCoroutine(LifeTimer(lifeTime));
     }
 
@@ -185,5 +187,18 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     {
         yield return new WaitForSeconds(time);
         KillProjectile();
+    }
+
+    public void ResetProjectile()
+    {
+        StopAllCoroutines();
+    }
+
+    public ProjectileData GetProjectileData()
+    {
+        ProjectileData data = new ProjectileData(projectileDamage,
+          rb.velocity.normalized, rb.velocity.magnitude, lifeTime, blockCount, owner);
+
+        return data;
     }
 }
