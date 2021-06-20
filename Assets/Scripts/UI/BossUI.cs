@@ -17,6 +17,11 @@ public class BossUI : MonoBehaviour
         animator.Play("InitHealth");
     }
 
+    public void HideUI()
+    {
+        animator.enabled = true;
+        animator.Play("HideBossHealth");
+    }
 
     public void OnUISpawnAnimComplete()
     {

@@ -18,6 +18,10 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
     protected override void ProcessAI()
     {
         if (!isFighting) return;
+        if(currentStage == BossStage.Transition && !isBusy)
+        {
+            CycleToNextAttack();
+        }
         switch (currentAIState)
         {
             case AIState.Idle:
@@ -81,7 +85,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
     private void Update()
     {
         if (!isFighting) return;
-
+        if (isDead) return;
         if (isHurt)
         {
             HurTimer();
@@ -102,6 +106,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
     private void LateUpdate()
     {
         if (!isFighting) return;
+        if (isDead) return;
         switch (currentAIState)
         {
             case AIState.Idle:
@@ -128,11 +133,19 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
             switch (currentAIState)
             {
                 case AIState.Idle:
+                    navigation.Stop();
+                    rb.velocity = Vector2.zero;
                     navigation.enabled = false;
                     faceTarget.enabled = false;
-                    animator.Play("Idle");
+                    if (isDead) {
+                        animator.enabled = true;
+                        animator.Play("KnightDeath");
+                    }
+                    else
+                        animator.Play("Idle");
                     break;
                 case AIState.Chase:
+                    if (isDead) return;
                     navigation.enabled = true;
                     faceTarget.enabled = false;
                     if (target)
@@ -141,6 +154,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                     animator.Play("Walking");
                     break;
                 case AIState.Attack:
+                    if (isDead) return;
                     navigation.Stop();
                     navigation.enabled = false;
                     faceTarget.enabled = true;
@@ -200,5 +214,14 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
     public override Rigidbody2D GetRigidBody()
     {
         return rb;
+    }
+
+    public override void EndBossFight()
+    {
+        GameStateManager.instance.runtimeData.isKnightDefeated = true;
+        attackAnimEvents.OnDeathComplete -= EndBossFight;
+        isFighting = false;
+        if (GameManager.instance)
+            GameManager.instance.BeginNewEvent(GameEvents.BossDefeated);
     }
 }

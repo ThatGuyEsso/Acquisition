@@ -681,3 +681,4 @@ MonoBehaviour:
   lightHurtProfile: {fileID: 11400000, guid: 312cab7db23bede4bbfc4d8ff84f0212, type: 2}
   mediumHurtProfile: {fileID: 11400000, guid: 594fad921132c044f911ff49b564e405, type: 2}
   maxHurtProfile: {fileID: 11400000, guid: 2f98bd64fd1c17a47ad1e634f298e3fe, type: 2}
+  camVolumeSetting: {fileID: 0}

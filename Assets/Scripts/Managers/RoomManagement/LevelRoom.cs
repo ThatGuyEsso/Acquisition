@@ -14,6 +14,7 @@ public class LevelRoom : MonoBehaviour
 {
     [SerializeField] private Transform roomConnectionPoint;
     [SerializeField] private Transform playerSpawnPosition;
+    [SerializeField] private RoomDoor roomDoor;
     public LevelRoom connectedRoom;
     [SerializeField] private string roomId;
     [SerializeField] private RoomType roomType;
@@ -23,7 +24,11 @@ public class LevelRoom : MonoBehaviour
     public string ID() { return roomId; }
     public void SetID(string newID) { roomId = newID; }
 
-
+    public void SetUpDoors()
+    {
+        if(roomDoor)
+            roomDoor.Init();
+    }
     public void Awake()
     {
         if (RoomManager.instance)

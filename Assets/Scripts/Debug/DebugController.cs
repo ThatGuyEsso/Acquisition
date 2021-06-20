@@ -12,7 +12,7 @@ public class DebugController : MonoBehaviour {
 
 
     public static DebugCommand KILL_PLAYER;
-
+    public static DebugCommand KILL_BOSS;
     public List<object> commandList;
     private void Awake()
     {
@@ -22,12 +22,13 @@ public class DebugController : MonoBehaviour {
         inputAction.Console.Return.performed += OnReturn;
 
         KILL_PLAYER = new DebugCommand("/Kill_Player", "Kills player if they exist","/Kill_Player",() => KillPlayer());
+        KILL_BOSS = new DebugCommand("/Kill_Boss", "Kills active boss", "Kill_Boss", () => KillBoss());
 
-     
-        commandList = new List<object>
+       commandList = new List<object>
         {
             KILL_PLAYER,
-         
+            KILL_BOSS
+
         };
     }
 
@@ -91,6 +92,14 @@ public class DebugController : MonoBehaviour {
         if((player=FindObjectOfType<PlayerHealth>())!= false)
         {
             player.KillPlayer();
+        }
+    }
+    public void KillBoss()
+    {
+        if (BossRoomManager.instance)
+        {
+            BaseBossAI boss = BossRoomManager.instance.GetBoss();
+            if (boss) boss.KillBoss();
         }
     }
 

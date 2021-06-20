@@ -148,24 +148,25 @@ public class HubManager : MonoBehaviour
                 break;
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    public void TriggerHub( )
     {
-        if (other.CompareTag("Player")&&!hasTriggered){
      
-            if (runTimeData.hasWeapon == false)
-            {
-                Debug.Log("Player has no weapons");
-                StartCoroutine(SpawnWeapons());
-                GameManager.instance.BeginNewEvent(GameEvents.WeaponsSpawned);
-                hasTriggered = true;
-            }
-            else
-            {
-            
-                hasTriggered = true;
+        if (runTimeData.hasWeapon == false)
+        {
+            Debug.Log("Player has no weapons");
+            StartCoroutine(SpawnWeapons());
+            GameManager.instance.BeginNewEvent(GameEvents.WeaponsSpawned);
 
-            }
         }
+        else
+        {
+            SetUpBossDoors();
+        }
+        if (BossRoomManager.instance)
+        {
+            RoomManager.instance.RemoveRoom(RoomType.BossRoom);
+        }
+     
     }
 
 

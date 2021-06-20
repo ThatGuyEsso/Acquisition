@@ -493,10 +493,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inDebug: 0
-  maxRollSpeed: 25
-  dodgeCooldown: 1
+  maxRollSpeed: 15
+  dodgeCooldown: 0.25
   canDodge: 0
-  rollTime: 0.3
+  rollTime: 0.5
   acceleration: 50
   deceleration: 100
   inactiveComponentsDuringRoll:

@@ -28,8 +28,25 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
         if (!flashVFX) flashVFX = GetComponent<SpriteFlash>();
     
         movement = GetComponent<TDInputMovement>();
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent += EvaluateNewEvent;
+        }
+        
     }
 
+    public void EvaluateNewEvent(GameEvents events)
+    {
+        switch (events)
+        {
+            case GameEvents.BossDefeated:
+                currHurtTime = maxHurtTime;
+                currentHitPoint = maxHitPoints;
+
+                UpdateHealthDisplay();
+                break;
+        }
+    }
 
     public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {

@@ -48,6 +48,15 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
                 Boss.OnNewState(AIState.Idle);
 
                 break;
+
+            case GameEvents.BossDefeated:
+
+                exitDoor.ToggleLock(false);
+
+                RoomManager.instance.BeginCreatePathBossToHub(exitDoor.corridorSpawn.position);
+                if (Boss)
+                    ObjectPoolManager.Recycle(Boss.gameObject);
+                break;
         }
     }
 
@@ -114,7 +123,8 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
         CamShake.instance.gameObject.SetActive(true);
         cutsceneCamera.gameObject.SetActive(false);
-        director.enabled = false;
+        if(director)
+            director.enabled = false;
         CamShake.instance.DoScreenShake(0.15f, 3f, 0f, 0.5f, 2f);
         GameManager.instance.BeginNewEvent(GameEvents.BossFightStarts);
     }
@@ -131,5 +141,10 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
     {
         GameStateManager.instance.OnNewGameState -= EvaluateGameState;
         GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
+    }
+
+    public BaseBossAI GetBoss()
+    {
+        return Boss;
     }
 }

@@ -58,6 +58,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected bool isBusy = false;
     [SerializeField] protected bool inDebug=false;
     protected bool isFighting;
+    protected bool isDead;
     protected bool isTransitioning;
 
     public System.Action OnAwakened; 
@@ -331,24 +332,35 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     public void SetIsBusy(bool busy) { isBusy = busy; }
     public void PlayAnimation(string animName)
     {
+        if (isDead) return;
         animator.Play(animName);
     }
 
     virtual public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
-
+        if (isDead) return;
         if (!isHurt &&currentStage != BossStage.Transition)
         {
-            isHurt = true;
+          
             currentHealth -= dmg;
             if (currentHealth <= 0f)
             {
                 currentHealth = 0f;
                 UI.DoHurtUpdate(currentHealth);
+                EvaluateToTransition();
+
+                KillBoss();
             }
-            flashVFX.Flash();
-            UI.DoHurtUpdate(currentHealth);
-            EvaluateToTransition();
+            else
+            {
+                isHurt = true;
+                flashVFX.Flash();
+                UI.DoHurtUpdate(currentHealth);
+
+
+                EvaluateToTransition();
+            }
+       
         }
     
     }
@@ -376,7 +388,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         {
             case BossStage.Initial:
                  healthPercent = currentHealth / maxHealth;
-                if(healthPercent<= 2f/3f)
+                if(healthPercent<= 2f/3f && healthPercent >= 1f / 3f)
                 {
                     Debug.Log("Transition initial");
                     currentHealth = maxHealth * (2f / 3);
@@ -387,7 +399,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 break;
             case BossStage.Middle:
                 healthPercent = currentHealth / maxHealth;
-                if (healthPercent <= 1f / 3f)
+                if (healthPercent <= 1f / 3f&& healthPercent >0f)
                 {
                     Debug.Log("Transition Middle");
                     currentHealth = maxHealth * (1f / 3);
@@ -424,7 +436,33 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         OnNewState(AIState.Attack);
         
     }
+    public void KillBoss()
+    {
+        isDead = true;
+        attackAnimEvents.OnDeathComplete += EndBossFight;
+        if (currentStageAbilities.Count > 0)
+        {
+            foreach (BaseBossAbility ability in currentStageAbilities)
+            {
+                ability.DisableAbility();
+                ObjectPoolManager.Recycle(ability.gameObject);
+            }
+            currentStageAbilities.Clear();
+        }
 
+        isBusy = false;
+        UI.HideUI();
+        OnNewState(AIState.Idle);
+    }
+
+    virtual public void EndBossFight()
+    {
+
+        attackAnimEvents.OnDeathComplete -= EndBossFight;
+        isFighting = false;
+        if (GameManager.instance)
+            GameManager.instance.BeginNewEvent(GameEvents.BossDefeated);
+    }
     virtual public void OnDestroy()
     {
         if (UI) ObjectPoolManager.Recycle(UI.gameObject);

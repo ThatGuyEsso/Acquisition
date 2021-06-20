@@ -12,10 +12,16 @@ public class AttackAnimEventListener: MonoBehaviour
     public Action OnAnimStart;
     public Action OnAnimEnd;
     public Action OnChargeIncrease;
+    public Action OnDeathComplete;
     public void OnAnimBegun()
     {
         OnAnimStart?.Invoke();
     }
+    public void OnDie()
+    {
+        OnDeathComplete?.Invoke();
+    }
+
 
     public void OnAnimFinished()
     {

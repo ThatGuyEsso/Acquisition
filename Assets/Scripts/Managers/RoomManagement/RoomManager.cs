@@ -98,6 +98,36 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
 
     }
 
+    public void BeginCreatePathBossToHub(Vector3 position)
+    {
+        StartCoroutine(CreatePathBossToHub(position));
+    }
+
+    public IEnumerator CreatePathBossToHub(Vector3 position)
+    {
+        isAddingRoom = true;
+        SceneTransitionManager.instance.BeginSceneLoad(SceneIndex.LongCorridor);
+
+        while (isAddingRoom)
+        {
+            yield return null;
+        }
+
+        LevelRoom corridor = loadedRooms[loadedRooms.Count - 1];
+        corridor.transform.position = position;
+        isAddingRoom = true;
+        SceneTransitionManager.instance.BeginSceneLoad(SceneIndex.HubRoom);
+
+        while (isAddingRoom)
+        {
+            yield return null;
+        }
+
+        loadedRooms[loadedRooms.Count - 1].transform.position = corridor.GetConnectionPoint().position;
+
+        loadedRooms[loadedRooms.Count - 1].SetUpDoors();
+
+    }
     public void OnRoomClearComplete()
     {
         SceneTransitionManager.instance.OnSceneUnLoadComplete-= OnRoomClearComplete;
@@ -169,6 +199,7 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
             if(loadedRooms.Count == 1)
             {
                 loadedRooms[i].transform.position = Vector3.zero;
+                loadedRooms[i].SetUpDoors();
             }
             else
             {
@@ -176,6 +207,7 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
                 {
                     loadedRooms[i].transform.position = loadedRooms[i - 1].GetConnectionPoint().position;
                     loadedRooms[i - 1].connectedRoom = loadedRooms[i];
+                    loadedRooms[i].SetUpDoors();
                 }
             }
 
@@ -206,8 +238,14 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         SceneTransitionManager.instance.BeginSceneUnLoad(room.gameObject.scene);
     }
 
+    public void RemoveRoom(RoomType type)
+    {
+        LevelRoom room = loadedRooms.Find(room => room.GetRoomType() == type);
+        loadedRooms.Remove(room);
+        SceneTransitionManager.instance.BeginSceneUnLoad(room.gameObject.scene);
+    }
 
- 
+
     public Transform GetSpawn()
     {
         LevelRoom spawnRoom = loadedRooms.Find(room => room.GetRoomType() == RoomType.SpawnRoom);

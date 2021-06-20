@@ -163,6 +163,12 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
            
                 break;
 
+            case GameEvents.BossDefeated:
+          
+                OnNewEvent?.Invoke(lastEvent);
+
+                break;
+
             case GameEvents.DeathMaskComplete:
                 BeginResetLevel();
                 OnNewEvent?.Invoke(lastEvent);
