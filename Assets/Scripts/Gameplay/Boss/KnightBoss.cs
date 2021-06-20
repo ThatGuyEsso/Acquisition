@@ -23,24 +23,28 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
             case AIState.Idle:
                 break;
             case AIState.Chase:
-                if (target)
+                if (currentStage != BossStage.Transition)
                 {
-              
-                    navigation.SetDestination();
-                    if (InRange())
+                    if (target)
                     {
-                        OnNewState(AIState.Attack);
-                    }
-                    else
-                    {
-                        if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
+
+                        navigation.SetDestination();
+                        if (InRange())
+                        {
+                            OnNewState(AIState.Attack);
+                        }
                         else
                         {
-                            CycleToNextAttack();
-                            OnNewState(AIState.Chase);
+                            if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
+                            else
+                            {
+                                CycleToNextAttack();
+                                OnNewState(AIState.Chase);
+                            }
                         }
                     }
                 }
+           
                 break;
             case AIState.Attack:
                 if(currentStage != BossStage.Transition)

@@ -8,6 +8,7 @@ public class OmniSlash : BaseBossAbility
     [SerializeField] protected GameObject projectilePrefab;
     [SerializeField] protected GameObject attackZonePrefab;
     [SerializeField] protected float projectileLifeTime;
+    [SerializeField] protected float projectileSpeed;
     [SerializeField] protected int projectileBlockCount;
 
 
@@ -21,6 +22,7 @@ public class OmniSlash : BaseBossAbility
     }
     public void DoOmniSlash()
     {
+
         canAttack = false;
         attacksLeft--;
         eventListener.OnShowAttackZone -= DoOmniSlash;
@@ -84,7 +86,7 @@ public class OmniSlash : BaseBossAbility
         {
             GameObject projectile = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
             projectile.GetComponent<IInitialisable>().Init();
-            projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up, 0.0f, projectileLifeTime, projectileBlockCount, owner.gameObject);
+            projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, projectileBlockCount, owner.gameObject);
         }
 
     }
@@ -109,7 +111,12 @@ public class OmniSlash : BaseBossAbility
         {
             eventListener.OnAnimEnd -= DisableAbility;
         }
-        eventListener.OnShootProjectile -= DoOmniSlash;
+        eventListener.OnShowAttackZone -= DoOmniSlash;
+        if (attackZone)
+        {
+            ObjectPoolManager.Recycle(attackZone.gameObject);
+            attackZone = null;
+        }
 
     }
 }

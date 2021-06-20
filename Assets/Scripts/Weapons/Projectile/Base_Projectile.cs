@@ -8,25 +8,49 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     [SerializeField] protected float projectileDamage=0;
     [SerializeField] protected float knockback =0;
     [SerializeField] protected bool inDebug = false;
+    [SerializeField] protected float hurtTime = 0.25f;
     [SerializeField] protected int blockCount = 0;//How much damage projectile can take be getting destroyed
-
+    [SerializeField] protected SpriteFlash flashVFX;
     [SerializeField] protected LayerMask destroyProjectileLayer;
     protected GameObject owner;
     protected Rigidbody2D rb;
-
+    protected bool isHurt;
+    protected float currHurtTime;
     protected void Awake()
     {
         if (inDebug)
             Init();
     }
-
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
     virtual public void Init()
     {
         if(!rb)
             rb = GetComponent<Rigidbody2D>();
-        
-    }
+        if (!flashVFX)
+            flashVFX = GetComponent<SpriteFlash>();
+        if (flashVFX) flashVFX.Init();
 
+
+    }
+    protected void Update()
+    {
+        if (isHurt)
+        {
+            if(currHurtTime <= 0)
+            {
+                isHurt = false;
+                currHurtTime = hurtTime;
+                if (flashVFX) flashVFX.EndFlash();
+            }
+            else
+            {
+                currHurtTime -= Time.deltaTime;
+            }
+        }
+    }
     public void SetUp(Vector3 direction,float speed)
     {
         rb.velocity = direction * speed;
@@ -41,7 +65,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
         {
-            if (other.GetComponent<IProjectile>().GetOwner() != owner)
+            if (other.GetComponent<IProjectile>().GetOwner() != owner||owner==null)
             {
                 if (other.GetComponent<IDamage>() != null)
                 {
@@ -76,7 +100,14 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         }
     }
 
-
+    public void DecrementBlockCount()
+    {
+        blockCount--;
+        if(blockCount < 0)
+        {
+            KillProjectile();
+        }
+    }
 
     protected void KillProjectile()
     {
@@ -101,7 +132,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         }
         this.owner = owner;
         this.blockCount = blockCount;
-        Invoke("KillProjectile", lifeTime);
+        StartCoroutine(LifeTimer(lifeTime));
     }
 
     public GameObject GetOwner()
@@ -111,8 +142,19 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 
     public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
-        if (attacker != owner) blockCount--;
-        if (blockCount <= 0) KillProjectile();
+        if (!isHurt)
+        {
+            isHurt = true;
+            if (attacker != owner) blockCount--;
+            if (blockCount <= 0) KillProjectile();
+            if (flashVFX)
+            {
+                flashVFX = GetComponent<SpriteFlash>();
+                flashVFX.Init();
+            }
+            if (flashVFX) flashVFX.Flash();
+        }
+    
     }
 
     public void OrientateToMovement()
@@ -134,7 +176,14 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         if (rb)
         {
             SetUp(direction, speed);
-            Invoke("KillProjectile", lifeTime);
+            StartCoroutine(LifeTimer(lifeTime));
         }
+    }
+
+
+    public IEnumerator LifeTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        KillProjectile();
     }
 }

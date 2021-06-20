@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: -267282150510026568}
   - component: {fileID: 1487004100516300036}
   - component: {fileID: 3305549361958115574}
-  m_Layer: 0
+  - component: {fileID: 8315753582471524826}
+  m_Layer: 8
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +72,9 @@ MonoBehaviour:
   projectileDamage: 0
   knockback: 0
   inDebug: 1
+  hurtTime: 0.1
   blockCount: 0
+  flashVFX: {fileID: 0}
   destroyProjectileLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -101,6 +104,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.12, y: 0.7}
   m_EdgeRadius: 0
+--- !u!114 &8315753582471524826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647265956065727434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d36c77da0576546ad0c2c7f3db9408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColour: {r: 1, g: 1, b: 1, a: 1}
+  flashSpeed: 8
 --- !u!1 &4333514381353449516
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3642796820624034264}
   - component: {fileID: 6041379390595139522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +168,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9186f50b69a1c1848b8c2bf260da5517, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -193,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1769467103751652684}
   - component: {fileID: 598817514575797608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

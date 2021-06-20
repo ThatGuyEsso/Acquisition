@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAttackCount: 1
-  attackRate: 0.4
+  attackRate: 2
   coolDown: 10
   attackRange: 20
   isManagingBossAttack: 0
@@ -90,6 +90,6 @@ MonoBehaviour:
   projectileLifeTime: 5
   projectileSpeed: 10
   projectileBlockCount: 3
-  fireRate: 0.25
+  fireRate: 0.1
   attackDuration: 7.5
   rotationRate: 250

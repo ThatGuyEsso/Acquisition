@@ -58,7 +58,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected bool isBusy = false;
     [SerializeField] protected bool inDebug=false;
     protected bool isFighting;
-
+    protected bool isTransitioning;
 
     public System.Action OnAwakened; 
     protected void Awake()
@@ -194,6 +194,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         }
         else
         {
+            currentAttackIndex = 0;
             SetUpNextStage();
         }
  
@@ -377,6 +378,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                  healthPercent = currentHealth / maxHealth;
                 if(healthPercent<= 2f/3f)
                 {
+                    Debug.Log("Transition initial");
                     currentHealth = maxHealth * (2f / 3);
 
                     UI.DoHurtUpdate(currentHealth);
@@ -387,6 +389,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 healthPercent = currentHealth / maxHealth;
                 if (healthPercent <= 1f / 3f)
                 {
+                    Debug.Log("Transition Middle");
                     currentHealth = maxHealth * (1f / 3);
 
                     UI.DoHurtUpdate(currentHealth);
@@ -417,6 +420,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         isBusy = false;
         currentStage = BossStage.Transition;
         currentStageIndex++;
+        Debug.Log("Current Stage index= " + currentStageIndex);
         OnNewState(AIState.Attack);
         
     }

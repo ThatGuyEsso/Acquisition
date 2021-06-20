@@ -139,6 +139,7 @@ MonoBehaviour:
   bowSprite: {fileID: 21300000, guid: 8eee9ce8c24920744b7523130ddaa950, type: 3}
   staffSprite: {fileID: 21300000, guid: 2c2ed27415816e84d80c1e945591b1a5, type: 3}
   inDebug: 0
+  isInteractable: 0
 --- !u!1 &3638913933398153259
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +316,7 @@ GameObject:
   - component: {fileID: 7787058380598390864}
   m_Layer: 0
   m_Name: WeaponSpawner
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

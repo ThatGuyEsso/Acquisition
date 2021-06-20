@@ -71,6 +71,12 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
         eventListener.OnShowAttackZone -= CreateAttackZone;
         eventListener.OnHideAttackZone -= RemoveAttackZone;
         eventListener.OnShootProjectile -= ShootProjectile;
+        if (dynamicAttackZone)
+        {
+            ObjectPoolManager.Recycle(dynamicAttackZone.gameObject);
+
+            dynamicAttackZone = null;
+        }
     }
 
     override public void EnableAbility()

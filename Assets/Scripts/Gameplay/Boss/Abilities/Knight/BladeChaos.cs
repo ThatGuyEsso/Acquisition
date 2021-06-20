@@ -43,6 +43,7 @@ public class BladeChaos : BaseBossAbility
 
     public void StartBladeCircus()
     {
+        if (eventListener) eventListener.OnShowAttackZone -= StartBladeCircus;
         attacksLeft--;
         canAttack = false;
         isAttacking = true;

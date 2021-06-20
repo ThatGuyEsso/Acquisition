@@ -86,7 +86,9 @@ MonoBehaviour:
   projectileDamage: 0
   knockback: 0
   inDebug: 1
+  hurtTime: 0.1
   blockCount: 0
+  flashVFX: {fileID: 0}
   destroyProjectileLayer:
     serializedVersion: 2
     m_Bits: 0

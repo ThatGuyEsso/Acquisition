@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1087995827106813816}
   - component: {fileID: 1087995827106813817}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 9186f50b69a1c1848b8c2bf260da5517, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,9 +96,10 @@ GameObject:
   - component: {fileID: 5448854139164960551}
   - component: {fileID: 7654486371119944900}
   - component: {fileID: -4804998545174359701}
-  m_Layer: 0
+  - component: {fileID: 7365363936026338894}
+  m_Layer: 8
   m_Name: SwordThrustProjectile
-  m_TagString: Untagged
+  m_TagString: Projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +135,9 @@ MonoBehaviour:
   projectileDamage: 0
   knockback: 0
   inDebug: 0
+  hurtTime: 0.1
   blockCount: 0
+  flashVFX: {fileID: 0}
   destroyProjectileLayer:
     serializedVersion: 2
     m_Bits: 192
@@ -208,6 +211,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5448854139164960551}
   animName: ThrustBurn
+--- !u!114 &7365363936026338894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087995828118112649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d36c77da0576546ad0c2c7f3db9408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColour: {r: 1, g: 1, b: 1, a: 1}
+  flashSpeed: 8
 --- !u!1 &8311998857645921818
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8837777115749060761}
   - component: {fileID: 8503835937674934694}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
