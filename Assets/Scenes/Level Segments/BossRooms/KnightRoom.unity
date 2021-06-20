@@ -558,6 +558,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 46442246}
     m_Modifications:
+    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
+      propertyPath: m_Size.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
+      propertyPath: m_Size.y
+      value: 6.0117188
+      objectReference: {fileID: 0}
+    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4862275863476091193, guid: cf7cc2ade6c96c544b60d62d94551e82, type: 3}
+    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 118221031589024616, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
       propertyPath: m_Enabled
       value: 0
