@@ -420,4 +420,9 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         OnNewState(AIState.Attack);
         
     }
+
+    virtual public void OnDestroy()
+    {
+        if (UI) ObjectPoolManager.Recycle(UI.gameObject);
+    }
 }

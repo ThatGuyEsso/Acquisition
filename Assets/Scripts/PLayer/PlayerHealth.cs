@@ -38,14 +38,14 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
             if (CamShake.instance)
                 CamShake.instance.DoScreenShake(0.25f, 5f, 0.05f, 0.5f, 5f);
             currentHitPoint--;
-            if(currentHitPoint <= 0)
+            if(currentHitPoint < 0)
             {
                 KillPlayer();
             }
             else
             {
                 isHurt = true;
-
+                UpdateHealthDisplay();
                 //currentKnockBack = kBackDir * kBackMag;
                 if (flashVFX) flashVFX.Flash();
                 OnHurt?.Invoke();
@@ -75,6 +75,35 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
 
   
     }
+
+
+    public void UpdateHealthDisplay()
+    {
+        if (PostProcessingManager.instance)
+        {
+            if (currentHitPoint == maxHitPoints)
+            {
+                PostProcessingManager.instance.ReturnToDefault();
+            }else if(currentHitPoint == maxHitPoints-1)
+            {
+
+                PostProcessingManager.instance.ApplyLightDamageProfile();
+            }else if(currentHitPoint == maxHitPoints - 2)
+            {
+                PostProcessingManager.instance.ApplyMidDamageProfile();
+            }
+        }
+        else if (currentHitPoint == maxHitPoints - 3)
+        {
+            PostProcessingManager.instance.ApplyMaxDamageProfile();
+        }
+        else if (currentHitPoint <= maxHitPoints - 4)
+        {
+            PostProcessingManager.instance.ApplyMaxDamageProfile();
+        }
+    }
+     
+    
     private void FixedUpdate()
     {
 
@@ -122,5 +151,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
         currHurtTime = maxHurtTime;
         isHurt = false;
         currentHitPoint = maxHitPoints;
+
+        UpdateHealthDisplay();
     }
 }

@@ -30,5 +30,5 @@ public class BossUI : MonoBehaviour
         uiShaker.BeginViewBob();
 
     }
-
+ 
 }
