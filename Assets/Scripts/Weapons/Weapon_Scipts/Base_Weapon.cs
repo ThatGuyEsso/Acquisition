@@ -51,6 +51,8 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     protected bool isRunning;
     protected bool isIdle = true;
     protected float currTimeToIdle;
+    protected bool primaryHeld = false;
+    protected bool secondaryHeld = false;
     private void Awake()
     {
         if(inDebug) 
@@ -86,7 +88,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         canPrimaryFire = true;
     }
 
-    protected IEnumerator WaitForFireSecondaryRate(float time)
+    virtual protected IEnumerator WaitForFireSecondaryRate(float time)
     {
         canSecondaryFire = false;
         yield return new WaitForSeconds(time);
@@ -158,8 +160,10 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     virtual public void UnEquip()
     {
+        primaryHeld = false;
+        secondaryHeld = false;
         inputAction.Disable();
- 
+        
         SetCanFire(false);
         animSolver.movement.OnWalk -= OnRun;
         animSolver.movement.OnStop -= OnStop;
@@ -199,4 +203,24 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     {
         isWeaponActive = true;
     }
+
+    protected void OnPrimaryHeld()
+    {
+        primaryHeld = true;
+    }
+
+    protected void OnPrimaryReleased()
+    {
+        primaryHeld = false;
+    }
+    protected void OnSecondaryHeld()
+    {
+        secondaryHeld = true;
+    }
+
+    protected void OnSecondaryReleased()
+    {
+        secondaryHeld = false;
+    }
+
 }

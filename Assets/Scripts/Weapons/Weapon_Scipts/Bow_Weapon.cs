@@ -19,7 +19,7 @@ public class Bow_Weapon : Base_Weapon
     private MouseMoveCursor vCursor;
     private int chargeCount=0;
     bool isCharging = false;
-    bool primaryHeld =false;
+
     public override void Init()
     {
         base.Init();
@@ -40,7 +40,7 @@ public class Bow_Weapon : Base_Weapon
         isIdle = false;
         currTimeToIdle = timeToIdle;
         canPrimaryFire = false;
-        primaryHeld = true;
+
         attackEvents.OnShootProjectile += OnFireProjectile;
         attackEvents.OnAnimEnd += ResetPrimaryFire;
         animSolver.PlayAnimationFromStart("Primary_Bow");
@@ -88,6 +88,7 @@ public class Bow_Weapon : Base_Weapon
         {
             Init();
             inputAction.Attack.PrimaryAttack.started += ctx => PrimaryAttack();
+            inputAction.Attack.PrimaryAttack.started += ctx => OnPrimaryHeld();
             inputAction.Attack.SecondaryAttack.started += ctx => SecondaryAttack();
             inputAction.Attack.SecondaryAttack.canceled += ctx => EvaluateChargeShot();
             inputAction.Attack.PrimaryAttack.canceled += ctx => OnPrimaryReleased();
@@ -111,6 +112,7 @@ public class Bow_Weapon : Base_Weapon
         chargeCount = 0;
         StopAllCoroutines();
         attackEvents.OnAnimEnd -= ResetSecondaryFire;
+
         isBusy = false;
         isCharging = false;
         Debug.Log("unequip");
@@ -226,12 +228,6 @@ public class Bow_Weapon : Base_Weapon
         chargeCount = 0;
     }
 
-
-
-    private void OnPrimaryReleased()
-    {
-        primaryHeld = false;
-    }
 
     public override void ResetPrimaryFire()
     {

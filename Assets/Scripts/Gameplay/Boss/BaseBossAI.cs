@@ -346,6 +346,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             if (currentHealth <= 0f)
             {
                 currentHealth = 0f;
+                if(UI)
                 UI.DoHurtUpdate(currentHealth);
                 EvaluateToTransition();
 

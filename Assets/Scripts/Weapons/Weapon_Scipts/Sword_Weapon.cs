@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword_Weapon : Base_Weapon
+public class Sword_Weapon : Base_Weapon, Equipable
 {
     [Header("Sword Settings")]
     [SerializeField] private DynamicConeCollider swordCollider;
@@ -138,8 +138,33 @@ public class Sword_Weapon : Base_Weapon
         attackEvents.OnShootProjectile -= OnFireSecondaryProjectile;
     }
 
+    public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player, TopPlayerGFXSolver solver)
+    {
+        if (!isInitialised)
+        {
+            Init();
+            inputAction.Attack.PrimaryAttack.started += ctx => OnPrimaryHeld();
+            inputAction.Attack.PrimaryAttack.canceled += ctx => OnPrimaryReleased();
+            inputAction.Attack.SecondaryAttack.started += ctx => OnSecondaryHeld();
+            inputAction.Attack.SecondaryAttack.canceled += ctx => OnSecondaryReleased();
+            inputAction.Attack.PrimaryAttack.performed += ctx => PrimaryAttack();
+            inputAction.Attack.SecondaryAttack.performed += ctx => SecondaryAttack();
+        }
+        else
+            inputAction.Enable();
+
+        this.firePoint = firePoint;
+        attackEvents = eventListener;
+        playerTransform = player;
+        SetCanFire(true);
+        animSolver = solver;
+        animSolver.movement.OnWalk += OnRun;
+        animSolver.movement.OnStop += OnStop;
 
 
+    }
+
+    
     protected override void SecondaryAttack()
     {
         if (isBusy)
@@ -181,12 +206,6 @@ public class Sword_Weapon : Base_Weapon
     }
 
 
-    public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player,TopPlayerGFXSolver solver)
-    {
-        base.Equip(firePoint, eventListener, player,solver);
-
-
-    }
 
     public override void UnEquip()
     {
@@ -216,6 +235,7 @@ public class Sword_Weapon : Base_Weapon
         canPrimaryFire = true;
         isBusy = false;
         attackEvents.OnAnimEnd -= ResetPrimaryFire;
+        if (primaryHeld) PrimaryAttack();
     }
 
     override public void ResetSecondaryFire()
@@ -247,5 +267,13 @@ public class Sword_Weapon : Base_Weapon
         base.EnableWeapon();
         if (!canPrimaryFire) ResetPrimaryFire();
         if (!canSecondaryFire) ResetSecondaryFire();
+    }
+
+    protected override IEnumerator WaitForFireSecondaryRate(float time)
+    {
+        canSecondaryFire = false;
+        yield return new WaitForSeconds(time);
+        canSecondaryFire = true;
+        if (secondaryHeld) SecondaryAttack();
     }
 }

@@ -252,10 +252,23 @@ public class Staff_Weapon : Base_Weapon
             isDrawing = false;
             isBusy = false;
             line.enabled = false;
-            StopCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+            StopCoroutine(PrimaryAttackDuration());
             StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
-        
+
         }
+        else
+        {
+            line.positionCount = 0;
+            isFiringPrimary = false;
+            isDrawing = false;
+            isBusy = false;
+            line.enabled = false;
+            attackEvents.OnShootProjectile -= BeginBeam;
+            StopCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+            StopCoroutine(PrimaryAttackDuration());
+            canPrimaryFire = true;
+        }
+     
       
 
     
