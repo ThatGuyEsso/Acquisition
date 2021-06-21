@@ -92,4 +92,26 @@ public class CamShake : MonoBehaviour
         //Debug.Log("shake");
     }
     
+    public void SetShakeCam(CinemachineVirtualCamera cam)
+    {
+        vCamera = cam;
+        startIntensity = vCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain;
+        shakeNoise = vCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+    }
+    public void DisableDefault()
+    {
+        //Get cashe Refs
+        vCamera = gameObject.GetComponent<CinemachineVirtualCamera>();
+        vCamera.enabled = false;
+    }
+
+    public void UseDefault()
+    {
+        //Get cashe Refs
+        vCamera = gameObject.GetComponent<CinemachineVirtualCamera>();
+        vCamera.enabled = true;
+        startIntensity = vCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain;
+        shakeNoise = vCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+    }
 }

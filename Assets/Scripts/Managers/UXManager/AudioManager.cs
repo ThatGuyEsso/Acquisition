@@ -186,6 +186,21 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
             }
         }
     }
+    public void PlayThroughAudioPlayer(string name, Vector3 pos,bool randPitch) //Function Spawns Audio player then players the sound
+    {
+        if (ObjectPoolManager.instance) //check instance of object pool
+        {
+            IAudio audio = ObjectPoolManager.Spawn(audioPlayer, pos, Quaternion.identity).GetComponent<IAudio>(); //Gets the audioplayer
+            if (audio != null)
+            {
+                audio.SetUpAudioSource(GetSound(name)); //set the Audio up
+                if (randPitch) audio.PlayAtRandomPitch();
+                else
+                    audio.Play(); //Then play 
+
+            }
+        }
+    }
 
     public void PlayUISound(string name, Vector3 pos) //Function sets up UI Audio player then plays the sound
     {

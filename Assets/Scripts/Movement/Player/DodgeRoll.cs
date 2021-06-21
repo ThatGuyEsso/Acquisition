@@ -107,7 +107,13 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         if (isInitialised&&input != null) input.Disable();
     }
 
-
+    public void PlayDodgeSFX()
+    {
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.PlayThroughAudioPlayer("DodgeRoll", transform.position, true);
+        }
+    }
     public void DoDodgeRoll()
     {
         dodgeAnimator.gameObject.SetActive(true);
@@ -117,8 +123,12 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         {
             WeaponManager.instance.ToggleWeapon(false);
         }
-        if(dodgeAnimator)
+        if (dodgeAnimator)
+        {
+
             dodgeAnimator.Play("DodgeRoll", 0, 0f);
+            PlayDodgeSFX();
+        }
         gameObject.layer = invisibilityLayer;
         canDodge = false;
         if (tdMovement.GetMoveDirection() != Vector2.zero) rollDirection = tdMovement.GetMoveDirection().normalized;

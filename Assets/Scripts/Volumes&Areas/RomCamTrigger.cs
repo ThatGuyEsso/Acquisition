@@ -30,7 +30,8 @@ public class RomCamTrigger : MonoBehaviour
         if (CamShake.instance&& roomCamera)
         {
             roomCamera.gameObject.SetActive(true);
-            CamShake.instance.gameObject.SetActive(false);
+            CamShake.instance.DisableDefault();
+            CamShake.instance.SetShakeCam(roomCamera);
         }
   
     }
@@ -39,7 +40,7 @@ public class RomCamTrigger : MonoBehaviour
     {
         if (CamShake.instance&& roomCamera)
         {
-            CamShake.instance.gameObject.SetActive(true);
+            CamShake.instance.UseDefault();
             roomCamera.gameObject.SetActive(false);
         }
 

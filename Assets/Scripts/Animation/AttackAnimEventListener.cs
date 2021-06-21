@@ -13,6 +13,8 @@ public class AttackAnimEventListener: MonoBehaviour
     public Action OnAnimEnd;
     public Action OnChargeIncrease;
     public Action OnDeathComplete;
+    public Action OnPlaySFX;
+    public Action OnStopSFX;
     public void OnAnimBegun()
     {
         OnAnimStart?.Invoke();
@@ -21,8 +23,14 @@ public class AttackAnimEventListener: MonoBehaviour
     {
         OnDeathComplete?.Invoke();
     }
-
-
+    public void OnBeginSFX()
+    {
+        OnPlaySFX?.Invoke();
+    }
+    public void OnEndSFX()
+    {
+        OnStopSFX?.Invoke();
+    }
     public void OnAnimFinished()
     {
         OnAnimEnd?.Invoke();
