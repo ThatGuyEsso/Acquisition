@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 0
   lifeTime: 0
+  hitSFXname: 
   knockback: 0
   inDebug: 1
   hurtTime: 0.1

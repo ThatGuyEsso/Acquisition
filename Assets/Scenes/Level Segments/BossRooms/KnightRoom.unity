@@ -559,26 +559,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 46442246}
     m_Modifications:
-    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-      propertyPath: m_Size.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-      propertyPath: m_Size.y
-      value: 6.0117188
-      objectReference: {fileID: 0}
-    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -4862275863476091193, guid: cf7cc2ade6c96c544b60d62d94551e82, type: 3}
-    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 118221031589024616, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 118221031589024621, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
       propertyPath: m_Name
       value: SwordKnight
@@ -626,10 +606,6 @@ PrefabInstance:
     - target: {fileID: 118221031589024622, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 118221031614647829, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
@@ -1050,6 +1026,24 @@ CompositeCollider2D:
   - m_Collider: {fileID: 1107787080}
     m_ColliderPaths:
     - - X: 140000000
+        Y: 220000000
+      - X: 14375000
+        Y: 220000000
+      - X: 14375000
+        Y: 215000000
+      - X: 15000000
+        Y: 214375008
+      - X: 130000000
+        Y: 214375008
+      - X: 134375008
+        Y: 210000000
+      - X: 134375008
+        Y: 125000000
+      - X: 135000000
+        Y: 124375000
+      - X: 140000000
+        Y: 124375000
+    - - X: 140000000
         Y: 105625000
       - X: 135000000
         Y: 105625000
@@ -1067,80 +1061,29 @@ CompositeCollider2D:
         Y: 210000000
       - X: -120000000
         Y: 214375008
-      - X: -10000100
+      - X: -5000000
         Y: 214375008
-      - X: -10000100
-        Y: 214374967
-      - X: -10000041
-        Y: 214374908
-      - X: -4999980
-        Y: 214374908
-      - X: -4999943
-        Y: 214374923
-      - X: -4374915
-        Y: 214999943
-      - X: -4374900
-        Y: 214999980
-      - X: -4374900
-        Y: 220000041
-      - X: -4374959
-        Y: 220000100
-      - X: -10000041
-        Y: 220000100
-      - X: -10000100
-        Y: 220000041
-      - X: -10000100
+      - X: -4375000
+        Y: 215000000
+      - X: -4375000
         Y: 220000000
-      - X: -124374900
-        Y: 220000000
-      - X: -124374900
-        Y: 219999959
-      - X: -124374959
-        Y: 219999900
       - X: -130000000
-        Y: 219999900
+        Y: 220000000
       - X: -130000000
         Y: 10000000
       - X: 140000000
         Y: 10000000
-    - - X: 140000000
-        Y: 220000000
-      - X: 20000100
-        Y: 220000000
-      - X: 20000100
-        Y: 220000041
-      - X: 20000041
-        Y: 220000100
-      - X: 14374959
-        Y: 220000100
-      - X: 14374900
-        Y: 220000041
-      - X: 14374900
-        Y: 214999980
-      - X: 14374915
-        Y: 214999943
-      - X: 14999943
-        Y: 214374923
-      - X: 14999980
-        Y: 214374908
-      - X: 20000041
-        Y: 214374908
-      - X: 20000100
-        Y: 214374967
-      - X: 20000100
-        Y: 214375008
-      - X: 130000000
-        Y: 214375008
-      - X: 134375008
-        Y: 210000000
-      - X: 134375008
-        Y: 125000000
-      - X: 135000000
-        Y: 124375000
-      - X: 140000000
-        Y: 124375000
   m_CompositePaths:
     m_Paths:
+    - - {x: 13.999971, y: 12.4375}
+      - {x: 13.999971, y: 22}
+      - {x: 1.4375, y: 21.999971}
+      - {x: 1.4375076, y: 21.499992}
+      - {x: 1.5000108, y: 21.437502}
+      - {x: 13.000008, y: 21.437492}
+      - {x: 13.437501, y: 20.999989}
+      - {x: 13.437509, y: 12.499992}
+      - {x: 13.500011, y: 12.4375}
     - - {x: 13.999971, y: 1}
       - {x: 13.999971, y: 10.5625}
       - {x: 13.499992, y: 10.562493}
@@ -1151,20 +1094,11 @@ CompositeCollider2D:
       - {x: -12.4375, y: 2.0000107}
       - {x: -12.437493, y: 21.000008}
       - {x: -11.999989, y: 21.437502}
-      - {x: -0.4999867, y: 21.4375}
-      - {x: -0.43749002, y: 21.50001}
-      - {x: -0.4375252, y: 22.00001}
-      - {x: -13, y: 21.99996}
+      - {x: -0.4999924, y: 21.43751}
+      - {x: -0.4375, y: 21.500011}
+      - {x: -0.4375293, y: 22}
+      - {x: -13, y: 21.999971}
       - {x: -12.99997, y: 1}
-    - - {x: 13.999971, y: 12.4375}
-      - {x: 13.999971, y: 22}
-      - {x: 1.43749, y: 21.999975}
-      - {x: 1.4374992, y: 21.499987}
-      - {x: 1.5000088, y: 21.437492}
-      - {x: 13.000008, y: 21.437492}
-      - {x: 13.437501, y: 20.999989}
-      - {x: 13.437509, y: 12.499992}
-      - {x: 13.500011, y: 12.4375}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1107787082
@@ -2397,8 +2331,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390503666}
   m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: -13.5, y: 1.7500029, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -13.5, y: 0.08, z: 0}
+  m_LocalScale: {x: 0.725, y: 0.925, z: 1}
   m_Children: []
   m_Father: {fileID: 46442246}
   m_RootOrder: 1
@@ -2417,11 +2351,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 0
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.035
+  m_FalloffIntensity: 0.267
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.48
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: d7a212402163559fd3d2bdb825b9354500000000
+  m_ApplyToSortingLayers: d7a212402163559fd3d2bdb825b9354500000000f10e40de
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -2436,8 +2370,8 @@ MonoBehaviour:
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 4
   m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 15.17
-  m_ShapeLightFalloffSize: 4
+  m_ShapeLightParametricRadius: 10.87
+  m_ShapeLightFalloffSize: 11.2
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}

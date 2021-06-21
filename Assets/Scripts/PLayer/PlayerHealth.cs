@@ -55,12 +55,14 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
             if (CamShake.instance)
                 CamShake.instance.DoScreenShake(0.25f, 5f, 0.05f, 0.5f, 5f);
             currentHitPoint--;
+        
             if(currentHitPoint < 0)
             {
                 KillPlayer();
             }
             else
             {
+                if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("PlayerDamage", transform.position);
                 isHurt = true;
                 UpdateHealthDisplay();
                 //currentKnockBack = kBackDir * kBackMag;
@@ -145,6 +147,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     public void KillPlayer()
     {
         isDead = true;
+        if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("PlayerDeath", transform.position);
         OnDie?.Invoke();
         if(GameManager.instance)
             GameManager.instance.BeginNewEvent(GameEvents.PlayerDefeat);

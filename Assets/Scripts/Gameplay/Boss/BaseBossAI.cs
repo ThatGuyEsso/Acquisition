@@ -25,6 +25,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected string BossName;
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float aiTickRate= 0.25f;
+
     public Transform target;
     [SerializeField] protected BossStageData stageData;
     [SerializeField] protected GameObject bossUIPrefab;
@@ -39,7 +40,9 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected AttackAnimEventListener attackAnimEvents;
     [SerializeField] protected List<Component> componentsToInit = new List<Component>();
     [SerializeField] protected List<BaseBossAbility> currentStageAbilities = new List<BaseBossAbility>();
-
+    [Header("SFX Settings")]
+    [SerializeField] protected string awakenSFXName;
+    [SerializeField] protected string hurtSFX;
     protected bool isInitialised;
     protected float currentHealth;
     protected int currentAttackIndex;
@@ -119,7 +122,12 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         {
             attackAnimEvents.OnAnimEnd += CallAwake;
         }
+
         animator.Play(awakenAnimName, 0, 0f);
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.PlayThroughAudioPlayer(awakenSFXName, transform.position);
+        }
     }
 
     public void CallAwake()
@@ -357,7 +365,10 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 isHurt = true;
                 flashVFX.Flash();
                 UI.DoHurtUpdate(currentHealth);
-
+                if (AudioManager.instance)
+                {
+                    AudioManager.instance.PlayThroughAudioPlayer(hurtSFX, transform.position,true);
+                }
 
                 EvaluateToTransition();
             }

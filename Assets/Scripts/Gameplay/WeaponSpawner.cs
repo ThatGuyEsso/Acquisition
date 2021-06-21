@@ -49,7 +49,8 @@ public class WeaponSpawner : MonoBehaviour
             {
                 if (WeaponManager.instance.equippedWeapon.GetWeaponType() != type)
                 {
-                    
+                    if (AudioManager.instance)
+                        AudioManager.instance.PlayThroughAudioPlayer("WeaponPickUp", transform.position);
                     OnWeaponReplaced?.Invoke(WeaponManager.instance.equippedWeapon.GetWeaponType());
                     WeaponManager.instance.EquipWeapon(weapon);
                     ToggleWeaponAvailable(false);
@@ -59,6 +60,8 @@ public class WeaponSpawner : MonoBehaviour
             }
             else
             {
+                if (AudioManager.instance)
+                    AudioManager.instance.PlayThroughAudioPlayer("WeaponPickUp", transform.position);
                 WeaponManager.instance.EquipWeapon(weapon);
                 ToggleWeaponAvailable(false);
                 if(GameManager.instance)

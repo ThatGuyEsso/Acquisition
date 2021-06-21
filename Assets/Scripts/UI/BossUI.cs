@@ -10,6 +10,7 @@ public class BossUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bossNameDisplay;
     [SerializeField] private Animator animator;
     [SerializeField] private UIElementShake uiShaker;
+
     public Action OnUISpawned;
     public void InitialiseUI(string bossName)
     {
@@ -29,6 +30,13 @@ public class BossUI : MonoBehaviour
         animator.enabled = false;
     }
 
+    public void PlaySFX()
+    {
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.PlayUISound("RoomSpawn",transform.position);
+        }
+    }
     public void DoHurtUpdate(float newHealth)
     {
         progressBar.UpdateValue(newHealth);

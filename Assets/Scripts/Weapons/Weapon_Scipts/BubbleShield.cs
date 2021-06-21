@@ -13,7 +13,7 @@ public class BubbleShield : MonoBehaviour
     private float currHurtTime;
     private int currHitPoints;
 
-
+    public System.Action OnDestroy;
     public void Awake()
     {
         flashVFX = GetComponent<SpriteFlash>();
@@ -78,7 +78,8 @@ public class BubbleShield : MonoBehaviour
     {
         if (gameObject)
         {
-
+            OnDestroy?.Invoke();
+            transform.parent = null;
             ObjectPoolManager.Recycle(gameObject);
         }
     }

@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 0
   lifeTime: 0
+  hitSFXname: 
   knockback: 0
   inDebug: 0
   hurtTime: 0.1
@@ -273,9 +274,9 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.9528302, g: 0.802054, b: 0.49798858, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000d7a212402163559fd3d2bdb825b93545
+  m_ApplyToSortingLayers: 00000000d7a212402163559fd3d2bdb825b93545f10e40de
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0

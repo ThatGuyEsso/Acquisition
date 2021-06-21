@@ -7,6 +7,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 {
     [SerializeField] protected float projectileDamage;
     [SerializeField] protected float lifeTime;
+    [SerializeField] protected string hitSFXname;
     [SerializeField] protected float knockback =0;
     [SerializeField] protected bool inDebug = false;
     [SerializeField] protected float hurtTime = 0.25f;
@@ -21,6 +22,8 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     {
         if (inDebug)
             Init();
+
+        if (hitSFXname == string.Empty) hitSFXname = "ProjectileHit";
     }
     private void OnDisable()
     {
@@ -62,6 +65,10 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     {
         if (((1 << other.gameObject.layer) & destroyProjectileLayer) != 0)
         {
+            if (AudioManager.instance)
+            {
+                AudioManager.instance.PlayThroughAudioPlayer(hitSFXname, transform.position,true);
+            }
             KillProjectile();
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Projectiles"))

@@ -42,6 +42,7 @@ public class Bow_Weapon : Base_Weapon
         canPrimaryFire = false;
 
         attackEvents.OnShootProjectile += OnFireProjectile;
+        attackEvents.OnPlaySFX += PlayArrowDrawSFX;
         attackEvents.OnAnimEnd += ResetPrimaryFire;
         animSolver.PlayAnimationFromStart("Primary_Bow");
 
@@ -79,7 +80,7 @@ public class Bow_Weapon : Base_Weapon
         GameObject go = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
         go.GetComponent<IProjectile>().SetUpProjectile(primaryAttackDamage, dir, primaryShotSpeed,primaryShotLifeTime, 0,playerTransform.gameObject);
         attackEvents.OnShootProjectile -= OnFireProjectile;
-        Debug.Log("Fire");
+        PlayArrowShotSFX();
     }
 
     public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player, TopPlayerGFXSolver solver)
@@ -112,11 +113,17 @@ public class Bow_Weapon : Base_Weapon
         chargeCount = 0;
         StopAllCoroutines();
         attackEvents.OnAnimEnd -= ResetSecondaryFire;
-
+        attackEvents.OnPlaySFX -= PlayArrowDrawSFX;
         isBusy = false;
         isCharging = false;
         Debug.Log("unequip");
     }
+    public override void DisableWeapon()
+    {
+        base.DisableWeapon();
+        attackEvents.OnPlaySFX -= PlayArrowDrawSFX;
+    }
+
     protected override void SecondaryAttack()
     {
 
@@ -141,7 +148,22 @@ public class Bow_Weapon : Base_Weapon
 
     }
 
+    public void PlayArrowShotSFX()
+    {
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.PlayThroughAudioPlayer("BowDraw", playerTransform.position);
+        }
+    }
 
+    public void PlayArrowDrawSFX()
+    {
+        attackEvents.OnPlaySFX -= PlayArrowDrawSFX;
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.PlayThroughAudioPlayer("BowShot", playerTransform.position);
+        }
+    }
 
     private void EvaluateChargeShot()
     {

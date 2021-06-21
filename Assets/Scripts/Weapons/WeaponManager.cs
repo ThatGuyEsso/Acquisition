@@ -44,7 +44,7 @@ public class WeaponManager : MonoBehaviour,IInitialisable
             if (weapon != null)
             {
 
-
+             
                 EvaluateWeaponEquipped(weapon);
                 OnWeaponEquipped?.Invoke(weapon.GetWeaponType());
             }

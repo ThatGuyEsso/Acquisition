@@ -165,8 +165,10 @@ public class Staff_Weapon : Base_Weapon
 
     public void CreateBubbleShield()
     {
-        attackEvents.OnShootProjectile -= CreateBubbleShield;
+        attackEvents.OnShowAttackZone -= CreateBubbleShield;
         attackEvents.OnHideAttackZone += ResetSecondaryFire;
+        
+      
         GameObject shield = ObjectPoolManager.Spawn(secondaryProjectile, playerTransform);
         shield.GetComponent<BubbleShield>().owner = playerTransform.gameObject;
     }
