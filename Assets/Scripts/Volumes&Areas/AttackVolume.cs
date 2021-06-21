@@ -16,6 +16,11 @@ public class AttackVolume : MonoBehaviour,IVolumes
     private float knockBack;
     private Vector2 direction;
     private GameObject owner;
+
+    private void OnEnable()
+    {
+        
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (isPlayerZone)
@@ -70,5 +75,9 @@ public class AttackVolume : MonoBehaviour,IVolumes
         knockBack= kBack;
         direction=dir;
         this.owner = owner;
+    }
+
+    public void EvaluateGameEvent(GameEvents gameEvent){
+       
     }
 }

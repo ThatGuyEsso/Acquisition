@@ -141,9 +141,9 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     }
     public void EndRoll()
     {
-   
-        WeaponManager.instance.ToggleWeapon(true);
-        
+
+
+  
         ToggleComponents(true);
         tdMovement.SetCurrentSpeed(rollEndSpeed);
         isRolling = false;
@@ -163,7 +163,10 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         legsGFX.SetActive(true);
         gameObject.layer = defaultLayer;
 
-    
+        if (WeaponManager.instance)
+        {
+            WeaponManager.instance.ToggleWeapon(true);
+        }
         StartCoroutine(WaitToRefreshDodge());
     }
 
@@ -198,12 +201,20 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     public void EnableComponent()
     {
         input.Enable();
+        canDodge = true;
+        ToggleComponents(true);
     }
 
     public void DisableComponent()
     {
         input.Disable();
-        EndRoll();
+        tdMovement.SetCurrentSpeed(rollEndSpeed);
+        isRolling = false;
+        isStopping = false;
+        dodgeAnimator.gameObject.SetActive(false);
+        topGFX.SetActive(true);
+        legsGFX.SetActive(true);
+        gameObject.layer = defaultLayer;
         StopAllCoroutines();
     }
 

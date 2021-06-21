@@ -44,6 +44,12 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
                 break;
 
+            case GameEvents.RespawnPlayer:
+                if (Boss)
+                    ObjectPoolManager.Recycle(Boss.gameObject);
+
+                break;
+
             case GameEvents.PlayerDefeat:
                 Boss.OnNewState(AIState.Idle);
 

@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378534699}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071059, w: 0.7071077}
-  m_LocalPosition: {x: -8.249994, y: 8.000032, z: 0}
+  m_LocalPosition: {x: -8.999994, y: 8.000034, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -993,7 +993,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075740037}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071059, w: 0.7071077}
-  m_LocalPosition: {x: 8.000004, y: 8.000009, z: 0}
+  m_LocalPosition: {x: 8.250004, y: 8.000009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1047,6 +1047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomConnectionPoint: {fileID: 985811954}
   playerSpawnPosition: {fileID: 0}
+  roomDoor: {fileID: 0}
   connectedRoom: {fileID: 0}
   roomId: 
   roomType: 3

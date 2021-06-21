@@ -260,13 +260,20 @@ public class Sword_Weapon : Base_Weapon, Equipable
         attackEvents.OnHideAttackZone -= DestroyAttackZone;
         attackEvents.OnShootProjectile -= OnFireProjectile;
         attackEvents.OnAnimEnd -= ResetPrimaryFire;
+        DestroyAttackZone();
     }
 
     public override void EnableWeapon()
     {
         base.EnableWeapon();
-        if (!canPrimaryFire) ResetPrimaryFire();
-        if (!canSecondaryFire) ResetSecondaryFire();
+        if (!canPrimaryFire)
+        {
+            ResetPrimaryFire();
+        }
+        if (!canSecondaryFire)
+        {
+            ResetSecondaryFire();
+        }
     }
 
     protected override IEnumerator WaitForFireSecondaryRate(float time)

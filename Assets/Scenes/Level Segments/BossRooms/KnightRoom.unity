@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomConnectionPoint: {fileID: 298775653}
   playerSpawnPosition: {fileID: 0}
+  roomDoor: {fileID: 0}
   connectedRoom: {fileID: 0}
   roomId: 
   roomType: 1
@@ -2455,6 +2456,8 @@ GameObject:
   - component: {fileID: 1767301254}
   - component: {fileID: 1767301256}
   - component: {fileID: 1767301257}
+  - component: {fileID: 1767301259}
+  - component: {fileID: 1767301258}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -2561,6 +2564,35 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1767301258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767301253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449ef5ebbe24720439ec31d15f7b6f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusTracking: 0
+  m_FocusTarget: {fileID: 0}
+  m_FocusOffset: 0
+  m_Profile: {fileID: 11400000, guid: 10a6e921af0369249b6a85f4de1bd6b2, type: 2}
+--- !u!114 &1767301259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767301253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1862824689
 GameObject:
   m_ObjectHideFlags: 0

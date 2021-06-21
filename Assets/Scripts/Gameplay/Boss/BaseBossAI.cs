@@ -452,6 +452,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         }
 
         isBusy = false;
+        if(UI)
         UI.HideUI();
         OnNewState(AIState.Idle);
     }

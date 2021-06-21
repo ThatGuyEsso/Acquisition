@@ -978,6 +978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomConnectionPoint: {fileID: 985811954}
   playerSpawnPosition: {fileID: 0}
+  roomDoor: {fileID: 0}
   connectedRoom: {fileID: 0}
   roomId: 
   roomType: 3

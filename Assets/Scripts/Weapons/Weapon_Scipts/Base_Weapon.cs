@@ -196,12 +196,16 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     virtual public void DisableWeapon()
     {
+        primaryHeld = false;
+        secondaryHeld = false;
         isWeaponActive = false;
+        isBusy = false;
     }
 
     virtual public void EnableWeapon()
     {
         isWeaponActive = true;
+        isBusy = false;
     }
 
     protected void OnPrimaryHeld()
