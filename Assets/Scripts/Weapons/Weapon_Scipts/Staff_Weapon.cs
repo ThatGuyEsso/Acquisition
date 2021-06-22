@@ -15,12 +15,14 @@ public class Staff_Weapon : Base_Weapon
 
     private LineRenderer line;
     private MouseMoveCursor vCursor;
-    private GameObject currentShield;
+
     private float currenTickTime;
+
+    private float currBeamDuration;
     Vector2 currentPoint;
     Vector2 targetPoint;
     bool isDrawing;
-    bool isBeamDying;
+ 
 
 
     public override void Init()
@@ -94,6 +96,17 @@ public class Staff_Weapon : Base_Weapon
             {
                 currenTickTime -= Time.deltaTime;
             }
+
+            if(currBeamDuration <= 0f)
+            {
+                currBeamDuration = beamDuration;
+                ResetPrimaryFire();
+
+            }
+            else
+            {
+                currBeamDuration -= Time.deltaTime;
+            }
         }
 
         if (!isIdle && !isBusy)
@@ -149,7 +162,8 @@ public class Staff_Weapon : Base_Weapon
         isFiringPrimary = true;
         line.enabled = true;
         isDrawing = true;
-        StartCoroutine(PrimaryAttackDuration());
+        currBeamDuration = beamDuration;
+
 
     }
 
@@ -254,7 +268,7 @@ public class Staff_Weapon : Base_Weapon
             isDrawing = false;
             isBusy = false;
             line.enabled = false;
-            StopCoroutine(PrimaryAttackDuration());
+      
             StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
 
         }
@@ -267,7 +281,7 @@ public class Staff_Weapon : Base_Weapon
             line.enabled = false;
             attackEvents.OnShootProjectile -= BeginBeam;
             StopCoroutine(WaitForFirePrimaryRate(primaryFireRate));
-            StopCoroutine(PrimaryAttackDuration());
+           
             canPrimaryFire = true;
         }
      
@@ -309,7 +323,7 @@ public class Staff_Weapon : Base_Weapon
     {
         base.EnableWeapon();
         if (!canPrimaryFire) ResetPrimaryFire();
-  
+      
     }
     public override void ResetSecondaryFire()
     {

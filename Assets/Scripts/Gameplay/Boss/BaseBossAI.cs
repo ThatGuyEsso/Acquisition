@@ -305,9 +305,9 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     }
     public void DoCloseQuarters()
     {
-        if (closeCombatAbility)
+        if (closeCombatAbility&& closeCombatAbility != currentStageAbilities[currentAttackIndex])
         {
-            closeCombatAbility.EnableAbility();
+           if (!closeCombatAbility.isEnabled) closeCombatAbility.EnableAbility();
             if (closeCombatAbility.IsManagingAttack()) canLockOn = true;
             else canLockOn = false;
             animator.Play(closeCombatAbility.AnimationName());
@@ -339,6 +339,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     }
 
     public void SetIsBusy(bool busy) { isBusy = busy; }
+    public bool GetIsBusy( ) { return isBusy; }
     public void PlayAnimation(string animName)
     {
         if (isDead) return;
@@ -356,11 +357,13 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             {
               
                 currentHealth = 0f;
-                if(UI)
-                UI.DoHurtUpdate(currentHealth);
+                KillBoss();
+                isHurt = true;
+                if (UI)
+                    UI.DoHurtUpdate(currentHealth);
     
 
-                KillBoss();
+             
             }
             else
             {
@@ -381,7 +384,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 
     virtual protected void HurTimer()
     {
-      
+        if (isDead) return;
         if(currHurtTime <= 0f)
         {
             isHurt = false;
@@ -413,7 +416,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 break;
             case BossStage.Middle:
                 healthPercent = currentHealth / maxHealth;
-                if (healthPercent <= 1f / 3f&& healthPercent >0f)
+                if (healthPercent <= 1f / 3f&& healthPercent >0f )
                 {
                     Debug.Log("Transition Middle");
                     currentHealth = maxHealth * (1f / 3);
@@ -421,6 +424,9 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                     UI.DoHurtUpdate(currentHealth);
                     BeginTransitionStage();
                 }
+                break;
+            case BossStage.End:
+           
                 break;
         }
 
@@ -455,7 +461,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     public void KillBoss()
     {
         isDead = true;
-        attackAnimEvents.OnDeathComplete += EndBossFight;
+       
         if (currentStageAbilities.Count > 0)
         {
             foreach (BaseBossAbility ability in currentStageAbilities)
@@ -466,7 +472,10 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             }
             currentStageAbilities.Clear();
         }
-
+        animator.enabled = true;
+        if (!attackAnimEvents.enabled) attackAnimEvents.enabled = true;
+        attackAnimEvents.OnDeathComplete += EndBossFight;
+        animator.Play("KnightDeath",0,0f);
         isBusy = false;
         if(UI)
         UI.HideUI();

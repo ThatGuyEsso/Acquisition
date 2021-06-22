@@ -61,7 +61,7 @@ AnimatorStateMachine:
     m_Position: {x: 150, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8249099370629961137}
-    m_Position: {x: 250, y: 200, z: 0}
+    m_Position: {x: 270, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6010991556535353333}
     m_Position: {x: 270, y: 310, z: 0}
@@ -109,8 +109,7 @@ AnimatorState:
   m_Name: RoyalSlash
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -8155507382319646581}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0

@@ -89,7 +89,8 @@ public class BladeChaos : BaseBossAbility
     {
         base.DisableAbility();
         isAttacking = false;
-        eventListener.OnAnimEnd -= eventListener.OnAnimEnd += EvaluateEnd;
+        StopAllCoroutines();
+        eventListener.OnAnimEnd -= EvaluateEnd;
         eventListener.OnShowAttackZone -= StartBladeCircus;
     }
     public override void EnableAbility()

@@ -85,6 +85,11 @@ public class BaseBossAbility : MonoBehaviour, IInitialisable
     virtual public void DisableAbility()
     {
         isEnabled = false;
+        if (owner)
+        {
+            if (owner.GetIsBusy()) owner.SetIsBusy(false);
+        }
+     
     }
     virtual public void EnableAbility()
     {

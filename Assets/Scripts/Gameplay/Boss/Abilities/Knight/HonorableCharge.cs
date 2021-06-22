@@ -149,7 +149,7 @@ public class HonorableCharge : BaseBossAbility
 
     override public void DisableAbility()
     {
-        base.DisableAbility();
+        isEnabled = false;
         if (eventListener)
             eventListener.OnShowAttackZone -= BeginCharge;
     }

@@ -137,11 +137,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                     rb.velocity = Vector2.zero;
                     navigation.enabled = false;
                     faceTarget.enabled = false;
-                    if (isDead) {
-                        animator.enabled = true;
-                        animator.Play("KnightDeath");
-                    }
-                    else
+                    if (!isDead) 
                         animator.Play("Idle");
                     break;
                 case AIState.Chase:
