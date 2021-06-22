@@ -84,7 +84,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 0
+  projectileSpeed: 0
   lifeTime: 0
+  allyRepelForce: 5
   hitSFXname: 
   knockback: 0
   inDebug: 1

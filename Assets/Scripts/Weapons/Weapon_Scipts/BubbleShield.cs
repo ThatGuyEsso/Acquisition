@@ -9,6 +9,7 @@ public class BubbleShield : MonoBehaviour
     [SerializeField] private SpriteFlash flashVFX;
     [SerializeField] private float hurtTime;
     [SerializeField] private float bubbleTime;
+    [SerializeField] private float reflectionDamage=20f;
     private bool isHurt;
     private float currHurtTime;
     private int currHitPoints;
@@ -39,7 +40,25 @@ public class BubbleShield : MonoBehaviour
                 {
                     ProjectileData data = projectile.GetProjectileData();
                     projectile.ResetProjectile();
-                    projectile.SetUpProjectile(data.damage, data.dir * -1f, data.speed,data.lifeTime, data.blockCount, owner);
+                    projectile.SetUpProjectile(reflectionDamage, data.dir * -1f, data.speed,data.lifeTime, data.blockCount, owner);
+                    if (BossRoomManager.instance)
+                    {
+                        if (BossRoomManager.instance.GetBoss())
+                            projectile.SetHomingTarget(BossRoomManager.instance.GetBoss().transform);
+                 
+                    }
+                    else
+                    {
+                        BaseBossAI boss = FindObjectOfType<BaseBossAI>();
+                        if (boss) {
+                            projectile.SetHomingTarget(boss.transform);
+                       
+                        }
+                        else
+                        {
+                            if (other) ObjectPoolManager.Recycle(other.gameObject);
+                        }
+                    }
                     if (!isHurt)
                     {
                         isHurt = true;

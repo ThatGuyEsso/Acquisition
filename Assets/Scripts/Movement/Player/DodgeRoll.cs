@@ -239,7 +239,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     public void OrientateToMovement()
     {
 
-        float targetAngle = EssoUtility.GetAngleFromVector((rb.velocity.normalized));
+        float targetAngle = EssoUtility.GetAngleFromVector(rollDirection.normalized);
         /// turn offset -Due to converting between forward vector and up vector
         if (targetAngle < 0) targetAngle += 360f;
         transform.rotation = Quaternion.Euler(0.0f, 0f, targetAngle - 90f);

@@ -29,6 +29,11 @@ public interface IProjectile
     void SetRotationSpeed(float rotSpeed);
 
     void ResetProjectile();
+
+    void SetHomingTarget(Transform target);
+    void SetProximityHomingTarget(Transform target);
     ProjectileData GetProjectileData();
     GameObject GetOwner();
+
+    void RepelProjectile(Vector2 dir, float force);
 }

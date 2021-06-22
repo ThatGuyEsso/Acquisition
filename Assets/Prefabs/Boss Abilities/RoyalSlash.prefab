@@ -61,4 +61,4 @@ MonoBehaviour:
   maxAttackAngle: 90
   projectileLifeTime: 2
   projectileSpeed: 5
-  projectileBlockCount: 10
+  projectileBlockCount: 3

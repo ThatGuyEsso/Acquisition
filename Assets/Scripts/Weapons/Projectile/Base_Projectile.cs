@@ -6,7 +6,9 @@ using UnityEngine;
 public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 {
     [SerializeField] protected float projectileDamage;
+    [SerializeField] protected float projectileSpeed;
     [SerializeField] protected float lifeTime;
+    [SerializeField] protected float allyRepelForce = 5f;
     [SerializeField] protected string hitSFXname;
     [SerializeField] protected float knockback =0;
     [SerializeField] protected bool inDebug = false;
@@ -39,7 +41,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 
 
     }
-    protected void Update()
+    virtual protected void Update()
     {
         if (isHurt)
         {
@@ -58,10 +60,11 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     public void SetUp(Vector3 direction,float speed)
     {
         rb.velocity = direction * speed;
+        projectileSpeed = speed;
         OrientateToMovement();
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    virtual public void OnTriggerEnter2D(Collider2D other)
     {
         if (((1 << other.gameObject.layer) & destroyProjectileLayer) != 0)
         {
@@ -80,6 +83,11 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
                     other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
 
                 }
+            }
+            else
+            {
+                Vector2 dir = other.transform.position - transform.position;
+                other.GetComponent<IProjectile>().RepelProjectile(dir, allyRepelForce);
             }
         }
 
@@ -108,6 +116,19 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
+        {
+            if (other.GetComponent<IProjectile>().GetOwner() == owner )
+            {
+                Vector2 dir = other.transform.position - transform.position;
+                other.GetComponent<IProjectile>().RepelProjectile(dir, allyRepelForce);
+            }
+      
+        }
+
+    }
     public void DecrementBlockCount()
     {
         blockCount--;
@@ -132,7 +153,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
       
     }
 
-    public void SetUpProjectile(float damage, Vector2 dir, float speed, float lifeTime, int blockCount, GameObject owner)
+    virtual public void SetUpProjectile(float damage, Vector2 dir, float speed, float lifeTime, int blockCount, GameObject owner)
     {
         if (rb)
         {
@@ -211,8 +232,21 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     public ProjectileData GetProjectileData()
     {
         ProjectileData data = new ProjectileData(projectileDamage,
-          rb.velocity.normalized, rb.velocity.magnitude, lifeTime, blockCount, owner);
+          rb.velocity.normalized,projectileSpeed, lifeTime, blockCount, owner);
 
         return data;
+    }
+
+    virtual public void SetHomingTarget(Transform target)
+    {
+       //
+    }
+    virtual public void SetProximityHomingTarget(Transform target)
+    {
+        //
+    }
+    public void RepelProjectile(Vector2 dir, float force)
+    {
+        rb.AddForce(dir * force, ForceMode2D.Impulse);
     }
 }

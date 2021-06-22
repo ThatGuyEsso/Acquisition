@@ -89,7 +89,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1087995828118112649, guid: 2bf055af662a1ce4e87d7dc1bc98ef05, type: 3}
   projectileLifeTime: 5
   projectileSpeed: 10
-  projectileBlockCount: 3
+  projectileBlockCount: 1
   fireRate: 0.1
   attackDuration: 7.5
   rotationRate: 250
