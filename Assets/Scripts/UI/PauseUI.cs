@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PauseUI : Base_UI
 {
+    [SerializeField] private GameObject firstSelectedButton;
     public void OnResume()
     {
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
@@ -21,5 +22,9 @@ public class PauseUI : Base_UI
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         Debug.Log("MainMenu");
     }
-
+    public void OnEnable()
+    {
+        if(UIManager.instance)
+            UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedButton);
+    }
 }

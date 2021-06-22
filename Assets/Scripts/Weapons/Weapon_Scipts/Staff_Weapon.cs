@@ -277,6 +277,40 @@ public class Staff_Weapon : Base_Weapon
     
     }
 
+    public override void DisableWeapon()
+    {
+        base.DisableWeapon();
+        if (isFiringPrimary)
+        {
+            attackEvents.OnShootProjectile -= BeginBeam;
+            attackEvents.OnAnimEnd -= ResetPrimaryFire;
+            line.positionCount = 0;
+            isFiringPrimary = false;
+            isDrawing = false;
+            isBusy = false;
+            line.enabled = false;
+            StopCoroutine(PrimaryAttackDuration());
+        }
+        else
+        {
+            line.positionCount = 0;
+            isFiringPrimary = false;
+            isDrawing = false;
+            isBusy = false;
+            line.enabled = false;
+            attackEvents.OnShootProjectile -= BeginBeam;
+            StopCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+            StopCoroutine(PrimaryAttackDuration());
+      
+        }
+    }
+
+    public override void EnableWeapon()
+    {
+        base.EnableWeapon();
+        if (!canPrimaryFire) ResetPrimaryFire();
+  
+    }
     public override void ResetSecondaryFire()
     {
         attackEvents.OnHideAttackZone -= ResetSecondaryFire;

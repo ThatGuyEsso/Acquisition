@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public enum UIType
@@ -25,7 +26,7 @@ public class UIManager : MonoBehaviour, IInitialisable
 {
     public delegate void IsPaused(bool ispaused);
     public event IsPaused SetGamePaused;
-
+    public EventSystem eventSystem;
     public static UIManager instance { get; private set; }
 
     [SerializeField] private UIType startingUI;

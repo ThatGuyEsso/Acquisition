@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-
+using UnityEngine.UI;
 public class SettingsUI : Base_UI
 {
+    [SerializeField] private GameObject firstSelectedElement;
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private TMPro.TMP_Dropdown resolutionDropDown;
 
@@ -60,5 +61,15 @@ public class SettingsUI : Base_UI
     {
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         uiManager.SwitchUI(previousUI);
+    }
+
+
+    public void OnEnable()
+    {
+        if (UIManager.instance)
+        {
+            UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedElement);
+            firstSelectedElement.GetComponent<Dropdown>().Select();
+        }
     }
 }

@@ -308,10 +308,14 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     }
     public void DoCloseQuarters()
     {
-        closeCombatAbility.EnableAbility();
-        if (closeCombatAbility.IsManagingAttack()) canLockOn = true;
-        else canLockOn = false;
-        animator.Play(closeCombatAbility.AnimationName());
+        if (closeCombatAbility)
+        {
+            closeCombatAbility.EnableAbility();
+            if (closeCombatAbility.IsManagingAttack()) canLockOn = true;
+            else canLockOn = false;
+            animator.Play(closeCombatAbility.AnimationName());
+        }
+   
     }
 
 
@@ -439,6 +443,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 ObjectPoolManager.Recycle(ability.gameObject);
             }
             currentStageAbilities.Clear();
+            closeCombatAbility = null;
         }
         InitialiseAbility(transitionAbility);
         isBusy = false;

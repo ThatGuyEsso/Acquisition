@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
 {
-    
-
+    [SerializeField] private GameObject firstSelectedButton;
+    private void OnEnable()
+    {
+        if (UIManager.instance)
+            UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedButton);
+    }
     public void Play()
     {
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);

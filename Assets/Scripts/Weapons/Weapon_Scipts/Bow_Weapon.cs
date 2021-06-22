@@ -122,8 +122,58 @@ public class Bow_Weapon : Base_Weapon
     {
         base.DisableWeapon();
         attackEvents.OnPlaySFX -= PlayArrowDrawSFX;
+        attackEvents.OnShootProjectile -= OnFireProjectile;
+
+        attackEvents.OnAnimEnd -= ResetPrimaryFire;
+        if (chargeCount > 0)
+        {
+            attackEvents.OnChargeIncrease -= IncreaseCharge;
+
+            Vector2 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
+            if (chargeCount == 1)
+            {
+
+                IProjectile projectile = ObjectPoolManager.Spawn(weakCharge, firePoint.transform.position, Quaternion.identity)
+                .GetComponent<IProjectile>();
+                if (projectile != null)
+                {
+                    projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
+                }
+            }
+            else if (chargeCount == 2)
+            {
+                IProjectile projectile = ObjectPoolManager.Spawn(midCharge, firePoint.transform.position, Quaternion.identity)
+              .GetComponent<IProjectile>();
+                if (projectile != null)
+                {
+                    projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
+                }
+            }
+            else if (chargeCount >= 3)
+            {
+                IProjectile projectile = ObjectPoolManager.Spawn(superCharge, firePoint.transform.position, Quaternion.identity)
+                .GetComponent<IProjectile>();
+                if (projectile != null)
+                {
+                    projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
+                }
+            }
+            isCharging = false;
+        }
+        else
+        {
+            isCharging = false;
+        }
     }
 
+
+    public override void EnableWeapon()
+    {
+
+        base.EnableWeapon();
+        if (!canPrimaryFire) ResetPrimaryFire();
+        if (!canSecondaryFire) ResetSecondaryFire();
+    }
     protected override void SecondaryAttack()
     {
 
