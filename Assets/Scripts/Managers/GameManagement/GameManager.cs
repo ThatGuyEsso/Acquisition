@@ -170,11 +170,11 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
                 break;
 
             case GameEvents.DeathMaskComplete:
-                BeginResetLevel();
+             
                 OnNewEvent?.Invoke(lastEvent);
                 break;
             case GameEvents.RespawnPlayer:
-           
+                BeginResetLevel();
                 OnNewEvent?.Invoke(lastEvent);
 
                 break;

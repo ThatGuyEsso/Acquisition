@@ -8,6 +8,8 @@ public class WeaponSpawner : MonoBehaviour
     [SerializeField] private SpriteRenderer pickupGFX;
     [SerializeField] private GameObject weaponPrefab;
     [SerializeField] private GameObject spawnVFX;
+
+    [SerializeField] private Animator deathAnimator;
     private Base_Weapon weapon;
     [Header("Sprites")]
     [SerializeField] private Sprite swordSprite, bowSprite,staffSprite;
@@ -27,6 +29,8 @@ public class WeaponSpawner : MonoBehaviour
             SpawnWeapon();
             isInteractable = true;
         }
+        if (deathAnimator)
+            if (deathAnimator.gameObject.activeInHierarchy) deathAnimator.gameObject.SetActive(false);
 
       
     }

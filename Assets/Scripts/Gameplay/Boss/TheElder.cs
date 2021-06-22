@@ -2,23 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
+public class TheElder : BaseBossAI
 {
 
 
-    [SerializeField] private Rigidbody2D rb;
-
-    public override void Init()
-    {
-        base.Init();
-        rb = GetComponent<Rigidbody2D>();
-        rb.Sleep();
-        
-    }
     protected override void ProcessAI()
     {
         if (!isFighting) return;
-        if(currentStage == BossStage.Transition && !isBusy)
+        if (currentStage == BossStage.Transition && !isBusy)
         {
             CycleToNextAttack();
         }
@@ -39,6 +30,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                         }
                         else
                         {
+                            if (currentStageAbilities.Count <=0) return;
                             if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
                             else
                             {
@@ -48,10 +40,10 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                         }
                     }
                 }
-           
+
                 break;
             case AIState.Attack:
-                if(currentStage != BossStage.Transition)
+                if (currentStage != BossStage.Transition)
                 {
                     if (!InRange())
                     {
@@ -62,7 +54,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                         DoAttack();
                     }
                 }
-                else 
+                else
                 {
                     if (transitionAbility)
                     {
@@ -77,10 +69,11 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                     }
 
                 }
-          
+
                 break;
         }
     }
+
 
     private void Update()
     {
@@ -95,10 +88,10 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
         //    case AIState.Idle:
         //        break;
         //    case AIState.Chase:
-             
+
         //        break;
         //    case AIState.Attack:
-        
+
 
         //        break;
         //}
@@ -116,7 +109,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                 break;
             case AIState.Attack:
 
-                if (!isBusy ||canLockOn)
+                if (!isBusy || canLockOn)
                 {
                     faceTarget.FaceCurrentTarget();
                 }
@@ -134,10 +127,10 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
             {
                 case AIState.Idle:
                     navigation.Stop();
-                    rb.velocity = Vector2.zero;
                     navigation.enabled = false;
                     faceTarget.enabled = false;
-                    if (isDead) {
+                    if (isDead)
+                    {
                         animator.enabled = true;
                         animator.Play("KnightDeath");
                     }
@@ -150,7 +143,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                     faceTarget.enabled = false;
                     if (target)
                         navigation.StartAgent(target);
-                   
+
                     animator.Play("Walking");
                     break;
                 case AIState.Attack:
@@ -159,13 +152,13 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                     navigation.enabled = false;
                     faceTarget.enabled = true;
                     faceTarget.SetTarget(target);
-                    if(currentStage != BossStage.Transition)
+                    if (currentStage != BossStage.Transition)
                     {
                         if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
                         {
                             if (closeCombatAbility)
                             {
-                                if (InCloseRange() && closeCombatAbility.CanAttack()&&!isBusy)
+                                if (InCloseRange() && closeCombatAbility.CanAttack() && !isBusy)
                                 {
                                     DoCloseQuarters();
                                 }
@@ -186,11 +179,11 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                         DoAttack();
                     }
 
-        
+
                     break;
             }
         }
-   
+
     }
 
     public override Transform GetFirePoint()
@@ -200,21 +193,6 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
         else return transform;
     }
 
-    public void UseRigidBody(bool useRigidBody)
-    {
-        if (useRigidBody) rb.WakeUp();
-        else rb.Sleep();
-    }
-
-    public override void SetUseRigidBody(bool use)
-    {
-        UseRigidBody(use);
-    }
-
-    public override Rigidbody2D GetRigidBody()
-    {
-        return rb;
-    }
 
     public override void EndBossFight()
     {

@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour, IInitialisable
 {
     [SerializeField] private bool inDebug;
+    [SerializeField] private GameObject topGFX;
+    [SerializeField] private GameObject bottomGFX;
     [SerializeField] private List<Component> playerComponentsToInit = new List<Component>();
     private List<ICharacterComponents> charComps = new List<ICharacterComponents>();
     bool isBound;
@@ -33,8 +35,10 @@ public class PlayerBehaviour : MonoBehaviour, IInitialisable
            
             case GameEvents.PlayerDefeat:
                 DisableCharacterComponents();
+                bottomGFX.SetActive(false);
+                topGFX.SetActive(false);
 
-           
+
                 break;
 
             case GameEvents.DeathMaskComplete:
@@ -44,6 +48,8 @@ public class PlayerBehaviour : MonoBehaviour, IInitialisable
             
                 break;
             case GameEvents.PlayerRespawned:
+                bottomGFX.SetActive(true);
+                topGFX.SetActive(true);
                 ResetCharacterComponents();
                 break;
             case GameEvents.BossInit:

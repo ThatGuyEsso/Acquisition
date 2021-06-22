@@ -14,7 +14,8 @@ public class BossUI : MonoBehaviour
     public Action OnUISpawned;
     public void InitialiseUI(string bossName)
     {
-        bossNameDisplay.name = bossName;
+        bossNameDisplay.text = bossName;
+
         animator.Play("InitHealth");
     }
 

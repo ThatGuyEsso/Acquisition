@@ -80,7 +80,8 @@ public class BubbleShield : MonoBehaviour
         {
             OnDestroy?.Invoke();
             transform.parent = null;
-            ObjectPoolManager.Recycle(gameObject);
+            if(gameObject)
+                ObjectPoolManager.Recycle(gameObject);
         }
     }
 

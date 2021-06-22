@@ -120,9 +120,16 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     protected void KillProjectile()
     {
         if (ObjectPoolManager.instance)
-            ObjectPoolManager.Recycle(gameObject);
+        {
+            if (gameObject)
+                ObjectPoolManager.Recycle(gameObject);
+        }
         else
-            Destroy(gameObject);
+        {
+            if (gameObject)
+                Destroy(gameObject);
+        }
+      
     }
 
     public void SetUpProjectile(float damage, Vector2 dir, float speed, float lifeTime, int blockCount, GameObject owner)

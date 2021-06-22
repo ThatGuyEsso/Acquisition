@@ -54,7 +54,7 @@ public class AudioPlayer : MonoBehaviour, IAudio
         {
             yield return null;
         }
-
-        ObjectPoolManager.Recycle(gameObject);
+        if(gameObject)
+            ObjectPoolManager.Recycle(gameObject);
     }
 }

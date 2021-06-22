@@ -12,13 +12,12 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     [SerializeField] private TDInputMovement movement;
     [SerializeField] private GameObject deathMask;
     [SerializeField] private SpriteFlash flashVFX;
+    [SerializeField] private Animator deathAnimController;
     private float currHurtTime;
     private int currentHitPoint;
     private bool isDead = false;
 
-    public Action OnHurt;
-    public Action OnNotHurt;
-    public Action OnDie;
+
     bool isHurt;
     public void Init()
     {
@@ -45,6 +44,17 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
 
                 UpdateHealthDisplay();
                 break;
+            case GameEvents.PlayerDefeat:
+
+                if(deathAnimController) deathAnimController.gameObject.SetActive(true);
+                break;
+            case GameEvents.DeathMaskComplete:
+                if (deathAnimController)
+                {
+                   
+                    deathAnimController.Play("deathAnimController", 0, 0f);
+                }
+                break;
         }
     }
 
@@ -67,7 +77,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
                 UpdateHealthDisplay();
                 //currentKnockBack = kBackDir * kBackMag;
                 if (flashVFX) flashVFX.Flash();
-                OnHurt?.Invoke();
+           
             }
             
 
@@ -84,7 +94,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
                 isHurt = false;
                 if (flashVFX) flashVFX.EndFlash();
                 currHurtTime = maxHurtTime;
-                OnNotHurt?.Invoke();
+               
             }
             else
             {
@@ -148,11 +158,11 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     {
         isDead = true;
         if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("PlayerDeath", transform.position);
-        OnDie?.Invoke();
+   
         if(GameManager.instance)
             GameManager.instance.BeginNewEvent(GameEvents.PlayerDefeat);
         ObjectPoolManager.Spawn(deathMask, transform.position, Quaternion.identity);
-        Debug.Log("PlayerDied");
+
 
     }
 

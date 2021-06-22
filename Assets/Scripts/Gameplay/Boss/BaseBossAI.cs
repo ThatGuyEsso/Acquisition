@@ -21,16 +21,16 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 {
 
     [Header("Settings")]
-    [SerializeField] protected SpriteFlash flashVFX;
     [SerializeField] protected string BossName;
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float aiTickRate= 0.25f;
-
     public Transform target;
     [SerializeField] protected BossStageData stageData;
     [SerializeField] protected GameObject bossUIPrefab;
     [SerializeField] protected string awakenAnimName;
     [Header("Componeents")]
+    protected SpriteFlash flashVFX;
+    [SerializeField] protected Transform firepoint;
     [SerializeField] protected TDNavMeshMovement navigation;
     [SerializeField] protected FaceTarget faceTarget;
     [SerializeField] protected FaceMovementDirection faceMovementDirection;
@@ -38,7 +38,6 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 
     [SerializeField] protected float maxHurtTime;
     [SerializeField] protected AttackAnimEventListener attackAnimEvents;
-    [SerializeField] protected List<Component> componentsToInit = new List<Component>();
     [SerializeField] protected List<BaseBossAbility> currentStageAbilities = new List<BaseBossAbility>();
     [Header("SFX Settings")]
     [SerializeField] protected string awakenSFXName;
@@ -77,14 +76,6 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         currentStageIndex = 0;
         currentAIState = AIState.Chase;
         currHurtTime = maxHurtTime;
-        if (componentsToInit.Count > 0)
-        {
-            for (int i = 0; i < componentsToInit.Count; i++)
-            {
-                IInitialisable initialisable = componentsToInit[i].GetComponent<IInitialisable>();
-                initialisable.Init();
-            }
-        }
 
         if (!attackAnimEvents) attackAnimEvents = GetComponent<AttackAnimEventListener>();
         else
@@ -217,7 +208,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         {
             foreach (BaseBossAbility ability in currentStageAbilities)
             {
-                ObjectPoolManager.Recycle(ability.gameObject);
+                if(ability.gameObject)
+                    ObjectPoolManager.Recycle(ability.gameObject);
             }
             currentStageAbilities.Clear();
         }
@@ -263,7 +255,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 currentStageAbilities.Add(ability);
             }
         }
-
+        if (currentStageAbilities.Count <= 0) return;
         currentStageAbilities[currentAttackIndex].EnableAbility();
     }
 
@@ -289,6 +281,11 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     {
         if(currentStage != BossStage.Transition)
         {
+            if (!currentStageAbilities[currentAttackIndex])
+            {
+                CycleToNextAttack();
+                return;
+            }
             if (!currentStageAbilities[currentAttackIndex].isEnabled) currentStageAbilities[currentAttackIndex].EnableAbility();
             if (currentStageAbilities[currentAttackIndex].IsManagingAttack()) canLockOn = true;
             else canLockOn = false;
@@ -440,7 +437,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             foreach (BaseBossAbility ability in currentStageAbilities)
             {
                 ability.DisableAbility();
-                ObjectPoolManager.Recycle(ability.gameObject);
+                if(ability.gameObject)
+                    ObjectPoolManager.Recycle(ability.gameObject);
             }
             currentStageAbilities.Clear();
             closeCombatAbility = null;
@@ -462,7 +460,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             foreach (BaseBossAbility ability in currentStageAbilities)
             {
                 ability.DisableAbility();
-                ObjectPoolManager.Recycle(ability.gameObject);
+                if(ability.gameObject)
+                    ObjectPoolManager.Recycle(ability.gameObject);
             }
             currentStageAbilities.Clear();
         }
@@ -483,6 +482,9 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     }
     virtual public void OnDestroy()
     {
-        if (UI) ObjectPoolManager.Recycle(UI.gameObject);
+        if(!inDebug)
+            if (UI.gameObject) ObjectPoolManager.Recycle(UI.gameObject);
     }
+
+
 }

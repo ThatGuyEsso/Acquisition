@@ -16,7 +16,12 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
     [Header("AudioPlayers")]
     [SerializeField] private GameObject audioPlayer;
     [SerializeField] private GameObject uiAudioPlayer;
+    [SerializeField] private bool inDebug=false;
 
+    private void Awake()
+    {
+        if (inDebug) Init();
+    }
     public void Init()
     {
         //Initialise Singleton Instance
