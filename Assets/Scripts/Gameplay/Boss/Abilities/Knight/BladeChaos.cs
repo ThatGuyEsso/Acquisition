@@ -84,6 +84,14 @@ public class BladeChaos : BaseBossAbility
             projectileSpeed, projectileLifeTime,  projectileBlockCount, owner.gameObject);
     }
 
+
+    public override void DisableAbility()
+    {
+        base.DisableAbility();
+        isAttacking = false;
+        eventListener.OnAnimEnd -= eventListener.OnAnimEnd += EvaluateEnd;
+        eventListener.OnShowAttackZone -= StartBladeCircus;
+    }
     public override void EnableAbility()
     {
         base.EnableAbility();

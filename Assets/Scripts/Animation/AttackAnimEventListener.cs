@@ -22,8 +22,7 @@ public class AttackAnimEventListener: MonoBehaviour
     public void OnDie()
     {
         OnDeathComplete?.Invoke();
-        if (GameManager.instance)
-            GameManager.instance.BeginNewEvent(GameEvents.RespawnPlayer);
+       
     }
     public void OnBeginSFX()
     {

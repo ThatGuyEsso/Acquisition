@@ -46,7 +46,13 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
                 break;
             case GameEvents.PlayerDefeat:
 
-                if(deathAnimController) deathAnimController.gameObject.SetActive(true);
+                if (deathAnimController)
+                {
+
+                    deathAnimController.gameObject.SetActive(true);
+                    AttackAnimEventListener animEvents = deathAnimController.GetComponent<AttackAnimEventListener>();
+                    if(animEvents) animEvents.OnDeathComplete += ResetGame;
+                }
                 break;
             case GameEvents.DeathMaskComplete:
                 if (deathAnimController)
@@ -83,6 +89,14 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
 
         }
 
+    }
+
+    public void ResetGame()
+    {
+        AttackAnimEventListener animEvents = deathAnimController.GetComponent<AttackAnimEventListener>();
+        animEvents.OnDeathComplete += ResetGame;
+        if (GameManager.instance)
+            GameManager.instance.BeginNewEvent(GameEvents.RespawnPlayer);
     }
 
     private void Update()
