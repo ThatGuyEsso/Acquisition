@@ -10,7 +10,7 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
     public SceneIndex[] startingRooms;
 
      public List<LevelRoom> loadedRooms = new List<LevelRoom>();
-
+    private int roomsLoadedEverCount = 0;
     private bool isAddingRoom;
     private bool isClearingRoom;
     public Action OnNewRoomAdded;
@@ -221,7 +221,8 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         if (room)
         {
             loadedRooms.Add(room);
-            room.SetID("Room" + loadedRooms.Count+"_"+ room.GetRoomType().ToString());
+            room.SetID("Room" + loadedRooms.Count+"_"+ room.GetRoomType().ToString()+ roomsLoadedEverCount.ToString());
+            roomsLoadedEverCount++;
             isAddingRoom = false;
         }
     }
