@@ -221,7 +221,7 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         if (room)
         {
             loadedRooms.Add(room);
-            room.SetID("Room" + loadedRooms.Count);
+            room.SetID("Room" + loadedRooms.Count+"_"+ room.GetRoomType().ToString());
             isAddingRoom = false;
         }
     }

@@ -117,11 +117,21 @@ public class WeaponManager : MonoBehaviour,IInitialisable
     public void RemoveWeapon()
     {
         if (equippedWeapon != null)
-            equippedWeapon.UnEquip();
+            equippedWeapon.Delete();
         runTimeData.hasWeapon = false;
         OnWeaponEquipped?.Invoke(WeaponType.none);
     }
 
+
+
+    public void DestroyWeapon()
+    {
+        if (equippedWeapon != null)
+            equippedWeapon.UnEquip();
+        runTimeData.hasWeapon = false;
+        equippedWeapon = null;
+        OnWeaponEquipped?.Invoke(WeaponType.none);
+    }
 
     public void ToggleWeapon(bool isOn)
     {

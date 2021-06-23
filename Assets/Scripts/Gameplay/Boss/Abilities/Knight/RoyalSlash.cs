@@ -45,7 +45,6 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
 
             dynamicAttackZone = null;
         }
-
             //Debug.Log("Evaluate Attacks");
         if (attacksLeft <= 0)
         {

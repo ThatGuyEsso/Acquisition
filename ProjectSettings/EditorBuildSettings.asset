@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Segments/BossRooms/KnightRoom.unity
     guid: 89a3d48b5a569584c941ad5dfd5073de
   - enabled: 1
-    path: Assets/Scenes/Level Segments/ElderRoom.unity
+    path: Assets/Scenes/Level Segments/BossRooms/ElderRoom.unity
     guid: 3938d9443a87f7f41861ea8e839dfc95
   - enabled: 1
     path: Assets/Scenes/Level Segments/ScholarRoom.unity

@@ -66,6 +66,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     public System.Action OnAwakened; 
     protected void Awake()
     {
+        if (animator.enabled) animator.enabled = false;
         if (inDebug) Init();
     }
     virtual public void Init()
@@ -106,6 +107,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     }
     public void AwakenBoss()
     {
+        animator.enabled = true;
         UI.OnUISpawned -= AwakenBoss;
         if (inDebug)
             attackAnimEvents.OnAnimEnd += BeginFight;
@@ -289,7 +291,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             if (!currentStageAbilities[currentAttackIndex].isEnabled) currentStageAbilities[currentAttackIndex].EnableAbility();
             if (currentStageAbilities[currentAttackIndex].IsManagingAttack()) canLockOn = true;
             else canLockOn = false;
-            animator.Play(currentStageAbilities[currentAttackIndex].AnimationName());
+            animator.Play(currentStageAbilities[currentAttackIndex].AnimationName(),0,0f);
         }
         else
         {
@@ -298,7 +300,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 if (!transitionAbility.isEnabled) transitionAbility.EnableAbility();
                 if (transitionAbility.IsManagingAttack()) canLockOn = true;
                 else canLockOn = false;
-                animator.Play(transitionAbility.AnimationName());
+                animator.Play(transitionAbility.AnimationName(),0,0f);
             }
         }
 
@@ -310,7 +312,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
            if (!closeCombatAbility.isEnabled) closeCombatAbility.EnableAbility();
             if (closeCombatAbility.IsManagingAttack()) canLockOn = true;
             else canLockOn = false;
-            animator.Play(closeCombatAbility.AnimationName());
+            animator.Play(closeCombatAbility.AnimationName(),0,0f);
         }
    
     }
@@ -479,7 +481,10 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         isBusy = false;
         if(UI)
         UI.HideUI();
-        OnNewState(AIState.Idle);
+        navigation.Stop();
+      
+        navigation.enabled = false;
+        faceTarget.enabled = false;
     }
 
     virtual public void EndBossFight()
@@ -493,7 +498,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     virtual public void OnDestroy()
     {
         if(!inDebug)
-            if (UI.gameObject) ObjectPoolManager.Recycle(UI.gameObject);
+            if (UI) ObjectPoolManager.Recycle(UI.gameObject);
     }
 
     public Transform GetTarget()

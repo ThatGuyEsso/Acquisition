@@ -17,7 +17,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
     }
     protected override void ProcessAI()
     {
-        if (!isFighting) return;
+    if (!isFighting) return;
         if(currentStage == BossStage.Transition && !isBusy)
         {
             CycleToNextAttack();
@@ -214,6 +214,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
 
     public override void EndBossFight()
     {
+        rb.velocity = Vector2.zero;
         GameStateManager.instance.runtimeData.isKnightDefeated = true;
         attackAnimEvents.OnDeathComplete -= EndBossFight;
         isFighting = false;

@@ -58,5 +58,5 @@ MonoBehaviour:
   artilleryPrefab: {fileID: 6811021587622036184, guid: 220c5e3a038d838488abb1db5388eff6, type: 3}
   nMinOfArtillery: 3
   nMaxOfArtillery: 6
-  minArtillerySpawnRate: 0.25
-  maxArtillerySpawnRate: 1
+  minArtillerySpawnRate: 0.5
+  maxArtillerySpawnRate: 1.5

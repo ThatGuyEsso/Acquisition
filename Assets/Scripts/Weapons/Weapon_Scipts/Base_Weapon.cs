@@ -59,6 +59,18 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
             Init();
     }
 
+    protected void EvaluateNewGameEvent(GameEvents newEvent)
+    {
+        switch (newEvent)
+        {
+     
+            case GameEvents.PlayerDefeat:
+               
+                break;
+
+       
+        }
+    }
     public virtual void Init()
     {
         inputAction = new Controls();
@@ -132,6 +144,8 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         boxCollider.enabled = false;
     }
 
+
+
     virtual public void OnFireProjectile()
     {
 
@@ -155,6 +169,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         animSolver = solver;
         animSolver.movement.OnWalk += OnRun;
         animSolver.movement.OnStop += OnStop;
+   
 
     }
 
@@ -227,4 +242,10 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         secondaryHeld = false;
     }
 
+    public void Delete()
+    {
+        UnEquip();
+        if (gameObject)
+            ObjectPoolManager.Recycle(gameObject);
+    }
 }

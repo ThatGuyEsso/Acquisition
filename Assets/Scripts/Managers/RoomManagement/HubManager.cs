@@ -90,10 +90,11 @@ public class HubManager : MonoBehaviour
             case BossType.Knight:
                 scholarDoor.SetIsDoor(false);
                 elderDoor.SetIsDoor(false);
-           
-                
-                RoomManager.instance.RemoveRoom(scholarDoor.corridorID);
-                RoomManager.instance.RemoveRoom(elderDoor.corridorID);
+
+                if (scholarDoor.corridorID != string.Empty)
+                    RoomManager.instance.RemoveRoom(scholarDoor.corridorID);
+                if (elderDoor.corridorID != string.Empty)
+                    RoomManager.instance.RemoveRoom(elderDoor.corridorID);
                 connectingCorridor = RoomManager.instance.GetRoom(knightDoor.corridorID);
 
                 isLoadingRoom = true;
@@ -110,7 +111,9 @@ public class HubManager : MonoBehaviour
             case BossType.Elder:
                 knightDoor.SetIsDoor(false);
                 scholarDoor.SetIsDoor(false);
+                if (scholarDoor.corridorID != string.Empty) 
                 RoomManager.instance.RemoveRoom(scholarDoor.corridorID);
+                if (knightDoor.corridorID != string.Empty) 
                 RoomManager.instance.RemoveRoom(knightDoor.corridorID);
 
                 connectingCorridor = RoomManager.instance.GetRoom(elderDoor.corridorID);
@@ -129,8 +132,10 @@ public class HubManager : MonoBehaviour
             case BossType.Scholar:
                 knightDoor.SetIsDoor(false);
                 elderDoor.SetIsDoor(false);
-                RoomManager.instance.RemoveRoom(elderDoor.corridorID);
-                RoomManager.instance.RemoveRoom(knightDoor.corridorID);
+                if (elderDoor.corridorID != string.Empty)
+                    RoomManager.instance.RemoveRoom(elderDoor.corridorID);
+                if (knightDoor.corridorID != string.Empty)
+                    RoomManager.instance.RemoveRoom(knightDoor.corridorID);
 
                 connectingCorridor = RoomManager.instance.GetRoom(scholarDoor.corridorID);
 

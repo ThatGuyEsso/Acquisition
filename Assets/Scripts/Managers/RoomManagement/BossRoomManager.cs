@@ -53,7 +53,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
             case GameEvents.PlayerDefeat:
                 Boss.OnNewState(AIState.Idle);
-
+                Boss.UI.gameObject.SetActive(false);
                 break;
 
             case GameEvents.BossDefeated:
@@ -91,7 +91,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
         }
         else
         {
-            Destroy(gameObject);
+          Destroy(gameObject);
         }
     }
 
@@ -163,4 +163,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
     {
         return Boss;
     }
+
+
+    
 }

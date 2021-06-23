@@ -12,6 +12,6 @@ public interface Equipable
     void Equip(Transform firePoint,AttackAnimEventListener eventListener,Transform player, TopPlayerGFXSolver solver);
 
     void UnEquip();
-
+    void Delete();
 
 }

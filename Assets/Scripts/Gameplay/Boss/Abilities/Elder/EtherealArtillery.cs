@@ -78,7 +78,7 @@ public class EtherealArtillery : BaseBossAbility
                     Vector2 randomPointInBounds = new Vector2(Random.Range(-bounds.x, bounds.x),
                         Random.Range(-bounds.y, bounds.y));
 
-                    spawnPoint = BossRoomManager.instance.GetRoomCentrePoint() + bounds;
+                    spawnPoint = BossRoomManager.instance.GetRoomCentrePoint() + randomPointInBounds;
 
 
 
