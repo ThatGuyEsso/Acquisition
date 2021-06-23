@@ -15,7 +15,8 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
     public Transform player;
     [SerializeField] private PlayableDirector director;
     [SerializeField] private PlayableAsset bossIntro;
-
+    [SerializeField] private Vector2 roomHalfSize;
+    [SerializeField] private Transform roomCentre;
     [SerializeField] private NavMeshSurface2d navMesh;
     private void Awake()
     {
@@ -149,6 +150,15 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
         GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
     }
 
+
+    public Vector2 GetRoomHalfSize()
+    {
+        return roomHalfSize;
+    }
+    public Vector2 GetRoomCentrePoint()
+    {
+        return roomCentre.position;
+    }
     public BaseBossAI GetBoss()
     {
         return Boss;
