@@ -9,8 +9,9 @@ public class SpinningProjectile : Base_Projectile
     {
         rotationSpeed = rotSpeed;
     }
-    public void Update()
+    override protected void Update()
     {
+        base.Update();
         transform.Rotate(new Vector3(0f,0f,Time.deltaTime* rotationSpeed));
     }
 }

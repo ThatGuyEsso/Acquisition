@@ -496,5 +496,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             if (UI.gameObject) ObjectPoolManager.Recycle(UI.gameObject);
     }
 
-
+    public Transform GetTarget()
+    {
+        return target;
+    }
 }

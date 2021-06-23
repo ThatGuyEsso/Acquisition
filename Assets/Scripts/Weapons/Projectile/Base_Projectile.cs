@@ -138,7 +138,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         }
     }
 
-    protected void KillProjectile()
+    virtual protected void KillProjectile()
     {
         if (ObjectPoolManager.instance)
         {
@@ -177,10 +177,11 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         return owner;
     }
 
-    public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
+    virtual public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
         if (!isHurt)
         {
+            
             isHurt = true;
             if (attacker != owner) blockCount--;
             if (blockCount <= 0) KillProjectile();
@@ -218,7 +219,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     }
 
 
-    public IEnumerator LifeTimer(float time)
+    virtual protected IEnumerator LifeTimer(float time)
     {
         yield return new WaitForSeconds(time);
         KillProjectile();
@@ -245,7 +246,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     {
         //
     }
-    public void RepelProjectile(Vector2 dir, float force)
+    virtual public void RepelProjectile(Vector2 dir, float force)
     {
         rb.AddForce(dir * force, ForceMode2D.Impulse);
     }
