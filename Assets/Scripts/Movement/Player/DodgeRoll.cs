@@ -32,6 +32,9 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     private float currentSpeed;
     private float rollEndSpeed;
     private Vector2 rollDirection;
+
+    public System.Action OnRollBegun;
+    public System.Action OnRollEnd;
     private void Awake()
     {
         if (inDebug) Init();
@@ -128,6 +131,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
 
             dodgeAnimator.Play("DodgeRoll", 0, 0f);
             PlayDodgeSFX();
+            OnRollBegun?.Invoke();
         }
         gameObject.layer = invisibilityLayer;
         canDodge = false;
@@ -164,8 +168,8 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     public void StopRoll()
     {
         isStopping = false;
-
-        if(tdMovement.GetMoveDirection()==Vector2.zero)
+        OnRollEnd?.Invoke();
+        if (tdMovement.GetMoveDirection()==Vector2.zero)
             rb.velocity = Vector2.zero;
 
         dodgeAnimator.gameObject.SetActive(false);

@@ -10,25 +10,25 @@ public class AttackVolume : MonoBehaviour,IVolumes
 
     public Action OnPlayerHit;
     public Action OnObstacleHit;
-    bool isPlayerZone;
+    [SerializeField] protected bool isPlayerZone;
 
-    private float damage;
-    private float knockBack;
-    private Vector2 direction;
-    private GameObject owner;
+    [SerializeField] protected float damage;
+    protected float knockBack;
+    protected Vector2 direction;
+    protected GameObject owner;
 
 
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         
     }
-    private void OnDisable()
+    protected void OnDisable()
     {
         StopAllCoroutines();
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    virtual protected void OnTriggerEnter2D(Collider2D other)
     {
         if (isPlayerZone)
         {
@@ -70,7 +70,7 @@ public class AttackVolume : MonoBehaviour,IVolumes
      
     }
 
-    public void OnTriggerStay2D(Collider2D other)
+    virtual protected void OnTriggerStay2D(Collider2D other)
     {
         if (isPlayerZone)
         {
@@ -113,12 +113,12 @@ public class AttackVolume : MonoBehaviour,IVolumes
     }
 
 
-    public void SetIsPlayerZone(bool isPlayerZone)
+    virtual public void SetIsPlayerZone(bool isPlayerZone)
     {
         this.isPlayerZone = isPlayerZone;
     }
 
-    public void SetUpDamageVolume(float dmg, float kBack, Vector2 dir,GameObject owner)
+    virtual public void SetUpDamageVolume(float dmg, float kBack, Vector2 dir,GameObject owner)
     {
        
         damage=dmg;
@@ -127,7 +127,7 @@ public class AttackVolume : MonoBehaviour,IVolumes
         this.owner = owner;
     }
 
-    public void EvaluateGameEvent(GameEvents gameEvent){
+    virtual public void EvaluateGameEvent(GameEvents gameEvent){
        
     }
 

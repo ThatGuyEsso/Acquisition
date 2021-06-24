@@ -271,8 +271,13 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         Base_SkillAttribute attrib = ObjectPoolManager.Spawn(attribute, transform);
         if (attrib)
         {
+            attrib.SetUpAttribute(this);
             attributes.Add(attrib);
+            
         }
    
     }
+
+    public Transform GetPlayerTransform() { return playerTransform; }
+    public Transform GetFirePoint() { return firePoint ; }
 }

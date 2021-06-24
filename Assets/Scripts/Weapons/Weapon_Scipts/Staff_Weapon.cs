@@ -51,6 +51,7 @@ public class Staff_Weapon : Base_Weapon
         attackEvents.OnShootProjectile += BeginBeam;
         animSolver.PlayAnimationFromStart("Primary_Staff");
 
+
     }
 
     public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player, TopPlayerGFXSolver solver)
@@ -185,6 +186,7 @@ public class Staff_Weapon : Base_Weapon
       
         GameObject shield = ObjectPoolManager.Spawn(secondaryProjectile, playerTransform);
         shield.GetComponent<BubbleShield>().owner = playerTransform.gameObject;
+        OnSecondaryAbility?.Invoke(shield);
     }
     private void FireRay()
     {
@@ -211,6 +213,8 @@ public class Staff_Weapon : Base_Weapon
                 target.OnDamage(primaryAttackDamage, playerTransform.up, 10f, playerTransform.gameObject);
             }
         }
+
+        OnPrimaryAttack?.Invoke();
     }
 
     protected override void SecondaryAttack()
@@ -231,7 +235,7 @@ public class Staff_Weapon : Base_Weapon
 
         attackEvents.OnShowAttackZone += CreateBubbleShield;
         animSolver.PlayAnimationFromStart("Secondary_Staff");
-
+        OnSecondaryAttack?.Invoke();
     }
 
 

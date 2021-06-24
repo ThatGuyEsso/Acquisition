@@ -172,7 +172,7 @@ public class ObjectPoolManager : MonoBehaviour,IInitialisable
 	public static void Recycle(GameObject obj)
 	{
 		GameObject prefab;
-
+		if (!obj) return;
   		if (instance.spawnedObjects.TryGetValue(obj, out prefab))
 			Recycle(obj, prefab);
 		else

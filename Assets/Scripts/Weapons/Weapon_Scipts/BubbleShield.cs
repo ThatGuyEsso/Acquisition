@@ -15,6 +15,7 @@ public class BubbleShield : MonoBehaviour
     private int currHitPoints;
 
     public System.Action OnDestroy;
+    public System.Action<GameObject> OnRelfected;
     public void Awake()
     {
         flashVFX = GetComponent<SpriteFlash>();
@@ -32,15 +33,19 @@ public class BubbleShield : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Projectiles")){
-            IProjectile projectile = other.gameObject.GetComponent<IProjectile>();
+
+
+            IProjectile projectile = other.GetComponent<IProjectile>();
 
             if (projectile != null)
             {
                 if (projectile.GetOwner() != owner)
                 {
+                    OnRelfected?.Invoke(projectile.GetSelf());
                     ProjectileData data = projectile.GetProjectileData();
                     projectile.ResetProjectile();
                     projectile.SetUpProjectile(reflectionDamage, data.dir * -1f, data.speed,data.lifeTime, data.blockCount, owner);
+                
                     if (BossRoomManager.instance)
                     {
                         if (BossRoomManager.instance.GetBoss())

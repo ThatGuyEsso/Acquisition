@@ -41,6 +41,7 @@ public class Bow_Weapon : Base_Weapon
         currTimeToIdle = timeToIdle;
         canPrimaryFire = false;
 
+        OnPrimaryAttack?.Invoke();
         attackEvents.OnShootProjectile += OnFireProjectile;
         attackEvents.OnPlaySFX += PlayArrowDrawSFX;
         attackEvents.OnAnimEnd += ResetPrimaryFire;
@@ -78,7 +79,13 @@ public class Bow_Weapon : Base_Weapon
     {
         Vector2 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
         GameObject go = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
-        go.GetComponent<IProjectile>().SetUpProjectile(primaryAttackDamage, dir, primaryShotSpeed,primaryShotLifeTime, 0,playerTransform.gameObject);
+        IProjectile projectile = go.GetComponent<IProjectile>();
+        if (projectile!=null)
+        {
+            projectile.SetUpProjectile(primaryAttackDamage, dir, primaryShotSpeed,primaryShotLifeTime, 0,playerTransform.gameObject);
+            OnPrimaryAbility?.Invoke(go);
+
+        }
         attackEvents.OnShootProjectile -= OnFireProjectile;
         PlayArrowShotSFX();
     }
@@ -194,6 +201,7 @@ public class Bow_Weapon : Base_Weapon
         currTimeToIdle = timeToIdle;
         attackEvents.OnChargeIncrease += IncreaseCharge;
         isCharging = true;
+        OnSecondaryAttack?.Invoke();
         animSolver.PlayAnimationFromStart("Secondary_Bow");
 
     }
@@ -225,30 +233,33 @@ public class Bow_Weapon : Base_Weapon
             Vector2 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
             if (chargeCount == 1)
             {
-              
-                IProjectile projectile = ObjectPoolManager.Spawn(weakCharge, firePoint.transform.position, Quaternion.identity)
-                .GetComponent<IProjectile>();
+                GameObject projObject = ObjectPoolManager.Spawn(weakCharge, firePoint.transform.position, Quaternion.identity);
+                IProjectile projectile = projObject.GetComponent<IProjectile>();
+
                 if (projectile != null)
                 {
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
+                    OnSecondaryAbility?.Invoke(projObject);
                 }
             }
             else if (chargeCount == 2)
             {
-                IProjectile projectile = ObjectPoolManager.Spawn(midCharge, firePoint.transform.position, Quaternion.identity)
-              .GetComponent<IProjectile>();
+                GameObject projObject = ObjectPoolManager.Spawn(midCharge, firePoint.transform.position, Quaternion.identity);
+                IProjectile projectile = projObject.GetComponent<IProjectile>();
                 if (projectile != null)
                 {
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
+                    OnSecondaryAbility?.Invoke(projObject);
                 }
             }
             else if (chargeCount >= 3)
             {
-                IProjectile projectile = ObjectPoolManager.Spawn(superCharge, firePoint.transform.position, Quaternion.identity)
-                .GetComponent<IProjectile>();
+                GameObject projObject = ObjectPoolManager.Spawn(superCharge, firePoint.transform.position, Quaternion.identity);
+                IProjectile projectile = projObject.GetComponent<IProjectile>();
                 if (projectile != null)
                 {
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
+                    OnSecondaryAbility?.Invoke(projObject);
                 }
             }
 

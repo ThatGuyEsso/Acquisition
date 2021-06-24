@@ -20,6 +20,8 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
     protected Rigidbody2D rb;
     protected bool isHurt;
     protected float currHurtTime;
+
+    public System.Action OnKilled;
     protected void Awake()
     {
         if (inDebug)
@@ -55,6 +57,7 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
     }
     virtual protected void OnDisable()
     {
+        OnKilled?.Invoke();
         if (isHurt)
         {
             isHurt = false;
@@ -66,6 +69,8 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
             GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
         }
         StopAllCoroutines();
+
+
     }
     virtual public void Init()
     {
@@ -286,8 +291,17 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
     }
     virtual public void RepelProjectile(Vector2 dir, float force)
     {
-        rb.AddForce(dir * force, ForceMode2D.Impulse);
+        //rb.AddForce(dir * force, ForceMode2D.Impulse);
     }
 
+    public GameObject GetSelf()
+    {
+        return gameObject;
+    }
+
+    public void BreakProjectile()
+    {
+        KillProjectile();
+    }
 }
 

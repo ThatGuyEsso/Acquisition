@@ -122,6 +122,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
 
     public void UpdateHealthDisplay()
     {
+        if (!PostProcessingManager.instance) return;
         if (PostProcessingManager.instance)
         {
             if (currentHitPoint == maxHitPoints)
@@ -138,6 +139,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
         }
         else if (currentHitPoint == maxHitPoints - 3)
         {
+          
             PostProcessingManager.instance.ApplyMaxDamageProfile();
         }
         else if (currentHitPoint <= maxHitPoints - 4)

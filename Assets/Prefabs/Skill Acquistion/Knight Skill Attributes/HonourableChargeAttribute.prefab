@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5178756561905980826
+--- !u!1 &9166094733422512536
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5178756561905980827}
-  - component: {fileID: 5178756561905980824}
+  - component: {fileID: 9166094733422512542}
+  - component: {fileID: 9166094733422512543}
   m_Layer: 0
-  m_Name: RoyalSlashAttribute
+  m_Name: HonourableChargeAttribute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5178756561905980827
+--- !u!4 &9166094733422512542
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5178756561905980826}
+  m_GameObject: {fileID: 9166094733422512536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,21 +31,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5178756561905980824
+--- !u!114 &9166094733422512543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5178756561905980826}
+  m_GameObject: {fileID: 9166094733422512536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ff3f97c046ced4a8bad8ab583fb309, type: 3}
+  m_Script: {fileID: 11500000, guid: eef2815382fb79b47adcf029f7eb1e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeMultiplierSword: 1.5
-  sizeMultiplierArrow: 3
-  sizeMultiplierReflection: 1.5
-  hitPointBonus: 3
-  sizeIncreaseRate: 10
-  growDelay: 0.05
+  shieldPrefab: {fileID: 1548466237699399466, guid: cf795e97c10c0c848bd562c18ff552b1, type: 3}
+  damage: 10

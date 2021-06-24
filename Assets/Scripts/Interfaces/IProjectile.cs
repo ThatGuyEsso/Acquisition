@@ -34,6 +34,8 @@ public interface IProjectile
     void SetProximityHomingTarget(Transform target);
     ProjectileData GetProjectileData();
     GameObject GetOwner();
-
+    GameObject GetSelf();
     void RepelProjectile(Vector2 dir, float force);
+
+    void BreakProjectile();
 }

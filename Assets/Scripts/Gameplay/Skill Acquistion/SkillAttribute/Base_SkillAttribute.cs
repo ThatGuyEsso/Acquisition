@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Base_SkillAttribute : MonoBehaviour
 {
-    private Base_Weapon owner;
+    protected Base_Weapon owner;
 
     virtual public void SetUpAttribute(Base_Weapon weaponOwner)
     {
@@ -68,7 +68,7 @@ public class Base_SkillAttribute : MonoBehaviour
         };
     }
 
-    private void OnEnable()
+    virtual protected void OnEnable()
     {
         if (owner)
         {
@@ -80,7 +80,7 @@ public class Base_SkillAttribute : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    virtual protected void OnDisable()
     {
         if (owner)
         {

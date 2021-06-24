@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5178756561905980826
+--- !u!1 &3955039129061691069
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5178756561905980827}
-  - component: {fileID: 5178756561905980824}
+  - component: {fileID: 3955039129061691070}
+  - component: {fileID: 3955039129061691071}
   m_Layer: 0
-  m_Name: RoyalSlashAttribute
+  m_Name: OmniSlashSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5178756561905980827
+--- !u!4 &3955039129061691070
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5178756561905980826}
+  m_GameObject: {fileID: 3955039129061691069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,21 +31,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5178756561905980824
+--- !u!114 &3955039129061691071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5178756561905980826}
+  m_GameObject: {fileID: 3955039129061691069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ff3f97c046ced4a8bad8ab583fb309, type: 3}
+  m_Script: {fileID: 11500000, guid: 373a370691638b348beadd56a9c61763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeMultiplierSword: 1.5
-  sizeMultiplierArrow: 3
-  sizeMultiplierReflection: 1.5
-  hitPointBonus: 3
-  sizeIncreaseRate: 10
-  growDelay: 0.05
+  swordProjectileCount: 3
+  swordMaxAngle: 90
+  thrustPrefab: {fileID: 1087995828118112649, guid: 45cbcd4562ae33f48b3478dc28a8f10b, type: 3}
+  ghostBladePrefab: {fileID: 2432848833002199921, guid: 35aad4a9f82b5654fbdc97c4e72f99ba, type: 3}
+  arrowPrefab: {fileID: 3647265956065727434, guid: f9579bf0ffa50f14d8f325632febe209, type: 3}
+  bowProjectileCount: 6
+  bowMaxAngle: 90
+  swordOffset: -15
+  bowOffest: -16.5

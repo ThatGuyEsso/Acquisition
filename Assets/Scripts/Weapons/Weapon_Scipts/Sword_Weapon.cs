@@ -133,7 +133,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
 
     public  void OnFireSecondaryProjectile()
     {
-        GameObject projectileObject = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
+        GameObject projectileObject = ObjectPoolManager.Spawn(secondaryProjectile, firePoint.transform.position, Quaternion.identity);
         IProjectile projectile = projectileObject.GetComponent<IProjectile>();
         if (projectile != null)
         {
