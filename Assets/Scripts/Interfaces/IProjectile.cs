@@ -38,4 +38,5 @@ public interface IProjectile
     void RepelProjectile(Vector2 dir, float force);
 
     void BreakProjectile();
+    void SetSpeed(float speed);
 }

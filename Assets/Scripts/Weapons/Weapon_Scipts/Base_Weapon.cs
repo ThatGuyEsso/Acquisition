@@ -280,4 +280,10 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     public Transform GetPlayerTransform() { return playerTransform; }
     public Transform GetFirePoint() { return firePoint ; }
+
+    public GameObject GetPrimaryProjectilePrefab() { return primaryProjectile; }
+    public GameObject GetSecondaryProjectile() { return secondaryProjectile; }
+
+    public void SetPrimaryProjectilePrefab(GameObject primPrefab) {  primaryProjectile = primPrefab; }
+    public void SetSecondaryProjectile(GameObject secPrefab) { secondaryProjectile = secPrefab; }
 }

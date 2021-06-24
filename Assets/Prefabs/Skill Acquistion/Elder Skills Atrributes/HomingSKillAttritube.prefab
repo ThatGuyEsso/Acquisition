@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &310180127804485972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310180127804485973}
+  - component: {fileID: 310180127804485970}
+  m_Layer: 0
+  m_Name: HomingSKillAttritube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &310180127804485973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310180127804485972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &310180127804485970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310180127804485972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d59f6945bdb914baf6506d90244adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordHomingProjectilePrefab: {fileID: 1087995828118112649, guid: ff4785b717cd958458a07c583bdadbf6, type: 3}
+  swordHomingSpeed: 800
+  bowHomingProjectilePrefab: {fileID: 3647265956065727434, guid: 39e1b22403c949c499d88a0296f59b1f, type: 3}
+  bowHomingSpeed: 1200
+  ShieldHomingProjectilePrefab: {fileID: 3362327410098933028, guid: ed159c2d23118124e8456b9c51cf4ad9, type: 3}
+  shieldHomingSpeed: 1
+  shieldProjDamage: 10
+  shieldHitPoints: 5
+  shieldHomingLifeTime: 5

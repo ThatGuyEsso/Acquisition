@@ -22,7 +22,7 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
     protected float currHurtTime;
 
     public System.Action OnKilled;
-    protected void Awake()
+    virtual protected void Awake()
     {
         if (inDebug)
             Init();
@@ -302,6 +302,11 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
     public void BreakProjectile()
     {
         KillProjectile();
+    }
+
+    public void SetSpeed(float speed)
+    {
+        projectileSpeed = speed;
     }
 }
 

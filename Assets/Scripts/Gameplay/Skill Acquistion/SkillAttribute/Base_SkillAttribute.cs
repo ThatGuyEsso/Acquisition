@@ -17,7 +17,7 @@ public class Base_SkillAttribute : MonoBehaviour
     }
 
 
-    public void EvaluatePrimaryAttackAttribute()
+    virtual public void EvaluatePrimaryAttackAttribute()
     {
         switch (owner.GetWeaponType())
         {

@@ -11,13 +11,16 @@ public class HomingProjectile : Base_Projectile
     [SerializeField] private bool useProximity;
     private bool canHome;
     private HomingProximityDetector detector;
-    public void Awake()
+    [SerializeField] private bool autoAssignTarget;
+    override protected  void Awake()
     {
+        base.Awake();
         orientatonManager = gameObject.GetComponent<FaceTarget>();
     }
 
-    public void OnEnable()
+     override protected void OnEnable()
     {
+        base.OnEnable();
         if (useProximity)
         {
             detector = ObjectPoolManager.Spawn(proximityPrefab, transform.position,Quaternion.identity)
@@ -26,6 +29,8 @@ public class HomingProjectile : Base_Projectile
             {
                 detector.parent = gameObject;
                 if (owner) detector.owner = owner;
+
+             
             }
 
         }
@@ -75,20 +80,44 @@ public class HomingProjectile : Base_Projectile
 
             detector.owner = owner;
         }
+
+
+        if (autoAssignTarget)
+        {
+            AutoAssingTarget();
+        }
     }
 
-
-    private void OnDisable()
+    public void AutoAssingTarget()
     {
+        if(owner.GetComponent<IBoss>() == null)
+        {
+            if (BossRoomManager.instance)
+            {
+                if (BossRoomManager.instance.GetBoss())
+                    SetHomingTarget(BossRoomManager.instance.GetBoss().transform);
+
+            }
+            else
+            {
+                BaseBossAI boss = FindObjectOfType<BaseBossAI>();
+                if (boss)
+                {
+                    SetHomingTarget(boss.transform);
+
+                }
+                else
+                {
+                    if (gameObject) ObjectPoolManager.Recycle(gameObject);
+                }
+            }
+        }
+    }
+    override protected void OnDisable()
+    {
+        base.OnDisable();
         if (detector)
             ObjectPoolManager.Recycle(detector);
-    }
-    public override void OnTriggerEnter2D(Collider2D other)
-    {
-        base.OnTriggerEnter2D(other);
-
-    
-
     }
 
 

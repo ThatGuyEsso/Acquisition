@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpinningBlades : MonoBehaviour
+public class SpinningBlades : MonoBehaviour,IDamage
 {
     [SerializeField] private GhostBlade[] blades;
     [SerializeField] private float damagePerBlade;
@@ -13,7 +13,7 @@ public class SpinningBlades : MonoBehaviour
     public void Awake()
     {
         blades = gameObject.GetComponentsInChildren<GhostBlade>();
-
+      
 
     }
 
@@ -25,7 +25,7 @@ public class SpinningBlades : MonoBehaviour
         {
             blade.gameObject.SetActive(true);
 
-            
+            blade.Init();
         }
     }
 
@@ -66,5 +66,8 @@ public class SpinningBlades : MonoBehaviour
         }
     }
 
-    
+    public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
+    {
+      //
+    }
 }

@@ -25,7 +25,7 @@ public class OmniSlashSkill : Base_SkillAttribute
         {
        
             case WeaponType.Bow:
-                FireProjectilesInArc(spawnedAbiliity, arrowPrefab, swordMaxAngle, bowProjectileCount, bowOffest);
+                FireProjectilesInArc(spawnedAbiliity, owner.GetPrimaryProjectilePrefab(), swordMaxAngle, bowProjectileCount, bowOffest);
                 break;
          
         };
@@ -46,7 +46,7 @@ public class OmniSlashSkill : Base_SkillAttribute
                 break;
 
             case WeaponType.Sword:
-                FireProjectilesInArc(spawnedAbiliity, thrustPrefab, swordMaxAngle, swordProjectileCount, swordOffset);
+                FireProjectilesInArc(spawnedAbiliity, owner.GetSecondaryProjectile(), swordMaxAngle, swordProjectileCount, swordOffset);
                 break;
         };
     }
@@ -121,8 +121,12 @@ public class OmniSlashSkill : Base_SkillAttribute
         {
             ObjectPoolManager.Recycle(currentBlades.gameObject);
         }
-        currentShield.OnDestroy -= ClearShield;
-        currentShield = null;
+        if (currentShield)
+        {
+            currentShield.OnDestroy -= ClearShield;
+            currentShield = null;
+        }
+      
     }
 
 
