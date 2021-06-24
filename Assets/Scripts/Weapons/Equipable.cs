@@ -11,6 +11,8 @@ public interface Equipable
     void EnableWeapon();
     void Equip(Transform firePoint,AttackAnimEventListener eventListener,Transform player, TopPlayerGFXSolver solver);
 
+
+    void AddSkillAttribute(Base_SkillAttribute attribute);
     void UnEquip();
     void Delete();
 

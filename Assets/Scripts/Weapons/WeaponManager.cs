@@ -123,6 +123,18 @@ public class WeaponManager : MonoBehaviour,IInitialisable
     }
 
 
+    public void AddWeaponSkill(Base_SkillAttribute attribute)
+    {
+        if (equippedWeapon != null)
+        {
+            equippedWeapon.AddSkillAttribute(attribute);
+        }
+  
+
+    }
+
+
+
 
     public void DestroyWeapon()
     {

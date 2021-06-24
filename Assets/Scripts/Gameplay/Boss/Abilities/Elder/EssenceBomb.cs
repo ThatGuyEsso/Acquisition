@@ -66,13 +66,18 @@ public class EssenceBomb : BaseBossAbility
         eventListener.OnShootProjectile -= ShootProjectile;
 
     }
+    public void Lockon()
+    {
+        eventListener.OnShowAttackZone -= Lockon;
+        owner.SetCanLockOn(false);
+    }
 
     override public void EnableAbility()
     {
         base.EnableAbility();
         if (eventListener)
         {
-
+            eventListener.OnShowAttackZone += Lockon;
             eventListener.OnShootProjectile += ShootProjectile;
         }
     }

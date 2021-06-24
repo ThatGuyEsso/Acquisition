@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+using System;
 public enum WeaponType
 {
     Sword,
@@ -21,7 +21,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     [Header("Attack Settings")]
     [SerializeField] protected float primaryAttackDamage;
     [SerializeField] protected float secondaryAttackDamage;
-
+    [SerializeField] protected List<Base_SkillAttribute> attributes = new List<Base_SkillAttribute>();
 
     [Header("Projectiles")]
     [SerializeField] protected GameObject primaryProjectile;
@@ -53,6 +53,14 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     protected float currTimeToIdle;
     protected bool primaryHeld = false;
     protected bool secondaryHeld = false;
+
+    //Abillity actions
+    public Action OnPrimaryAttack;
+    public Action<GameObject> OnPrimaryAbility;
+
+    public Action OnSecondaryAttack;
+    public Action<GameObject> OnSecondaryAbility;
+
     private void Awake()
     {
         if(inDebug) 
@@ -245,7 +253,26 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     public void Delete()
     {
         UnEquip();
+        if (attributes.Count > 0)
+        {
+            foreach(Base_SkillAttribute attrib in attributes)
+            {
+                if (attrib)
+                    ObjectPoolManager.Recycle(attrib.gameObject);
+            }
+            attributes.Clear();
+        }
         if (gameObject)
             ObjectPoolManager.Recycle(gameObject);
+    }
+
+    public void AddSkillAttribute(Base_SkillAttribute attribute)
+    {
+        Base_SkillAttribute attrib = ObjectPoolManager.Spawn(attribute, transform);
+        if (attrib)
+        {
+            attributes.Add(attrib);
+        }
+   
     }
 }

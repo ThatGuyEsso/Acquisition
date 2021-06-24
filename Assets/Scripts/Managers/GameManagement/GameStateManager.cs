@@ -25,6 +25,8 @@ public class GameStateManager : MonoBehaviour
     public Action<GameState> OnNewGameState;
     public GameState currentGameState;
 
+
+
     public void Awake()
     {
         if(instance == null)
@@ -83,7 +85,7 @@ public class GameStateManager : MonoBehaviour
                 break;
             case GameState.LoadingHubWorld:
                 InitManager(roomManagerPrefab);
-
+                Cursor.visible = false;
                 OnNewGameState?.Invoke(currentGameState);
                 break;
 

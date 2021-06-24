@@ -204,7 +204,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: OnAnimBegun
+    functionName: OnSpawnAttackZone
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

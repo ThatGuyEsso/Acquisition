@@ -51,6 +51,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
             animSolver.PlayAnimation("Primary_2");
         }
 
+        OnPrimaryAttack?.Invoke();
         canPrimaryFire = false;
 
     }
@@ -117,23 +118,27 @@ public class Sword_Weapon : Base_Weapon, Equipable
 
     public override void OnFireProjectile()
     {
-        IProjectile projectile = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity)
-              .GetComponent<IProjectile>();
+        GameObject projectileObject = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
+        IProjectile projectile = projectileObject.GetComponent<IProjectile>();
+
         if (projectile!=null)
         {
             projectile.SetUpProjectile(primaryProjectileDamage, firePoint.up, primarySlashSpeed, primarySlashLifeTIme, 0, playerTransform.gameObject);
+            OnPrimaryAbility?.Invoke(projectileObject);
         }
         attackEvents.OnShootProjectile -= OnFireProjectile;
+
     }
 
 
     public  void OnFireSecondaryProjectile()
     {
-        IProjectile projectile = ObjectPoolManager.Spawn(secondaryProjectile, firePoint.transform.position+ (Vector3)secondaryProjectileOffset, Quaternion.identity)
-              .GetComponent<IProjectile>();
+        GameObject projectileObject = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
+        IProjectile projectile = projectileObject.GetComponent<IProjectile>();
         if (projectile != null)
         {
             projectile.SetUpProjectile(secondaryProjectileDamage, firePoint.up,SecondarySlashSpeed, SecondarySlashLifeTIme,3, playerTransform.gameObject);
+            OnSecondaryAbility?.Invoke(projectileObject);
         }
         attackEvents.OnShootProjectile -= OnFireSecondaryProjectile;
     }
@@ -170,21 +175,21 @@ public class Sword_Weapon : Base_Weapon, Equipable
         if (isBusy)
         {
           
-            Debug.Log("BUSY");
+            //Debug.Log("BUSY");
            
             return;
         }
         if (!isWeaponActive)
         {
 
-            Debug.Log("INACTIVE");
+            //Debug.Log("INACTIVE");
 
             return;
         }
 
         if (!canSecondaryFire)
         {
-            Debug.Log("can't attack");
+            //Debug.Log("can't attack");
             return;
         }
 
@@ -198,9 +203,9 @@ public class Sword_Weapon : Base_Weapon, Equipable
         attackEvents.OnAnimEnd += ResetSecondaryFire;
         currTimeToIdle = timeToIdle;
         animSolver.PlayAnimationFromStart("Secondary");
- 
-  
-        Debug.Log("Second Attack");
+
+        OnSecondaryAttack?.Invoke();
+        //Debug.Log("Second Attack");
 
 
     }

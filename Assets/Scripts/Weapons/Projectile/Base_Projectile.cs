@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
+public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDamage
 {
     [SerializeField] protected float projectileDamage;
     [SerializeField] protected float projectileSpeed;
     [SerializeField] protected float lifeTime;
     [SerializeField] protected float allyRepelForce = 5f;
     [SerializeField] protected string hitSFXname;
-    [SerializeField] protected float knockback =0;
+    [SerializeField] protected float knockback = 0;
     [SerializeField] protected bool inDebug = false;
     [SerializeField] protected float hurtTime = 0.25f;
     [SerializeField] protected int blockCount = 0;//How much damage projectile can take be getting destroyed
@@ -27,13 +27,49 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
 
         if (hitSFXname == string.Empty) hitSFXname = "ProjectileHit";
     }
-    private void OnDisable()
+    virtual protected void OnEnable()
     {
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent += EvaluateNewGameEvent;
+        }
+
+    }
+
+    virtual protected void EvaluateNewGameEvent(GameEvents newEvent)
+    {
+        switch (newEvent)
+        {
+
+            case GameEvents.PlayerDefeat:
+                if (gameObject)
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
+
+            case GameEvents.BossDefeated:
+
+                if (gameObject)
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
+        }
+    }
+    virtual protected void OnDisable()
+    {
+        if (isHurt)
+        {
+            isHurt = false;
+            currHurtTime = hurtTime;
+            flashVFX.CancelFlash();
+        }
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
+        }
         StopAllCoroutines();
     }
     virtual public void Init()
     {
-        if(!rb)
+        if (!rb)
             rb = GetComponent<Rigidbody2D>();
         if (!flashVFX)
             flashVFX = GetComponent<SpriteFlash>();
@@ -45,7 +81,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     {
         if (isHurt)
         {
-            if(currHurtTime <= 0)
+            if (currHurtTime <= 0)
             {
                 isHurt = false;
                 currHurtTime = hurtTime;
@@ -57,7 +93,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
             }
         }
     }
-    public void SetUp(Vector3 direction,float speed)
+    public void SetUp(Vector3 direction, float speed)
     {
         rb.velocity = direction * speed;
         projectileSpeed = speed;
@@ -70,13 +106,13 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         {
             if (AudioManager.instance)
             {
-                AudioManager.instance.PlayThroughAudioPlayer(hitSFXname, transform.position,true);
+                AudioManager.instance.PlayThroughAudioPlayer(hitSFXname, transform.position, true);
             }
             KillProjectile();
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
         {
-            if (other.GetComponent<IProjectile>().GetOwner() != owner||owner==null)
+            if (other.GetComponent<IProjectile>().GetOwner() != owner || owner == null)
             {
                 if (other.GetComponent<IDamage>() != null)
                 {
@@ -94,17 +130,19 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         if (other.gameObject.CompareTag("Player"))
         {
 
-            if (other.gameObject != owner&&owner!=null)
+            if (other.gameObject != owner && owner != null)
             {
-                if (other.GetComponent<IDamage>()!=null)
+                if (other.GetComponent<IDamage>() != null)
                 {
                     other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
                     KillProjectile();
                 }
-            
-               
+
+
             }
-        }else if (other.gameObject.CompareTag("Enemy")){
+        }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
             if (other.gameObject != owner)
             {
                 if (other.GetComponent<IDamage>() != null)
@@ -120,19 +158,19 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
         {
-            if (other.GetComponent<IProjectile>().GetOwner() == owner )
+            if (other.GetComponent<IProjectile>().GetOwner() == owner)
             {
                 Vector2 dir = other.transform.position - transform.position;
                 other.GetComponent<IProjectile>().RepelProjectile(dir, allyRepelForce);
             }
-      
+
         }
 
     }
     public void DecrementBlockCount()
     {
         blockCount--;
-        if(blockCount < 0)
+        if (blockCount < 0)
         {
             KillProjectile();
         }
@@ -150,7 +188,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
             if (gameObject)
                 Destroy(gameObject);
         }
-      
+
     }
 
     virtual public void SetUpProjectile(float damage, Vector2 dir, float speed, float lifeTime, int blockCount, GameObject owner)
@@ -181,7 +219,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     {
         if (!isHurt)
         {
-            
+
             isHurt = true;
             if (attacker != owner) blockCount--;
             if (blockCount <= 0) KillProjectile();
@@ -192,7 +230,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
             }
             if (flashVFX) flashVFX.Flash();
         }
-    
+
     }
 
     public void OrientateToMovement()
@@ -201,7 +239,7 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
         float targetAngle = EssoUtility.GetAngleFromVector((rb.velocity.normalized));
         /// turn offset -Due to converting between forward vector and up vector
         if (targetAngle < 0) targetAngle += 360f;
-        transform.rotation = Quaternion.Euler(0.0f, 0f, targetAngle-90f);
+        transform.rotation = Quaternion.Euler(0.0f, 0f, targetAngle - 90f);
     }
 
     virtual public void SetRotationSpeed(float rotSpeed)
@@ -233,14 +271,14 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     public ProjectileData GetProjectileData()
     {
         ProjectileData data = new ProjectileData(projectileDamage,
-          rb.velocity.normalized,projectileSpeed, lifeTime, blockCount, owner);
+          rb.velocity.normalized, projectileSpeed, lifeTime, blockCount, owner);
 
         return data;
     }
 
     virtual public void SetHomingTarget(Transform target)
     {
-       //
+        //
     }
     virtual public void SetProximityHomingTarget(Transform target)
     {
@@ -250,4 +288,6 @@ public class Base_Projectile : MonoBehaviour,IInitialisable, IProjectile,IDamage
     {
         rb.AddForce(dir * force, ForceMode2D.Impulse);
     }
+
 }
+

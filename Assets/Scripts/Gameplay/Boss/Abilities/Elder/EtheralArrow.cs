@@ -66,12 +66,18 @@ public class EtheralArrow : BaseBossAbility,IInitialisable
  
     }
 
+    public void Lockon()
+    {
+        eventListener.OnShowAttackZone -= Lockon;
+        owner.SetCanLockOn(false);
+    }
+
     override public void EnableAbility()
     {
         base.EnableAbility();
         if (eventListener)
         {
-            
+            eventListener.OnShowAttackZone += Lockon;
             eventListener.OnShootProjectile += ShootProjectile;
         }
     }

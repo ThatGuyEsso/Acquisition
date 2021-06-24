@@ -39,7 +39,17 @@ public class SpriteFlash : MonoBehaviour, IInitialisable
     {
         isEnding = true;
     }
-
+    public void CancelFlash()
+    {
+        isEnding = false;
+        isFlashing = false;
+        currentFlashColour = new Vector4(currentFlashColour.r, currentFlashColour.b, currentFlashColour.g, 0.0f);
+        foreach (SpriteRenderer sr in spriteRenderers)
+        {
+            sr.material.SetColor("_Tint", currentFlashColour);
+        }
+        currentFlashColour = flashColour;
+    }
     private void FlashToEndColour()
     {
         currentFlashColour = Vector4.Lerp(currentFlashColour, new Vector4(currentFlashColour.r, currentFlashColour.b, currentFlashColour.g,0.0f), flashSpeed * Time.deltaTime);

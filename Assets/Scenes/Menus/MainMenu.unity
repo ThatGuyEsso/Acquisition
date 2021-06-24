@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 1275878958}
   - component: {fileID: 1275878957}
   m_Layer: 5
-  m_Name: Logo
+  m_Name: TitleScreenImmage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,15 +366,15 @@ RectTransform:
   m_GameObject: {fileID: 1275878955}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.14999999, y: 0.14999999, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 3.682}
   m_Children: []
   m_Father: {fileID: 580086673}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3839.9998, y: 3839.9998}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1275878957
 MonoBehaviour:
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bf939cb1c3ca95b439c13ddb291d7788, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 637804e352e0e224f8e832ee6249ff83, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
