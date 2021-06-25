@@ -66,7 +66,7 @@ public class HomingProjectile : Base_Projectile
         base.Update();
 
 
-        Debug.Log("Destroyed" + gameObject);
+     
         if (homingTarget&& canHome)
         {
             orientatonManager.FaceCurrentTarget(-90f);
@@ -76,7 +76,7 @@ public class HomingProjectile : Base_Projectile
     public override void SetUpProjectile(float damage, Vector2 dir, float speed, float lifeTime, int blockCount, GameObject owner)
     {
         base.SetUpProjectile(damage, dir, speed, lifeTime, blockCount, owner);
-        Debug.Log("Set up" + gameObject);
+    
         canHome = false;
         if (detector && useProximity)
         {

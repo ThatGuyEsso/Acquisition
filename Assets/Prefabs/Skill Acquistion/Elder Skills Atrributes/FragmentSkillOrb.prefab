@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dcfde33946b2a84d84c4167a9454c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillOrbType: 0
-  skillAttributePrefab: {fileID: 9166094733422512543, guid: 03f24e4240189e445b854c2f221a6d92, type: 3}
+  skillOrbType: 1
+  skillAttributePrefab: {fileID: 7550454493029785792, guid: 5331da7ecba721d4c9e481c488628e62, type: 3}
   hideSFX: 
   displaySFX: 
   displayVFX: {fileID: 0}

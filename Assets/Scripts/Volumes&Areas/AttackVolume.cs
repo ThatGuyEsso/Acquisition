@@ -19,10 +19,6 @@ public class AttackVolume : MonoBehaviour,IVolumes
 
 
 
-    protected void OnEnable()
-    {
-        
-    }
     protected void OnDisable()
     {
         StopAllCoroutines();
@@ -132,13 +128,13 @@ public class AttackVolume : MonoBehaviour,IVolumes
     }
 
 
-    public IEnumerator TimeToRespawn(float time)
+    public IEnumerator TimeToDespawn(float time)
     {
         yield return new WaitForSeconds(time);
         ObjectPoolManager.Recycle(gameObject);
     } 
     public void SetDespawnTime(float time)
     {
-        StartCoroutine(TimeToRespawn(time));
+        StartCoroutine(TimeToDespawn(time));
     }
 }
