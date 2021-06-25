@@ -21,6 +21,7 @@ public class HomingProjectile : Base_Projectile
      override protected void OnEnable()
     {
         base.OnEnable();
+        //Debug.Break();
         if (useProximity)
         {
             detector = ObjectPoolManager.Spawn(proximityPrefab, transform.position,Quaternion.identity)
@@ -34,6 +35,7 @@ public class HomingProjectile : Base_Projectile
             }
 
         }
+
     }
     override public void SetHomingTarget(Transform target)
     {
@@ -63,8 +65,8 @@ public class HomingProjectile : Base_Projectile
     {
         base.Update();
 
-     
 
+        Debug.Log("Destroyed" + gameObject);
         if (homingTarget&& canHome)
         {
             orientatonManager.FaceCurrentTarget(-90f);
@@ -74,6 +76,7 @@ public class HomingProjectile : Base_Projectile
     public override void SetUpProjectile(float damage, Vector2 dir, float speed, float lifeTime, int blockCount, GameObject owner)
     {
         base.SetUpProjectile(damage, dir, speed, lifeTime, blockCount, owner);
+        Debug.Log("Set up" + gameObject);
         canHome = false;
         if (detector && useProximity)
         {
@@ -108,6 +111,7 @@ public class HomingProjectile : Base_Projectile
                 }
                 else
                 {
+                    Debug.Log("Couldn-t find boss" + gameObject);
                     if (gameObject) ObjectPoolManager.Recycle(gameObject);
                 }
             }
@@ -118,6 +122,8 @@ public class HomingProjectile : Base_Projectile
         base.OnDisable();
         if (detector)
             ObjectPoolManager.Recycle(detector);
+
+        Debug.Log("Destroyed" + gameObject);
     }
 
 
@@ -125,5 +131,10 @@ public class HomingProjectile : Base_Projectile
     {
         if (projectileSpeed > 0f)
             rb.velocity = projectileSpeed * transform.up * Time.fixedDeltaTime;
+    }
+
+    public override bool IsHoming()
+    {
+        return autoAssignTarget || canHome;
     }
 }

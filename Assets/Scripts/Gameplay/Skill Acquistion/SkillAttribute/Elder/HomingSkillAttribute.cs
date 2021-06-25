@@ -62,11 +62,13 @@ public class HomingSkillAttribute : Base_SkillAttribute
 
     public void SpawnShieldProjectile()
     {
-        GameObject projObj = ObjectPoolManager.Spawn(ShieldHomingProjectilePrefab, owner.GetFirePoint().position+ owner.GetFirePoint().up*5.0f, Quaternion.identity);
+        Debug.Log("spawn homing" + gameObject);
+        GameObject projObj = ObjectPoolManager.Spawn(ShieldHomingProjectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
         IProjectile proj = projObj.GetComponent<IProjectile>();
 
         if (proj != null)
         {
+            Debug.Log("begin homing set up" + gameObject);
             projObj.GetComponent<BubbleShield>().owner = owner.GetPlayerTransform().gameObject;
             proj.SetUpProjectile(shieldProjDamage, owner.GetFirePoint().up, shieldHomingSpeed, shieldHomingLifeTime,
                 shieldHitPoints, owner.GetPlayerTransform().gameObject);
@@ -106,7 +108,9 @@ public class HomingSkillAttribute : Base_SkillAttribute
 
     }
 
+    public float GetSwordSpeed() { return swordHomingSpeed; }
 
+    public float GetBowSpeed() { return bowHomingSpeed; }
     protected override void OnDisable()
     {
         base.OnDisable();

@@ -9,11 +9,12 @@ public class BubbleShield : MonoBehaviour
     [SerializeField] private SpriteFlash flashVFX;
     [SerializeField] private float hurtTime;
     [SerializeField] private float bubbleTime;
+    [SerializeField] private bool isInfinite =false;
     [SerializeField] private float reflectionDamage=20f;
     private bool isHurt;
     private float currHurtTime;
     private int currHitPoints;
-
+    
     public System.Action OnDestroy;
     public System.Action<GameObject> OnRelfected;
     public void Awake()
@@ -27,14 +28,16 @@ public class BubbleShield : MonoBehaviour
         currHurtTime = hurtTime;
         currHitPoints = maxHitPoints;
         isHurt = false;
-        StartCoroutine(RecycleTime());
+        if(!isInfinite)
+            StartCoroutine(RecycleTime());
 
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject == gameObject) return;
         if (other.gameObject.CompareTag("Projectiles")){
 
-
+            Debug.Log("Destroyed projectile" + gameObject);
             IProjectile projectile = other.GetComponent<IProjectile>();
 
             if (projectile != null)
@@ -108,7 +111,7 @@ public class BubbleShield : MonoBehaviour
                 ObjectPoolManager.Recycle(gameObject);
         }
     }
-
+    public void SetBubbleTime(float time) { bubbleTime = time; } 
     public void OnDisable()
     {
         StopAllCoroutines();

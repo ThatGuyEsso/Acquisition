@@ -39,4 +39,6 @@ public interface IProjectile
 
     void BreakProjectile();
     void SetSpeed(float speed);
+
+    bool IsHoming();
 }

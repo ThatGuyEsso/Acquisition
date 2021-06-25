@@ -308,5 +308,10 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
     {
         projectileSpeed = speed;
     }
+
+    virtual public bool IsHoming()
+    {
+        return false;
+    }
 }
 

@@ -25,7 +25,7 @@ public class OmniSlashSkill : Base_SkillAttribute
         {
        
             case WeaponType.Bow:
-                FireProjectilesInArc(spawnedAbiliity, owner.GetPrimaryProjectilePrefab(), swordMaxAngle, bowProjectileCount, bowOffest);
+                FireProjectilesInArc(owner.GetWeaponType(), spawnedAbiliity, owner.GetPrimaryProjectilePrefab(), swordMaxAngle, bowProjectileCount, bowOffest);
                 break;
          
         };
@@ -46,14 +46,14 @@ public class OmniSlashSkill : Base_SkillAttribute
                 break;
 
             case WeaponType.Sword:
-                FireProjectilesInArc(spawnedAbiliity, owner.GetSecondaryProjectile(), swordMaxAngle, swordProjectileCount, swordOffset);
+                FireProjectilesInArc(owner.GetWeaponType(), spawnedAbiliity, owner.GetSecondaryProjectile(), swordMaxAngle, swordProjectileCount, swordOffset);
                 break;
         };
     }
 
 
 
-    public void FireProjectilesInArc(GameObject originalProjectile,GameObject projectilePrefab, float maxAngle, int projectileCount,float offset)
+    public void FireProjectilesInArc(WeaponType type, GameObject originalProjectile,GameObject projectilePrefab, float maxAngle, int projectileCount,float offset)
     {
         if (!originalProjectile) return;
         float startingAngle = (EssoUtility.GetAngleFromVector(owner.GetFirePoint().up) + maxAngle / 2.0f);
@@ -82,7 +82,29 @@ public class OmniSlashSkill : Base_SkillAttribute
                     IProjectile currProj = currentObject.GetComponent<IProjectile>();
                     if(currProj != null)
                     {
-                        currProj.SetUpProjectile(data.damage, dir.normalized, data.speed, data.lifeTime, data.blockCount, data.owner);
+
+                        if (currProj.IsHoming())
+                        {
+                            HomingSkillAttribute homeSkill = transform.parent.GetComponentInChildren<HomingSkillAttribute>();
+                            if (homeSkill)
+                            {
+                                if(type == WeaponType.Sword)
+                                    currProj.SetUpProjectile(data.damage, dir.normalized, homeSkill.GetSwordSpeed(), data.lifeTime, data.blockCount, data.owner);
+                                else if(type == WeaponType.Bow)
+                                    currProj.SetUpProjectile(data.damage, dir.normalized, homeSkill.GetBowSpeed(), data.lifeTime, data.blockCount, data.owner);
+                                else
+                                    currProj.SetUpProjectile(data.damage, dir.normalized, data.speed, data.lifeTime, data.blockCount, data.owner);
+                            }
+                            else
+                            {
+                                currProj.SetUpProjectile(data.damage, dir.normalized, data.speed, data.lifeTime, data.blockCount, data.owner);
+                            }
+                        }
+                        else
+                        {
+
+                            currProj.SetUpProjectile(data.damage, dir.normalized, data.speed, data.lifeTime, data.blockCount, data.owner);
+                        }
                     }
                     else
                     {

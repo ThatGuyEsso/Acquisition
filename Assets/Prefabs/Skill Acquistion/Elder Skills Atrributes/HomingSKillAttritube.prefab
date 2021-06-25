@@ -48,7 +48,7 @@ MonoBehaviour:
   bowHomingProjectilePrefab: {fileID: 3647265956065727434, guid: 39e1b22403c949c499d88a0296f59b1f, type: 3}
   bowHomingSpeed: 1200
   ShieldHomingProjectilePrefab: {fileID: 3362327410098933028, guid: ed159c2d23118124e8456b9c51cf4ad9, type: 3}
-  shieldHomingSpeed: 1
+  shieldHomingSpeed: 400
   shieldProjDamage: 10
   shieldHitPoints: 5
   shieldHomingLifeTime: 5

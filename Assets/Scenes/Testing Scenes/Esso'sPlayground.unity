@@ -14545,9 +14545,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1131090915, guid: 7812921d877e7a64a9aed7cc6548dd7e, type: 3}
+      propertyPath: rotationRate
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2292969778363592952, guid: 7812921d877e7a64a9aed7cc6548dd7e, type: 3}
       propertyPath: m_Name
       value: TheElder
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292969778363592952, guid: 7812921d877e7a64a9aed7cc6548dd7e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2292969778363592953, guid: 7812921d877e7a64a9aed7cc6548dd7e, type: 3}
       propertyPath: target
