@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 3565854746953689031}
   - component: {fileID: 6483481743356759473}
   - component: {fileID: 3105207932878151548}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RoomDoor
   m_TagString: Wall
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3565854747016259483}
   - component: {fileID: 8945331414826369337}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DoorMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}

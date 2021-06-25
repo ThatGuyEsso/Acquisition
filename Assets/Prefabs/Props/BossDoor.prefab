@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 3565854745292839887}
   - component: {fileID: 3565854745292839872}
   - component: {fileID: 4627432300115495745}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EntryCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1161148709
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 3442411038714031701, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -334,7 +334,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1161148709
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 3442411038714031701, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -590,6 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossType: 0
+  door: {fileID: 0}
 --- !u!1 &3565854746953689030
 GameObject:
   m_ObjectHideFlags: 0

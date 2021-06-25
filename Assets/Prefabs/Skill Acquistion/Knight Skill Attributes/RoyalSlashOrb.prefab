@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 2926943252183649586}
   - component: {fileID: 2926943252183649587}
   - component: {fileID: 3856516688064063332}
+  - component: {fileID: 4336056622004157327}
   m_Layer: 0
   m_Name: RoyalSlashOrb
   m_TagString: Untagged
@@ -130,10 +131,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillOrbType: 0
   skillAttributePrefab: {fileID: 5178756561905980824, guid: 1fa7ec01703d2cb4780e60818f66da45, type: 3}
+  fadeOutRate: 2
   hideSFX: 
   displaySFX: 
   displayVFX: {fileID: 0}
   gfx: {fileID: 2926943251901947224}
+  light: {fileID: 6436071906420742251}
+  fadeControl: {fileID: 0}
 --- !u!58 &3856516688064063332
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -150,6 +154,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4336056622004157327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2926943252183649589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fda497b56d11d4d96985a7f8302630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6436071906420742251
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,6 +46,7 @@ MonoBehaviour:
   weaponType: 1
   primaryAttackDamage: 20
   secondaryAttackDamage: 20
+  attributes: []
   primaryProjectile: {fileID: 3647265956065727434, guid: f9579bf0ffa50f14d8f325632febe209, type: 3}
   secondaryProjectile: {fileID: 0}
   primaryProjectileDamage: 20

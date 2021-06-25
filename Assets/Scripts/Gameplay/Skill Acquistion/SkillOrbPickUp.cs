@@ -9,45 +9,108 @@ public class SkillOrbPickUp : MonoBehaviour
     [SerializeField] private BossType skillOrbType;
 
     [SerializeField] private Base_SkillAttribute skillAttributePrefab;
-
-
+    [SerializeField] private float fadeOutRate;
     [SerializeField] private string hideSFX;
     [SerializeField] private string displaySFX;
     [SerializeField] private GameObject displayVFX;
     [SerializeField] private GameObject gfx;
+    [SerializeField] private GameObject light;
+    [SerializeField] private FadeOutSprite fadeControl;
 
+
+    bool isFading;
     private Collider2D detectCollider;
-    public System.Action OnSkillSelect;
+    public System.Action<SkillOrbPickUp> OnSkillSelect;
+    private void Awake()
+    {
+        fadeControl = GetComponent<FadeOutSprite>();
+        if(!detectCollider)
+        detectCollider = GetComponent<Collider2D>();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")){
             if (WeaponManager.instance) WeaponManager.instance.AddWeaponSkill(skillAttributePrefab);
+            if (CamShake.instance)
+            {
+                CamShake.instance.DoScreenShake(0.5f, 2f, 0.1f, 0.25f, 2f);
+            }
+            OnSkillSelect?.Invoke(this);
             DestroyPickUp();
         }
     }
 
 
 
-    public void DisplayPickUp()
+    public void EnablePickUp()
     {
         if (detectCollider) detectCollider.enabled =true ;
 
         if (displayVFX) ObjectPoolManager.Spawn(displayVFX, transform.position, Quaternion.identity);
         if (displaySFX != string.Empty) AudioManager.instance.PlayThroughAudioPlayer(displaySFX, transform.position);
         gfx.SetActive(true);
+        fadeControl.ShowSprite();
+   
     }
 
-    public void HidePickUp()
+    public void DisablePickUp()
     {
         if (displayVFX) ObjectPoolManager.Spawn(displayVFX, transform.position, Quaternion.identity);
         if (hideSFX != string.Empty) AudioManager.instance.PlayThroughAudioPlayer(hideSFX, transform.position);
         if (detectCollider) detectCollider.enabled = false;
-        gfx.SetActive(false);
+
+    }
+
+    public void DisplayOrb()
+    {
+        EnablePickUp();
+        fadeControl.ShowSprite();
+        light.SetActive(true);
+    }
+    public void DisableLight()
+    {
+        light.SetActive(false);
+        if(fadeControl)
+            fadeControl.OnFadeComplete -= DisableLight;
+    }
+    public void OnFadeFinished()
+    {
+        if(fadeControl)
+            fadeControl.OnFadeComplete -= OnFadeFinished;
+        isFading = false;
+    }
+    public void BeginToHidePickUp()
+    {
+        DisablePickUp();
+        fadeControl.OnFadeComplete += DisableLight;
+        fadeControl.BeginFadeOut(fadeOutRate);
+    }
+
+    public void BeginToDestroy()
+    {
+        DisablePickUp();
+        StartCoroutine(WaitTillHiddenToDestroy());
+    }
+    public IEnumerator WaitTillHiddenToDestroy()
+    {
+        isFading = true;
+
+        fadeControl.OnFadeComplete += OnFadeFinished;
+        fadeControl.BeginFadeOut(fadeOutRate);
+        while (isFading)
+        {
+            yield return null;
+        }
+
+        DestroyPickUp();
     }
     public void DestroyPickUp()
     {
-        HidePickUp();
+       
         if (gameObject)
             ObjectPoolManager.Recycle(gameObject);
     }
+
+
+    
 }

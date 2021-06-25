@@ -18,6 +18,8 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
     [SerializeField] private Vector2 roomHalfSize;
     [SerializeField] private Transform roomCentre;
     [SerializeField] private NavMeshSurface2d navMesh;
+
+    [SerializeField] private List<SkillOrbPickUp> pickUps = new List<SkillOrbPickUp>();
     private void Awake()
     {
         director = GetComponent<PlayableDirector>();
@@ -58,15 +60,50 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
             case GameEvents.BossDefeated:
 
-                exitDoor.ToggleLock(false);
-
-                RoomManager.instance.BeginCreatePathBossToHub(exitDoor.corridorSpawn.position);
                 if (Boss)
                     ObjectPoolManager.Recycle(Boss.gameObject);
+                if (CamShake.instance)
+                {
+                    CamShake.instance.DoScreenShake(0.5f, 2f, 0.1f, 0.25f, 3f);
+                }
+                foreach (SkillOrbPickUp orb in pickUps)
+                {
+                    if (orb)
+                    {
+                        orb.DisplayOrb();
+                        orb.OnSkillSelect += EvaluateSkillOrbCollected;
+                    }
+                }
+
                 break;
         }
     }
 
+    public void EvaluateSkillOrbCollected(SkillOrbPickUp pickedOrb)
+    {
+        pickUps.Remove(pickedOrb);
+        pickedOrb.OnSkillSelect -= EvaluateSkillOrbCollected;
+        foreach (SkillOrbPickUp orb in pickUps)
+        {
+            if (orb)
+            {
+                orb.BeginToHidePickUp();
+                orb.OnSkillSelect -= EvaluateSkillOrbCollected;
+            }
+        }
+        UnlockBossRoom();
+    }
+    public void UnlockBossRoom()
+    {
+        if (CamShake.instance)
+        {
+            CamShake.instance.DoScreenShake(0.5f, 4f, 0.1f, 0.25f, 3f);
+        }
+        exitDoor.ToggleLock(false);
+
+        RoomManager.instance.BeginCreatePathBossToHub(exitDoor.corridorSpawn.position);
+
+    }
     public void SetUpDoors()
     {
         entranceDoor.Init();
@@ -119,8 +156,15 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
     public void AwakenBoss()
     {
         Boss.Init();
-        Boss.OnAwakened += StartFight;
 
+        Boss.OnAwakened += StartFight;
+        foreach(SkillOrbPickUp orb in pickUps)
+        {
+            if (orb)
+            {
+                orb.BeginToHidePickUp();
+            }
+        }
     }
 
     public void StartFight()

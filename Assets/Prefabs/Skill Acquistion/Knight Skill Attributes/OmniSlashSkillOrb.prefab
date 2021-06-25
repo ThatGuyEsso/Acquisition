@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 3547051572450440790}
   - component: {fileID: 3547051572450440791}
   - component: {fileID: 3180146632195349504}
+  - component: {fileID: -6962184297125172768}
   m_Layer: 0
   m_Name: OmniSlashSkillOrb
   m_TagString: Untagged
@@ -120,10 +121,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillOrbType: 0
   skillAttributePrefab: {fileID: 3955039129061691071, guid: d2ed1b26617ee4548b340e0c944c2623, type: 3}
+  fadeOutRate: 2
   hideSFX: 
   displaySFX: 
   displayVFX: {fileID: 3955039129061691069, guid: d2ed1b26617ee4548b340e0c944c2623, type: 3}
   gfx: {fileID: 3547051572461807164}
+  light: {fileID: 2747927062479067199}
+  fadeControl: {fileID: 0}
 --- !u!58 &3180146632195349504
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -140,6 +144,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-6962184297125172768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547051572450440785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fda497b56d11d4d96985a7f8302630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3547051572461807164
 GameObject:
   m_ObjectHideFlags: 0
