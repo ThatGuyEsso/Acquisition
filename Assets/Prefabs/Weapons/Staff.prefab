@@ -63,6 +63,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1409
   beamDrawSpeed: 25
+  beatEndVFXPrefab: {fileID: 3621552124481258280, guid: 97fa4c09252680c4fa355a6c0318aada, type: 3}
+  channelVFXPreab: {fileID: 7215270528015392697, guid: 6175a98f7a9358f4bb0cf236319bd1b2, type: 3}
 --- !u!120 &-8837503333671568053
 LineRenderer:
   m_ObjectHideFlags: 0

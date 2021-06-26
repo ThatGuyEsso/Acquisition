@@ -6,13 +6,15 @@ public class Staff_Weapon : Base_Weapon
 {
     [Header("Staff Settings")]
     [SerializeField] private float beamDuration;
-
     [SerializeField] private float beamTickRate;
     [SerializeField] private float beamLength;
     [SerializeField] private LayerMask beamLayers;
 
     [SerializeField] private float beamDrawSpeed;
 
+    [Header("Staff VFX")]
+    [SerializeField] private GameObject  beatEndVFXPrefab;
+    [SerializeField] private GameObject channelVFXPreab;
     private LineRenderer line;
     private MouseMoveCursor vCursor;
 
@@ -22,14 +24,18 @@ public class Staff_Weapon : Base_Weapon
     Vector2 currentPoint;
     Vector2 targetPoint;
     bool isDrawing;
- 
-
+   private GameObject beamEnd;
+    private GameObject channelVFX;
 
     public override void Init()
     {
         base.Init();
         line = GetComponent<LineRenderer>();
         vCursor = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseMoveCursor>();
+        if (!beamEnd) beamEnd = ObjectPoolManager.Spawn(beatEndVFXPrefab, Vector3.zero, Quaternion.identity);
+        beamEnd.SetActive(false);
+        if (!channelVFX) channelVFX = ObjectPoolManager.Spawn(channelVFXPreab, Vector3.zero, Quaternion.identity);
+        channelVFX.SetActive(false);
     }
 
     protected override void PrimaryAttack()
@@ -141,6 +147,15 @@ public class Staff_Weapon : Base_Weapon
         if (isDrawing)
         {
             DrawBeam();
+            if(!beamEnd.activeInHierarchy)beamEnd.SetActive(true);
+
+            beamEnd.transform.position = targetPoint;
+            beamEnd.transform.rotation = firePoint.rotation;
+
+            if (!channelVFX.activeInHierarchy) channelVFX.SetActive(true);
+
+            channelVFX.transform.position = firePoint.position;
+            channelVFX.transform.rotation = firePoint.rotation;
         }
     }
 
@@ -154,6 +169,7 @@ public class Staff_Weapon : Base_Weapon
         if (Vector2.Distance(currentPoint, targetPoint) <= 0.05f) currentPoint = targetPoint;
         line.SetPosition(0, firePoint.position);
         line.SetPosition(1, targetPoint);
+
     }
     public void BeginBeam()
     {
@@ -262,7 +278,10 @@ public class Staff_Weapon : Base_Weapon
 
     public override void ResetPrimaryFire()
     {
-       
+        if(beamEnd)
+            if (beamEnd.activeInHierarchy) beamEnd.SetActive(false);
+       if(channelVFX)
+            if (channelVFX.activeInHierarchy) channelVFX.SetActive(false);
         if (isFiringPrimary)
         {
             attackEvents.OnShootProjectile -= BeginBeam;

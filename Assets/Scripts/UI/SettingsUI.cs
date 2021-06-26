@@ -71,7 +71,7 @@ public class SettingsUI : Base_UI
         if (UIManager.instance)
         {
             UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedElement);
-            firstSelectedElement.GetComponent<Dropdown>().Select();
+        
         }
     }
 }

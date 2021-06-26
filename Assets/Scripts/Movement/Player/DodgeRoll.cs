@@ -20,6 +20,10 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     [SerializeField] private List<Behaviour> inactiveComponentsDuringRoll =new List<Behaviour>();
     [SerializeField] private TDInputMovement tdMovement;
 
+    [Header("Dodgeroll VFX")]
+    [SerializeField] private AfterImageController VFXcontroller;
+
+
     [SerializeField] private int invisibilityLayer;
     [SerializeField] private int defaultLayer;
     [SerializeField] private Animator dodgeAnimator;
@@ -122,6 +126,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         dodgeAnimator.gameObject.SetActive(true);
         topGFX.SetActive(false);
         legsGFX.SetActive(false);
+        if (VFXcontroller) VFXcontroller.StartDrawing(0.05f);
         if (WeaponManager.instance)
         {
             WeaponManager.instance.ToggleWeapon(false);
@@ -171,7 +176,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
         OnRollEnd?.Invoke();
         if (tdMovement.GetMoveDirection()==Vector2.zero)
             rb.velocity = Vector2.zero;
-
+        if (VFXcontroller) VFXcontroller.StopDrawing();
         dodgeAnimator.gameObject.SetActive(false);
         topGFX.SetActive(true);
         legsGFX.SetActive(true);

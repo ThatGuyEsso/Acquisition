@@ -20,6 +20,7 @@ public class PauseUI : Base_UI
     public void OnMainMenu()
     {
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
+
         Debug.Log("MainMenu");
     }
     public void OnEnable()

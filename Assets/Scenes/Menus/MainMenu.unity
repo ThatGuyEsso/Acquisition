@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 1275878956}
   - component: {fileID: 1275878958}
   - component: {fileID: 1275878957}
+  - component: {fileID: 1275878959}
   m_Layer: 5
   m_Name: TitleScreenImmage
   m_TagString: Untagged
@@ -396,7 +397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 637804e352e0e224f8e832ee6249ff83, type: 3}
+  m_Sprite: {fileID: -2375087230539112804, guid: 3b1db92eceb283143a76d7f33ee6494a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -414,3 +415,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275878955}
   m_CullTransparentMesh: 1
+--- !u!95 &1275878959
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275878955}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 706b34629c1bf3347b64908f5516d089, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
