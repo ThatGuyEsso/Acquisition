@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9166886299062215531}
   - component: {fileID: 7074271671522232636}
   - component: {fileID: 5580178369067666592}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HonourableChargeSkillOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,10 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillOrbType: 0
   skillAttributePrefab: {fileID: 9166094733422512543, guid: 03f24e4240189e445b854c2f221a6d92, type: 3}
+  displayVFXPrefab: {fileID: 6525448635879357664, guid: 4777822ae592740488dc4a4f4e884285, type: 3}
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 
-  displayVFX: {fileID: 0}
   gfx: {fileID: 9166886299071296256}
   fadeControl: {fileID: 0}
 --- !u!58 &7074271671522232636
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9166886299071296257}
   - component: {fileID: 9166886299071296270}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

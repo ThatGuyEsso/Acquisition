@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3547051572450440791}
   - component: {fileID: 3180146632195349504}
   - component: {fileID: -6962184297125172768}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OmniSlashSkillOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,10 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillOrbType: 0
   skillAttributePrefab: {fileID: 3955039129061691071, guid: d2ed1b26617ee4548b340e0c944c2623, type: 3}
+  displayVFXPrefab: {fileID: 8029368237794633155, guid: 10847b4d85d1a724283f82afd2b7d2ef, type: 3}
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 
-  displayVFX: {fileID: 3955039129061691069, guid: d2ed1b26617ee4548b340e0c944c2623, type: 3}
   gfx: {fileID: 3547051572461807164}
   fadeControl: {fileID: 0}
 --- !u!58 &3180146632195349504
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3547051572461807165}
   - component: {fileID: 3547051572461807154}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: -3770367873736962581, guid: 98a87cc87ebbd7940b8cbb245d797aec, type: 3}
-  m_Color: {r: 1, g: 0.67358494, b: 0.95484763, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

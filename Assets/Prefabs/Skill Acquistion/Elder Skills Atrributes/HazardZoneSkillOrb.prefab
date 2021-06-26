@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804492756195070732}
   - component: {fileID: 1804492756195070723}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1804492756579533670}
   - component: {fileID: 293110584784644401}
   - component: {fileID: -2914213680736894127}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HazardZoneSkillOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,12 +130,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillOrbType: 1
   skillAttributePrefab: {fileID: 7550454493029785792, guid: 5331da7ecba721d4c9e481c488628e62, type: 3}
+  displayVFXPrefab: {fileID: 417852221244204530, guid: 14b8e823b0466804ca438cf416cd785d, type: 3}
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 
-  displayVFX: {fileID: 0}
   gfx: {fileID: 1804492756195070733}
-  light: {fileID: 0}
   fadeControl: {fileID: 0}
 --- !u!58 &293110584784644401
 CircleCollider2D:

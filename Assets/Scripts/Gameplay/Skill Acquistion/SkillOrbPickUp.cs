@@ -9,10 +9,11 @@ public class SkillOrbPickUp : MonoBehaviour
     [SerializeField] private BossType skillOrbType;
 
     [SerializeField] private Base_SkillAttribute skillAttributePrefab;
+    [SerializeField] private GameObject displayVFXPrefab;
     [SerializeField] private float fadeOutRate;
     [SerializeField] private string hideSFX;
     [SerializeField] private string displaySFX;
-    [SerializeField] private GameObject displayVFX;
+
     [SerializeField] private GameObject gfx;
     [SerializeField] private FadeOutSprite fadeControl;
 
@@ -34,6 +35,7 @@ public class SkillOrbPickUp : MonoBehaviour
             {
                 CamShake.instance.DoScreenShake(0.5f, 2f, 0.1f, 0.25f, 2f);
             }
+           if(displayVFXPrefab) ObjectPoolManager.Spawn(displayVFXPrefab, transform.position, transform.rotation);
             OnSkillSelect?.Invoke(this);
             DestroyPickUp();
         }
@@ -45,7 +47,7 @@ public class SkillOrbPickUp : MonoBehaviour
     {
         if (detectCollider) detectCollider.enabled =true ;
 
-        if (displayVFX) ObjectPoolManager.Spawn(displayVFX, transform.position, Quaternion.identity);
+    
         if (displaySFX != string.Empty) AudioManager.instance.PlayThroughAudioPlayer(displaySFX, transform.position);
         gfx.SetActive(true);
         fadeControl.ShowSprite();
@@ -54,7 +56,7 @@ public class SkillOrbPickUp : MonoBehaviour
 
     public void DisablePickUp()
     {
-        if (displayVFX) ObjectPoolManager.Spawn(displayVFX, transform.position, Quaternion.identity);
+  
         if (hideSFX != string.Empty) AudioManager.instance.PlayThroughAudioPlayer(hideSFX, transform.position);
         if (detectCollider) detectCollider.enabled = false;
 
@@ -64,7 +66,8 @@ public class SkillOrbPickUp : MonoBehaviour
     {
         EnablePickUp();
         fadeControl.ShowSprite();
- 
+        if (displayVFXPrefab) ObjectPoolManager.Spawn(displayVFXPrefab, transform.position, transform.rotation);
+
     }
     public void DisableLight()
     {

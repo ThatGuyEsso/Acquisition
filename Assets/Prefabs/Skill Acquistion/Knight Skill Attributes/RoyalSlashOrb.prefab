@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2926943251901947225}
   - component: {fileID: 2926943251901947222}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2926943252183649587}
   - component: {fileID: 3856516688064063332}
   - component: {fileID: 4336056622004157327}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RoyalSlashOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,10 +130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillOrbType: 0
   skillAttributePrefab: {fileID: 5178756561905980824, guid: 1fa7ec01703d2cb4780e60818f66da45, type: 3}
+  displayVFXPrefab: {fileID: 6525448635879357664, guid: 4777822ae592740488dc4a4f4e884285, type: 3}
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 
-  displayVFX: {fileID: 0}
   gfx: {fileID: 2926943251901947224}
   fadeControl: {fileID: 0}
 --- !u!58 &3856516688064063332

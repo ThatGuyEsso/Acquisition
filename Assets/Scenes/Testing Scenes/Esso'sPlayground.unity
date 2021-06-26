@@ -14376,7 +14376,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5379450408587527230, guid: 378873da936392f428802512ed3eeb05, type: 3}
   m_PrefabInstance: {fileID: 8957915619028398268}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2070796938
+--- !u!212 &2070796939 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3966443710537326990, guid: 378873da936392f428802512ed3eeb05, type: 3}
+  m_PrefabInstance: {fileID: 8957915619028398268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2070796940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14392,11 +14397,6 @@ MonoBehaviour:
   targetRenderer: {fileID: 2070796939}
   imageLifeTime: 0.5
   timeBetweenImage: 0.15
---- !u!212 &2070796939 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3966443710537326990, guid: 378873da936392f428802512ed3eeb05, type: 3}
-  m_PrefabInstance: {fileID: 8957915619028398268}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2142427196
 GameObject:
   m_ObjectHideFlags: 0
@@ -14658,7 +14658,7 @@ PrefabInstance:
     - target: {fileID: 7720992834120572777, guid: 378873da936392f428802512ed3eeb05, type: 3}
       propertyPath: VFXcontroller
       value: 
-      objectReference: {fileID: 2070796938}
+      objectReference: {fileID: 2070796940}
     - target: {fileID: 7720992834120572777, guid: 378873da936392f428802512ed3eeb05, type: 3}
       propertyPath: dodgeAnimator
       value: 

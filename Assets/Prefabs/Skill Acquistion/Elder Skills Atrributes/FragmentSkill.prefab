@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2706675861210289448}
   - component: {fileID: 4074496819485147007}
   - component: {fileID: 4257180218937494600}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FragmentSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,10 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillOrbType: 1
   skillAttributePrefab: {fileID: 654389575125418795, guid: 476da70877552dd448a577ba91df138a, type: 3}
+  displayVFXPrefab: {fileID: 8029368237794633155, guid: 10847b4d85d1a724283f82afd2b7d2ef, type: 3}
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 
-  displayVFX: {fileID: 3955039129061691069, guid: d2ed1b26617ee4548b340e0c944c2623, type: 3}
   gfx: {fileID: 2706675861299774787}
   fadeControl: {fileID: 0}
 --- !u!58 &4074496819485147007
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2706675861299774786}
   - component: {fileID: 2706675861299774797}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

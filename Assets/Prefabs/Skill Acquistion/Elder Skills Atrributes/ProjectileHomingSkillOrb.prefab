@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8232493918948765354}
   - component: {fileID: 8008595881606481149}
   - component: {fileID: -4054788283494294046}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ProjectileHomingSkillOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,12 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillOrbType: 0
   skillAttributePrefab: {fileID: 310180127804485970, guid: da297186f1cf10d48b44add36a1f8525, type: 3}
+  displayVFXPrefab: {fileID: 6525448635879357664, guid: 4777822ae592740488dc4a4f4e884285, type: 3}
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 
-  displayVFX: {fileID: 0}
   gfx: {fileID: 8232493919275105985}
-  light: {fileID: 0}
   fadeControl: {fileID: 0}
 --- !u!58 &8008595881606481149
 CircleCollider2D:
@@ -93,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8232493919275105984}
   - component: {fileID: 8232493919275105999}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
