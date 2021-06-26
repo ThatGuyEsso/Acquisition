@@ -1,313 +1,385 @@
 fileFormatVersion: 2
-guid: 5d8e055102957ae49b32c271fe64538f
+guid: 3f65ad32459c7b343b1a77011f468715
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1518598311210991966
-    second: KnightSpriteSheet32x32_0
+      213: -6086992955224726409
+    second: ElderSpriteSheetFile_0
   - first:
-      213: 5666142421123743328
-    second: KnightSpriteSheet32x32_1
+      213: 6579708066553341409
+    second: ElderSpriteSheetFile_1
   - first:
-      213: 5587705485167727026
-    second: KnightSpriteSheet32x32_2
+      213: -4011220079579052350
+    second: ElderSpriteSheetFile_2
   - first:
-      213: 945719703232550642
-    second: KnightSpriteSheet32x32_3
+      213: -6076161631559403533
+    second: ElderSpriteSheetFile_3
   - first:
-      213: 795950441733705914
-    second: KnightSpriteSheet32x32_4
+      213: 6577783262223469528
+    second: ElderSpriteSheetFile_4
   - first:
-      213: 7089883478167221489
-    second: KnightSpriteSheet32x32_5
+      213: 6968286215777515000
+    second: ElderSpriteSheetFile_5
   - first:
-      213: 4099733751796575160
-    second: KnightSpriteSheet32x32_6
+      213: 2598567817405020308
+    second: ElderSpriteSheetFile_6
   - first:
-      213: -5880757049883059496
-    second: KnightSpriteSheet32x32_7
+      213: 2606960708642499228
+    second: ElderSpriteSheetFile_7
   - first:
-      213: 5749239183274324935
-    second: KnightSpriteSheet32x32_8
+      213: 1747853201550618171
+    second: ElderSpriteSheetFile_8
   - first:
-      213: 6429471753501210332
-    second: KnightSpriteSheet32x32_9
+      213: -3163273658767527676
+    second: ElderSpriteSheetFile_9
   - first:
-      213: -9150575098174997340
-    second: KnightSpriteSheet32x32_10
+      213: -5285370646231434003
+    second: ElderSpriteSheetFile_10
   - first:
-      213: -9036210639049663821
-    second: KnightSpriteSheet32x32_11
+      213: 4394359977658952077
+    second: ElderSpriteSheetFile_11
   - first:
-      213: 4320481719762254460
-    second: KnightSpriteSheet32x32_12
+      213: 7734735509379036332
+    second: ElderSpriteSheetFile_12
   - first:
-      213: 6444740931461255467
-    second: KnightSpriteSheet32x32_13
+      213: 3001491116018297494
+    second: ElderSpriteSheetFile_13
   - first:
-      213: 7843536391807739023
-    second: KnightSpriteSheet32x32_14
+      213: -2093909725445725290
+    second: ElderSpriteSheetFile_14
   - first:
-      213: -1382747242218195390
-    second: KnightSpriteSheet32x32_15
+      213: 8956313686337722555
+    second: ElderSpriteSheetFile_15
   - first:
-      213: -4586388911523645624
-    second: KnightSpriteSheet32x32_16
+      213: 5330301240330368853
+    second: ElderSpriteSheetFile_16
   - first:
-      213: -1201432243372132702
-    second: KnightSpriteSheet32x32_17
+      213: -7699638268787954629
+    second: ElderSpriteSheetFile_17
   - first:
-      213: -1423132271269090838
-    second: KnightSpriteSheet32x32_18
+      213: 6955501229435494870
+    second: ElderSpriteSheetFile_18
   - first:
-      213: -2968335279986932676
-    second: KnightSpriteSheet32x32_19
+      213: 8188821291086328343
+    second: ElderSpriteSheetFile_19
   - first:
-      213: 4944908501790047665
-    second: KnightSpriteSheet32x32_20
+      213: 8476241691096645450
+    second: ElderSpriteSheetFile_20
   - first:
-      213: 2978607841927157120
-    second: KnightSpriteSheet32x32_21
+      213: -6147388787913489573
+    second: ElderSpriteSheetFile_21
   - first:
-      213: 3714196683050902203
-    second: KnightSpriteSheet32x32_22
+      213: 2670762439621414757
+    second: ElderSpriteSheetFile_22
   - first:
-      213: -4141906586215045085
-    second: KnightSpriteSheet32x32_23
+      213: 4711993879090318531
+    second: ElderSpriteSheetFile_23
   - first:
-      213: -3036135191158639200
-    second: KnightSpriteSheet32x32_24
+      213: -6050785630606988032
+    second: ElderSpriteSheetFile_24
   - first:
-      213: -7079406387251550581
-    second: KnightSpriteSheet32x32_25
+      213: -4402568147050773322
+    second: ElderSpriteSheetFile_25
   - first:
-      213: 3032476177691999273
-    second: KnightSpriteSheet32x32_26
+      213: -1182504600119225438
+    second: ElderSpriteSheetFile_26
   - first:
-      213: 5246231624864538453
-    second: KnightSpriteSheet32x32_27
+      213: 926457718623529792
+    second: ElderSpriteSheetFile_27
   - first:
-      213: 4690181821818815299
-    second: KnightSpriteSheet32x32_28
+      213: 2315943993810307281
+    second: ElderSpriteSheetFile_28
   - first:
-      213: -3758031524536640444
-    second: KnightSpriteSheet32x32_29
+      213: 805021781276187649
+    second: ElderSpriteSheetFile_29
   - first:
-      213: -2951511166376930789
-    second: KnightSpriteSheet32x32_30
+      213: 1336487864191810979
+    second: ElderSpriteSheetFile_30
   - first:
-      213: -8153977384294603070
-    second: KnightSpriteSheet32x32_31
+      213: -2048560628499668600
+    second: ElderSpriteSheetFile_31
   - first:
-      213: -7778536989713135696
-    second: KnightSpriteSheet32x32_32
+      213: 72435965824619036
+    second: ElderSpriteSheetFile_32
   - first:
-      213: -1715578790655787827
-    second: KnightSpriteSheet32x32_33
+      213: 8395397463178392174
+    second: ElderSpriteSheetFile_33
   - first:
-      213: -1777843279880260303
-    second: KnightSpriteSheet32x32_34
+      213: 3823735731922744519
+    second: ElderSpriteSheetFile_34
   - first:
-      213: -2775158472686020084
-    second: KnightSpriteSheet32x32_35
+      213: -6356017639100764358
+    second: ElderSpriteSheetFile_35
   - first:
-      213: 5164280392732460160
-    second: KnightSpriteSheet32x32_36
+      213: -2501156633481825192
+    second: ElderSpriteSheetFile_36
   - first:
-      213: 656912803268178936
-    second: KnightSpriteSheet32x32_37
+      213: -8138179396967498119
+    second: ElderSpriteSheetFile_37
   - first:
-      213: 5495621399513596876
-    second: KnightSpriteSheet32x32_38
+      213: 3203614255976630971
+    second: ElderSpriteSheetFile_38
   - first:
-      213: -3063272218973625402
-    second: KnightSpriteSheet32x32_39
+      213: -5258431229988415881
+    second: ElderSpriteSheetFile_39
   - first:
-      213: -4798554206458634908
-    second: KnightSpriteSheet32x32_40
+      213: 4568382647344186218
+    second: ElderSpriteSheetFile_40
   - first:
-      213: -1682511958467827894
-    second: KnightSpriteSheet32x32_41
+      213: -1676431901117284982
+    second: ElderSpriteSheetFile_41
   - first:
-      213: 4311963593054846411
-    second: KnightSpriteSheet32x32_42
+      213: -1888981411778315419
+    second: ElderSpriteSheetFile_42
   - first:
-      213: 8288947206833345210
-    second: KnightSpriteSheet32x32_43
+      213: 8953947442037911161
+    second: ElderSpriteSheetFile_43
   - first:
-      213: -8534568726665918627
-    second: KnightSpriteSheet32x32_44
+      213: -2955539111537037199
+    second: ElderSpriteSheetFile_44
   - first:
-      213: -1887614704023521744
-    second: KnightSpriteSheet32x32_45
+      213: 2965730877635714535
+    second: ElderSpriteSheetFile_45
   - first:
-      213: 5686785452672444706
-    second: KnightSpriteSheet32x32_46
+      213: -1802552240967391907
+    second: ElderSpriteSheetFile_46
   - first:
-      213: -5507728707281468653
-    second: KnightSpriteSheet32x32_47
+      213: -6908910536123468820
+    second: ElderSpriteSheetFile_47
   - first:
-      213: 1988787697813842075
-    second: KnightSpriteSheet32x32_48
+      213: -4844273408171714476
+    second: ElderSpriteSheetFile_48
   - first:
-      213: 6159045667603189057
-    second: KnightSpriteSheet32x32_49
+      213: 8320730884444186592
+    second: ElderSpriteSheetFile_49
   - first:
-      213: 4546243922496062058
-    second: KnightSpriteSheet32x32_50
+      213: -1686293075238628562
+    second: ElderSpriteSheetFile_50
   - first:
-      213: -3899660406597362221
-    second: KnightSpriteSheet32x32_51
+      213: 2164602684124151159
+    second: ElderSpriteSheetFile_51
   - first:
-      213: 4693029079402449146
-    second: KnightSpriteSheet32x32_52
+      213: -4910578318958618114
+    second: ElderSpriteSheetFile_52
   - first:
-      213: 3756364767629831740
-    second: KnightSpriteSheet32x32_53
+      213: 3314852521156296575
+    second: ElderSpriteSheetFile_53
   - first:
-      213: 8213716181542983091
-    second: KnightSpriteSheet32x32_54
+      213: -8816663920024978173
+    second: ElderSpriteSheetFile_54
   - first:
-      213: -1899817985648866934
-    second: KnightSpriteSheet32x32_55
+      213: 2794382755191296397
+    second: ElderSpriteSheetFile_55
   - first:
-      213: -2143436981348342735
-    second: KnightSpriteSheet32x32_56
+      213: -5274397886321751559
+    second: ElderSpriteSheetFile_56
   - first:
-      213: -8059954462164123622
-    second: KnightSpriteSheet32x32_57
+      213: 3158051679201448882
+    second: ElderSpriteSheetFile_57
   - first:
-      213: -8309442751000423338
-    second: KnightSpriteSheet32x32_58
+      213: 7926236495368208707
+    second: ElderSpriteSheetFile_58
   - first:
-      213: -4917149963165028043
-    second: KnightSpriteSheet32x32_59
+      213: -7107233764322283934
+    second: ElderSpriteSheetFile_59
   - first:
-      213: -6055701882136361667
-    second: KnightSpriteSheet32x32_60
+      213: -9179173437157906247
+    second: ElderSpriteSheetFile_60
   - first:
-      213: -1561168717055978275
-    second: KnightSpriteSheet32x32_61
+      213: 5650596189324215851
+    second: ElderSpriteSheetFile_61
   - first:
-      213: 7314750822636079844
-    second: KnightSpriteSheet32x32_62
+      213: -7478576937757914303
+    second: ElderSpriteSheetFile_62
   - first:
-      213: 1885283169153055619
-    second: KnightSpriteSheet32x32_63
+      213: 8448799085269404185
+    second: ElderSpriteSheetFile_63
   - first:
-      213: -8954471365277696811
-    second: KnightSpriteSheet32x32_64
+      213: 7488164399631045693
+    second: ElderSpriteSheetFile_64
   - first:
-      213: 1963594021080689927
-    second: KnightSpriteSheet32x32_65
+      213: 8141787728459320843
+    second: ElderSpriteSheetFile_65
   - first:
-      213: -6693680219013386609
-    second: KnightSpriteSheet32x32_66
+      213: 6271909377880125226
+    second: ElderSpriteSheetFile_66
   - first:
-      213: 6051088555128952525
-    second: KnightSpriteSheet32x32_67
+      213: 2843986795088311033
+    second: ElderSpriteSheetFile_67
   - first:
-      213: -4991094001669861621
-    second: KnightSpriteSheet32x32_68
+      213: -2254050334241175219
+    second: ElderSpriteSheetFile_68
   - first:
-      213: -3527248614406192812
-    second: KnightSpriteSheet32x32_69
+      213: -6385174262949874081
+    second: ElderSpriteSheetFile_69
   - first:
-      213: 4910477352775082627
-    second: KnightSpriteSheet32x32_70
+      213: 6708343177454917696
+    second: ElderSpriteSheetFile_70
   - first:
-      213: -6991892732452082945
-    second: KnightSpriteSheet32x32_71
+      213: -5666933442029750463
+    second: ElderSpriteSheetFile_71
   - first:
-      213: -5048231702757379817
-    second: KnightSpriteSheet32x32_72
+      213: -1419032631012913290
+    second: ElderSpriteSheetFile_72
   - first:
-      213: 7952972123769407917
-    second: KnightSpriteSheet32x32_73
+      213: -1709592028629043689
+    second: ElderSpriteSheetFile_73
   - first:
-      213: -4655740678818420715
-    second: KnightSpriteSheet32x32_74
+      213: -7729717459018265235
+    second: ElderSpriteSheetFile_74
   - first:
-      213: -6152730439549627345
-    second: KnightSpriteSheet32x32_75
+      213: 9001665255840543942
+    second: ElderSpriteSheetFile_75
   - first:
-      213: 8004836899702924676
-    second: KnightSpriteSheet32x32_76
+      213: -6125314671703841332
+    second: ElderSpriteSheetFile_76
   - first:
-      213: 6799773394991431756
-    second: KnightSpriteSheet32x32_77
+      213: -7192313702371510904
+    second: ElderSpriteSheetFile_77
   - first:
-      213: 343830409210812388
-    second: KnightSpriteSheet32x32_78
+      213: 1671281360539812448
+    second: ElderSpriteSheetFile_78
   - first:
-      213: 7362236697112266380
-    second: KnightSpriteSheet32x32_79
+      213: 6330289248260202031
+    second: ElderSpriteSheetFile_79
   - first:
-      213: 8375748371168611882
-    second: KnightSpriteSheet32x32_80
+      213: 5312675902006823116
+    second: ElderSpriteSheetFile_80
   - first:
-      213: -1310976572316966300
-    second: KnightSpriteSheet32x32_81
+      213: -5477670006227906958
+    second: ElderSpriteSheetFile_81
   - first:
-      213: 4287416207687617767
-    second: KnightSpriteSheet32x32_82
+      213: -1909997476159205156
+    second: ElderSpriteSheetFile_82
   - first:
-      213: 3015737868064776411
-    second: KnightSpriteSheet32x32_83
+      213: -9041613417756662934
+    second: ElderSpriteSheetFile_83
   - first:
-      213: 5348838255971409616
-    second: KnightSpriteSheet32x32_84
+      213: -3535623595542581308
+    second: ElderSpriteSheetFile_84
   - first:
-      213: 1464003664442341329
-    second: KnightSpriteSheet32x32_85
+      213: 7872473092910378289
+    second: ElderSpriteSheetFile_85
   - first:
-      213: -4470612069233353996
-    second: KnightSpriteSheet32x32_86
+      213: 4861404244852893009
+    second: ElderSpriteSheetFile_86
   - first:
-      213: -6099142011197883058
-    second: KnightSpriteSheet32x32_87
+      213: -3850475820527557734
+    second: ElderSpriteSheetFile_87
   - first:
-      213: -2565576144750310107
-    second: KnightSpriteSheet32x32_88
+      213: -3965652407495065139
+    second: ElderSpriteSheetFile_88
   - first:
-      213: 2189162895359805671
-    second: KnightSpriteSheet32x32_89
+      213: 8771334265080244863
+    second: ElderSpriteSheetFile_89
   - first:
-      213: -1919086774106578283
-    second: KnightSpriteSheet32x32_90
+      213: -5935824252510405449
+    second: ElderSpriteSheetFile_90
   - first:
-      213: 6508006756043327967
-    second: KnightSpriteSheet32x32_91
+      213: 8709092457643608057
+    second: ElderSpriteSheetFile_91
   - first:
-      213: 2965739557057782978
-    second: KnightSpriteSheet32x32_92
+      213: 2572166893983664006
+    second: ElderSpriteSheetFile_92
   - first:
-      213: -8531837481088139430
-    second: KnightSpriteSheet32x32_93
+      213: 4645008852581547643
+    second: ElderSpriteSheetFile_93
   - first:
-      213: -1588123202030255826
-    second: KnightSpriteSheet32x32_94
+      213: -1096305084861282543
+    second: ElderSpriteSheetFile_94
   - first:
-      213: 8912176282518755505
-    second: KnightSpriteSheet32x32_95
+      213: 1232351913239640770
+    second: ElderSpriteSheetFile_95
   - first:
-      213: -6554822408368096095
-    second: KnightSpriteSheet32x32_96
+      213: 5472422072731060827
+    second: ElderSpriteSheetFile_96
   - first:
-      213: -8215001329131064329
-    second: KnightSpriteSheet32x32_97
+      213: 1795484731833288988
+    second: ElderSpriteSheetFile_97
   - first:
-      213: -6105639207300281136
-    second: KnightSpriteSheet32x32_98
+      213: -3082398123587326217
+    second: ElderSpriteSheetFile_98
   - first:
-      213: 8928936640397325263
-    second: KnightSpriteSheet32x32_99
+      213: -9218671737258183230
+    second: ElderSpriteSheetFile_99
   - first:
-      213: 7345308314610579216
-    second: KnightSpriteSheet32x32_100
+      213: 5694426591547989608
+    second: ElderSpriteSheetFile_100
   - first:
-      213: -3290343743910443490
-    second: KnightSpriteSheet32x32_101
+      213: -3349553825651959041
+    second: ElderSpriteSheetFile_101
+  - first:
+      213: -7793482488863427494
+    second: ElderSpriteSheetFile_102
+  - first:
+      213: 1310880242359431742
+    second: ElderSpriteSheetFile_103
+  - first:
+      213: -8649153306367596683
+    second: ElderSpriteSheetFile_104
+  - first:
+      213: 8828043877335045868
+    second: ElderSpriteSheetFile_105
+  - first:
+      213: -5084000388996633131
+    second: ElderSpriteSheetFile_106
+  - first:
+      213: -5104051721286006449
+    second: ElderSpriteSheetFile_107
+  - first:
+      213: 554461739734490556
+    second: ElderSpriteSheetFile_108
+  - first:
+      213: 7134327355601738202
+    second: ElderSpriteSheetFile_109
+  - first:
+      213: 5093645862715799858
+    second: ElderSpriteSheetFile_110
+  - first:
+      213: 8130543901711587844
+    second: ElderSpriteSheetFile_111
+  - first:
+      213: 4752536847196881055
+    second: ElderSpriteSheetFile_112
+  - first:
+      213: 3429609380866877440
+    second: ElderSpriteSheetFile_113
+  - first:
+      213: 4667683638977336075
+    second: ElderSpriteSheetFile_114
+  - first:
+      213: -6072406158121655409
+    second: ElderSpriteSheetFile_115
+  - first:
+      213: -2143410875777784304
+    second: ElderSpriteSheetFile_116
+  - first:
+      213: 7965441611012083262
+    second: ElderSpriteSheetFile_117
+  - first:
+      213: 6940877850420107086
+    second: ElderSpriteSheetFile_118
+  - first:
+      213: 9051580405230585227
+    second: ElderSpriteSheetFile_119
+  - first:
+      213: 4164591841078479799
+    second: ElderSpriteSheetFile_120
+  - first:
+      213: -7055362188598236046
+    second: ElderSpriteSheetFile_121
+  - first:
+      213: 8027527078632318781
+    second: ElderSpriteSheetFile_122
+  - first:
+      213: -9015692272407460900
+    second: ElderSpriteSheetFile_123
+  - first:
+      213: 799808494786971403
+    second: ElderSpriteSheetFile_124
+  - first:
+      213: -2106261208171433115
+    second: ElderSpriteSheetFile_125
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -397,7 +469,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_0
+      name: ElderSpriteSheetFile_0
       rect:
         serializedVersion: 2
         x: 32
@@ -411,14 +483,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2aeb2cfb1eadceae0800000000000000
-      internalID: -1518598311210991966
+      spriteID: 77466815828a68ba0800000000000000
+      internalID: -6086992955224726409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_1
+      name: ElderSpriteSheetFile_1
       rect:
         serializedVersion: 2
         x: 64
@@ -432,14 +504,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06e3ad1f28e22ae40800000000000000
-      internalID: 5666142421123743328
+      spriteID: 1e52fa030a1df4b50800000000000000
+      internalID: 6579708066553341409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_2
+      name: ElderSpriteSheetFile_2
       rect:
         serializedVersion: 2
         x: 96
@@ -453,14 +525,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b19ce8a8848b8d40800000000000000
-      internalID: 5587705485167727026
+      spriteID: 2c6c6c807984558c0800000000000000
+      internalID: -4011220079579052350
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_3
+      name: ElderSpriteSheetFile_3
       rect:
         serializedVersion: 2
         x: 160
@@ -474,14 +546,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f693483f0fdf1d00800000000000000
-      internalID: 945719703232550642
+      spriteID: 3f73b0160332daba0800000000000000
+      internalID: -6076161631559403533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_4
+      name: ElderSpriteSheetFile_4
       rect:
         serializedVersion: 2
         x: 192
@@ -495,14 +567,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab05a5aa5b8cb0b00800000000000000
-      internalID: 795950441733705914
+      spriteID: 8db0752c60bf84b50800000000000000
+      internalID: 6577783262223469528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_5
+      name: ElderSpriteSheetFile_5
       rect:
         serializedVersion: 2
         x: 224
@@ -516,14 +588,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f47117a573546260800000000000000
-      internalID: 7089883478167221489
+      spriteID: 8f57ba8c46354b060800000000000000
+      internalID: 6968286215777515000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_6
+      name: ElderSpriteSheetFile_6
       rect:
         serializedVersion: 2
         x: 320
@@ -537,14 +609,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bba38d302e25e830800000000000000
-      internalID: 4099733751796575160
+      spriteID: 498303189a7ff0420800000000000000
+      internalID: 2598567817405020308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_7
+      name: ElderSpriteSheetFile_7
       rect:
         serializedVersion: 2
         x: 448
@@ -558,14 +630,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8da9857ee9a536ea0800000000000000
-      internalID: -5880757049883059496
+      spriteID: c9a6906c3f8cd2420800000000000000
+      internalID: 2606960708642499228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_8
+      name: ElderSpriteSheetFile_8
       rect:
         serializedVersion: 2
         x: 32
@@ -579,14 +651,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c3b2df839669cf40800000000000000
-      internalID: 5749239183274324935
+      spriteID: b3e24fde93f914810800000000000000
+      internalID: 1747853201550618171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_9
+      name: ElderSpriteSheetFile_9
       rect:
         serializedVersion: 2
         x: 64
@@ -600,14 +672,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd6f8d8be721a3950800000000000000
-      internalID: 6429471753501210332
+      spriteID: 401bfc9fd5bc914d0800000000000000
+      internalID: -3163273658767527676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_10
+      name: ElderSpriteSheetFile_10
       rect:
         serializedVersion: 2
         x: 96
@@ -621,14 +693,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ac7eb61e60a20180800000000000000
-      internalID: -9150575098174997340
+      spriteID: dec391d766796a6b0800000000000000
+      internalID: -5285370646231434003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_11
+      name: ElderSpriteSheetFile_11
       rect:
         serializedVersion: 2
         x: 160
@@ -642,14 +714,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bad6d7bc4ee89280800000000000000
-      internalID: -9036210639049663821
+      spriteID: d892e8b0e17ebfc30800000000000000
+      internalID: 4394359977658952077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_12
+      name: ElderSpriteSheetFile_12
       rect:
         serializedVersion: 2
         x: 192
@@ -663,14 +735,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7a7ff4bb3f65fb30800000000000000
-      internalID: 4320481719762254460
+      spriteID: ca4332427fc475b60800000000000000
+      internalID: 7734735509379036332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_13
+      name: ElderSpriteSheetFile_13
       rect:
         serializedVersion: 2
         x: 224
@@ -684,14 +756,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b211b214bb1507950800000000000000
-      internalID: 6444740931461255467
+      spriteID: 69ae2c6744077a920800000000000000
+      internalID: 3001491116018297494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_14
+      name: ElderSpriteSheetFile_14
       rect:
         serializedVersion: 2
         x: 288
@@ -705,14 +777,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f84ac80aac6d9dc60800000000000000
-      internalID: 7843536391807739023
+      spriteID: 693621fd230f0f2e0800000000000000
+      internalID: -2093909725445725290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_15
+      name: ElderSpriteSheetFile_15
       rect:
         serializedVersion: 2
         x: 320
@@ -726,14 +798,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 246fe6595be7fcce0800000000000000
-      internalID: -1382747242218195390
+      spriteID: bb8112b58d73b4c70800000000000000
+      internalID: 8956313686337722555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_16
+      name: ElderSpriteSheetFile_16
       rect:
         serializedVersion: 2
         x: 352
@@ -747,14 +819,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 847b7dea59fd950c0800000000000000
-      internalID: -4586388911523645624
+      spriteID: 55737b7acb809f940800000000000000
+      internalID: 5330301240330368853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_17
+      name: ElderSpriteSheetFile_17
       rect:
         serializedVersion: 2
         x: 416
@@ -768,14 +840,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a67a187db7a35fe0800000000000000
-      internalID: -1201432243372132702
+      spriteID: b3ce3e9f9c3652590800000000000000
+      internalID: -7699638268787954629
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_18
+      name: ElderSpriteSheetFile_18
       rect:
         serializedVersion: 2
         x: 448
@@ -789,14 +861,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae96c964db4004ce0800000000000000
-      internalID: -1423132271269090838
+      spriteID: 6d1ab4f2487e68060800000000000000
+      internalID: 6955501229435494870
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_19
+      name: ElderSpriteSheetFile_19
       rect:
         serializedVersion: 2
         x: 480
@@ -810,14 +882,77 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c348e1e2aca5ec6d0800000000000000
-      internalID: -2968335279986932676
+      spriteID: 7123b58f39984a170800000000000000
+      internalID: 8188821291086328343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_20
+      name: ElderSpriteSheetFile_20
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ffb24b8e8a1a570800000000000000
+      internalID: 8476241691096645450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_21
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b538238b77610baa0800000000000000
+      internalID: -6147388787913489573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_22
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56f071dd944701520800000000000000
+      internalID: 2670762439621414757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_23
       rect:
         serializedVersion: 2
         x: 32
@@ -831,14 +966,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bd31084518df9440800000000000000
-      internalID: 4944908501790047665
+      spriteID: 3cc4ef2c77d546140800000000000000
+      internalID: 4711993879090318531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_21
+      name: ElderSpriteSheetFile_24
       rect:
         serializedVersion: 2
         x: 64
@@ -852,14 +987,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 085d2470d04265920800000000000000
-      internalID: 2978607841927157120
+      spriteID: 00de1a3078a470ca0800000000000000
+      internalID: -6050785630606988032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_22
+      name: ElderSpriteSheetFile_25
       rect:
         serializedVersion: 2
         x: 96
@@ -873,14 +1008,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb2ee2f543a7b8330800000000000000
-      internalID: 3714196683050902203
+      spriteID: 6b4c697989fe6e2c0800000000000000
+      internalID: -4402568147050773322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_23
+      name: ElderSpriteSheetFile_26
       rect:
         serializedVersion: 2
         x: 160
@@ -894,14 +1029,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3282dc397edf486c0800000000000000
-      internalID: -4141906586215045085
+      spriteID: 2a3d0a4d456e69fe0800000000000000
+      internalID: -1182504600119225438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_24
+      name: ElderSpriteSheetFile_27
       rect:
         serializedVersion: 2
         x: 192
@@ -915,14 +1050,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a53de8312b7dd5d0800000000000000
-      internalID: -3036135191158639200
+      spriteID: 04b69f1f2607bdc00800000000000000
+      internalID: 926457718623529792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_25
+      name: ElderSpriteSheetFile_28
       rect:
         serializedVersion: 2
         x: 224
@@ -936,14 +1071,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b866d3b2665e0cd90800000000000000
-      internalID: -7079406387251550581
+      spriteID: 1d843cebac2e32020800000000000000
+      internalID: 2315943993810307281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_26
+      name: ElderSpriteSheetFile_29
       rect:
         serializedVersion: 2
         x: 320
@@ -957,14 +1092,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92c7a215405851a20800000000000000
-      internalID: 3032476177691999273
+      spriteID: 10c5b6d7b030c2b00800000000000000
+      internalID: 805021781276187649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_27
+      name: ElderSpriteSheetFile_30
       rect:
         serializedVersion: 2
         x: 352
@@ -978,14 +1113,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55f9879fddb5ec840800000000000000
-      internalID: 5246231624864538453
+      spriteID: 3adf5c7a1a82c8210800000000000000
+      internalID: 1336487864191810979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_28
+      name: ElderSpriteSheetFile_31
       rect:
         serializedVersion: 2
         x: 448
@@ -999,14 +1134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 343418d648fd61140800000000000000
-      internalID: 4690181821818815299
+      spriteID: 8812d6d46fc0293e0800000000000000
+      internalID: -2048560628499668600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_29
+      name: ElderSpriteSheetFile_32
       rect:
         serializedVersion: 2
         x: 480
@@ -1020,14 +1155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44c16454d3ac8dbc0800000000000000
-      internalID: -3758031524536640444
+      spriteID: c1250fb8028510100800000000000000
+      internalID: 72435965824619036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_30
+      name: ElderSpriteSheetFile_33
       rect:
         serializedVersion: 2
         x: 544
@@ -1041,14 +1176,119 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1211816b302a07d0800000000000000
-      internalID: -2951511166376930789
+      spriteID: e62b6f41381728470800000000000000
+      internalID: 8395397463178392174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_31
+      name: ElderSpriteSheetFile_34
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 272
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c43930a363a01530800000000000000
+      internalID: 3823735731922744519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_35
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 272
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3f284302a3eac7a0800000000000000
+      internalID: -6356017639100764358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_36
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 240
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85434b52b4b1a4dd0800000000000000
+      internalID: -2501156633481825192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_37
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 240
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97e7955d4f06f0f80800000000000000
+      internalID: -8138179396967498119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_38
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 240
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bba4ddc3136857c20800000000000000
+      internalID: 3203614255976630971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_39
       rect:
         serializedVersion: 2
         x: 32
@@ -1062,14 +1302,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c62d8645c047de80800000000000000
-      internalID: -8153977384294603070
+      spriteID: 77658bc18ac4607b0800000000000000
+      internalID: -5258431229988415881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_32
+      name: ElderSpriteSheetFile_40
       rect:
         serializedVersion: 2
         x: 64
@@ -1083,14 +1323,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b789eff1d51d0490800000000000000
-      internalID: -7778536989713135696
+      spriteID: a63420d30d7266f30800000000000000
+      internalID: 4568382647344186218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_33
+      name: ElderSpriteSheetFile_41
       rect:
         serializedVersion: 2
         x: 96
@@ -1104,14 +1344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcc74ceed2a0138e0800000000000000
-      internalID: -1715578790655787827
+      spriteID: a8d75cb611e1cb8e0800000000000000
+      internalID: -1676431901117284982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_34
+      name: ElderSpriteSheetFile_42
       rect:
         serializedVersion: 2
         x: 160
@@ -1125,14 +1365,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 135fb64d4f4d357e0800000000000000
-      internalID: -1777843279880260303
+      spriteID: 56b33ab0a6df8c5e0800000000000000
+      internalID: -1888981411778315419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_35
+      name: ElderSpriteSheetFile_43
       rect:
         serializedVersion: 2
         x: 192
@@ -1146,14 +1386,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0a52209218ac79d0800000000000000
-      internalID: -2775158472686020084
+      spriteID: 97eef2c22cfc24c70800000000000000
+      internalID: 8953947442037911161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_36
+      name: ElderSpriteSheetFile_44
       rect:
         serializedVersion: 2
         x: 224
@@ -1167,14 +1407,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0844559d7a53ba740800000000000000
-      internalID: 5164280392732460160
+      spriteID: 170bf0156d0dbf6d0800000000000000
+      internalID: -2955539111537037199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_37
+      name: ElderSpriteSheetFile_45
       rect:
         serializedVersion: 2
         x: 288
@@ -1188,14 +1428,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f3b43fc6b2dd1900800000000000000
-      internalID: 656912803268178936
+      spriteID: 7ed52e42584682920800000000000000
+      internalID: 2965730877635714535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_38
+      name: ElderSpriteSheetFile_46
       rect:
         serializedVersion: 2
         x: 320
@@ -1209,14 +1449,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc30b0abb8e544c40800000000000000
-      internalID: 5495621399513596876
+      spriteID: d55ed04894c0cf6e0800000000000000
+      internalID: -1802552240967391907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_39
+      name: ElderSpriteSheetFile_47
       rect:
         serializedVersion: 2
         x: 352
@@ -1230,14 +1470,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c321c195221d75d0800000000000000
-      internalID: -3063272218973625402
+      spriteID: ce3386de87e9e10a0800000000000000
+      internalID: -6908910536123468820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_40
+      name: ElderSpriteSheetFile_48
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 208
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458dd07500fa5ccb0800000000000000
+      internalID: -4844273408171714476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_49
       rect:
         serializedVersion: 2
         x: 448
@@ -1251,14 +1512,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46d93908f5c186db0800000000000000
-      internalID: -4798554206458634908
+      spriteID: 0e7eaee77ac297370800000000000000
+      internalID: 8320730884444186592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_41
+      name: ElderSpriteSheetFile_50
       rect:
         serializedVersion: 2
         x: 480
@@ -1272,14 +1533,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a47ad21c94486a8e0800000000000000
-      internalID: -1682511958467827894
+      spriteID: e235337e1651998e0800000000000000
+      internalID: -1686293075238628562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_42
+      name: ElderSpriteSheetFile_51
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 208
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77db3133ca63a0e10800000000000000
+      internalID: 2164602684124151159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_52
       rect:
         serializedVersion: 2
         x: 544
@@ -1293,14 +1575,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcd7378ca0c27db30800000000000000
-      internalID: 4311963593054846411
+      spriteID: ef99cb8490f1adbb0800000000000000
+      internalID: -4910578318958618114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_43
+      name: ElderSpriteSheetFile_53
       rect:
         serializedVersion: 2
         x: 576
@@ -1314,35 +1596,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab294416191480370800000000000000
-      internalID: 8288947206833345210
+      spriteID: f7f345e1ec8b00e20800000000000000
+      internalID: 3314852521156296575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_44
-      rect:
-        serializedVersion: 2
-        x: 608
-        y: 208
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d578bef06fe1f8980800000000000000
-      internalID: -8534568726665918627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KnightSpriteSheet32x32_45
+      name: ElderSpriteSheetFile_54
       rect:
         serializedVersion: 2
         x: 32
@@ -1356,14 +1617,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 036bfdd7d68ddc5e0800000000000000
-      internalID: -1887614704023521744
+      spriteID: 30d78ee90eae4a580800000000000000
+      internalID: -8816663920024978173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_46
+      name: ElderSpriteSheetFile_55
       rect:
         serializedVersion: 2
         x: 64
@@ -1377,14 +1638,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22966644d358bee40800000000000000
-      internalID: 5686785452672444706
+      spriteID: d8197a18f44a7c620800000000000000
+      internalID: 2794382755191296397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_47
+      name: ElderSpriteSheetFile_56
       rect:
         serializedVersion: 2
         x: 96
@@ -1398,14 +1659,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31344430ced9093b0800000000000000
-      internalID: -5507728707281468653
+      spriteID: 9f988bd31139dc6b0800000000000000
+      internalID: -5274397886321751559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_48
+      name: ElderSpriteSheetFile_57
       rect:
         serializedVersion: 2
         x: 160
@@ -1419,14 +1680,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b986cd5cfd7999b10800000000000000
-      internalID: 1988787697813842075
+      spriteID: 2b3d0292547a3db20800000000000000
+      internalID: 3158051679201448882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_49
+      name: ElderSpriteSheetFile_58
       rect:
         serializedVersion: 2
         x: 192
@@ -1440,14 +1701,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14d85e41763597550800000000000000
-      internalID: 6159045667603189057
+      spriteID: 341c828f816affd60800000000000000
+      internalID: 7926236495368208707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_50
+      name: ElderSpriteSheetFile_59
       rect:
         serializedVersion: 2
         x: 224
@@ -1461,14 +1722,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6208aea2c0871f30800000000000000
-      internalID: 4546243922496062058
+      spriteID: 26e68ed0c880e5d90800000000000000
+      internalID: -7107233764322283934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_51
+      name: ElderSpriteSheetFile_60
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 176
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b8608a64660d9080800000000000000
+      internalID: -9179173437157906247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_61
       rect:
         serializedVersion: 2
         x: 320
@@ -1482,14 +1764,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dddb10858f91e9c0800000000000000
-      internalID: -3899660406597362221
+      spriteID: b2688d9cb43fa6e40800000000000000
+      internalID: 5650596189324215851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_52
+      name: ElderSpriteSheetFile_62
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 176
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14bc287f5e1c63890800000000000000
+      internalID: -7478576937757914303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_63
       rect:
         serializedVersion: 2
         x: 416
@@ -1503,14 +1806,77 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af88c5e351df02140800000000000000
-      internalID: 4693029079402449146
+      spriteID: 91ac020210a204570800000000000000
+      internalID: 8448799085269404185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_53
+      name: ElderSpriteSheetFile_64
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 176
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d341cb3f8dd4be760800000000000000
+      internalID: 7488164399631045693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_65
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 176
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ec37f4dc07df070800000000000000
+      internalID: 8141787728459320843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_66
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 176
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2f6cf3695c4a0750800000000000000
+      internalID: 6271909377880125226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_67
       rect:
         serializedVersion: 2
         x: 544
@@ -1524,14 +1890,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3e6e55aad9412430800000000000000
-      internalID: 3756364767629831740
+      spriteID: 9f2f32b0ceed77720800000000000000
+      internalID: 2843986795088311033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_54
+      name: ElderSpriteSheetFile_68
       rect:
         serializedVersion: 2
         x: 576
@@ -1545,35 +1911,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b55fb6595bfcf170800000000000000
-      internalID: 8213716181542983091
+      spriteID: d4944b9d92108b0e0800000000000000
+      internalID: -2254050334241175219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_55
-      rect:
-        serializedVersion: 2
-        x: 608
-        y: 176
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8940839b9d72a5e0800000000000000
-      internalID: -1899817985648866934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KnightSpriteSheet32x32_56
+      name: ElderSpriteSheetFile_69
       rect:
         serializedVersion: 2
         x: 32
@@ -1587,14 +1932,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 134eb400c6bf042e0800000000000000
-      internalID: -2143436981348342735
+      spriteID: f56f7e386dd4367a0800000000000000
+      internalID: -6385174262949874081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_57
+      name: ElderSpriteSheetFile_70
       rect:
         serializedVersion: 2
         x: 64
@@ -1608,14 +1953,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1002e0ce1a452090800000000000000
-      internalID: -8059954462164123622
+      spriteID: 0489d9bd392d81d50800000000000000
+      internalID: 6708343177454917696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_58
+      name: ElderSpriteSheetFile_71
       rect:
         serializedVersion: 2
         x: 96
@@ -1629,14 +1974,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 654dc21e7ddeeac80800000000000000
-      internalID: -8309442751000423338
+      spriteID: 147f8062f020b51b0800000000000000
+      internalID: -5666933442029750463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_59
+      name: ElderSpriteSheetFile_72
       rect:
         serializedVersion: 2
         x: 160
@@ -1650,14 +1995,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53139322926c2cbb0800000000000000
-      internalID: -4917149963165028043
+      spriteID: 67f89c727559e4ce0800000000000000
+      internalID: -1419032631012913290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_60
+      name: ElderSpriteSheetFile_73
       rect:
         serializedVersion: 2
         x: 192
@@ -1671,14 +2016,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3509910933d5fba0800000000000000
-      internalID: -6055701882136361667
+      spriteID: 716f9b69b1f4648e0800000000000000
+      internalID: -1709592028629043689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_61
+      name: ElderSpriteSheetFile_74
       rect:
         serializedVersion: 2
         x: 224
@@ -1692,14 +2037,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd41d61c25d955ae0800000000000000
-      internalID: -1561168717055978275
+      spriteID: d6dc411cce68ab490800000000000000
+      internalID: -7729717459018265235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_62
+      name: ElderSpriteSheetFile_75
       rect:
         serializedVersion: 2
         x: 288
@@ -1713,14 +2058,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ea48b33e17338560800000000000000
-      internalID: 7314750822636079844
+      spriteID: 6c4f9597bd65cec70800000000000000
+      internalID: 9001665255840543942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_63
+      name: ElderSpriteSheetFile_76
       rect:
         serializedVersion: 2
         x: 320
@@ -1734,14 +2079,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38bf36ebd0fd92a10800000000000000
-      internalID: 1885283169153055619
+      spriteID: cc5aa9762c28efaa0800000000000000
+      internalID: -6125314671703841332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_64
+      name: ElderSpriteSheetFile_77
       rect:
         serializedVersion: 2
         x: 352
@@ -1755,14 +2100,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dc37317cb35bb380800000000000000
-      internalID: -8954471365277696811
+      spriteID: 885b8f05bc4cf2c90800000000000000
+      internalID: -7192313702371510904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_65
+      name: ElderSpriteSheetFile_78
       rect:
         serializedVersion: 2
         x: 416
@@ -1776,14 +2121,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70d689dcb56104b10800000000000000
-      internalID: 1963594021080689927
+      spriteID: 06205b6ea85913710800000000000000
+      internalID: 1671281360539812448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_66
+      name: ElderSpriteSheetFile_79
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 144
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2e16003884b9d750800000000000000
+      internalID: 6330289248260202031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_80
       rect:
         serializedVersion: 2
         x: 480
@@ -1797,14 +2163,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8ee5a13e454b13a0800000000000000
-      internalID: -6693680219013386609
+      spriteID: cc805e9c59a6ab940800000000000000
+      internalID: 5312675902006823116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_67
+      name: ElderSpriteSheetFile_81
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 144
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27e49f9b6286bf3b0800000000000000
+      internalID: -5477670006227906958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_82
       rect:
         serializedVersion: 2
         x: 544
@@ -1818,14 +2205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc694e81bf8c9f350800000000000000
-      internalID: 6051088555128952525
+      spriteID: cd053af3a635e75e0800000000000000
+      internalID: -1909997476159205156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_68
+      name: ElderSpriteSheetFile_83
       rect:
         serializedVersion: 2
         x: 576
@@ -1839,18 +2226,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0f82ed03721cbab0800000000000000
-      internalID: -4991094001669861621
+      spriteID: a636536408cb58280800000000000000
+      internalID: -9041613417756662934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_69
+      name: ElderSpriteSheetFile_84
       rect:
         serializedVersion: 2
-        x: 608
-        y: 144
+        x: 448
+        y: 112
         width: 32
         height: 32
       alignment: 0
@@ -1860,14 +2247,77 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45184d7c212bc0fc0800000000000000
-      internalID: -3527248614406192812
+      spriteID: 4cfe1388211feeec0800000000000000
+      internalID: -3535623595542581308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_70
+      name: ElderSpriteSheetFile_85
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 112
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13d6ebe5194a04d60800000000000000
+      internalID: 7872473092910378289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_86
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 112
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1556804676d277340800000000000000
+      internalID: 4861404244852893009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_87
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 112
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93693554ac509ac0800000000000000
+      internalID: -3850475820527557734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_88
       rect:
         serializedVersion: 2
         x: 32
@@ -1881,14 +2331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38262c1b225852440800000000000000
-      internalID: 4910477352775082627
+      spriteID: dc18594752c27f8c0800000000000000
+      internalID: -3965652407495065139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_71
+      name: ElderSpriteSheetFile_89
       rect:
         serializedVersion: 2
         x: 64
@@ -1902,14 +2352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffaee8eba9ec7fe90800000000000000
-      internalID: -6991892732452082945
+      spriteID: f7ae154aa0a0ab970800000000000000
+      internalID: 8771334265080244863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_72
+      name: ElderSpriteSheetFile_90
       rect:
         serializedVersion: 2
         x: 96
@@ -1923,14 +2373,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 711f745530411f9b0800000000000000
-      internalID: -5048231702757379817
+      spriteID: 7bcf7fbaa47bf9da0800000000000000
+      internalID: -5935824252510405449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_73
+      name: ElderSpriteSheetFile_91
       rect:
         serializedVersion: 2
         x: 160
@@ -1944,14 +2394,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da90cd98202ae5e60800000000000000
-      internalID: 7952972123769407917
+      spriteID: 9f781ed8279ecd870800000000000000
+      internalID: 8709092457643608057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_74
+      name: ElderSpriteSheetFile_92
       rect:
         serializedVersion: 2
         x: 192
@@ -1965,14 +2415,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51821b0158c736fb0800000000000000
-      internalID: -4655740678818420715
+      spriteID: 6878ae2892c22b320800000000000000
+      internalID: 2572166893983664006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_75
+      name: ElderSpriteSheetFile_93
       rect:
         serializedVersion: 2
         x: 224
@@ -1986,14 +2436,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2459e7834c1d9aa0800000000000000
-      internalID: -6152730439549627345
+      spriteID: b7efaace0f2667040800000000000000
+      internalID: 4645008852581547643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_76
+      name: ElderSpriteSheetFile_94
       rect:
         serializedVersion: 2
         x: 256
@@ -2007,14 +2457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4856bb3bfb4e61f60800000000000000
-      internalID: 8004836899702924676
+      spriteID: 1178363755429c0f0800000000000000
+      internalID: -1096305084861282543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_77
+      name: ElderSpriteSheetFile_95
       rect:
         serializedVersion: 2
         x: 288
@@ -2028,14 +2478,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c40cd9140e5ad5e50800000000000000
-      internalID: 6799773394991431756
+      spriteID: 2cafbea29813a1110800000000000000
+      internalID: 1232351913239640770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_78
+      name: ElderSpriteSheetFile_96
       rect:
         serializedVersion: 2
         x: 352
@@ -2049,14 +2499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e7dcfb7fe785c400800000000000000
-      internalID: 343830409210812388
+      spriteID: b5a442a81e2f1fb40800000000000000
+      internalID: 5472422072731060827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_79
+      name: ElderSpriteSheetFile_97
       rect:
         serializedVersion: 2
         x: 384
@@ -2070,14 +2520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c86c8bbe44beb2660800000000000000
-      internalID: 7362236697112266380
+      spriteID: c198f88c9d7dae810800000000000000
+      internalID: 1795484731833288988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_80
+      name: ElderSpriteSheetFile_98
       rect:
         serializedVersion: 2
         x: 448
@@ -2091,14 +2541,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2ecf8754c2ac3470800000000000000
-      internalID: 8375748371168611882
+      spriteID: 7fe2f33ec3f1935d0800000000000000
+      internalID: -3082398123587326217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_81
+      name: ElderSpriteSheetFile_99
       rect:
         serializedVersion: 2
         x: 480
@@ -2112,14 +2562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 462203ad0c97ecde0800000000000000
-      internalID: -1310976572316966300
+      spriteID: 2c5fac7c5e2b01080800000000000000
+      internalID: -9218671737258183230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_82
+      name: ElderSpriteSheetFile_100
       rect:
         serializedVersion: 2
         x: 512
@@ -2133,14 +2583,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ec097f3356ff7b30800000000000000
-      internalID: 4287416207687617767
+      spriteID: 86e91cc80daa60f40800000000000000
+      internalID: 5694426591547989608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_83
+      name: ElderSpriteSheetFile_101
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 80
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffad6f1da8ef381d0800000000000000
+      internalID: -3349553825651959041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_102
       rect:
         serializedVersion: 2
         x: 32
@@ -2154,14 +2625,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd0e1b9ec9d0ad920800000000000000
-      internalID: 3015737868064776411
+      spriteID: a547110d7fcf7d390800000000000000
+      internalID: -7793482488863427494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_84
+      name: ElderSpriteSheetFile_103
       rect:
         serializedVersion: 2
         x: 64
@@ -2175,14 +2646,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0de1230fd04ea3a40800000000000000
-      internalID: 5348838255971409616
+      spriteID: e3279e492ae213210800000000000000
+      internalID: 1310880242359431742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_85
+      name: ElderSpriteSheetFile_104
       rect:
         serializedVersion: 2
         x: 96
@@ -2196,14 +2667,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d7b4f0839f215410800000000000000
-      internalID: 1464003664442341329
+      spriteID: 577601e94e808f780800000000000000
+      internalID: -8649153306367596683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_86
+      name: ElderSpriteSheetFile_105
       rect:
         serializedVersion: 2
         x: 160
@@ -2217,14 +2688,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fa95c4620235f1c0800000000000000
-      internalID: -4470612069233353996
+      spriteID: ce61e1a2223838a70800000000000000
+      internalID: 8828043877335045868
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_87
+      name: ElderSpriteSheetFile_106
       rect:
         serializedVersion: 2
         x: 192
@@ -2238,14 +2709,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4d73ebc7ae7b5ba0800000000000000
-      internalID: -6099142011197883058
+      spriteID: 5dd68e715900279b0800000000000000
+      internalID: -5084000388996633131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_88
+      name: ElderSpriteSheetFile_107
       rect:
         serializedVersion: 2
         x: 224
@@ -2259,14 +2730,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52d01ffd61e356cd0800000000000000
-      internalID: -2565576144750310107
+      spriteID: f49c68d7004ca29b0800000000000000
+      internalID: -5104051721286006449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_89
+      name: ElderSpriteSheetFile_108
       rect:
         serializedVersion: 2
         x: 256
@@ -2280,14 +2751,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e8036dfd08716e10800000000000000
-      internalID: 2189162895359805671
+      spriteID: cbd5b6eb308d1b700800000000000000
+      internalID: 554461739734490556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_90
+      name: ElderSpriteSheetFile_109
       rect:
         serializedVersion: 2
         x: 288
@@ -2301,14 +2772,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5922a382fb80e55e0800000000000000
-      internalID: -1919086774106578283
+      spriteID: ad95efd3ee8320360800000000000000
+      internalID: 7134327355601738202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_91
+      name: ElderSpriteSheetFile_110
       rect:
         serializedVersion: 2
         x: 352
@@ -2322,14 +2793,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd90ec9e9a5115a50800000000000000
-      internalID: 6508006756043327967
+      spriteID: 23930d2cce340b640800000000000000
+      internalID: 5093645862715799858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_92
+      name: ElderSpriteSheetFile_111
       rect:
         serializedVersion: 2
         x: 384
@@ -2343,17 +2814,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c4e0caf96c682920800000000000000
-      internalID: 2965739557057782978
+      spriteID: 40adc34e99e75d070800000000000000
+      internalID: 8130543901711587844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_93
+      name: ElderSpriteSheetFile_112
       rect:
         serializedVersion: 2
-        x: 448
+        x: 544
         y: 48
         width: 32
         height: 32
@@ -2364,17 +2835,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5fb06ab303d89980800000000000000
-      internalID: -8531837481088139430
+      spriteID: f90002f151764f140800000000000000
+      internalID: 4752536847196881055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_94
+      name: ElderSpriteSheetFile_113
       rect:
         serializedVersion: 2
-        x: 480
+        x: 576
         y: 48
         width: 32
         height: 32
@@ -2385,17 +2856,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e214e6bac5ad5f9e0800000000000000
-      internalID: -1588123202030255826
+      spriteID: 008eae0af8b689f20800000000000000
+      internalID: 3429609380866877440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_95
+      name: ElderSpriteSheetFile_114
       rect:
         serializedVersion: 2
-        x: 512
+        x: 608
         y: 48
         width: 32
         height: 32
@@ -2406,14 +2877,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b811373c196eab70800000000000000
-      internalID: 8912176282518755505
+      spriteID: b0395290a81f6c040800000000000000
+      internalID: 4667683638977336075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_96
+      name: ElderSpriteSheetFile_115
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 48
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83a34da5ca7abba0800000000000000
+      internalID: -6072406158121655409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_116
       rect:
         serializedVersion: 2
         x: 32
@@ -2427,14 +2919,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1acf27f9fb79805a0800000000000000
-      internalID: -6554822408368096095
+      spriteID: 0166e8d2a231142e0800000000000000
+      internalID: -2143410875777784304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_97
+      name: ElderSpriteSheetFile_117
       rect:
         serializedVersion: 2
         x: 64
@@ -2448,14 +2940,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f3f7cbe0d37efd80800000000000000
-      internalID: -8215001329131064329
+      spriteID: e3e8d7741feea8e60800000000000000
+      internalID: 7965441611012083262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_98
+      name: ElderSpriteSheetFile_118
       rect:
         serializedVersion: 2
         x: 96
@@ -2469,14 +2961,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dc4b227d79644ba0800000000000000
-      internalID: -6105639207300281136
+      spriteID: e47daaf61a3f25060800000000000000
+      internalID: 6940877850420107086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_99
+      name: ElderSpriteSheetFile_119
       rect:
         serializedVersion: 2
         x: 160
@@ -2490,14 +2982,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc33ad02194f9eb70800000000000000
-      internalID: 8928936640397325263
+      spriteID: b85c7a5db6cad9d70800000000000000
+      internalID: 9051580405230585227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_100
+      name: ElderSpriteSheetFile_120
       rect:
         serializedVersion: 2
         x: 192
@@ -2511,14 +3003,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 017361abef6cfe560800000000000000
-      internalID: 7345308314610579216
+      spriteID: 7bb09f9e63a9bc930800000000000000
+      internalID: 4164591841078479799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSpriteSheet32x32_101
+      name: ElderSpriteSheetFile_121
       rect:
         serializedVersion: 2
         x: 224
@@ -2532,8 +3024,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e160a434cc95652d0800000000000000
-      internalID: -3290343743910443490
+      spriteID: 27c21ea6871561e90800000000000000
+      internalID: -7055362188598236046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_122
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3765baa851876f60800000000000000
+      internalID: 8027527078632318781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_123
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd34bea35a3d1e280800000000000000
+      internalID: -9015692272407460900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_124
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b070e14a69d791b00800000000000000
+      internalID: 799808494786971403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElderSpriteSheetFile_125
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 563b1c2379e05c2e0800000000000000
+      internalID: -2106261208171433115
       vertices: []
       indices: 
       edges: []
