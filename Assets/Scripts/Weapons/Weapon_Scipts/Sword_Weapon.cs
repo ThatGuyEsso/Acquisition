@@ -21,7 +21,9 @@ public class Sword_Weapon : Base_Weapon, Equipable
     bool isLeftSwing;
 
 
-    
+
+
+
     protected override void PrimaryAttack()
     {
         if (!isWeaponActive)

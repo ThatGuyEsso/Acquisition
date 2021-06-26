@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &654389575125418794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654389575125418796}
+  - component: {fileID: 654389575125418795}
+  m_Layer: 0
+  m_Name: FragmentSkillAttribute
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &654389575125418796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654389575125418794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &654389575125418795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654389575125418794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0fad2298e595404b8b6f1d1fdcc1bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordFragPrefab: {fileID: 1087995828118112649, guid: 0b47b6916b1d06145b3bf45261114fc3, type: 3}
+  bowFragPrefab: {fileID: 3647265956065727434, guid: 49226032c39f7204ea2920b3344e4a5d, type: 3}
+  shieldFragPrefab: {fileID: 3647265956065727434, guid: 3664f2b8c06097f44b57127ff8291ecb, type: 3}
+  fragmentCount: 4
+  fragentSpeed: 8
+  fragmentLifeTime: 5

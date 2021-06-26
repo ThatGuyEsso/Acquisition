@@ -14,7 +14,6 @@ public class SkillOrbPickUp : MonoBehaviour
     [SerializeField] private string displaySFX;
     [SerializeField] private GameObject displayVFX;
     [SerializeField] private GameObject gfx;
-    [SerializeField] private GameObject light;
     [SerializeField] private FadeOutSprite fadeControl;
 
 
@@ -65,11 +64,11 @@ public class SkillOrbPickUp : MonoBehaviour
     {
         EnablePickUp();
         fadeControl.ShowSprite();
-        light.SetActive(true);
+ 
     }
     public void DisableLight()
     {
-        light.SetActive(false);
+     
         if(fadeControl)
             fadeControl.OnFadeComplete -= DisableLight;
     }

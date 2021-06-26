@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4637857116509100988}
   - component: {fileID: 4637857116509100989}
   - component: {fileID: 4637857116509100991}
-  - component: {fileID: 7314994652918892566}
+  - component: {fileID: 3371249950277502424}
   m_Layer: 11
   m_Name: BossHazardZone
   m_TagString: Untagged
@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerZone: 1
-  damage: 10
---- !u!50 &7314994652918892566
+  damage: 2
+--- !u!50 &3371249950277502424
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4637857116509100986}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -84,7 +84,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &4637857116836205391
 GameObject:

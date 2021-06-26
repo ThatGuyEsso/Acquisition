@@ -256,6 +256,13 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
     {
         if (rb)
         {
+
+            SetUp(direction, speed);
+            StartCoroutine(LifeTimer(lifeTime));
+        }
+        else
+        {
+            Init();
             SetUp(direction, speed);
             StartCoroutine(LifeTimer(lifeTime));
         }
@@ -312,6 +319,12 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
     virtual public bool IsHoming()
     {
         return false;
+    }
+
+    public void SetOwner(GameObject owner)
+    {
+        this.owner = owner;
+    
     }
 }
 
