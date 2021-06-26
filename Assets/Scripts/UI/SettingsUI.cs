@@ -34,6 +34,8 @@ public class SettingsUI : Base_UI
         resolutionDropDown.AddOptions(r);
         resolutionDropDown.value = currentRes;
         resolutionDropDown.RefreshShownValue();
+
+
     }
 
     public void SetVolume(float value)
@@ -48,7 +50,7 @@ public class SettingsUI : Base_UI
         else if(index == 1)
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         else if(index == 2)
-            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
     }
 
     public void SetResolution(int resIndex)
