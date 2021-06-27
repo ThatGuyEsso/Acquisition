@@ -46,7 +46,7 @@ MonoBehaviour:
   sounds:
   - name: DungeonBoom
     clip: {fileID: 8300000, guid: 29db2f384b0d0594186f4e157762de58, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -54,7 +54,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: ButtonPress
     clip: {fileID: 8300000, guid: c97db7c7287b8014c8a74b7cec6fe546, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -62,7 +62,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: PlayerWalk
     clip: {fileID: 8300000, guid: 902ee6cceece6e54c936ce5a19361a39, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -70,7 +70,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: ItemBoom
     clip: {fileID: 8300000, guid: c6eb2fe05fc938442ac77ae5497e56ed, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: RoomSpawn
     clip: {fileID: 8300000, guid: 6ae04c9b2bf84d346b007e09cb2a5585, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: DoorOpen
     clip: {fileID: 8300000, guid: 114a02c549b21884dbe70d1ec1cb5b70, type: 3}
-    volume: 1
+    volume: 0.12
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: DoorClose
     clip: {fileID: 8300000, guid: 4fcdaa80f31fa754c879988c167521e9, type: 3}
-    volume: 1
+    volume: 0.12
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: DungeonEcho
     clip: {fileID: 8300000, guid: 20e57ad88d42d6b42926abbcbb398d3f, type: 3}
-    volume: 0.2
+    volume: 0.05
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: PlayerDamage
     clip: {fileID: 8300000, guid: ffaf1ccebc9c5d54abb6c5243acaad38, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: WeaponPickUp
     clip: {fileID: 8300000, guid: 0a145113a933b764086ae39d5a49e5c2, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: DodgeRoll
     clip: {fileID: 8300000, guid: b58e1c6c75e04c444bcc4ec65a578416, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -142,7 +142,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: SwordThrust
     clip: {fileID: 8300000, guid: 957101c1024cf9a4697e5d80d04f48a7, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: SwordSwing
     clip: {fileID: 8300000, guid: 7e79c18ae88aa6f49b4ad54bf1523368, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: ShieldInUse
     clip: {fileID: 8300000, guid: a3e7f88f95c17fd46a107513e6ddf3f0, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: ProjectileHit
     clip: {fileID: 8300000, guid: 435175d6fb467e844b6b1a59f18b8e6b, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
     pitchChange: 0.1
   - name: KnightCharage
     clip: {fileID: 8300000, guid: a3264c05cfdd65c4a82bdd30b9b0805a, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -190,7 +190,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: KnightAwaken
     clip: {fileID: 8300000, guid: cd329b5ffe6191c4a8d519b18569f074, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -198,7 +198,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: KnightSwing
     clip: {fileID: 8300000, guid: 650722a5c6e93a8439de9aa73379a7f4, type: 3}
-    volume: 1
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -206,7 +206,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: KnightWalking
     clip: {fileID: 8300000, guid: 29bcba1e6bc83754188ab8c22bb9cb77, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: KnightHurt
     clip: {fileID: 8300000, guid: 7a08c48e6aaa0b34db7d3c9dbc3d653f, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -222,7 +222,7 @@ MonoBehaviour:
     pitchChange: 0.15
   - name: BowDraw
     clip: {fileID: 8300000, guid: 8ebbdf036d067964b81308d8715f965f, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -230,7 +230,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: BowShot
     clip: {fileID: 8300000, guid: 03d14be5cfbcfd9458dfa0a00a68f8fb, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -238,7 +238,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: ShieldSpawn
     clip: {fileID: 8300000, guid: d772d62b692412f48ba2d51a8568e5f0, type: 3}
-    volume: 1
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -246,7 +246,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: ShieldHit
     clip: {fileID: 8300000, guid: e078f343c1ec1244d981e782977a5799, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -254,7 +254,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: ShieldDespawn
     clip: {fileID: 8300000, guid: 3decbcf156e53c049bac42ff4925cb2d, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -262,7 +262,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: PickUpOrb
     clip: {fileID: 8300000, guid: 2438d603b8f3a0247beb4076f99bad6d, type: 3}
-    volume: 1
+    volume: 0.9
     pitch: 1
     loop: 0
     source: {fileID: 0}

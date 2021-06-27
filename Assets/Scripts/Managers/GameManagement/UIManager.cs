@@ -61,11 +61,14 @@ public class UIManager : MonoBehaviour, IInitialisable
             UIDic.Add(pool.type, ui);
         }
 
-        SwitchUI(UIType.MainMenu);
+        SwitchUI(startingUI);
     }
 
     public void SwitchUI(UIType type) //changes the UI displayed
     {
+        if (type == currentActive)
+            return;
+
         previousUI = currentActive;
         UnloadCurrent();
 

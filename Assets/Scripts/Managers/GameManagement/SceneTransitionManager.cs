@@ -181,6 +181,7 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
 
         currentScene = menuSceneIndex;
         EvaluateSceneLoaded(currentScene);
+        UIManager.instance.SwitchUI(UIType.MainMenu);
     }
 
     public void EvaluateSceneLoaded(SceneIndex scene)
