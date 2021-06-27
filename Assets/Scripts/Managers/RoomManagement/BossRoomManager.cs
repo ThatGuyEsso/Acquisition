@@ -17,8 +17,8 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
     [SerializeField] private PlayableAsset bossIntro;
     [SerializeField] private Vector2 roomHalfSize;
     [SerializeField] private Transform roomCentre;
-    [SerializeField] private NavMeshSurface2d navMesh;
 
+    [SerializeField] private GameObject spawnVFX;
     [SerializeField] private List<SkillOrbPickUp> pickUps = new List<SkillOrbPickUp>();
     private void Awake()
     {
@@ -75,6 +75,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
                     }
                 }
 
+                if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ItemBoom", roomCentre.position);
                 break;
         }
     }
@@ -102,6 +103,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
         exitDoor.ToggleLock(false);
 
         RoomManager.instance.BeginCreatePathBossToHub(exitDoor.corridorSpawn.position);
+        if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("RoomSpawn", roomCentre.position);
 
     }
     public void SetUpDoors()
@@ -143,15 +145,6 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
  
     }
 
-    public IEnumerator BuildNavMesh()
-    {
-       AsyncOperation navBuild= navMesh.BuildNavMeshAsync();
-        while (!navBuild.isDone) yield return null;
-
-    
-
-        InitRoom();
-    }
 
     public void AwakenBoss()
     {

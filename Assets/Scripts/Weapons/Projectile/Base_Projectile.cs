@@ -16,10 +16,12 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
     [SerializeField] protected int blockCount = 0;//How much damage projectile can take be getting destroyed
     [SerializeField] protected SpriteFlash flashVFX;
     [SerializeField] protected LayerMask destroyProjectileLayer;
+    [SerializeField] protected GameObject breakVFX;
     protected GameObject owner;
     protected Rigidbody2D rb;
     protected bool isHurt;
     protected float currHurtTime;
+
 
     public System.Action OnKilled;
     virtual protected void Awake()
@@ -68,6 +70,8 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
         {
             GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
         }
+
+        if (breakVFX) ObjectPoolManager.Spawn(breakVFX, transform.position);
         StopAllCoroutines();
 
 
@@ -183,6 +187,8 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
 
     virtual protected void KillProjectile()
     {
+    
+  
         if (ObjectPoolManager.instance)
         {
             if (gameObject)
@@ -220,6 +226,8 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
         return owner;
     }
 
+
+
     virtual public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
         if (!isHurt)
@@ -228,6 +236,8 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
             isHurt = true;
             if (attacker != owner) blockCount--;
             if (blockCount <= 0) KillProjectile();
+
+            if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ProjectileHurt", transform.position, true);
             if (flashVFX)
             {
                 flashVFX = GetComponent<SpriteFlash>();

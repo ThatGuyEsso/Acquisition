@@ -113,7 +113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -102.25}
+  m_AnchoredPosition: {x: 0, y: -109}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3768981126267672771
@@ -265,6 +265,7 @@ MonoBehaviour:
   bossNameDisplay: {fileID: 3768981126919932928}
   animator: {fileID: 3768981126912450480}
   uiShaker: {fileID: 7776833321509106899}
+  displayRefit: {fileID: 6444048152724166813}
 --- !u!95 &3768981126912450480
 Animator:
   serializedVersion: 3
@@ -303,6 +304,7 @@ MonoBehaviour:
   _vertOffsetScalar: 1.2
   _vibrateTime: 0.3
   _bobSmoothing: 0.05
+  displayRefit: {fileID: 6444048152724166813}
 --- !u!1 &3768981126919932934
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,8 +339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000071525574, y: 0}
-  m_SizeDelta: {x: 372.6992, y: 53.2996}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 0}
+  m_SizeDelta: {x: 246.1537, y: 53.2996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3768981126919932931
 CanvasRenderer:
@@ -395,8 +397,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.6
-  m_fontSizeBase: 56.6
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -598,6 +600,7 @@ GameObject:
   - component: {fileID: 5715063834776585993}
   - component: {fileID: 7706228336461185216}
   - component: {fileID: 634161307737670214}
+  - component: {fileID: 6444048152724166813}
   m_Layer: 5
   m_Name: NameBackground
   m_TagString: Untagged
@@ -646,15 +649,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.56078434}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: ed9ea7bb6fd902a4fbb8ea01093935eb, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -663,3 +666,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6444048152724166813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8680628040901392688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57f1025288169d448fe514af8c87f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padding: {x: 30, y: 20}
+  displayText: {fileID: 3768981126919932928}
+  elementToFit: {fileID: 5715063834776585993}

@@ -19,6 +19,14 @@ public class AfterImageController : MonoBehaviour
 
         isDrawing = true;
     }
+    public void StartDrawing()
+    {
+       
+        currentTime = 0f;
+
+        isDrawing = true;
+    }
+
 
     public void Update()
     {

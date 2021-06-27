@@ -5,6 +5,9 @@ using UnityEngine;
 public class AttackAnimEventListener: MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    
+    [SerializeField] private string walkSFX;
+    [SerializeField] private GameObject dustVFX;
 
     public Action OnShowAttackZone;
     public Action OnHideAttackZone;
@@ -59,5 +62,15 @@ public class AttackAnimEventListener: MonoBehaviour
         OnShootProjectile?.Invoke();
     }
 
- 
+    public void PlayWalkSFX()
+    {
+        if (AudioManager.instance)
+            AudioManager.instance.PlayGroupThroughAudioPlayer(walkSFX, transform.position, true);
+    }
+
+    public void CreateDustCFX()
+    {
+        if (dustVFX)
+            ObjectPoolManager.Spawn(dustVFX, transform.position, transform.rotation);
+    }
 }

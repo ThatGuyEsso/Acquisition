@@ -36,6 +36,8 @@ public class SkillOrbPickUp : MonoBehaviour
                 CamShake.instance.DoScreenShake(0.5f, 2f, 0.1f, 0.25f, 2f);
             }
            if(displayVFXPrefab) ObjectPoolManager.Spawn(displayVFXPrefab, transform.position, transform.rotation);
+
+            if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("PickUpOrb", transform.position, true);
             OnSkillSelect?.Invoke(this);
             DestroyPickUp();
         }

@@ -7,7 +7,7 @@ public class PlayerWalkAnimHandler : MonoBehaviour
     public Animator animator;
     public TDInputMovement movement;
     [SerializeField] private GameObject audioPlayerPrefab;
-
+    [SerializeField] private GameObject dustVFX;
     private void Awake()
     {
         movement.OnWalk += OnPlayerWalk;
@@ -19,6 +19,8 @@ public class PlayerWalkAnimHandler : MonoBehaviour
         {
             animator.SetFloat("PlaySpeed", 1f);
             animator.Play("Run");
+
+
         }
 
 
@@ -43,6 +45,8 @@ public class PlayerWalkAnimHandler : MonoBehaviour
                 aPlayer.Play();
             }
         }
+
+        if (dustVFX) ObjectPoolManager.Spawn(dustVFX, transform.position, transform.rotation);
     }
     public void OnDestroy()
     {

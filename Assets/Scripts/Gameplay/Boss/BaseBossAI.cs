@@ -24,6 +24,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected string BossName;
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float aiTickRate= 0.25f;
+    [SerializeField] protected string bossDeathAnim;
     public Transform target;
     [SerializeField] protected BossStageData stageData;
     [SerializeField] protected GameObject bossUIPrefab;
@@ -42,6 +43,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [Header("SFX Settings")]
     [SerializeField] protected string awakenSFXName;
     [SerializeField] protected string hurtSFX;
+    [SerializeField] protected string dieSFX;
     protected bool isInitialised;
     protected float currentHealth;
     protected int currentAttackIndex;
@@ -52,6 +54,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     protected bool canLockOn=false;
     protected float currHurtTime;
     protected bool isHurt;
+    [HideInInspector]
     public BossUI UI;
     [SerializeField] protected GameObject transitionAbilityPrefab;
     [SerializeField] protected BaseBossAbility closeCombatAbility;
@@ -477,7 +480,11 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         animator.enabled = true;
         if (!attackAnimEvents.enabled) attackAnimEvents.enabled = true;
         attackAnimEvents.OnDeathComplete += EndBossFight;
-        animator.Play("KnightDeath",0,0f);
+
+        if (AudioManager.instance && dieSFX!=string.Empty) {
+            AudioManager.instance.PlayGroupThroughAudioPlayer(dieSFX, transform.position);
+        }
+        animator.Play(bossDeathAnim,0,0f);
         isBusy = false;
         if(UI)
         UI.HideUI();

@@ -25,6 +25,8 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
     }
     public void CreateAttackZone()
     {
+        if (AudioManager.instance)
+            AudioManager.instance.PlayThroughAudioPlayer("KnightSwing", owner.transform.position,true);
         canAttack = false;
         Debug.Log("Attack left before= "+attacksLeft);
         attacksLeft--;

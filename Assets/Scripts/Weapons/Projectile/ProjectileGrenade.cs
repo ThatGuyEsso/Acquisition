@@ -17,7 +17,7 @@ public class ProjectileGrenade : Base_Projectile
     [Range(0f,360f)]
     [SerializeField] private float spreadAngle;
 
-    bool canCreateFragments;
+    protected bool canCreateFragments;
 
 
     override public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
@@ -34,6 +34,7 @@ public class ProjectileGrenade : Base_Projectile
                 flashVFX.Init();
             }
             if (flashVFX) flashVFX.Flash();
+            if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ProjectileHurt", transform.position, true);
         }
 
     }

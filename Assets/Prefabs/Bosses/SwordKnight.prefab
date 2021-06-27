@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1195519277
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -4862275863476091193, guid: cf7cc2ade6c96c544b60d62d94551e82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -204,31 +204,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6dd4d8eef0f1e47a5e191253a94567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashVFX: {fileID: 0}
   BossName: Sword-King
   maxHealth: 1000
   aiTickRate: 0.25
+  bossDeathAnim: KnightDeath
   target: {fileID: 0}
   stageData: {fileID: 11400000, guid: 08e82186df2413a488b8bf5cbb9fd8a6, type: 2}
   bossUIPrefab: {fileID: 3768981126912450485, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
   awakenAnimName: Awaken
+  firepoint: {fileID: 118221031614647829}
   navigation: {fileID: 118221031589024617}
   faceTarget: {fileID: 118221031589024618}
   faceMovementDirection: {fileID: 118221031589024596}
   animator: {fileID: 118221031589024598}
   maxHurtTime: 0.25
   attackAnimEvents: {fileID: 118221031589024597}
-  componentsToInit:
-  - {fileID: 118221031589024617}
   currentStageAbilities: []
   awakenSFXName: KnightAwaken
   hurtSFX: KnightHurt
+  dieSFX: KnightDie
   UI: {fileID: 0}
   transitionAbilityPrefab: {fileID: 3382950496971785112, guid: a723b43fe1352b54a84a88fc354fca1e, type: 3}
   closeCombatAbility: {fileID: 0}
   isBusy: 0
   inDebug: 0
-  firepoint: {fileID: 118221031614647829}
   rb: {fileID: 0}
 --- !u!114 &118221031589024596
 MonoBehaviour:
@@ -256,6 +255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 118221031589024598}
+  walkSFX: KnightSteps
+  dustVFX: {fileID: 6503281231503492835, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
 --- !u!95 &118221031589024598
 Animator:
   serializedVersion: 3

@@ -131,7 +131,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1195519277
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: -8930375550428167626, guid: fcf56204f214cdb4eb77ab8ee5b0b8dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2125825006184396039}
+  walkSFX: 
 --- !u!1 &2210315029612703866
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +260,7 @@ GameObject:
   - component: {fileID: 4138573310882446653}
   - component: {fileID: 3966443710537326990}
   - component: {fileID: 4981715628709993292}
+  - component: {fileID: 5466209163863507360}
   m_Layer: 10
   m_Name: DodgeRollController
   m_TagString: Untagged
@@ -318,7 +320,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1195519277
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6392157}
@@ -350,6 +352,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5466209163863507360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379450408587527230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ecdda0c44feb94cb3c4e73ca2bd905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterImageObject: {fileID: 2905011447593517038, guid: 0be5720f1aebc474dab06f98c6870dc8, type: 3}
+  targetRenderer: {fileID: 3966443710537326990}
+  imageLifeTime: 0.2
+  timeBetweenImage: 0.25
 --- !u!1 &5722101343650127545
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +640,8 @@ MonoBehaviour:
   - {fileID: 8957915617564251555}
   - {fileID: 8957915617564251549}
   tdMovement: {fileID: 8957915617564251555}
+  VFXcontroller: {fileID: 5466209163863507360}
+  rollVFX: {fileID: 7537864355965410645, guid: 856a4995b795a994391200c5c507b8fb, type: 3}
   invisibilityLayer: 9
   defaultLayer: 10
   dodgeAnimator: {fileID: 4981715628709993292}
@@ -711,6 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8957915619028398270}
+  walkSFX: 
 --- !u!114 &8210388423571382205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,6 +758,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8957915617564251559}
     m_Modifications:
+    - target: {fileID: 3118048543159838658, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
+      propertyPath: dustVFX
+      value: 
+      objectReference: {fileID: 9101370336256468382, guid: 23ca9d4cc9c801149a5890456d93d1d7, type: 3}
     - target: {fileID: 3118048543159838658, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
       propertyPath: animator
       value: 
@@ -811,11 +836,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
---- !u!1 &8957915618491850696 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7733458594290553442, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
-  m_PrefabInstance: {fileID: 1657935258739281322}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8957915618491850697 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7733458594290553443, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
@@ -824,6 +844,11 @@ Transform:
 --- !u!95 &7060973016510842931 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8574773259407410585, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
+  m_PrefabInstance: {fileID: 1657935258739281322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8957915618491850696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7733458594290553442, guid: a6f41cba25a96434097e859fa4b0e270, type: 3}
   m_PrefabInstance: {fileID: 1657935258739281322}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8870998044398194299

@@ -18,7 +18,7 @@ public class UIElementShake : MonoBehaviour
     [SerializeField] private float _vibrateTime;
     private float _currentVibrateTime;
     [SerializeField] [Range(0f, 1f)] private float _bobSmoothing = 0.1f;
-
+    [SerializeField] private ResizeToFitText displayRefit;
 
     //State
     private bool _shouldBob = false;

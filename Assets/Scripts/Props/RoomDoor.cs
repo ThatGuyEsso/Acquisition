@@ -9,6 +9,7 @@ public class RoomDoor : MonoBehaviour
     [SerializeField] private bool isLocked;
     [SerializeField] private SpriteRenderer leftGFX, rightGFX;
     [SerializeField] private Sprite leftLockedSprite, leftOpenSprite, rightLockedSprite, rightOpenSprite;
+    [SerializeField] private GameObject spawnVFX;
     public void ToggleLock(bool locked)
     {
         isLocked = locked;
@@ -19,6 +20,7 @@ public class RoomDoor : MonoBehaviour
         }
         else
         {
+            if (spawnVFX) ObjectPoolManager.Spawn(spawnVFX, door.transform.position, Quaternion.identity);
             leftGFX.sprite = leftOpenSprite;
             rightGFX.sprite = rightOpenSprite;
         }

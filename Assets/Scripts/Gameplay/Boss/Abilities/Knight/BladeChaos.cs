@@ -12,6 +12,10 @@ public class BladeChaos : BaseBossAbility
     [SerializeField] protected float fireRate;
     [SerializeField] protected float attackDuration;
     [SerializeField] protected float rotationRate=250f;
+
+    [SerializeField] private float sfxPlayRate;
+    private float currTimeToSFX;
+
     bool isAttacking;
     float currTimeToShoot=0;
     float curretAttackTime;
@@ -38,6 +42,20 @@ public class BladeChaos : BaseBossAbility
             {
                 StopBladeCircus();
             }
+
+
+            if (currTimeToSFX <= 0)
+            {
+
+                if (AudioManager.instance)
+                    AudioManager.instance.PlayThroughAudioPlayer("KnightSwing", owner.transform.position, true);
+                currTimeToSFX = sfxPlayRate;
+            }
+            else
+            {
+                currTimeToSFX -= Time.deltaTime;
+            }
+        
         }
     }
 
@@ -78,6 +96,7 @@ public class BladeChaos : BaseBossAbility
 
     public void ShootProjectile()
     {
+
         GameObject projectile = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
         projectile.GetComponent<IInitialisable>().Init();
         projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up,

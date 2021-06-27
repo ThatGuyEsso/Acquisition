@@ -202,15 +202,17 @@ public class Bow_Weapon : Base_Weapon
         attackEvents.OnChargeIncrease += IncreaseCharge;
         isCharging = true;
         OnSecondaryAttack?.Invoke();
+        attackEvents.OnPlaySFX += PlayArrowDrawSFX;
         animSolver.PlayAnimationFromStart("Secondary_Bow");
 
     }
 
     public void PlayArrowShotSFX()
     {
+        
         if (AudioManager.instance)
         {
-            AudioManager.instance.PlayThroughAudioPlayer("BowDraw", playerTransform.position);
+            AudioManager.instance.PlayThroughAudioPlayer("BowShot", playerTransform.position);
         }
     }
 
@@ -219,7 +221,7 @@ public class Bow_Weapon : Base_Weapon
         attackEvents.OnPlaySFX -= PlayArrowDrawSFX;
         if (AudioManager.instance)
         {
-            AudioManager.instance.PlayThroughAudioPlayer("BowShot", playerTransform.position);
+            AudioManager.instance.PlayThroughAudioPlayer("BowDraw", playerTransform.position);
         }
     }
 
@@ -241,6 +243,8 @@ public class Bow_Weapon : Base_Weapon
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                     OnSecondaryAbility?.Invoke(projObject);
                 }
+
+         
             }
             else if (chargeCount == 2)
             {
@@ -251,6 +255,7 @@ public class Bow_Weapon : Base_Weapon
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                     OnSecondaryAbility?.Invoke(projObject);
                 }
+         
             }
             else if (chargeCount >= 3)
             {
@@ -261,11 +266,13 @@ public class Bow_Weapon : Base_Weapon
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                     OnSecondaryAbility?.Invoke(projObject);
                 }
+
             }
 
             attackEvents.OnAnimEnd += ResetSecondaryFire;
             animSolver.PlayAnimationFromStart("ReleaseCharge");
-           
+            PlayArrowShotSFX();
+
         }
        
 
@@ -274,6 +281,10 @@ public class Bow_Weapon : Base_Weapon
     {
 
         chargeCount++;
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.PlayGThroughAudioPlayerPitchShift("ArrowCharge", playerTransform.position, chargeCount/10f);
+        }
 
     }
 

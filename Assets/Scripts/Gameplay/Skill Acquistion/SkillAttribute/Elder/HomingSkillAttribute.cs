@@ -72,7 +72,7 @@ public class HomingSkillAttribute : Base_SkillAttribute
             projObj.GetComponent<BubbleShield>().owner = owner.GetPlayerTransform().gameObject;
             proj.SetUpProjectile(shieldProjDamage, owner.GetFirePoint().up, shieldHomingSpeed, shieldHomingLifeTime,
                 shieldHitPoints, owner.GetPlayerTransform().gameObject);
-
+         
         }
     }
 

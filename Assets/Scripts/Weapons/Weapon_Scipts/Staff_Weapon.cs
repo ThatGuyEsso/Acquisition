@@ -24,9 +24,10 @@ public class Staff_Weapon : Base_Weapon
     Vector2 currentPoint;
     Vector2 targetPoint;
     bool isDrawing;
-   private GameObject beamEnd;
+    private GameObject beamEnd;
     private GameObject channelVFX;
 
+    private AudioPlayer beamPlayer;
     public override void Init()
     {
         base.Init();
@@ -180,8 +181,13 @@ public class Staff_Weapon : Base_Weapon
         line.enabled = true;
         isDrawing = true;
         currBeamDuration = beamDuration;
-
-
+        if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("StaffSpellCast", playerTransform.position);
+        if (!beamPlayer) beamPlayer = AudioManager.instance.PlayThroughAudioPlayer("StaffBeam", playerTransform);
+        else
+        {
+            beamPlayer.KillAudio();
+            beamPlayer = AudioManager.instance.PlayThroughAudioPlayer("StaffBeam", playerTransform);
+        }
     }
 
 
@@ -199,9 +205,9 @@ public class Staff_Weapon : Base_Weapon
         attackEvents.OnShowAttackZone -= CreateBubbleShield;
         attackEvents.OnHideAttackZone += ResetSecondaryFire;
         
-      
         GameObject shield = ObjectPoolManager.Spawn(secondaryProjectile, playerTransform);
         shield.GetComponent<BubbleShield>().owner = playerTransform.gameObject;
+        if(AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ShieldSpawn",playerTransform.position);
         OnSecondaryAbility?.Invoke(shield);
     }
     private void FireRay()
@@ -293,7 +299,7 @@ public class Staff_Weapon : Base_Weapon
             line.enabled = false;
       
             StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
-
+            if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ShieldDespawn", transform.position);
         }
         else
         {
@@ -307,16 +313,23 @@ public class Staff_Weapon : Base_Weapon
            
             canPrimaryFire = true;
         }
-     
-      
+        if (beamPlayer)
+        {
+            beamPlayer.KillAudio();
+            beamPlayer = null;
+        }
 
-    
-    
+        
     }
 
     public override void DisableWeapon()
     {
         base.DisableWeapon();
+        if (beamPlayer)
+        {
+            beamPlayer.KillAudio();
+            beamPlayer = null;
+        }
         if (isFiringPrimary)
         {
             attackEvents.OnShootProjectile -= BeginBeam;

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillOrbType: 0
   skillAttributePrefab: {fileID: 9166094733422512543, guid: 03f24e4240189e445b854c2f221a6d92, type: 3}
-  displayVFXPrefab: {fileID: 6525448635879357664, guid: 4777822ae592740488dc4a4f4e884285, type: 3}
+  displayVFXPrefab: {fileID: 417852221244204530, guid: 14b8e823b0466804ca438cf416cd785d, type: 3}
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 

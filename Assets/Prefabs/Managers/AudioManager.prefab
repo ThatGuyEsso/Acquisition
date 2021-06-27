@@ -141,24 +141,24 @@ MonoBehaviour:
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0
   - name: SwordThrust
-    clip: {fileID: 8300000, guid: 957101c1024cf9a4697e5d80d04f48a7, type: 3}
-    volume: 0.3
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
-    pitchChange: 0
-  - name: SwordSwing
-    clip: {fileID: 8300000, guid: 7e79c18ae88aa6f49b4ad54bf1523368, type: 3}
-    volume: 0.3
+    clip: {fileID: 8300000, guid: 7acde33fc8d0f46408c931a6d508fa7e, type: 3}
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0
+  - name: SwordSwing
+    clip: {fileID: 8300000, guid: 2a6b3ca259e2d2147b4aee44a98329ea, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0.1
   - name: StaffBeam
-    clip: {fileID: 8300000, guid: 9ac49d952fbe29347a8d69fa92fb3cd9, type: 3}
-    volume: 0.2
+    clip: {fileID: 8300000, guid: 40bfd74a57cbe1e4e9d37dd262ca6e6d, type: 3}
+    volume: 0.1
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0
   - name: ProjectileHit
-    clip: {fileID: 8300000, guid: 435175d6fb467e844b6b1a59f18b8e6b, type: 3}
+    clip: {fileID: 8300000, guid: 97dc248f1547c64429d68e6fdcb604af, type: 3}
     volume: 0.2
     pitch: 1
     loop: 0
@@ -198,12 +198,12 @@ MonoBehaviour:
     pitchChange: 0
   - name: KnightSwing
     clip: {fileID: 8300000, guid: 650722a5c6e93a8439de9aa73379a7f4, type: 3}
-    volume: 0.4
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
-    pitchChange: 0
+    pitchChange: 0.1
   - name: KnightWalking
     clip: {fileID: 8300000, guid: 29bcba1e6bc83754188ab8c22bb9cb77, type: 3}
     volume: 0.2
@@ -222,7 +222,7 @@ MonoBehaviour:
     pitchChange: 0.15
   - name: BowDraw
     clip: {fileID: 8300000, guid: 8ebbdf036d067964b81308d8715f965f, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -230,31 +230,31 @@ MonoBehaviour:
     pitchChange: 0
   - name: BowShot
     clip: {fileID: 8300000, guid: 03d14be5cfbcfd9458dfa0a00a68f8fb, type: 3}
-    volume: 0.5
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0
   - name: ShieldSpawn
-    clip: {fileID: 8300000, guid: d772d62b692412f48ba2d51a8568e5f0, type: 3}
-    volume: 0.4
+    clip: {fileID: 8300000, guid: 6a6fef14a0543df4ca686095b3dbfed9, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0
   - name: ShieldHit
-    clip: {fileID: 8300000, guid: e078f343c1ec1244d981e782977a5799, type: 3}
-    volume: 0.2
+    clip: {fileID: 8300000, guid: 5be6f6adcf3cd2e42a11026eadafd05a, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
-    pitchChange: 0
+    pitchChange: 0.1
   - name: ShieldDespawn
-    clip: {fileID: 8300000, guid: 3decbcf156e53c049bac42ff4925cb2d, type: 3}
-    volume: 0.2
+    clip: {fileID: 8300000, guid: c25afcd304cb1dc479310befdb48b508, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -267,7 +267,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
-    pitchChange: 0
+    pitchChange: 0.1
   - name: AbilityRefresh
     clip: {fileID: 8300000, guid: b2e5d4d88fd9e644693c5d38673c49b4, type: 3}
     volume: 1
@@ -276,7 +276,57 @@ MonoBehaviour:
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0
-  soundGroups: []
+  - name: StaffSpellCast
+    clip: {fileID: 8300000, guid: ecec7dc37dfa25442bfb8a0c40aaf5f3, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0
+  - name: KnightDie
+    clip: {fileID: 8300000, guid: 2057695061e4d8d4ea7d331d241c8ef7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0
+  - name: ProjectileHurt
+    clip: {fileID: 8300000, guid: 25287ad4e3373e5488905f438981d734, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0.1
+  - name: ProjectileBreak
+    clip: {fileID: 8300000, guid: 90475cdcc29cacc4ebf95859f21bf3cf, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0.05
+  - name: ArrowCharge
+    clip: {fileID: 8300000, guid: 07fe8fb62fbf0bc4db8c4b31d5789291, type: 3}
+    volume: 0.8
+    pitch: 0.9
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0.05
+  soundGroups:
+  - name: KnightSteps
+    clips:
+    - {fileID: 8300000, guid: 60c1743fdcf61d34f84c40df49ccaca4, type: 3}
+    - {fileID: 8300000, guid: ac7911414530a6d40884fe6e84646f02, type: 3}
+    volume: 0.8
+    pitch: 1
+    pitchChange: 0.15
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
   uiGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
   soundEffectGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
   audioPlayer: {fileID: 7269974362316107315, guid: 46c0e39677c3c754987ad4ead451f95e, type: 3}

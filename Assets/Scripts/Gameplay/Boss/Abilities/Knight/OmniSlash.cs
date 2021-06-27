@@ -23,6 +23,8 @@ public class OmniSlash : BaseBossAbility
     public void DoOmniSlash()
     {
 
+        if (AudioManager.instance)
+            AudioManager.instance.PlayThroughAudioPlayer("KnightSwing", owner.transform.position);
         canAttack = false;
         attacksLeft--;
         eventListener.OnShowAttackZone -= DoOmniSlash;

@@ -67,6 +67,7 @@ public class BubbleShield : MonoBehaviour
                             if (other) ObjectPoolManager.Recycle(other.gameObject);
                         }
                     }
+                    if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ShieldHit", transform.position,true);
                     if (!isHurt)
                     {
                         isHurt = true;
@@ -107,6 +108,7 @@ public class BubbleShield : MonoBehaviour
         {
             OnDestroy?.Invoke();
             transform.parent = null;
+            if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ShieldDespawn", transform.position);
             if(gameObject)
                 ObjectPoolManager.Recycle(gameObject);
         }

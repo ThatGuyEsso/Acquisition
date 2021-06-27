@@ -23,7 +23,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     [Header("Dodgeroll VFX")]
     [SerializeField] private AfterImageController VFXcontroller;
 
-
+    [SerializeField] private GameObject rollVFX;
     [SerializeField] private int invisibilityLayer;
     [SerializeField] private int defaultLayer;
     [SerializeField] private Animator dodgeAnimator;
@@ -123,10 +123,11 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
     }
     public void DoDodgeRoll()
     {
+
         dodgeAnimator.gameObject.SetActive(true);
         topGFX.SetActive(false);
         legsGFX.SetActive(false);
-        if (VFXcontroller) VFXcontroller.StartDrawing(0.05f);
+        if (VFXcontroller) VFXcontroller.StartDrawing();
         if (WeaponManager.instance)
         {
             WeaponManager.instance.ToggleWeapon(false);
@@ -136,6 +137,7 @@ public class DodgeRoll : MonoBehaviour, Controls.IDodgeRollActions,IInitialisabl
 
             dodgeAnimator.Play("DodgeRoll", 0, 0f);
             PlayDodgeSFX();
+            if (rollVFX) ObjectPoolManager.Spawn(rollVFX, transform.position, transform.rotation);
             OnRollBegun?.Invoke();
         }
         gameObject.layer = invisibilityLayer;

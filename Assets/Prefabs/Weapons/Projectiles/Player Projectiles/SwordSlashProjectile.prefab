@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -566227215
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 5576352524876919774, guid: 6167b4f115ef2674f9c8f5f3cc0f7995, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -132,7 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 0
+  projectileSpeed: 0
   lifeTime: 0
+  allyRepelForce: 5
   hitSFXname: 
   knockback: 0
   inDebug: 0
@@ -142,6 +144,7 @@ MonoBehaviour:
   destroyProjectileLayer:
     serializedVersion: 2
     m_Bits: 192
+  breakVFX: {fileID: 662343519986840069, guid: 14eaa8f5ee136474e9af9ad5299c377e, type: 3}
 --- !u!50 &1087995828118112652
 Rigidbody2D:
   serializedVersion: 4

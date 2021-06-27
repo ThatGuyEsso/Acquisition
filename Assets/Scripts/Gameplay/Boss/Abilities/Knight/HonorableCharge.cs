@@ -17,8 +17,10 @@ public class HonorableCharge : BaseBossAbility
     [SerializeField] private float deceleration;
     [Header("Ability Settings")]
     [SerializeField] private GameObject attackColliderPrefab;
+    [SerializeField] private GameObject dustVFx;
     private AttackVolume chargeCollider;
-
+    [SerializeField] private float sfxPlayRate;
+    private float currTimeToSFX;
 
 
     protected bool isCharging;
@@ -47,6 +49,18 @@ public class HonorableCharge : BaseBossAbility
             else
             {
                 currrentChargeTime -= Time.deltaTime;
+            }
+
+            if (currTimeToSFX <= 0) {
+
+                if (AudioManager.instance)
+                    AudioManager.instance.PlayGroupThroughAudioPlayer("KnightSteps", owner.transform.position,true);
+                currTimeToSFX = sfxPlayRate;
+                if (dustVFx) ObjectPoolManager.Spawn(dustVFx, owner.transform.position, owner.transform.rotation);
+            }
+            else
+            {
+                currTimeToSFX -= Time.deltaTime;
             }
         }
   

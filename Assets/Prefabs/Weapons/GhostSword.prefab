@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2575724207152557042}
   - component: {fileID: 2575724207152557053}
   - component: {fileID: 2575724207152557041}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: GhostSword
   m_TagString: Projectiles
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2575724208758279181}
   - component: {fileID: 2575724208758279180}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

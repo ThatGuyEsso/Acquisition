@@ -145,6 +145,7 @@ MonoBehaviour:
   destroyProjectileLayer:
     serializedVersion: 2
     m_Bits: 192
+  breakVFX: {fileID: 662343519986840069, guid: 14eaa8f5ee136474e9af9ad5299c377e, type: 3}
 --- !u!50 &1087995828118112652
 Rigidbody2D:
   serializedVersion: 4

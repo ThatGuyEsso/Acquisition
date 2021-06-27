@@ -18,6 +18,18 @@ public class Sound
     public AudioSource source;
     public AudioMixerGroup mixerGroup;
     public float pitchChange;
+
+
+    public Sound(AudioClip sClip,float soundVolume, float soundPitch, bool isLooping, AudioMixerGroup mixGroup, float maxPitchChange, string sName)
+    {
+        name = sName;
+        clip = sClip;
+        volume = soundVolume;
+        pitch = soundPitch;
+        loop = isLooping;
+        mixerGroup = mixGroup;
+        pitchChange = maxPitchChange;
+    }
 }
 
 

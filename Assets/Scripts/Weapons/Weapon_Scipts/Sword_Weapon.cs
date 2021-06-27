@@ -44,6 +44,8 @@ public class Sword_Weapon : Base_Weapon, Equipable
             isLeftSwing = true;
             currTimeToIdle = timeToIdle;
             animSolver.PlayAnimation("Primary");
+            if (AudioManager.instance)
+                AudioManager.instance.PlayThroughAudioPlayer("SwordSwing", playerTransform.position, true);
         }
         else
         {
@@ -51,6 +53,8 @@ public class Sword_Weapon : Base_Weapon, Equipable
             isLeftSwing = false;
             currTimeToIdle = timeToIdle;
             animSolver.PlayAnimation("Primary_2");
+            if (AudioManager.instance)
+                AudioManager.instance.PlayThroughAudioPlayer("SwordSwing", playerTransform.position, true);
         }
 
         OnPrimaryAttack?.Invoke();
@@ -135,6 +139,8 @@ public class Sword_Weapon : Base_Weapon, Equipable
 
     public  void OnFireSecondaryProjectile()
     {
+        if (AudioManager.instance)
+            AudioManager.instance.PlayThroughAudioPlayer("SwordThrust", playerTransform.position);
         GameObject projectileObject = ObjectPoolManager.Spawn(secondaryProjectile, firePoint.transform.position, Quaternion.identity);
         IProjectile projectile = projectileObject.GetComponent<IProjectile>();
         if (projectile != null)
@@ -204,6 +210,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
         attackEvents.OnShootProjectile += OnFireSecondaryProjectile;
         attackEvents.OnAnimEnd += ResetSecondaryFire;
         currTimeToIdle = timeToIdle;
+  
         animSolver.PlayAnimationFromStart("Secondary");
 
         OnSecondaryAttack?.Invoke();

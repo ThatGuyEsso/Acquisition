@@ -10,12 +10,13 @@ public class BossUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bossNameDisplay;
     [SerializeField] private Animator animator;
     [SerializeField] private UIElementShake uiShaker;
+    [SerializeField] private ResizeToFitText displayRefit;
 
     public Action OnUISpawned;
     public void InitialiseUI(string bossName)
     {
         bossNameDisplay.text = bossName;
-
+        displayRefit.FitText();
         animator.Play("InitHealth");
     }
 

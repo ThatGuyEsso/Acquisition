@@ -93,3 +93,4 @@ MonoBehaviour:
   fireRate: 0.1
   attackDuration: 7.5
   rotationRate: 250
+  sfxPlayRate: 1

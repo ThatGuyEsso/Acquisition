@@ -96,6 +96,7 @@ MonoBehaviour:
   destroyProjectileLayer:
     serializedVersion: 2
     m_Bits: 0
+  breakVFX: {fileID: 0}
   rotationSpeed: 300
 --- !u!1 &5738252168822370141
 GameObject:

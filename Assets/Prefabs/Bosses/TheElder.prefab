@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1195519277
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -3732099763109423995, guid: a840554bbb709344780da72de6759bf1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -183,6 +183,7 @@ MonoBehaviour:
   BossName: The Elder
   maxHealth: 1000
   aiTickRate: 0.25
+  bossDeathAnim: ElderDeath
   target: {fileID: 0}
   stageData: {fileID: 11400000, guid: dd3c353a73522ae40afb5b1e03359997, type: 2}
   bossUIPrefab: {fileID: 3768981126912450485, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
@@ -197,6 +198,7 @@ MonoBehaviour:
   currentStageAbilities: []
   awakenSFXName: KnightAwaken
   hurtSFX: KnightHurt
+  dieSFX: 
   UI: {fileID: 3768981126912450483, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
   transitionAbilityPrefab: {fileID: 7268594380542491649, guid: 28a3803ba0fd07941a963f44b6ff79b0, type: 3}
   closeCombatAbility: {fileID: 0}
@@ -313,6 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1131090909}
+  walkSFX: 
 --- !u!1 &2292969778836308925
 GameObject:
   m_ObjectHideFlags: 0

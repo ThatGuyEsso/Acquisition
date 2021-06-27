@@ -8,6 +8,15 @@ public class InLargeOverTime : MonoBehaviour
     [SerializeField] private float growRate;
     [SerializeField] private Vector3 intialSize;
     private bool isGrowing;
+
+    [SerializeField] private bool  startOnEnable;
+
+
+    private void OnEnable()
+    {
+        if(startOnEnable)
+             StartGrowing();
+    }
     public void Update()
     {
 
