@@ -39,6 +39,11 @@ public class InLargeOverTime : MonoBehaviour
     {
         isGrowing = true;
     }
+
+    public void SetInitSize(Vector3 initSize)
+    {
+        intialSize = initSize;
+    }
     public void SetUpGrowSetting(Vector3 initSize, float maxSize, float growthRate,float  growDelay)
     {
         intialSize = initSize;
@@ -46,7 +51,13 @@ public class InLargeOverTime : MonoBehaviour
         growRate = growthRate;
         Invoke("StartGrowing", growDelay);
     }
-
+    public void SetUpGrowSetting(float maxSize, float growthRate, float growDelay)
+    {
+  
+        targetSize = maxSize;
+        growRate = growthRate;
+        Invoke("StartGrowing", growDelay);
+    }
     private void OnDisable()
     {
         gameObject.transform.localScale = intialSize;

@@ -14704,63 +14704,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e777ee7b590c5a4fbb4a4c6d46a67fb, type: 3}
---- !u!1001 &2598255701906598431
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_RootOrder
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.7319682
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.8664521
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913052855534805664, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6503281231503492835, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
-      propertyPath: m_Name
-      value: KnighStepDustVFX
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 980872df6fcc27040a1ee1a027c2adf5, type: 3}
 --- !u!1001 &3477884691194673531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14940,24 +14883,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6001327530133925513, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
-      propertyPath: inDebug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001327530133925513, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
-      propertyPath: awakenSFXName
-      value: AwakenScholar
-      objectReference: {fileID: 0}
-    - target: {fileID: 7013723237921150097, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
-      propertyPath: m_Controller
+      propertyPath: target
       value: 
-      objectReference: {fileID: 9100000, guid: 6e2ac1df547356a419d5cdddde911c8d, type: 2}
+      objectReference: {fileID: 1758143771}
+    - target: {fileID: 9117400842735764362, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117400842735764362, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000004470348
+      objectReference: {fileID: 0}
     - target: {fileID: 9117400843208570804, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
       propertyPath: m_Name
       value: The Scholar
       objectReference: {fileID: 0}
     - target: {fileID: 9117400843208570806, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117400843208570806, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117400843208570806, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9117400843208570806, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
       propertyPath: m_LocalPosition.x

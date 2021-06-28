@@ -240,6 +240,7 @@ public class Bow_Weapon : Base_Weapon
 
                 if (projectile != null)
                 {
+                    projectile.SetOwner(playerTransform.gameObject);
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                     OnSecondaryAbility?.Invoke(projObject);
                 }
@@ -252,6 +253,7 @@ public class Bow_Weapon : Base_Weapon
                 IProjectile projectile = projObject.GetComponent<IProjectile>();
                 if (projectile != null)
                 {
+                    projectile.SetOwner(playerTransform.gameObject);
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                     OnSecondaryAbility?.Invoke(projObject);
                 }
@@ -263,6 +265,7 @@ public class Bow_Weapon : Base_Weapon
                 IProjectile projectile = projObject.GetComponent<IProjectile>();
                 if (projectile != null)
                 {
+                    projectile.SetOwner(playerTransform.gameObject);
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                     OnSecondaryAbility?.Invoke(projObject);
                 }

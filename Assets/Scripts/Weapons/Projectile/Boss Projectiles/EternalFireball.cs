@@ -2,41 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileGrenade : Base_Projectile
+public class EternalFireball : ProjectileGrenade
 {
+    private InLargeOverTime sizeController;
 
+    [SerializeField] private float absorbSizeIncrement;
+    [SerializeField] private int maxAbsorbCount;
+    private int absorbCount;
 
+    [SerializeField] private float maxSize;
 
-    [SerializeField] protected GameObject fragmentPreab;
-    [SerializeField] protected float fragmentLifeTime;
-    [SerializeField] protected float fragmenteSpeed;
-    [SerializeField] protected int fragmentBlockCount;
-    [SerializeField] protected int fragmentCount;
-
-
-    [Range(0f,360f)]
-    [SerializeField] protected float spreadAngle;
-
-    protected bool canCreateFragments;
-
+    private Vector3 defaultSize;
+    private Vector3 currTargetSize;
 
     override public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
         if (!isHurt)
         {
-            canCreateFragments = true;
+
+ 
             isHurt = true;
-            if (attacker != owner) blockCount--;
-            if (blockCount <= 0) KillProjectile();
+            OnAbsorbProjectile();
             if (flashVFX)
             {
                 flashVFX = GetComponent<SpriteFlash>();
                 flashVFX.Init();
             }
             if (flashVFX) flashVFX.Flash();
-            if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ProjectileHurt", transform.position, true);
+            if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ShieldHit", transform.position, true);
         }
 
+    }
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+        sizeController = GetComponent<InLargeOverTime>();
+        defaultSize = transform.localScale;
+        if (sizeController) sizeController.SetInitSize(defaultSize);
+        canCreateFragments = true;
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
@@ -54,22 +59,14 @@ public class ProjectileGrenade : Base_Projectile
         {
             if (other.GetComponent<IProjectile>().GetOwner() != owner || owner != null)
             {
-                if (other.GetComponent<IDamage>() != null)
-                {
-                    other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
-
-                }
+                other.GetComponent<IProjectile>().BreakProjectile();
             }
-            else
-            {
-                Vector2 dir = other.transform.position - transform.position;
-                other.GetComponent<IProjectile>().RepelProjectile(dir, allyRepelForce);
-            }
+           
         }
 
         if (other.gameObject.CompareTag("Player"))
         {
-        
+
             if (other.gameObject != owner && owner != null)
             {
                 if (other.GetComponent<IDamage>() != null)
@@ -94,33 +91,52 @@ public class ProjectileGrenade : Base_Projectile
                 }
             }
         }
+
+
     }
 
-
-
-    protected override void KillProjectile()
+    protected override void OnDisable()
     {
-        if (canCreateFragments)
+        base.OnDisable();
+        absorbCount = 0;
+    }
+
+    public void OnAbsorbProjectile()
+    {
+        absorbCount++;
+        if (absorbCount > maxAbsorbCount) absorbCount = maxAbsorbCount;
+
+        currTargetSize = transform.localScale + Vector3.one * absorbSizeIncrement;
+        if (currTargetSize.x > maxSize)
         {
-            CreateFragments();
+            currTargetSize = defaultSize + Vector3.one * maxSize;
+            KillProjectile();
         }
+        if (sizeController)
+        {
+            sizeController.SetUpGrowSetting(currTargetSize.x, 3f, 0.05f);
+            sizeController.StartGrowing();
+        }
+        
 
-        base.KillProjectile();
+
     }
 
-    virtual public void CreateFragments()
+
+    public override void CreateFragments()
     {
-        float angleIncrement = spreadAngle / fragmentCount;
+        int count = fragmentCount + absorbCount;
+        float angleIncrement = spreadAngle / count;
         float currentAngle = 0f;
         GameObject currentFragment;
-        for (int i = 0; i < fragmentCount; i++)
+        for (int i = 0; i < count; i++)
         {
-            currentFragment = ObjectPoolManager.Spawn(fragmentPreab, transform.position,Quaternion.identity);
+            currentFragment = ObjectPoolManager.Spawn(fragmentPreab, transform.position, Quaternion.identity);
             IProjectile projFrag = currentFragment.GetComponent<IProjectile>();
-            if (projFrag!=null)
+            if (projFrag != null)
             {
                 Vector2 dir = EssoUtility.GetVectorFromAngle(currentAngle).normalized;
-                projFrag.SetUpProjectile(1.0f, dir, fragmenteSpeed, fragmentLifeTime,fragmentBlockCount, owner);
+                projFrag.SetUpProjectile(1.0f, dir, fragmenteSpeed, fragmentLifeTime, count, owner);
 
                 if (owner.GetComponent<IBoss>() != null)
                 {
@@ -149,7 +165,7 @@ public class ProjectileGrenade : Base_Projectile
                             if (currentFragment) ObjectPoolManager.Recycle(currentFragment);
                         }
                     }
-             
+
                 }
             }
             else
@@ -160,17 +176,5 @@ public class ProjectileGrenade : Base_Projectile
 
             currentAngle += angleIncrement;
         }
-    }
-
-
-    override public void RepelProjectile(Vector2 dir, float force)
-    {
-       //
-    }
-    override protected IEnumerator LifeTimer(float time)
-    {
-        yield return new WaitForSeconds(time);
-        canCreateFragments = true;
-        KillProjectile();
     }
 }

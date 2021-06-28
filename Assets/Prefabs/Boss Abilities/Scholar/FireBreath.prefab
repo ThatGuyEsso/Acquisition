@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1855748367310643915
+--- !u!1 &1619110487614173084
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1855748367310643913}
-  - component: {fileID: 369333942816403187}
+  - component: {fileID: 1619110487614173082}
+  - component: {fileID: 1619110487614173083}
   m_Layer: 0
-  m_Name: HyperBlades
+  m_Name: FireBreath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1855748367310643913
+--- !u!4 &1619110487614173082
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855748367310643915}
+  m_GameObject: {fileID: 1619110487614173084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,16 +31,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &369333942816403187
+--- !u!114 &1619110487614173083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855748367310643915}
+  m_GameObject: {fileID: 1619110487614173084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966938bd41e57834a84ede7fd9eecea4, type: 3}
+  m_Script: {fileID: 11500000, guid: 56dd3d163c867ad4e8418ab69a2dfe41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxAttackCount: 0
@@ -50,12 +50,13 @@ MonoBehaviour:
   isManagingBossAttack: 0
   isPriority: 0
   isSuperCloseRange: 0
-  attackAnimationName: HyperBlades_Channel
+  attackAnimationName: BeginFireBreath
   bossRB: {fileID: 0}
   isEnabled: 0
   owner: {fileID: 0}
   eventListener: {fileID: 0}
-  projectilePrefab: {fileID: 9095572269299850794, guid: 0a04605f9921fd1479bfdc74ca9c9773, type: 3}
-  projectileLifeTime: 3
-  projectileSpeed: 20
-  projectileBlockCount: 5
+  damageVolumePrefab: {fileID: 3035194022987544037, guid: 8e47a7b652a80e743ba4b4d5ac34db75, type: 3}
+  fireBreathVFXPrefab: {fileID: 5480042006688290410, guid: e699fc1707f76214ea3a0b3f93e4e992, type: 3}
+  breathDuration: 5
+  attackZoneRadius: 6.5
+  attackZoneArchAngle: 90

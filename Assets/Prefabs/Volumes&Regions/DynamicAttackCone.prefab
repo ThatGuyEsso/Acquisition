@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3035194022987544043}
   - component: {fileID: 3035194022987544040}
   - component: {fileID: 3035194022987544041}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DynamicAttackCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

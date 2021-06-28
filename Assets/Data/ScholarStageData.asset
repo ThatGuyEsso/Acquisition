@@ -13,22 +13,14 @@ MonoBehaviour:
   m_Name: ScholarStageData
   m_EditorClassIdentifier: 
   initialStageAbilities:
-  - maxAttackCount: 3
-    attackRate: 2
-    coolDown: 5
-    attackRange: 8
-    isManagingBossAttack: 1
-    isPriority: 1
-    isSuperCloseRange: 0
-    abilityPrefab: {fileID: 2591475356363195772, guid: 72ccf6243cadae34abc0671e2f629eaf, type: 3}
-  - maxAttackCount: 2
-    attackRate: 1
+  - maxAttackCount: 1
+    attackRate: 8
     coolDown: 5
     attackRange: 10
     isManagingBossAttack: 1
     isPriority: 1
     isSuperCloseRange: 0
-    abilityPrefab: {fileID: 1855748367310643912, guid: 48de00b8c7959e44490c44fd20db5464, type: 3}
+    abilityPrefab: {fileID: 1619110487614173083, guid: ff165e8489e52724fa146dfa6c04c5c5, type: 3}
   middleStageAbilities:
   - maxAttackCount: 4
     attackRate: 1.2
