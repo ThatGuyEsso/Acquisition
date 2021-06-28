@@ -16,7 +16,7 @@ MonoBehaviour:
   - maxAttackCount: 3
     attackRate: 2
     coolDown: 5
-    attackRange: 10
+    attackRange: 8
     isManagingBossAttack: 1
     isPriority: 1
     isSuperCloseRange: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
   - maxAttackCount: 1
     attackRate: 1
     coolDown: 4
-    attackRange: 15
+    attackRange: 9
     isManagingBossAttack: 0
     isPriority: 1
     isSuperCloseRange: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   - maxAttackCount: 5
     attackRate: 1.5
     coolDown: 4
-    attackRange: 10
+    attackRange: 8
     isManagingBossAttack: 0
     isPriority: 1
     isSuperCloseRange: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   - maxAttackCount: 5
     attackRate: 1
     coolDown: 4
-    attackRange: 10
+    attackRange: 8
     isManagingBossAttack: 1
     isPriority: 1
     isSuperCloseRange: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   - maxAttackCount: 3
     attackRate: 3
     coolDown: 10
-    attackRange: 15
+    attackRange: 9
     isManagingBossAttack: 1
     isPriority: 1
     isSuperCloseRange: 0

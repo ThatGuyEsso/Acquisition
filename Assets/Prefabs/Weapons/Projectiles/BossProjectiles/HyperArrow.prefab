@@ -420,6 +420,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSize: 4
-  growRate: 3
+  growRate: 2
   intialSize: {x: 1, y: 1, z: 1}
   startOnEnable: 1

@@ -13,6 +13,7 @@ public class ArtilleryZone : MonoBehaviour
     [SerializeField] private float maxHazardTime;
 
     [SerializeField] private Transform target;
+    [SerializeField] private Animator animator;
     private bool isHoming;
     private AttackVolume attackZone;
     float currentZoneSize;
@@ -23,8 +24,30 @@ public class ArtilleryZone : MonoBehaviour
     {
         transform.localScale = Vector3.zero;
         isGrowing = true;
+        animator.enabled = false;
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent += EvaluateNewGameEvent;
+        }
     }
 
+    virtual protected void EvaluateNewGameEvent(GameEvents newEvent)
+    {
+        switch (newEvent)
+        {
+
+            case GameEvents.PlayerDefeat:
+                if (gameObject)
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
+
+            case GameEvents.BossDefeated:
+
+                if (gameObject)
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
+        }
+    }
 
     public void Update()
     {
@@ -39,8 +62,8 @@ public class ArtilleryZone : MonoBehaviour
                 transform.localScale = Vector3.one * targetZoneSize;
                 isGrowing = false;
                 if (canHome) canHome = false;
-                SpawnAttackZone();
 
+                StartAttack();
             }
         }
 
@@ -60,6 +83,14 @@ public class ArtilleryZone : MonoBehaviour
         }
 
     }
+
+    public void StartAttack()
+    {
+        animator.enabled = true;
+        animator.Play("Artillery_Charge", 0, 0f);
+    }
+
+
     public void SpawnAttackZone()
     {
         attackZone = ObjectPoolManager.Spawn(attackZonePrefab, transform.position, Quaternion.identity).GetComponent<AttackVolume>();
@@ -79,13 +110,30 @@ public class ArtilleryZone : MonoBehaviour
     private IEnumerator RecycleTimer(float time)
     {
         yield return new WaitForSeconds(time);
+        EndAttack();
+    }
+
+    public void EndAttack()
+    {
+        animator.Play("Artillery_Dissolve", 0, 0f);
+        if (attackZone)
+            ObjectPoolManager.Recycle(attackZone.gameObject);
+
+        attackZone = null;
+    }
+
+    public void ClearArtilleryAttack()
+    {
         if (gameObject)
             ObjectPoolManager.Recycle(gameObject);
     }
     private void OnDisable()
     {
         StopAllCoroutines();
-        if (attackZone.gameObject)
+        animator.enabled = false;
+
+        if (attackZone)
             ObjectPoolManager.Recycle(attackZone.gameObject);
+
     }
 }
