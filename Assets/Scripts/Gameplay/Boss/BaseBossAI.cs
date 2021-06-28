@@ -505,7 +505,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     virtual public void OnDestroy()
     {
         if(!inDebug)
-            if (UI.gameObject) ObjectPoolManager.Recycle(UI.gameObject);
+            if (UI) ObjectPoolManager.Recycle(UI.gameObject);
     }
 
     public Transform GetTarget()

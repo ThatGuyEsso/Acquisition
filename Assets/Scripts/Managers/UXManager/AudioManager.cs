@@ -301,5 +301,22 @@ public class AudioManager : MonoBehaviour,IManager,IInitialisable
 
     }
 
+    public void PlayUISound(string name, Vector3 pos, bool randPitch) //Function sets up UI Audio player then plays the sound
+    {
+        if (ObjectPoolManager.instance) //check instance
+        {
+            IAudio audio = ObjectPoolManager.Spawn(uiAudioPlayer, pos, Quaternion.identity).GetComponent<IAudio>(); //Get interface from spawned gameobject
+            if (audio != null)
+            {
+                audio.SetUpAudioSource(GetSound(name));
+                if (randPitch)
+                    audio.PlayAtRandomPitch();
+                else
+                    audio.Play();
+            }
+        }
+
+    }
+
 
 }

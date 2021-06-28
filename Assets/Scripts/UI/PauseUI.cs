@@ -28,5 +28,22 @@ public class PauseUI : Base_UI
     {
         if(UIManager.instance)
             UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedButton);
+
+
+        
+
+
+    }
+
+    public override void InitUI(UIType uiType, UIType preUI)
+    {
+        base.InitUI(uiType, preUI);
+        //DontDestroyOnLoad(gameObject);
+
+     
+    }
+    private void OnDisable()
+    {
+        if (Cursor.visible) Cursor.visible = false;
     }
 }

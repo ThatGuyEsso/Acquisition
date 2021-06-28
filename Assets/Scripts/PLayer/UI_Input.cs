@@ -25,6 +25,21 @@ public class UI_Input : MonoBehaviour, IInitialisable
         UIManager.instance.SetGamePaused += OnPaused;
     }
 
+
+    virtual protected void OnDisable()
+    {
+        if(inputActions!=null)
+            inputActions.Disable();
+        if (UIManager.instance)
+            UIManager.instance.SetGamePaused -= OnPaused;
+    }
+    virtual protected void OnEnable()
+    {
+        if (inputActions != null)
+            inputActions.Enable();
+        if(UIManager.instance)
+            UIManager.instance.SetGamePaused += OnPaused;
+    }
     private void TogglePauseMenu()
     {
         if (isPaused)

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject firstSelectedButton;
@@ -9,6 +9,10 @@ public class MainMenuUI : MonoBehaviour
     {
         if (UIManager.instance)
             UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedButton);
+        if (firstSelectedButton.activeInHierarchy)
+            firstSelectedButton.GetComponent<Button>().Select();
+
+        if (!Cursor.visible) Cursor.visible = true;
     }
     public void Play()
     {

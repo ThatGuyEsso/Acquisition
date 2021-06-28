@@ -316,6 +316,14 @@ MonoBehaviour:
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.05
+  - name: ButtonHover
+    clip: {fileID: 8300000, guid: 14db6f377dd7be84393cdb3deb12bb80, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.075
   soundGroups:
   - name: KnightSteps
     clips:
