@@ -17,6 +17,10 @@ public class UnlimitedAttackVolume : AttackVolume
             {
                 if(proj.GetOwner()!=owner|| !proj.GetOwner())
                 proj.BreakProjectile();
+                if (CamShake.instance)
+                {
+                    CamShake.instance.DoScreenShake(0.25f, 2f, 0f, 0.15f, 2f);
+                }
             }
         }
     }
@@ -34,6 +38,10 @@ public class UnlimitedAttackVolume : AttackVolume
             {
                 if (proj.GetOwner() != owner || !proj.GetOwner())
                     proj.BreakProjectile();
+                if (CamShake.instance)
+                {
+                    CamShake.instance.DoScreenShake(0.25f, 2f, 0f, 0.15f, 2f);
+                }
             }
         }
     }
