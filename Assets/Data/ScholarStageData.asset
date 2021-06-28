@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1648b7c4f917f5640b07e955b41fc8be, type: 3}
+  m_Name: ScholarStageData
+  m_EditorClassIdentifier: 
+  initialStageAbilities:
+  - maxAttackCount: 3
+    attackRate: 2
+    coolDown: 5
+    attackRange: 8
+    isManagingBossAttack: 1
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 2591475356363195772, guid: 72ccf6243cadae34abc0671e2f629eaf, type: 3}
+  - maxAttackCount: 2
+    attackRate: 1
+    coolDown: 5
+    attackRange: 10
+    isManagingBossAttack: 1
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 1855748367310643912, guid: 48de00b8c7959e44490c44fd20db5464, type: 3}
+  middleStageAbilities:
+  - maxAttackCount: 4
+    attackRate: 1.2
+    coolDown: 4
+    attackRange: 10
+    isManagingBossAttack: 1
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 1855748367310643912, guid: 48de00b8c7959e44490c44fd20db5464, type: 3}
+  - maxAttackCount: 1
+    attackRate: 1
+    coolDown: 4
+    attackRange: 9
+    isManagingBossAttack: 0
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 369333942816403187, guid: 558d016eb28528b40b7d26af0b9d4c4c, type: 3}
+  - maxAttackCount: 5
+    attackRate: 1.5
+    coolDown: 4
+    attackRange: 8
+    isManagingBossAttack: 0
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 2591475356363195772, guid: 72ccf6243cadae34abc0671e2f629eaf, type: 3}
+  finalStageAbiilities:
+  - maxAttackCount: 5
+    attackRate: 1
+    coolDown: 4
+    attackRange: 8
+    isManagingBossAttack: 1
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 2591475356363195772, guid: 72ccf6243cadae34abc0671e2f629eaf, type: 3}
+  - maxAttackCount: 3
+    attackRate: 2
+    coolDown: 5
+    attackRange: 10
+    isManagingBossAttack: 1
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 1855748367310643912, guid: 48de00b8c7959e44490c44fd20db5464, type: 3}
+  - maxAttackCount: 1
+    attackRate: 5
+    coolDown: 8
+    attackRange: 20
+    isManagingBossAttack: 0
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 7268594380542491648, guid: 28a3803ba0fd07941a963f44b6ff79b0, type: 3}
+  - maxAttackCount: 3
+    attackRate: 3
+    coolDown: 10
+    attackRange: 9
+    isManagingBossAttack: 1
+    isPriority: 1
+    isSuperCloseRange: 0
+    abilityPrefab: {fileID: 369333942816403187, guid: 558d016eb28528b40b7d26af0b9d4c4c, type: 3}
