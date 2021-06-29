@@ -130,7 +130,7 @@ public class TheScholar : BaseBossAI
                     if (isDead)
                     {
                         animator.enabled = true;
-                        animator.Play("KnightDeath");
+                        animator.Play("ScholarDeath");
                     }
                     else
                         animator.Play("Idle");
@@ -142,7 +142,7 @@ public class TheScholar : BaseBossAI
                     if (target)
                         navigation.StartAgent(target);
 
-                    animator.Play("Walking");
+                    animator.Play("Walk");
                     break;
                 case AIState.Attack:
                     if (isDead) return;

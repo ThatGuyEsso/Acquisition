@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -1195519277
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -624739889265560192, guid: 4f00b63987994174ebc4d3451f00a7d1, type: 3}
+  m_Sprite: {fileID: -2551686173138550772, guid: ad4dc53d84299c442b5d1a0819931f68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9117400842735764361}
   m_LocalRotation: {x: -0, y: -0, z: -0.70710677, w: 0.7071068}
-  m_LocalPosition: {x: 0.75, y: 0.000000044703484, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0.00000004470348, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9117400843208570806}
@@ -130,6 +130,8 @@ GameObject:
   - component: {fileID: 7013723237921150126}
   - component: {fileID: 5731821582628676037}
   - component: {fileID: 6001327530133925513}
+  - component: {fileID: 1643762238}
+  - component: {fileID: 1643762237}
   m_Layer: 10
   m_Name: The Scholar
   m_TagString: Enemy
@@ -146,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 9117400843208570804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.02, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children:
   - {fileID: 9117400842666738117}
   - {fileID: 9117400842735764362}
@@ -183,7 +185,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.09, y: 0}
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 0.5
 --- !u!95 &7013723237921150097
 Animator:
   serializedVersion: 3
@@ -197,7 +199,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 6e2ac1df547356a419d5cdddde911c8d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -225,7 +227,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9117400843208570804}
   m_Enabled: 0
-  m_AgentTypeID: 0
+  m_AgentTypeID: 1479372276
   m_Radius: 0.41
   m_Speed: 4.5
   m_Acceleration: 8
@@ -317,6 +319,38 @@ MonoBehaviour:
   closeCombatAbility: {fileID: 0}
   isBusy: 0
   inDebug: 1
+--- !u!58 &1643762238
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9117400843208570804}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.34, y: 0.79}
+  serializedVersion: 2
+  m_Radius: 0.32
+--- !u!58 &1643762237
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9117400843208570804}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.34, y: -0.79}
+  serializedVersion: 2
+  m_Radius: 0.32
 --- !u!1 &9117400843545789681
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +398,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.68
   m_Color: {r: 0.9716981, g: 0.529251, b: 0.15033813, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.67
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: d3d2bdb8
   m_LightCookieSprite: {fileID: 0}
@@ -375,8 +409,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.59
-  m_PointLightOuterRadius: 5.63
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 2.55
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
