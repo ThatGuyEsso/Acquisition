@@ -20,6 +20,7 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
     [SerializeField] private GameObject spawnVFX;
     [SerializeField] private List<SkillOrbPickUp> pickUps = new List<SkillOrbPickUp>();
+
     private void Awake()
     {
         director = GetComponent<PlayableDirector>();
@@ -169,7 +170,11 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
         cutsceneCamera.gameObject.SetActive(false);
         if(director)
             director.enabled = false;
-        CamShake.instance.DoScreenShake(0.15f, 3f, 0f, 0.5f, 2f);
+        if (CamShake.instance)
+        {
+
+            CamShake.instance.DoScreenShake(0.15f, 3f, 0f, 0.5f, 2f);
+        }
         GameManager.instance.BeginNewEvent(GameEvents.BossFightStarts);
     }
     public void StartBossIntro()

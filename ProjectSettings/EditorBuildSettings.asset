@@ -18,16 +18,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Components/PauseUI.unity
     guid: cd4f1d4f45a7233439a918189717056a
   - enabled: 1
-    path: Assets/Scenes/Level Segments/SpawnHub.unity
+    path: Assets/Scenes/Level Segments/Hubs/SpawnHub.unity
     guid: d85b6bdc1f4bc8b4a8d62fccf1ba4579
   - enabled: 1
-    path: Assets/Scenes/Level Segments/HubRoom.unity
+    path: Assets/Scenes/Level Segments/Hubs/HubRoom.unity
     guid: bb7ab86761c15f543bdd663611c35cd9
   - enabled: 1
-    path: Assets/Scenes/Level Segments/BasicCorridor.unity
+    path: Assets/Scenes/Level Segments/Corridors/BasicCorridor.unity
     guid: bd8bdaaa384f57f4cbbea5211bc578d0
   - enabled: 1
-    path: Assets/Scenes/Level Segments/LongCorridorUp.unity
+    path: Assets/Scenes/Level Segments/Corridors/LongCorridorUp.unity
     guid: 10d983960879f3e40b78a717b86c56e5
   - enabled: 1
     path: Assets/Scenes/Level Segments/BossRooms/KnightRoom.unity
@@ -39,9 +39,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Segments/BossRooms/ScholarRoom.unity
     guid: 779b8ac9080641d47af4812ed1f6bf44
   - enabled: 1
-    path: Assets/Scenes/Level Segments/LongCorridorLeft.unity
+    path: Assets/Scenes/Level Segments/Corridors/LongCorridorLeft.unity
     guid: ec1da76ee5f324a43bbe16d780c5a245
   - enabled: 1
-    path: Assets/Scenes/Level Segments/LongCorridorRight.unity
+    path: Assets/Scenes/Level Segments/Corridors/LongCorridorRight.unity
     guid: 7a01da537063c564f83f719d5f23b44d
+  - enabled: 1
+    path: Assets/Scenes/Level Segments/Hubs/AccensionHub.unity
+    guid: eecfcfa12c29adb4184448dcc691fef8
   m_configObjects: {}

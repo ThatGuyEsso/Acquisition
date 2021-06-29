@@ -8103,7 +8103,7 @@ MonoBehaviour:
   bossIntro: {fileID: 0}
   roomHalfSize: {x: 0, y: 0}
   roomCentre: {fileID: 0}
-  navMesh: {fileID: 0}
+  spawnVFX: {fileID: 0}
   pickUps: []
 --- !u!1 &1550384742
 GameObject:

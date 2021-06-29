@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 1969692588}
   - component: {fileID: 1969692590}
   - component: {fileID: 1969692591}
+  - component: {fileID: 1969692592}
   m_Layer: 0
   m_Name: Vcam
   m_TagString: Untagged
@@ -686,3 +687,20 @@ MonoBehaviour:
   mediumHurtProfile: {fileID: 11400000, guid: 594fad921132c044f911ff49b564e405, type: 2}
   maxHurtProfile: {fileID: 11400000, guid: 2f98bd64fd1c17a47ad1e634f298e3fe, type: 2}
   camVolumeSetting: {fileID: 0}
+--- !u!114 &1969692592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969692585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
