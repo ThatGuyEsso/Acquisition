@@ -8,13 +8,17 @@ public class EternalFireball : ProjectileGrenade
 
     [SerializeField] private float absorbSizeIncrement;
     [SerializeField] private int maxAbsorbCount;
+    [SerializeField] private Animator animator;
     private int absorbCount;
 
     [SerializeField] private float maxSize;
 
     private Vector3 defaultSize;
     private Vector3 currTargetSize;
+    private Collider2D trigger;
+    bool isBusy;
 
+   
     override public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
         if (!isHurt)
@@ -42,8 +46,20 @@ public class EternalFireball : ProjectileGrenade
         defaultSize = transform.localScale;
         if (sizeController) sizeController.SetInitSize(defaultSize);
         canCreateFragments = true;
+        isBusy = false;
+        animator = GetComponent<Animator>();
+        trigger = GetComponent<Collider2D>();
+        absorbCount = 0;
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        animator.Play("Idle");
+        isBusy = false;
+        if (sizeController) sizeController.SetUpGrowSetting(2.5f, 2f, 0.2f);
+        if (trigger)  trigger.enabled = true;
+    }
     public override void OnTriggerEnter2D(Collider2D other)
     {
         if (((1 << other.gameObject.layer) & destroyProjectileLayer) != 0)
@@ -93,6 +109,36 @@ public class EternalFireball : ProjectileGrenade
         }
 
 
+    }
+
+    protected override void KillProjectile()
+    {
+        if (canCreateFragments&&!isBusy)
+        {
+            isBusy = true;
+            rb.velocity = Vector2.zero;
+            if (trigger) trigger.enabled = false;
+            animator.Play("Explode",0,0f);
+        }
+        else if(!isBusy)
+        {
+            ClearProjectile();
+        }
+
+      
+    }
+    public void ClearProjectile()
+    {
+        if (ObjectPoolManager.instance)
+        {
+            if (gameObject)
+                ObjectPoolManager.Recycle(gameObject);
+        }
+        else
+        {
+            if (gameObject)
+                Destroy(gameObject);
+        }
     }
 
     protected override void OnDisable()

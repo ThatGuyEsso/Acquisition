@@ -64,7 +64,7 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
         {
             isHurt = false;
             currHurtTime = hurtTime;
-            flashVFX.CancelFlash();
+            if(flashVFX)flashVFX.CancelFlash();
         }
         if (GameManager.instance)
         {

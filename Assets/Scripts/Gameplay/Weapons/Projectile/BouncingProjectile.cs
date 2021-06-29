@@ -8,13 +8,21 @@ public class BouncingProjectile : Base_Projectile
     [SerializeField] private int bounceCount;
 
 
+    private Animator animator;
     private int remainingBounces;
-
+    bool isBusy;
+    protected override void Awake()
+    {
+        base.Awake();
+        animator = GetComponent<Animator>();
+    }
 
     protected override void OnEnable()
     {
         base.OnEnable();
         remainingBounces = bounceCount;
+        if (animator) animator.Play("Idle");
+        isBusy = false;
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
@@ -45,7 +53,7 @@ public class BouncingProjectile : Base_Projectile
                 if (other.GetComponent<IDamage>() != null)
                 {
                     other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
-                    KillProjectile();
+                    DoExplosion();
                 }
 
 
@@ -58,7 +66,7 @@ public class BouncingProjectile : Base_Projectile
                 if (other.GetComponent<IDamage>() != null)
                 {
                     other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
-                    KillProjectile();
+                    DoExplosion();
                 }
             }
         }
@@ -86,8 +94,16 @@ public class BouncingProjectile : Base_Projectile
         }
         else
         {
-            KillProjectile();
+            DoExplosion();
         }
+    }
+
+
+    public void DoExplosion()
+    {
+        if (isBusy) return;
+        rb.velocity = Vector2.zero;
+        if (animator) animator.Play("Explode",0,0f);
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
@@ -102,6 +118,26 @@ public class BouncingProjectile : Base_Projectile
 
         }
   
+    }
+
+    public override void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
+    {
+        if (!isHurt)
+        {
+
+            isHurt = true;
+            if (attacker != owner) blockCount--;
+            if (blockCount <= 0) DoExplosion();
+
+            if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ProjectileHurt", transform.position, true);
+            if (flashVFX)
+            {
+                flashVFX = GetComponent<SpriteFlash>();
+                flashVFX.Init();
+            }
+            if (flashVFX) flashVFX.Flash();
+        }
+ 
     }
     public void Reflect(ContactPoint2D pointOfContact)
     {

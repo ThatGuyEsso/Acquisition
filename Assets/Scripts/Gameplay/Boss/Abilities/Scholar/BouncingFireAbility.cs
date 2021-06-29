@@ -7,8 +7,7 @@ public class BouncingFireAbility : BaseBossAbility
     [SerializeField] protected GameObject projectilePrefab;
     [SerializeField] protected float projectileLifeTime;
     [SerializeField] protected float projectileSpeed;
-
-
+    [SerializeField] protected int projectileBlockCOunt=3;
     public void ShootProjectile()
     {
 
@@ -25,7 +24,7 @@ public class BouncingFireAbility : BaseBossAbility
         }
         if (projectile != null)
         {
-            projectile.SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, 0, owner.gameObject);
+            projectile.SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, projectileBlockCOunt, owner.gameObject);
             projectile.SetHomingTarget(owner.target);
         }
         else

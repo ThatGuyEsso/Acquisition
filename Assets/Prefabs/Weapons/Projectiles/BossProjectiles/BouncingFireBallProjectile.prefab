@@ -71,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: -566227215
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6521884999696339631, guid: 125632fd64abaee45a392e291cc68d86, type: 3}
-  m_Color: {r: 1, g: 0.8714006, b: 0, a: 1}
+  m_Sprite: {fileID: -5673020464564824705, guid: 31d748b9f72069348a7b0fe1ff7d8084, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 6783436960541268210}
   - component: {fileID: 6783436960541268213}
   - component: {fileID: 6783436960541268208}
+  - component: {fileID: 6802795368094853277}
   m_Layer: 8
   m_Name: BouncingFireBallProjectile
   m_TagString: Projectiles
@@ -265,3 +266,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6802795368094853277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783436960541268215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d36c77da0576546ad0c2c7f3db9408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColour: {r: 1, g: 1, b: 1, a: 1}
+  flashSpeed: 8
