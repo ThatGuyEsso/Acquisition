@@ -31,6 +31,7 @@ public interface IProjectile
     void ResetProjectile();
 
     void SetHomingTarget(Transform target);
+    void AssignBossTarget();
     void SetProximityHomingTarget(Transform target);
     ProjectileData GetProjectileData();
     GameObject GetOwner();

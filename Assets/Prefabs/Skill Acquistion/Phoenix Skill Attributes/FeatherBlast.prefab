@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1661473339226164796
+--- !u!1 &452721844011331463
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,59 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1661473339226164797}
-  - component: {fileID: 1661473339226164798}
+  - component: {fileID: 452721844011331577}
+  - component: {fileID: 452721844011331462}
   m_Layer: 0
-  m_Name: MotherBirdAbility
+  m_Name: FeatherBlast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1661473339226164797
+--- !u!4 &452721844011331577
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661473339226164796}
+  m_GameObject: {fileID: 452721844011331463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 11.5, y: -3.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1661473339226164798
+--- !u!114 &452721844011331462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661473339226164796}
+  m_GameObject: {fileID: 452721844011331463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51c7ae3edecb6ab43baa9562f62ab1dc, type: 3}
+  m_Script: {fileID: 11500000, guid: f6540c24174a8c842b00f3f6796a926a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAttackCount: 1
-  attackRate: 5
-  coolDown: 6
-  attackRange: 20
-  isManagingBossAttack: 1
-  isPriority: 1
-  isSuperCloseRange: 0
-  attackAnimationName: BeginMotherBird
-  bossRB: {fileID: 0}
-  isEnabled: 0
-  owner: {fileID: 0}
-  eventListener: {fileID: 0}
   projectilePrefab: {fileID: 3647265956065727434, guid: 8fdbe22e14faa2b458f8fbf069679739, type: 3}
-  projectileLifeTime: 5
-  projectileSpeed: 10
-  minAttackTIme: 4
-  maxAttackTIme: 20
-  projectileFireRate: 0.5
-  minProjectileCount: 8
-  maxProjectileCount: 18
-  angleIncrementDeviation: 20
+  featherCount: 8
+  projectileSpeed: 15
+  projectileLifeTime: 3

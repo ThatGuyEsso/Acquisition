@@ -5,25 +5,25 @@ using UnityEngine;
 public class BubbleShield : MonoBehaviour
 {
     public GameObject owner;
-    [SerializeField] private int maxHitPoints;
-    [SerializeField] private SpriteFlash flashVFX;
-    [SerializeField] private float hurtTime;
-    [SerializeField] private float bubbleTime;
-    [SerializeField] private bool isInfinite =false;
-    [SerializeField] private float reflectionDamage=20f;
-    private bool isHurt;
-    private float currHurtTime;
-    private int currHitPoints;
+    [SerializeField] protected int maxHitPoints;
+    [SerializeField] protected SpriteFlash flashVFX;
+    [SerializeField] protected float hurtTime;
+    [SerializeField] protected float bubbleTime;
+    [SerializeField] protected bool isInfinite =false;
+    [SerializeField] protected float reflectionDamage=20f;
+    protected bool isHurt;
+    protected float currHurtTime;
+    protected int currHitPoints;
     
     public System.Action OnDestroy;
     public System.Action<GameObject> OnRelfected;
-    public void Awake()
+    virtual public void Awake()
     {
         flashVFX = GetComponent<SpriteFlash>();
         flashVFX.Init();
     }
 
-    private void OnEnable()
+    virtual protected void OnEnable()
     {
         currHurtTime = hurtTime;
         currHitPoints = maxHitPoints;
@@ -32,7 +32,7 @@ public class BubbleShield : MonoBehaviour
             StartCoroutine(RecycleTime());
 
     }
-    public void OnTriggerEnter2D(Collider2D other)
+    virtual public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject == gameObject) return;
         if (other.gameObject.CompareTag("Projectiles")){

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &310509280558233660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310509280558233662}
+  - component: {fileID: 310509280558233663}
+  m_Layer: 0
+  m_Name: PhoenixAbsorb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &310509280558233662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310509280558233660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &310509280558233663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310509280558233660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7096447b4872a794b861e4caa4f5ad49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordAbsorbProjectilePrefab: {fileID: 1087995828118112649, guid: 579a910343656bb418a05b47abe55907, type: 3}
+  sword: 0
+  bowAbsorbProjectilePrefab: {fileID: 3647265956065727434, guid: 9d3e17719ead2eb4e8549203f5dffca8, type: 3}
+  swordHomingSpeed: 500
+  swordAbsorbandHomingProjectilePrefab: {fileID: 1087995828118112649, guid: b2fb8628e14a0004c8bb6f12c1c5fd07, type: 3}
+  bowAbsorbandHomingProjectilePrefab: {fileID: 3647265956065727434, guid: f6c8deb493d2e5b4c89f7156e5886174, type: 3}
+  absorbsiveShieldPrefab: {fileID: 3646941904936301945, guid: fe3f0ef1becb1cc46ad51e921799b8a4, type: 3}

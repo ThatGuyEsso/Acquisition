@@ -5,12 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(FaceTarget))]
 public class HomingProjectile : Base_Projectile
 {
-    private Transform homingTarget;
-    private FaceTarget orientatonManager;
+    protected Transform homingTarget;
+    protected FaceTarget orientatonManager;
     [SerializeField] private GameObject proximityPrefab;
     [SerializeField] private bool useProximity;
-    private bool canHome;
-    private HomingProximityDetector detector;
+    protected bool canHome;
+    protected HomingProximityDetector detector;
     [SerializeField] private bool autoAssignTarget;
     override protected  void Awake()
     {
@@ -129,6 +129,7 @@ public class HomingProjectile : Base_Projectile
 
     protected void FixedUpdate()
     {
+        if (!canHome) return;
         if (projectileSpeed > 0f)
             rb.velocity = projectileSpeed * transform.up * Time.fixedDeltaTime;
     }
@@ -136,5 +137,11 @@ public class HomingProjectile : Base_Projectile
     public override bool IsHoming()
     {
         return autoAssignTarget || canHome;
+    }
+
+    public override void AssignBossTarget()
+    {
+        autoAssignTarget = true;
+        AutoAssingTarget();
     }
 }

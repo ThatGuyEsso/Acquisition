@@ -56,7 +56,10 @@ public class SlashSkillAttribute : Base_SkillAttribute
             ProjectileData data = projectile.GetProjectileData();
 
             projectile.SetUpProjectile(data.damage, data.dir, data.speed, data.lifeTime, data.blockCount + hitPointBonus, data.owner);
-            projObject.AddComponent<InLargeOverTime>().SetUpGrowSetting(initialSize, targetSize.x, sizeIncreaseRate, growDelay);
+            InLargeOverTime multplier = projObject.GetComponentInChildren<InLargeOverTime>();
+            if(multplier) multplier.SetUpGrowSetting(initialSize, targetSize.x, sizeIncreaseRate, growDelay);
+            else
+                projObject.AddComponent<InLargeOverTime>().SetUpGrowSetting(initialSize, targetSize.x, sizeIncreaseRate, growDelay);
         }
     }
 

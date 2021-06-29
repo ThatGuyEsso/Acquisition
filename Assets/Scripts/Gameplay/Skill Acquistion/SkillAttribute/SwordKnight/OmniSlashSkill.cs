@@ -86,6 +86,7 @@ public class OmniSlashSkill : Base_SkillAttribute
                         if (currProj.IsHoming())
                         {
                             HomingSkillAttribute homeSkill = transform.parent.GetComponentInChildren<HomingSkillAttribute>();
+
                             if (homeSkill)
                             {
                                 if(type == WeaponType.Sword)

@@ -15,18 +15,25 @@ public class HomingSkillAttribute : Base_SkillAttribute
     [SerializeField] private int shieldHitPoints;
     [SerializeField] private float shieldHomingLifeTime;
     private BubbleShield currentShield;
+    PhoenixAbsorbAttribute absorbAttribute;
     public override void SetUpAttribute(Base_Weapon weaponOwner)
     {
         base.SetUpAttribute(weaponOwner);
-
+        absorbAttribute = owner.GetComponentInChildren<PhoenixAbsorbAttribute>();
         switch (weaponOwner.GetWeaponType())
         {
+
             case WeaponType.Sword:
-                owner.SetSecondaryProjectile(swordHomingProjectilePrefab);
+                    owner.SetSecondaryProjectile(swordHomingProjectilePrefab);
+
                 break;
             case WeaponType.Bow:
-
-                owner.SetPrimaryProjectilePrefab(bowHomingProjectilePrefab);
+                if (!absorbAttribute)
+                    owner.SetPrimaryProjectilePrefab(bowHomingProjectilePrefab);
+                else
+                {
+                    absorbAttribute.UseHomingPrefabs();
+                }
                 break;
         }
     }
@@ -39,6 +46,7 @@ public class HomingSkillAttribute : Base_SkillAttribute
         switch (owner.GetWeaponType())
         { 
             case WeaponType.Bow:
+                if (absorbAttribute) return;
                 SetHomingSpeed(spawnedAbiliity, bowHomingSpeed);
             break;
           
@@ -48,9 +56,11 @@ public class HomingSkillAttribute : Base_SkillAttribute
 
     override public void EvaluateSecondaryAbilityAttribute(GameObject spawnedAbiliity)
     {
+ 
         switch (owner.GetWeaponType())
         {
             case WeaponType.Sword:
+   
                 SetHomingSpeed(spawnedAbiliity, swordHomingSpeed);
                 break;
            

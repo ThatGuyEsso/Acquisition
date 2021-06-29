@@ -10,7 +10,7 @@ public class InLargeOverTime : MonoBehaviour
     private bool isGrowing;
 
     [SerializeField] private bool  startOnEnable;
-
+    [SerializeField] private bool selfDestroy = true;
 
     private void OnEnable()
     {
@@ -61,6 +61,7 @@ public class InLargeOverTime : MonoBehaviour
     private void OnDisable()
     {
         gameObject.transform.localScale = intialSize;
+        if (selfDestroy) 
         Destroy(this);
     }
 

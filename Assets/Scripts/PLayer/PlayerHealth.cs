@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     private bool isDead = false;
 
 
+    public Action OnHurt;
+
     bool isHurt;
     public void Init()
     {
@@ -85,7 +87,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
                 if (flashVFX) flashVFX.Flash();
            
             }
-            
+            OnHurt?.Invoke();
 
         }
 
@@ -199,5 +201,6 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
         currentHitPoint = maxHitPoints;
 
         UpdateHealthDisplay();
+        if (flashVFX) flashVFX.CancelFlash();
     }
 }

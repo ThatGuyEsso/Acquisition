@@ -336,5 +336,10 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
         this.owner = owner;
     
     }
+
+    virtual public void AssignBossTarget()
+    {
+       //
+    }
 }
 
