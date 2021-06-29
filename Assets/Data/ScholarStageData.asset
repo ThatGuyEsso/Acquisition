@@ -16,11 +16,11 @@ MonoBehaviour:
   - maxAttackCount: 1
     attackRate: 8
     coolDown: 5
-    attackRange: 5
-    isManagingBossAttack: 0
+    attackRange: 10
+    isManagingBossAttack: 1
     isPriority: 1
     isSuperCloseRange: 0
-    abilityPrefab: {fileID: 9183682569501067866, guid: b81ff8cb59e42ea4eac7b75ecc937852, type: 3}
+    abilityPrefab: {fileID: 1661473339226164798, guid: af4d2ef0e4294d64f9f3fa83dbbf6c19, type: 3}
   middleStageAbilities:
   - maxAttackCount: 4
     attackRate: 1.2
