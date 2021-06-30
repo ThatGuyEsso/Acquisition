@@ -18,7 +18,8 @@ public enum GameEvents
    RespawnPlayer,
    PlayerRespawned,
    BossDefeated,
-    ExitGame
+   ExitGame,
+   BeginGameComplete
 
 };
 public class GameManager : MonoBehaviour,IInitialisable,IManager
@@ -187,6 +188,12 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
 
                 break;
             case GameEvents.ExitGame:
+
+                OnNewEvent?.Invoke(lastEvent);
+
+                break;
+
+            case GameEvents.BeginGameComplete:
 
                 OnNewEvent?.Invoke(lastEvent);
 

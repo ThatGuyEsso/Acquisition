@@ -24,7 +24,7 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
         switch (newState)
         {
             case GameState.StartGame:
-                BeginLoadMenuScreen(SceneIndex.MainMenu);
+                BeginLoadMenuScreen(SceneIndex.MainMenu,UIType.MainMenu);
             break;
             case GameState.LoadingHubWorld:
                 BeginHubLoad();
@@ -91,11 +91,11 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
     }
 
 
-    public void BeginLoadMenuScreen(SceneIndex menuSceneIndex)
+    public void BeginLoadMenuScreen(SceneIndex menuSceneIndex,UIType uiTypeToDisplay)
     {
         StopAllCoroutines();
         if (GameManager.instance) GameManager.instance.BeginNewEvent(GameEvents.ExitGame);
-        StartCoroutine(LoadMenuScreen(menuSceneIndex));    
+        StartCoroutine(LoadMenuScreen(menuSceneIndex, uiTypeToDisplay));    
     }
     public void BeginHubLoad()
     {
@@ -137,7 +137,7 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
         }
 
     }
-    private IEnumerator LoadMenuScreen(SceneIndex menuSceneIndex)
+    private IEnumerator LoadMenuScreen(SceneIndex menuSceneIndex,UIType uiToDisplay)
     {
         Scene[] loadedScenes = GetAllActiveScenes();
 
@@ -181,6 +181,8 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
         }
 
         currentScene = menuSceneIndex;
+        UIManager.instance.SwitchUI(uiToDisplay);
+    
         EvaluateSceneLoaded(currentScene);
     
     }
@@ -190,7 +192,7 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
         switch (scene)
         {
             case SceneIndex.MainMenu:
-                UIManager.instance.SwitchUI(UIType.MainMenu);
+            
                 GameStateManager.instance.BeginNewState(GameState.TitleScreen);
      
                 break;

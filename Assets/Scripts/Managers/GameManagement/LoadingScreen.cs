@@ -110,4 +110,9 @@ public class LoadingScreen : MonoBehaviour, IInitialisable
     {
         return !isFadingOut && !isFadingIn && blackScreen.gameObject.activeInHierarchy;
     }
+
+    public void SetLoadingScreenColour(Color color)
+    {
+        blackScreen.color = color;
+    }
 }

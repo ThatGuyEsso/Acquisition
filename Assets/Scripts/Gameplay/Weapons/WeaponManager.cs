@@ -116,6 +116,7 @@ public class WeaponManager : MonoBehaviour,IInitialisable
 
     public void RemoveWeapon()
     {
+        if (equippedWeapon == null) return;
         if (equippedWeapon != null)
             equippedWeapon.Delete();
         runTimeData.hasWeapon = false;

@@ -89,6 +89,9 @@ public class UIManager : MonoBehaviour, IInitialisable
 
         if (ui != null) // Initalizes UI
             ui.InitUI(type, previousUI);
+
+
+    
     }
 
     public void UnloadCurrent() //Unloades the current displayed UI

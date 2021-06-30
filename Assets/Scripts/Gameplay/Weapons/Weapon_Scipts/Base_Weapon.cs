@@ -273,6 +273,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     public void Delete()
     {
         UnEquip();
+        DisableWeapon();
         if (attributes.Count > 0)
         {
             foreach(Base_SkillAttribute attrib in attributes)

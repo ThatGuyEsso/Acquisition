@@ -56,7 +56,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   eventListener: {fileID: 0}
   damageVolumePrefab: {fileID: 3035194022987544037, guid: 8e47a7b652a80e743ba4b4d5ac34db75, type: 3}
-  fireBreathVFXPrefab: {fileID: 4208476332552298708, guid: 6e1d17237f1b7174aa11bb50cc5ac7ab, type: 3}
+  fireBreathVFXPrefab: {fileID: 389504876379255329, guid: 87a8e744189abb841be47d4fb0c583a0, type: 3}
   breathDuration: 5
   attackZoneRadius: 6.5
   attackZoneArchAngle: 90

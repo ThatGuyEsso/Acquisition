@@ -61,6 +61,10 @@ public class PlayerBehaviour : MonoBehaviour, IInitialisable
                 EnableCharacterComponents();
                 WeaponManager.instance.ToggleWeapon(true);
                 break;
+
+            case GameEvents.BeginGameComplete:
+                DisableCharacterComponents();
+                break;
         }
     }
     public void Init()

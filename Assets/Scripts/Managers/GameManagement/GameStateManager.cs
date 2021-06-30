@@ -24,7 +24,7 @@ public class GameStateManager : MonoBehaviour
     public RunTimeData runtimeData;
     public Action<GameState> OnNewGameState;
     public GameState currentGameState;
-
+    private AudioPlayer campFireSFXPlayer;
 
 
     public void Awake()
@@ -82,12 +82,14 @@ public class GameStateManager : MonoBehaviour
 
             case GameState.TitleScreen:
                 LoadingScreen.instance.BeginFadeOut();
+                if (AudioManager.instance) campFireSFXPlayer = AudioManager.instance.PlayUISound("CampFireSFX", Vector3.zero);
                 OnNewGameState?.Invoke(currentGameState);
                 break;
             case GameState.LoadingHubWorld:
                 if(!RoomManager.instance)
                     InitManager(roomManagerPrefab);
                 Cursor.visible = false;
+                if (campFireSFXPlayer) campFireSFXPlayer.BeginFadeOut();
                 OnNewGameState?.Invoke(currentGameState);
                 break;
 

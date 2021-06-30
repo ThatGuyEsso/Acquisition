@@ -15160,7 +15160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4208476332552298708, guid: 6e1d17237f1b7174aa11bb50cc5ac7ab, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e1d17237f1b7174aa11bb50cc5ac7ab, type: 3}
@@ -15175,6 +15175,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1758143771}
+    - target: {fileID: 6001327530133925513, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
+      propertyPath: inDebug
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9117400843208570804, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
       propertyPath: m_Name
       value: The Scholar

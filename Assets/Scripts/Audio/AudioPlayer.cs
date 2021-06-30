@@ -8,14 +8,18 @@ public class AudioPlayer : MonoBehaviour, IAudio
     AudioSource source;
     string currentName;
     Sound currentSound;
+    bool isFadingOut;
+    float fadeOutRate = 2f;
     public void Awake()
     {
+        isFadingOut = false;
         source = gameObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
     }
 
     public void SetUpAudioSource(Sound sound)
     {
+        isFadingOut = false;
         currentSound = sound;
         currentName = sound.name;
         source.clip = sound.clip;
@@ -27,6 +31,7 @@ public class AudioPlayer : MonoBehaviour, IAudio
 
     public void SetUpAudioSource(Sound sound, float pitch)
     {
+        isFadingOut = false;
         currentSound = sound;
         currentName = sound.name;
         source.clip = sound.clip;
@@ -44,11 +49,24 @@ public class AudioPlayer : MonoBehaviour, IAudio
 
     public void KillAudio()
     {
+        isFadingOut = false;
         StopAllCoroutines();
         source.Stop();
         ObjectPoolManager.Recycle(gameObject);
     }
-
+    public void BeginFadeOut() { isFadingOut = true; }
+    private void Update()
+    {
+        if (isFadingOut)
+        {
+            source.volume = Mathf.Lerp(source.volume, 0f, Time.deltaTime * fadeOutRate);
+            if (source.volume <= 0.01f)
+            {
+                isFadingOut = false;
+                KillAudio();
+            }
+        }
+    }
     public void PlayAtRandomPitch()
     {
 

@@ -9,7 +9,9 @@ public class CreditsUI : Base_UI
     public void OnBackButton()
     {
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
-        uiManager.SwitchUI(previousUI);
+        if(previousUI == UIType.GameUI) uiManager.SwitchUI(UIType.MainMenu);
+        else
+            uiManager.SwitchUI(previousUI);
     }
 
 
@@ -20,7 +22,7 @@ public class CreditsUI : Base_UI
         {
             UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedElement);
 
-
+            if (!Cursor.visible) Cursor.visible = true;
         }
     }
 }

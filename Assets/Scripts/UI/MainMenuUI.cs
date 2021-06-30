@@ -17,6 +17,7 @@ public class MainMenuUI : MonoBehaviour
     public void Play()
     {
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
+        LoadingScreen.instance.SetLoadingScreenColour(Color.black);
         GameStateManager.instance.runtimeData.ResetData();
         GameStateManager.instance.BeginNewState(GameState.LoadingHubWorld);
         UIManager.instance.SwitchUI(UIType.GameUI);

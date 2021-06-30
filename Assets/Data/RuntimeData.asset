@@ -15,5 +15,5 @@ MonoBehaviour:
   isKnightDefeated: 0
   isElderDefeated: 0
   isScholarDefeated: 0
-  hasWeapon: 1
-  equippedWeapon: 0
+  hasWeapon: 0
+  equippedWeapon: 3

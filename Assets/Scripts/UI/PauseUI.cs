@@ -21,7 +21,7 @@ public class PauseUI : Base_UI
     {
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         uiManager.SetGameToPause(false);
-        SceneTransitionManager.instance.BeginLoadMenuScreen(SceneIndex.MainMenu);
+        SceneTransitionManager.instance.BeginLoadMenuScreen(SceneIndex.MainMenu,UIType.MainMenu);
         
     }
     public void OnEnable()

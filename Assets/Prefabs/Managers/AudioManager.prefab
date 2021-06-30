@@ -324,6 +324,14 @@ MonoBehaviour:
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
     pitchChange: 0.075
+  - name: CampFireSFX
+    clip: {fileID: 8300000, guid: 8c9e9f720ef5cba449d4891278a1a3ac, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.075
   soundGroups:
   - name: KnightSteps
     clips:

@@ -17,69 +17,69 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
     }
     protected override void ProcessAI()
     {
-    if (!isFighting) return;
-        if(currentStage == BossStage.Transition && !isBusy)
-        {
-            CycleToNextAttack();
-        }
-        switch (currentAIState)
-        {
-            case AIState.Idle:
-                break;
-            case AIState.Chase:
-                if (currentStage != BossStage.Transition)
-                {
-                    if (target)
+        if (!isFighting) return;
+            if(currentStage == BossStage.Transition && !isBusy)
+            {
+                CycleToNextAttack();
+            }
+            switch (currentAIState)
+            {
+                case AIState.Idle:
+                    break;
+                case AIState.Chase:
+                    if (currentStage != BossStage.Transition)
                     {
+                        if (target)
+                        {
 
-                        navigation.SetDestination();
-                        if (InRange())
-                        {
-                            OnNewState(AIState.Attack);
-                        }
-                        else
-                        {
-                            if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
+                            navigation.SetDestination();
+                            if (InRange())
+                            {
+                                OnNewState(AIState.Attack);
+                            }
                             else
                             {
-                                CycleToNextAttack();
-                                OnNewState(AIState.Chase);
+                                if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
+                                else
+                                {
+                                    CycleToNextAttack();
+                                    OnNewState(AIState.Chase);
+                                }
                             }
                         }
                     }
-                }
            
-                break;
-            case AIState.Attack:
-                if(currentStage != BossStage.Transition)
-                {
-                    if (!InRange())
-                    {
-                        OnNewState(AIState.Chase);
-                    }
-                    else if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
-                    {
-                        DoAttack();
-                    }
-                }
-                else 
-                {
-                    if (transitionAbility)
+                    break;
+                case AIState.Attack:
+                    if(currentStage != BossStage.Transition)
                     {
                         if (!InRange())
                         {
                             OnNewState(AIState.Chase);
                         }
-                        else if (transitionAbility.CanAttack() && !isBusy)
+                        else if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
                         {
                             DoAttack();
                         }
                     }
+                    else 
+                    {
+                        if (transitionAbility)
+                        {
+                            if (!InRange())
+                            {
+                                OnNewState(AIState.Chase);
+                            }
+                            else if (transitionAbility.CanAttack() && !isBusy)
+                            {
+                                DoAttack();
+                            }
+                        }
 
-                }
+                    }
           
-                break;
-        }
+                    break;
+            }
     }
 
     private void Update()
