@@ -318,7 +318,7 @@ MonoBehaviour:
   transitionAbilityPrefab: {fileID: 0}
   closeCombatAbility: {fileID: 0}
   isBusy: 0
-  inDebug: 1
+  inDebug: 0
 --- !u!58 &1643762238
 CircleCollider2D:
   m_ObjectHideFlags: 0

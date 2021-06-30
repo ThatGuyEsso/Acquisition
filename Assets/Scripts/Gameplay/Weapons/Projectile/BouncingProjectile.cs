@@ -122,7 +122,7 @@ public class BouncingProjectile : Base_Projectile
 
     public override void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
-        if (!isHurt)
+        if (!isHurt&&!isBusy)
         {
 
             isHurt = true;
