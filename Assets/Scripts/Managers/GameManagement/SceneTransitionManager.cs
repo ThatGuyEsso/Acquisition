@@ -94,6 +94,7 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
     public void BeginLoadMenuScreen(SceneIndex menuSceneIndex)
     {
         StopAllCoroutines();
+        if (GameManager.instance) GameManager.instance.BeginNewEvent(GameEvents.ExitGame);
         StartCoroutine(LoadMenuScreen(menuSceneIndex));    
     }
     public void BeginHubLoad()
@@ -181,7 +182,7 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
 
         currentScene = menuSceneIndex;
         EvaluateSceneLoaded(currentScene);
-        UIManager.instance.SwitchUI(UIType.MainMenu);
+    
     }
 
     public void EvaluateSceneLoaded(SceneIndex scene)
@@ -189,6 +190,7 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
         switch (scene)
         {
             case SceneIndex.MainMenu:
+                UIManager.instance.SwitchUI(UIType.MainMenu);
                 GameStateManager.instance.BeginNewState(GameState.TitleScreen);
      
                 break;
@@ -204,6 +206,7 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
 
     public void BeginClearAllScenes()
     {
+        StopAllCoroutines();
         StartCoroutine(ClearAllScenes());
     }
 
@@ -241,6 +244,39 @@ public class SceneTransitionManager : MonoBehaviour, IManager, IInitialisable
             }
       
         }
+        sceneLoading.Clear();
+        OnSceneUnLoadComplete?.Invoke();
+    }
+    public void BeginClearAllScenesNoLoad(SceneIndex sceneToIgnore)
+    {
+        StopAllCoroutines();
+        StartCoroutine(ClearAllScenesNoLoad(sceneToIgnore));
+    }
+
+    public IEnumerator ClearAllScenesNoLoad(SceneIndex sceneToIgnore)
+    {
+        Scene[] loadedScenes = GetAllActiveScenes();
+
+        //add and unload operations
+        foreach (Scene scene in loadedScenes)
+        {
+            if (scene.buildIndex != (int)SceneIndex.RootScene&& scene.buildIndex !=(int)sceneToIgnore)
+                sceneLoading.Add(SceneManager.UnloadSceneAsync(scene));
+        }
+
+        //wait until every scene has unloaded
+        for (int i = 0; i < sceneLoading.Count; i++)
+        {
+            if (sceneLoading[i] != null)
+            {
+                while (!sceneLoading[i].isDone)
+                {
+                    yield return null;
+                }
+            }
+
+        }
+        sceneLoading.Clear();
         OnSceneUnLoadComplete?.Invoke();
     }
 }

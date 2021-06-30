@@ -17,8 +17,10 @@ public class MainMenuUI : MonoBehaviour
     public void Play()
     {
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
+        GameStateManager.instance.runtimeData.ResetData();
         GameStateManager.instance.BeginNewState(GameState.LoadingHubWorld);
         UIManager.instance.SwitchUI(UIType.GameUI);
+
     }
 
     public void Credits()

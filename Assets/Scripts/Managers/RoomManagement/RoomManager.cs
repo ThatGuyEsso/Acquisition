@@ -26,7 +26,12 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         switch (newState)
         {
             case GameState.TitleScreen:
-                Destroy(gameObject);
+                if (loadedRooms.Count > 0)
+                {
+                    BeginRoomCleanUp(SceneIndex.MainMenu);
+
+
+                }
                 break;
         }
     }
@@ -71,7 +76,22 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
             StartCoroutine(LoadStartingRooms());
         }
     }
+    public IEnumerator RoomCleanUp(SceneIndex sceneToIgnore)
+    {
+        isClearingRoom = true;
+        SceneTransitionManager.instance.OnSceneUnLoadComplete += OnRoomClearComplete;
+        SceneTransitionManager.instance.BeginClearAllScenesNoLoad(sceneToIgnore);
+        while (isClearingRoom)
+        {
+            yield return null;
+        }
 
+        loadedRooms.Clear();
+    }
+    public void BeginRoomCleanUp(SceneIndex sceneToIgnore)
+    {
+        StartCoroutine(RoomCleanUp(sceneToIgnore));
+    }
     public void BeginLoadInNewSceneAt(Vector3 position,SceneIndex index)
     {
 
@@ -128,6 +148,36 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         loadedRooms[loadedRooms.Count - 1].SetUpDoors();
 
     }
+
+
+    public void BeginCreatePathToHub(Vector3 position, SceneIndex hub)
+    {
+        StartCoroutine(CreatePathHub(position, hub));
+    }
+    public IEnumerator CreatePathHub(Vector3 position,SceneIndex hub)
+    {
+        isAddingRoom = true;
+        SceneTransitionManager.instance.BeginSceneLoad(SceneIndex.LongCorridor);
+
+        while (isAddingRoom)
+        {
+            yield return null;
+        }
+
+        LevelRoom corridor = loadedRooms[loadedRooms.Count - 1];
+        corridor.transform.position = position;
+        isAddingRoom = true;
+        SceneTransitionManager.instance.BeginSceneLoad(hub);
+
+        while (isAddingRoom)
+        {
+            yield return null;
+        }
+
+        loadedRooms[loadedRooms.Count - 1].transform.position = corridor.GetConnectionPoint().position;
+        loadedRooms[loadedRooms.Count - 1].SetUpDoors();
+    }
+
     public void OnRoomClearComplete()
     {
         SceneTransitionManager.instance.OnSceneUnLoadComplete-= OnRoomClearComplete;

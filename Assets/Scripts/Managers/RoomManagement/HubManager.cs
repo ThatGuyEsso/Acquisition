@@ -35,7 +35,7 @@ public class HubManager : MonoBehaviour
         if (AudioManager.instance)
         {
             AudioManager.instance.PlayThroughAudioPlayer("DungeonBoom", transform.position);
-            AudioManager.instance.PlayThroughAudioPlayer("DungeonEcho", Vector3.zero);
+         
         }
     }
     public void BindToGameStateManager()
@@ -255,7 +255,7 @@ public class HubManager : MonoBehaviour
             }
             foreach (WeaponSpawner spawner in weaponSpawners)
             {
-                spawner.isInteractable=true;
+                spawner.SetInteractactable(true);
             }
         }
 

@@ -61,22 +61,30 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
             case GameEvents.BossDefeated:
 
+         
                 if (Boss)
                     ObjectPoolManager.Recycle(Boss.gameObject);
                 if (CamShake.instance)
                 {
                     CamShake.instance.DoScreenShake(0.5f, 2f, 0.1f, 0.25f, 3f);
                 }
-                foreach (SkillOrbPickUp orb in pickUps)
+                if (!GameStateManager.instance.runtimeData.IsGameClear())
                 {
-                    if (orb)
+                    foreach (SkillOrbPickUp orb in pickUps)
                     {
-                        orb.DisplayOrb();
-                        orb.OnSkillSelect += EvaluateSkillOrbCollected;
+                        if (orb)
+                        {
+                            orb.DisplayOrb();
+                            orb.OnSkillSelect += EvaluateSkillOrbCollected;
+                        }
                     }
-                }
 
-                if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ItemBoom", roomCentre.position);
+                    if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ItemBoom", roomCentre.position);
+                }else
+                {
+                    UnlockAccensionHub();
+                }
+        
                 break;
         }
     }
@@ -104,6 +112,17 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
         exitDoor.ToggleLock(false);
 
         RoomManager.instance.BeginCreatePathBossToHub(exitDoor.corridorSpawn.position);
+        if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("RoomSpawn", roomCentre.position);
+
+    }
+
+
+    public void UnlockAccensionHub()
+    {
+    
+        exitDoor.ToggleLock(false);
+
+        RoomManager.instance.BeginCreatePathToHub(exitDoor.corridorSpawn.position,SceneIndex.AccensionHub);
         if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("RoomSpawn", roomCentre.position);
 
     }

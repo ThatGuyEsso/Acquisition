@@ -18,4 +18,11 @@ public class RunTimeData : ScriptableObject
         hasWeapon = false;
         equippedWeapon = WeaponType.none;
     }
+
+
+
+    public bool IsGameClear()
+    {
+        return isKnightDefeated && isElderDefeated && isScholarDefeated;
+    }
 }

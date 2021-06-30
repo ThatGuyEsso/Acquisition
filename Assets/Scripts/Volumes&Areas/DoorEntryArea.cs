@@ -6,6 +6,8 @@ public class DoorEntryArea : MonoBehaviour
 {
     [SerializeField] private SlidingDoor door;
 
+  
+    bool isInRange;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,9 +16,23 @@ public class DoorEntryArea : MonoBehaviour
             if (door.gameObject.activeInHierarchy)
             {
                 door.BeginToOpen();
-         
+                isInRange = true;
             }
       
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player")&& isInRange)
+        {
+            if (door.gameObject.activeInHierarchy &&!door.GetIsOpening()&&!door.GetIsOpen())
+            {
+                door.BeginToOpen();
+              
+            }
+
+
         }
     }
 

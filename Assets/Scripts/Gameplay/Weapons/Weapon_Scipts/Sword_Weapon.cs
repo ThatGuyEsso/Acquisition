@@ -277,6 +277,8 @@ public class Sword_Weapon : Base_Weapon, Equipable
         DestroyAttackZone();
     }
 
+
+
     public override void EnableWeapon()
     {
         base.EnableWeapon();

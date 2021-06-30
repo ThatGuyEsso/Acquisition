@@ -11,6 +11,7 @@ public class SlidingDoor : MonoBehaviour
     [SerializeField] private Transform leftDoor, rightDoor;
     bool isOpening;
     bool isClosing;
+    bool isOpen;
     public bool isInteractable =true;
 
 
@@ -44,6 +45,7 @@ public class SlidingDoor : MonoBehaviour
                 if (rightDoor.position.x >= rightDoorOpenPos.x && leftDoor.position.x <= leftDoorOpenPos.x)
                 {
                     isOpening = false;
+                    isOpen = true;
                     rightDoor.position = rightDoorOpenPos;
                     leftDoor.position = leftDoorOpenPos;
                 }
@@ -55,6 +57,7 @@ public class SlidingDoor : MonoBehaviour
                     if (rightDoor.position.y >= rightDoorOpenPos.y && leftDoor.position.y <= leftDoorOpenPos.y)
                     {
                         isOpening = false;
+                        isOpen = true;
                         rightDoor.position = rightDoorOpenPos;
                         leftDoor.position = leftDoorOpenPos;
                     }
@@ -64,6 +67,7 @@ public class SlidingDoor : MonoBehaviour
                     if (rightDoor.position.y <= rightDoorOpenPos.y && leftDoor.position.y >= leftDoorOpenPos.y)
                     {
                         isOpening = false;
+                        isOpen = true;
                         rightDoor.position = rightDoorOpenPos;
                         leftDoor.position = leftDoorOpenPos;
                     }
@@ -75,6 +79,7 @@ public class SlidingDoor : MonoBehaviour
 
         }else if (isClosing)
         {
+            isOpen = false;
             rightDoor.transform.position -= transform.right * Time.deltaTime * openSpeed;
 
             leftDoor.transform.position += transform.right * Time.deltaTime * openSpeed;
@@ -134,4 +139,8 @@ public class SlidingDoor : MonoBehaviour
         }
     
     }
+
+
+    public bool GetIsOpening() {  return isOpening;}
+    public bool GetIsOpen() { return isOpen; }
 }

@@ -67,20 +67,38 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
             Init();
     }
 
+
+    virtual protected void OnDisable()
+    {
+        if (isInitialised)
+        {
+            if (GameManager.instance) GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
+            DisableWeapon();
+
+        }
+    }
+
+
+
     protected void EvaluateNewGameEvent(GameEvents newEvent)
     {
         switch (newEvent)
         {
      
             case GameEvents.PlayerDefeat:
-               
+          
                 break;
 
-       
+            case GameEvents.ExitGame:
+                ObjectPoolManager.Recycle(gameObject);
+                break;
+
+
         }
     }
     public virtual void Init()
     {
+        if (GameManager.instance) GameManager.instance.OnNewEvent += EvaluateNewGameEvent;
         inputAction = new Controls();
         inputAction.Enable();
         boxCollider = GetComponentInChildren<BoxCollider2D>();
@@ -219,6 +237,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     virtual public void DisableWeapon()
     {
+        if (inputAction != null) inputAction.Disable();
         primaryHeld = false;
         secondaryHeld = false;
         isWeaponActive = false;
@@ -227,6 +246,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     virtual public void EnableWeapon()
     {
+        if (inputAction != null) inputAction.Enable();
         isWeaponActive = true;
         isBusy = false;
     }

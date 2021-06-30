@@ -19,6 +19,8 @@ public class WeaponSpawner : MonoBehaviour
     [SerializeField] private bool inDebug;
 
     public bool isInteractable=false;
+
+    bool isPlayerInRange;
     private void Awake()
     {
         pickupGFX.gameObject.SetActive(false);
@@ -42,36 +44,60 @@ public class WeaponSpawner : MonoBehaviour
         if (!weapon&&isAvailable) 
         {
             weapon = ObjectPoolManager.Spawn(weaponPrefab.gameObject, Vector3.zero, Quaternion.identity).GetComponent<Base_Weapon>();
-       
+          
         }
     }
 
+
+    public void SetInteractactable(bool canInteract)
+    {
+        isInteractable = canInteract;
+        if (canInteract && isPlayerInRange) PassWeaponToPlayer(); 
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isWeaponAvailable && other.CompareTag("Player")&&isInteractable){
-            if(WeaponManager.instance.equippedWeapon != null)
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInRange = true;
+            if (isWeaponAvailable && isInteractable)
             {
-                if (WeaponManager.instance.equippedWeapon.GetWeaponType() != type)
-                {
-                    if (AudioManager.instance)
-                        AudioManager.instance.PlayThroughAudioPlayer("WeaponPickUp", transform.position);
-                    OnWeaponReplaced?.Invoke(WeaponManager.instance.equippedWeapon.GetWeaponType());
-                    WeaponManager.instance.EquipWeapon(weapon);
-                    ToggleWeaponAvailable(false);
-                    if (GameManager.instance)
-                        GameManager.instance.BeginNewEvent(GameEvents.WeaponPicked);
-                }
+                PassWeaponToPlayer();
             }
-            else
+        }
+       
+    }
+
+    public void PassWeaponToPlayer()
+    {
+        if (WeaponManager.instance.equippedWeapon != null)
+        {
+            if (WeaponManager.instance.equippedWeapon.GetWeaponType() != type)
             {
                 if (AudioManager.instance)
                     AudioManager.instance.PlayThroughAudioPlayer("WeaponPickUp", transform.position);
+                OnWeaponReplaced?.Invoke(WeaponManager.instance.equippedWeapon.GetWeaponType());
                 WeaponManager.instance.EquipWeapon(weapon);
                 ToggleWeaponAvailable(false);
-                if(GameManager.instance)
+                if (GameManager.instance)
                     GameManager.instance.BeginNewEvent(GameEvents.WeaponPicked);
             }
-       
+        }
+        else
+        {
+            if (AudioManager.instance)
+                AudioManager.instance.PlayThroughAudioPlayer("WeaponPickUp", transform.position);
+            WeaponManager.instance.EquipWeapon(weapon);
+            ToggleWeaponAvailable(false);
+            if (GameManager.instance)
+                GameManager.instance.BeginNewEvent(GameEvents.WeaponPicked);
+        }
+
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInRange = false;
         }
     }
     public void SpawnWeapon()

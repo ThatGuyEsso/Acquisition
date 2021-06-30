@@ -59,7 +59,8 @@ public class GameStateManager : MonoBehaviour
             if (iManager != null) { iManager.BindToGameStateManager(); }
         }
         OnNewGameState(GameState.StartGame);
-
+        if (AudioManager.instance)
+            AudioManager.instance.PlayThroughAudioPlayer("DungeonEcho", Vector3.zero);
     }
     public void BeginNewState(GameState newState)
     {
@@ -84,7 +85,8 @@ public class GameStateManager : MonoBehaviour
                 OnNewGameState?.Invoke(currentGameState);
                 break;
             case GameState.LoadingHubWorld:
-                InitManager(roomManagerPrefab);
+                if(!RoomManager.instance)
+                    InitManager(roomManagerPrefab);
                 Cursor.visible = false;
                 OnNewGameState?.Invoke(currentGameState);
                 break;
@@ -100,12 +102,15 @@ public class GameStateManager : MonoBehaviour
     }
     public void InitManager(GameObject managerPrefab)
     {
-        GameObject manager = Instantiate(managerPrefab, Vector3.zero, Quaternion.identity);
-        IInitialisable init = manager.GetComponent<IInitialisable>();
-        if (init != null) init.Init();
 
-        IManager iManager = manager.GetComponent<IManager>();
-        if (iManager != null) { iManager.BindToGameStateManager(); }
+            GameObject manager = Instantiate(managerPrefab, Vector3.zero, Quaternion.identity);
+            IInitialisable init = manager.GetComponent<IInitialisable>();
+            if (init != null) init.Init();
+
+            IManager iManager = manager.GetComponent<IManager>();
+            if (iManager != null) { iManager.BindToGameStateManager(); }
+       
+    
     }
     
 }

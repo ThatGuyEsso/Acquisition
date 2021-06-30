@@ -10,6 +10,8 @@ public class RoomDoor : MonoBehaviour
     [SerializeField] private SpriteRenderer leftGFX, rightGFX;
     [SerializeField] private Sprite leftLockedSprite, leftOpenSprite, rightLockedSprite, rightOpenSprite;
     [SerializeField] private GameObject spawnVFX;
+
+    bool isPlayerInRange;
     public void ToggleLock(bool locked)
     {
         isLocked = locked;
@@ -23,6 +25,7 @@ public class RoomDoor : MonoBehaviour
             if (spawnVFX) ObjectPoolManager.Spawn(spawnVFX, door.transform.position, Quaternion.identity);
             leftGFX.sprite = leftOpenSprite;
             rightGFX.sprite = rightOpenSprite;
+            if (isPlayerInRange) OpenDoors();
         }
     }
     public void OpenDoors()
@@ -43,11 +46,20 @@ public class RoomDoor : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player")&&!isLocked) OpenDoors();
+        if (other.gameObject.CompareTag("Player") )
+        {
+            isPlayerInRange = true;
+            if(!isLocked)
+                OpenDoors();
+        }
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") ) CloseDoors();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isPlayerInRange = false;
+            CloseDoors();
+        }
     }
 }

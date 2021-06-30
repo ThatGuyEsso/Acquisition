@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public enum GameEvents
 {
+
    WeaponsSpawned,
    WeaponPicked,
    BossRoomsSpawned,
@@ -16,7 +17,8 @@ public enum GameEvents
    DeathAnimationComplete,
    RespawnPlayer,
    PlayerRespawned,
-   BossDefeated
+   BossDefeated,
+    ExitGame
 
 };
 public class GameManager : MonoBehaviour,IInitialisable,IManager
@@ -181,6 +183,11 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
 
             case GameEvents.BossInit:
       
+                OnNewEvent?.Invoke(lastEvent);
+
+                break;
+            case GameEvents.ExitGame:
+
                 OnNewEvent?.Invoke(lastEvent);
 
                 break;
