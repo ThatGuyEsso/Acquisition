@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: ad4dc53d84299c442b5d1a0819931f68
+guid: 0b7c5a25b5125b848a9cf6895954b651
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2551686173138550772
-    second: ScholarBossIdle-Sheet_0
+      213: 8564113011700248584
+    second: ScholarBossFlying-Sheet_0
   - first:
-      213: -3703807192088054774
-    second: ScholarBossIdle-Sheet_1
+      213: 1378698077560011540
+    second: ScholarBossFlying-Sheet_1
   - first:
-      213: -493503425087172046
-    second: ScholarBossIdle-Sheet_2
+      213: -7332806131155408751
+    second: ScholarBossFlying-Sheet_2
   - first:
-      213: -2011594962528611163
-    second: ScholarBossIdle-Sheet_3
+      213: 1686758915124697012
+    second: ScholarBossFlying-Sheet_3
+  - first:
+      213: 3046164977776616170
+    second: ScholarBossFlying-Sheet_4
+  - first:
+      213: -2263209978637803957
+    second: ScholarBossFlying-Sheet_5
+  - first:
+      213: 1344674538149413611
+    second: ScholarBossFlying-Sheet_6
+  - first:
+      213: 4076058612941534778
+    second: ScholarBossFlying-Sheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_0
+      name: ScholarBossFlying-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c000dc7e1f6969cd0800000000000000
-      internalID: -2551686173138550772
+      spriteID: 800b1b6d867d9d670800000000000000
+      internalID: 8564113011700248584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_1
+      name: ScholarBossFlying-Sheet_1
       rect:
         serializedVersion: 2
         x: 384
@@ -138,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a04fd0f7bfe699cc0800000000000000
-      internalID: -3703807192088054774
+      spriteID: 41b7a7dc89e122310800000000000000
+      internalID: 1378698077560011540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_2
+      name: ScholarBossFlying-Sheet_2
       rect:
         serializedVersion: 2
         x: 768
@@ -159,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2329d34ef39b629f0800000000000000
-      internalID: -493503425087172046
+      spriteID: 198eca1bca3ac3a90800000000000000
+      internalID: -7332806131155408751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_3
+      name: ScholarBossFlying-Sheet_3
       rect:
         serializedVersion: 2
         x: 1152
@@ -180,8 +192,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a4548a1a016514e0800000000000000
-      internalID: -2011594962528611163
+      spriteID: 4b71bb5eb42986710800000000000000
+      internalID: 1686758915124697012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScholarBossFlying-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae26c9378e6264a20800000000000000
+      internalID: 3046164977776616170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScholarBossFlying-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e9c23f3867790e0800000000000000
+      internalID: -2263209978637803957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScholarBossFlying-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be288e83e5e39a210800000000000000
+      internalID: 1344674538149413611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScholarBossFlying-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2688
+        y: 0
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a363d0c66b1119830800000000000000
+      internalID: 4076058612941534778
       vertices: []
       indices: 
       edges: []

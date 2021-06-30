@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: ad4dc53d84299c442b5d1a0819931f68
+guid: adfe358e18e17e54bb8a40ae660ebfba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2551686173138550772
-    second: ScholarBossIdle-Sheet_0
+      213: -6171298279378105646
+    second: ScholarBossLanding-Sheet_0
   - first:
-      213: -3703807192088054774
-    second: ScholarBossIdle-Sheet_1
+      213: 7573567289836627650
+    second: ScholarBossLanding-Sheet_1
   - first:
-      213: -493503425087172046
-    second: ScholarBossIdle-Sheet_2
+      213: -3427290181980376620
+    second: ScholarBossLanding-Sheet_2
   - first:
-      213: -2011594962528611163
-    second: ScholarBossIdle-Sheet_3
+      213: 4381514086209075221
+    second: ScholarBossLanding-Sheet_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_0
+      name: ScholarBossLanding-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,14 +117,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c000dc7e1f6969cd0800000000000000
-      internalID: -2551686173138550772
+      spriteID: 2da40be69e42b5aa0800000000000000
+      internalID: -6171298279378105646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_1
+      name: ScholarBossLanding-Sheet_1
       rect:
         serializedVersion: 2
         x: 384
@@ -138,14 +138,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a04fd0f7bfe699cc0800000000000000
-      internalID: -3703807192088054774
+      spriteID: 2c6ea39d257ba1960800000000000000
+      internalID: 7573567289836627650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_2
+      name: ScholarBossLanding-Sheet_2
       rect:
         serializedVersion: 2
         x: 768
@@ -159,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2329d34ef39b629f0800000000000000
-      internalID: -493503425087172046
+      spriteID: 4d130e0fcb1df60d0800000000000000
+      internalID: -3427290181980376620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_3
+      name: ScholarBossLanding-Sheet_3
       rect:
         serializedVersion: 2
         x: 1152
@@ -180,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a4548a1a016514e0800000000000000
-      internalID: -2011594962528611163
+      spriteID: 518bcded8d34ecc30800000000000000
+      internalID: 4381514086209075221
       vertices: []
       indices: 
       edges: []

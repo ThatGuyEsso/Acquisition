@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: ad4dc53d84299c442b5d1a0819931f68
+guid: 7772c204e50149a4496a3d053233e244
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2551686173138550772
-    second: ScholarBossIdle-Sheet_0
+      213: 6956037973381401894
+    second: ScholarBossFireBreathEnding-Sheet_0
   - first:
-      213: -3703807192088054774
-    second: ScholarBossIdle-Sheet_1
+      213: 6662981027761115757
+    second: ScholarBossFireBreathEnding-Sheet_1
   - first:
-      213: -493503425087172046
-    second: ScholarBossIdle-Sheet_2
+      213: -7425800009091088121
+    second: ScholarBossFireBreathEnding-Sheet_2
   - first:
-      213: -2011594962528611163
-    second: ScholarBossIdle-Sheet_3
+      213: 6884025668521497709
+    second: ScholarBossFireBreathEnding-Sheet_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_0
+      name: ScholarBossFireBreathEnding-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,14 +117,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c000dc7e1f6969cd0800000000000000
-      internalID: -2551686173138550772
+      spriteID: 62dc68f9eafc88060800000000000000
+      internalID: 6956037973381401894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_1
+      name: ScholarBossFireBreathEnding-Sheet_1
       rect:
         serializedVersion: 2
         x: 384
@@ -138,14 +138,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a04fd0f7bfe699cc0800000000000000
-      internalID: -3703807192088054774
+      spriteID: d625ed851f9a77c50800000000000000
+      internalID: 6662981027761115757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_2
+      name: ScholarBossFireBreathEnding-Sheet_2
       rect:
         serializedVersion: 2
         x: 768
@@ -159,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2329d34ef39b629f0800000000000000
-      internalID: -493503425087172046
+      spriteID: 701880d3c3242f890800000000000000
+      internalID: -7425800009091088121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScholarBossIdle-Sheet_3
+      name: ScholarBossFireBreathEnding-Sheet_3
       rect:
         serializedVersion: 2
         x: 1152
@@ -180,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a4548a1a016514e0800000000000000
-      internalID: -2011594962528611163
+      spriteID: d6415e45fd8f88f50800000000000000
+      internalID: 6884025668521497709
       vertices: []
       indices: 
       edges: []
