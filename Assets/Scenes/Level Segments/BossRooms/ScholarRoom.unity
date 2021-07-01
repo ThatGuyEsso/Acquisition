@@ -6328,6 +6328,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 46442246}
     m_Modifications:
+    - target: {fileID: 9117400842666738118, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2551686173138550772, guid: ad4dc53d84299c442b5d1a0819931f68, type: 3}
+    - target: {fileID: 9117400842735764362, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117400842735764362, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000015199182
+      objectReference: {fileID: 0}
     - target: {fileID: 9117400843208570804, guid: 761c262bdefc92d48bd11d25bfa0d99c, type: 3}
       propertyPath: m_Name
       value: The Scholar
