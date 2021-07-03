@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1142991784157698821}
   - component: {fileID: -267282150510026568}
   - component: {fileID: 1487004100516300036}
-  - component: {fileID: 3305549361958115574}
   - component: {fileID: 8315753582471524826}
+  - component: {fileID: 48270363765162778}
   m_Layer: 8
   m_Name: PhoenixFeather
   m_TagString: Projectiles
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3647265956065727434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.35, y: -0.47507024, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 3642796820624034264}
   m_Father: {fileID: 0}
@@ -81,33 +81,7 @@ MonoBehaviour:
   destroyProjectileLayer:
     serializedVersion: 2
     m_Bits: 128
-  breakVFX: {fileID: 5701875958789621029, guid: 9bb2576af49900645ad861c6a2a8fb4b, type: 3}
---- !u!61 &3305549361958115574
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647265956065727434}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.7}
-  m_EdgeRadius: 0
+  breakVFX: {fileID: 6783436960541268215, guid: 0eadc7d56da53b0478d7d818a9fa7f53, type: 3}
 --- !u!114 &8315753582471524826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +96,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashColour: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 8
+--- !u!61 &48270363765162778
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647265956065727434}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.04}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.13, y: 0.37}
+  m_EdgeRadius: 0
 --- !u!1 &4333514381353449516
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,8 +193,8 @@ SpriteRenderer:
   m_SortingLayerID: -566227215
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a0d049179cb788540ad0961f14814511, type: 3}
-  m_Color: {r: 1, g: 0.3427714, b: 0, a: 1}
+  m_Sprite: {fileID: -6923129409301358220, guid: 26734fa196b383342a8fe46560228ede, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

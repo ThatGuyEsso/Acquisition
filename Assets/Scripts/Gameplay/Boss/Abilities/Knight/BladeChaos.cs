@@ -15,7 +15,7 @@ public class BladeChaos : BaseBossAbility
 
     [SerializeField] private float sfxPlayRate;
     private float currTimeToSFX;
-
+    private AfterImageController afterImageController;
     bool isAttacking;
     float currTimeToShoot=0;
     float curretAttackTime;
@@ -61,6 +61,7 @@ public class BladeChaos : BaseBossAbility
 
     public void StartBladeCircus()
     {
+        if (afterImageController) afterImageController.StartDrawing();
         if (eventListener) eventListener.OnShowAttackZone -= StartBladeCircus;
         attacksLeft--;
         canAttack = false;
@@ -92,6 +93,7 @@ public class BladeChaos : BaseBossAbility
             StopAllCoroutines();
             StartCoroutine(BeginRefreshAttack(attackRate));
         }
+        if (afterImageController) afterImageController.StopDrawing();
     }
 
     public void ShootProjectile()
@@ -111,12 +113,19 @@ public class BladeChaos : BaseBossAbility
         StopAllCoroutines();
         eventListener.OnAnimEnd -= EvaluateEnd;
         eventListener.OnShowAttackZone -= StartBladeCircus;
+        if (afterImageController) afterImageController.StopDrawing();
     }
     public override void EnableAbility()
     {
         base.EnableAbility();
         curretAttackTime = attackDuration;
         if (eventListener) eventListener.OnShowAttackZone += StartBladeCircus;
-
+        if (owner)
+        {
+            transform.rotation = owner.GetFirePoint().rotation;
+            SpriteRenderer ownerRenderer = owner.GetRenderer();
+            afterImageController = owner.GetAfterimageController();
+            if (ownerRenderer && afterImageController) afterImageController.SetUpRenderer(ownerRenderer, 0.25f, 1f);
+        }
     }
 }

@@ -11,6 +11,7 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
     [SerializeField] protected float projectileLifeTime;
     [SerializeField] protected float projectileSpeed;
     [SerializeField] protected int projectileBlockCount;
+    private AfterImageController afterImageController;
     public override void Init()
     {
         base.Init();
@@ -25,6 +26,7 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
     }
     public void CreateAttackZone()
     {
+        if (afterImageController) afterImageController.StartDrawing();
         if (AudioManager.instance)
             AudioManager.instance.PlayThroughAudioPlayer("KnightSwing", owner.transform.position,true);
         canAttack = false;
@@ -63,7 +65,7 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
             StartCoroutine(BeginRefreshAttack(attackRate));
         }
 
-       
+        if (afterImageController) afterImageController.StopDrawing();
     }
 
     override public void DisableAbility()
@@ -78,6 +80,7 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
 
             dynamicAttackZone = null;
         }
+        if (afterImageController) afterImageController.StopDrawing();
     }
 
     override public void EnableAbility()
@@ -88,6 +91,13 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
             eventListener.OnShowAttackZone += CreateAttackZone;
             eventListener.OnHideAttackZone += RemoveAttackZone;
             eventListener.OnShootProjectile += ShootProjectile;
+        }
+        if (owner)
+        {
+            transform.rotation = owner.GetFirePoint().rotation;
+            SpriteRenderer ownerRenderer = owner.GetRenderer();
+            afterImageController = owner.GetAfterimageController();
+            if (ownerRenderer && afterImageController) afterImageController.SetUpRenderer(ownerRenderer, 0.05f, 0.2f);
         }
     }
 

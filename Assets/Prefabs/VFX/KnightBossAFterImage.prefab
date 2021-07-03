@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2905011447593517039}
   - component: {fileID: 6887422759984945027}
   m_Layer: 0
-  m_Name: AfterImageObject
+  m_Name: KnightBossAFterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,11 +71,11 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1195519277
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -8255868151947447371, guid: a58e4b82f5c55014a994c8dafecee79b, type: 3}
-  m_Color: {r: 0.60277677, g: 0.6586431, b: 0.9622642, a: 0.5411765}
+  m_Color: {r: 0.6039216, g: 0.65882355, b: 0.9607843, a: 0.49803922}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 3.125, y: 2.78125}
   m_AdaptiveModeThreshold: 0.5

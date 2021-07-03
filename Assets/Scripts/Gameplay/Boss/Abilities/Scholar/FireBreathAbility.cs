@@ -31,7 +31,7 @@ public class FireBreathAbility : BaseBossAbility
 
         if (damageVolume)
         {
-            damageVolume.SetColliderShape(owner.GetFirePoint().up, attackZoneRadius, attackZoneArchAngle, owner.GetFirePoint().position);
+            damageVolume.SetColliderShape(owner.GetFirePoint().right, attackZoneRadius, attackZoneArchAngle, owner.GetFirePoint().position,60f);
             IVolumes attackVol = damageVolume.GetComponent<IVolumes>();
             if (attackVol != null)
             {
@@ -64,7 +64,8 @@ public class FireBreathAbility : BaseBossAbility
     {
         if (isAttacking)
         {
-            if(currDuration <= 0f)
+          
+            if (currDuration <= 0f)
             {
                 StopFireBreath();
             }
@@ -91,7 +92,7 @@ public class FireBreathAbility : BaseBossAbility
 
             if (damageVolume)
             {
-                damageVolume.SetColliderShape(owner.GetFirePoint().up, attackZoneRadius, attackZoneArchAngle, owner.GetFirePoint().position);
+                damageVolume.SetColliderShape(owner.GetFirePoint().up, attackZoneRadius, attackZoneArchAngle, owner.GetFirePoint().position,60f);
             }
         }
 
@@ -142,5 +143,16 @@ public class FireBreathAbility : BaseBossAbility
         if (eventListener)
             eventListener.OnShowAttackZone -= Lockon;
             eventListener.OnShowAttackZone -= BeginFireBreath;
+        if (fireBreathVFX)
+        {
+            fireBreathVFX.GetComponent<ParticleSystem>().Stop();
+
+        }
+
+
+        fireBreathVFX = null;
+        if (damageVolume) ObjectPoolManager.Recycle(damageVolume);
+        damageVolume = null;
+        isAttacking = false;
     }
 }

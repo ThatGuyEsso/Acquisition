@@ -13,7 +13,7 @@ public class OmniSlash : BaseBossAbility
 
 
     protected AttackVolume attackZone;
-
+    private AfterImageController afterImageController;
     public override void Init()
     {
         base.Init();
@@ -38,6 +38,7 @@ public class OmniSlash : BaseBossAbility
 
     public void CreateAttackZone()
     {
+        if (afterImageController) afterImageController.StartDrawing();
         if (attackZonePrefab)
         {
 
@@ -79,6 +80,7 @@ public class OmniSlash : BaseBossAbility
             StopAllCoroutines();
             StartCoroutine(BeginRefreshAttack(attackRate));
         }
+        if (afterImageController) afterImageController.StopDrawing();
     }
 
 
@@ -101,7 +103,13 @@ public class OmniSlash : BaseBossAbility
             eventListener.OnAnimEnd += DisableAbility;
         }
         eventListener.OnShowAttackZone += DoOmniSlash;
-
+        if (owner)
+        {
+            transform.rotation = owner.GetFirePoint().rotation;
+            SpriteRenderer ownerRenderer = owner.GetRenderer();
+            afterImageController = owner.GetAfterimageController();
+            if (ownerRenderer && afterImageController) afterImageController.SetUpRenderer(ownerRenderer, 0.25f, 0.6f);
+        }
 
     }
 
@@ -119,6 +127,9 @@ public class OmniSlash : BaseBossAbility
             ObjectPoolManager.Recycle(attackZone.gameObject);
             attackZone = null;
         }
+        if (afterImageController) afterImageController.StopDrawing();
 
     }
+
 }
+

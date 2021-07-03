@@ -8,10 +8,26 @@ public class AfterImageController : MonoBehaviour
     [SerializeField] private SpriteRenderer targetRenderer;
     [SerializeField] private float imageLifeTime;
     [SerializeField] private float timeBetweenImage;
+    [SerializeField] private Transform targetTransform;
+    [SerializeField] private bool startOnEnable =false;
 
     private bool isDrawing;
     private float currentTime;
+    
+    private void Awake()
+    {
+        if (!targetTransform) targetTransform = transform;
+    }
 
+    private void OnEnable()
+    {
+        if (startOnEnable)
+            StartDrawing();
+    }
+    private void OnDisable()
+    {
+        if (startOnEnable) StopDrawing();
+    }
     public void StartDrawing(float timeBetweenImages)
     {
         timeBetweenImage = timeBetweenImages;
@@ -34,7 +50,8 @@ public class AfterImageController : MonoBehaviour
         {
             if(currentTime <= 0f)
             {
-                CreateAfterImage(targetRenderer.sprite, imageLifeTime, transform.position,transform.rotation);
+              
+                CreateAfterImage(targetRenderer.sprite, imageLifeTime, targetTransform.position, targetTransform.rotation);
                 currentTime = timeBetweenImage;
             }
             else
@@ -53,5 +70,18 @@ public class AfterImageController : MonoBehaviour
     {
         AfterImage afterImage = ObjectPoolManager.Spawn(afterImageObject, pos, rot).GetComponent<AfterImage>();
         if (afterImage) afterImage.StartAfterImage(afterImageSprite, lifeTime);
+    }
+
+    public void SetUpRenderer(SpriteRenderer renderer, Transform targetTrans)
+    {
+        targetRenderer = renderer;
+        targetTransform = targetTrans;
+    }
+
+    public void SetUpRenderer(SpriteRenderer renderer, float timeBtwnImage,float imageLifeTime)
+    {
+        targetRenderer = renderer;
+        this.imageLifeTime = imageLifeTime;
+        timeBetweenImage = timeBtwnImage;
     }
 }

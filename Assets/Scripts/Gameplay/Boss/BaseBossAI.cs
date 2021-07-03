@@ -512,4 +512,20 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     {
         return target;
     }
+
+
+    public SpriteRenderer GetRenderer() {
+
+        SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
+ 
+        return renderer;
+    }
+
+    public AfterImageController GetAfterimageController()
+    {
+
+        AfterImageController afterImageController = GetComponentInChildren<AfterImageController>();
+        
+        return afterImageController;
+    }
 }

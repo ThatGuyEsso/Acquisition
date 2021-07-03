@@ -71,10 +71,15 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
             GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
         }
 
-        if (breakVFX) ObjectPoolManager.Spawn(breakVFX, transform.position);
+        DoBreakVFX();
         StopAllCoroutines();
 
 
+    }
+
+    public void DoBreakVFX()
+    {
+        if (breakVFX) ObjectPoolManager.Spawn(breakVFX, transform.position);
     }
     virtual public void Init()
     {

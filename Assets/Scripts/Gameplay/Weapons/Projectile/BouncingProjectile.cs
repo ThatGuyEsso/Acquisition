@@ -103,6 +103,7 @@ public class BouncingProjectile : Base_Projectile
     {
         if (isBusy) return;
         rb.velocity = Vector2.zero;
+        isBusy = true;
         if (animator) animator.Play("Explode",0,0f);
     }
     public void OnCollisionEnter2D(Collision2D other)
@@ -147,5 +148,24 @@ public class BouncingProjectile : Base_Projectile
         rb.velocity = dir * projectileSpeed;
 
         OrientateToMovement();
+    }
+
+
+    protected override void OnDisable()
+    {
+        OnKilled?.Invoke();
+        if (isHurt)
+        {
+            isHurt = false;
+            currHurtTime = hurtTime;
+            if (flashVFX) flashVFX.CancelFlash();
+        }
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
+        }
+
+
+        StopAllCoroutines();
     }
 }

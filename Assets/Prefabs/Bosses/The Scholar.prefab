@@ -105,7 +105,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9117400842735764361}
-  m_LocalRotation: {x: -0, y: -0, z: -0.70710677, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.75, y: 0.00000004470348, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7013723237921150097}
   walkSFX: 
-  dustVFX: {fileID: 0}
+  dustVFX: {fileID: 6585081868266106000, guid: 42ba38011733464428d4dc8a05b60d45, type: 3}
 --- !u!114 &6001327530133925513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   hurtSFX: KnightHurt
   dieSFX: KnightDie
   UI: {fileID: 0}
-  transitionAbilityPrefab: {fileID: 0}
+  transitionAbilityPrefab: {fileID: 1661473339226164796, guid: af4d2ef0e4294d64f9f3fa83dbbf6c19, type: 3}
   closeCombatAbility: {fileID: 0}
   isBusy: 0
   inDebug: 0

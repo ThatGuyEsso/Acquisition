@@ -1435,21 +1435,21 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
+          inSlope: 1
           outSlope: 1
-          tangentMode: 0
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         - serializedVersion: 3
           time: 1
           value: 1
           inSlope: 1
-          outSlope: 0
-          tangentMode: 0
+          outSlope: 1
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -1480,7 +1480,7 @@ ParticleSystem:
     startFrame:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.9999
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1535,16 +1535,14 @@ ParticleSystem:
     tilesY: 1
     animationType: 0
     rowIndex: 0
-    cycles: 1
+    cycles: 0.0001
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 6567066896369494430, guid: 66741030864915e4894df7c2c4f13b88, type: 3}
-    - sprite: {fileID: 6747248406142527635, guid: 66741030864915e4894df7c2c4f13b88, type: 3}
-    - sprite: {fileID: -7601406349449651727, guid: 66741030864915e4894df7c2c4f13b88, type: 3}
-    - sprite: {fileID: -1793756788894199280, guid: 66741030864915e4894df7c2c4f13b88, type: 3}
-    - sprite: {fileID: 8068035485743162947, guid: 66741030864915e4894df7c2c4f13b88, type: 3}
-    - sprite: {fileID: 7214359673527244815, guid: 66741030864915e4894df7c2c4f13b88, type: 3}
+    - sprite: {fileID: 3989671281319393584, guid: f9ffd97080dd7ad43a2cc427e8a8eb91, type: 3}
+    - sprite: {fileID: 3783772393778365062, guid: f9ffd97080dd7ad43a2cc427e8a8eb91, type: 3}
+    - sprite: {fileID: -7099064666673478186, guid: f9ffd97080dd7ad43a2cc427e8a8eb91, type: 3}
+    - sprite: {fileID: -410081810835250585, guid: f9ffd97080dd7ad43a2cc427e8a8eb91, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

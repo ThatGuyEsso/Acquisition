@@ -184,7 +184,7 @@ MonoBehaviour:
   destroyProjectileLayer:
     serializedVersion: 2
     m_Bits: 128
-  breakVFX: {fileID: 6525448635879357664, guid: 4777822ae592740488dc4a4f4e884285, type: 3}
+  breakVFX: {fileID: 806818768627034054, guid: d2edc3d76c3979148b7cf2fa7b77e32c, type: 3}
   fragmentPreab: {fileID: 9095572269299850794, guid: 3ea67fd38c342974385d1bfb8c55ba7d, type: 3}
   fragmentLifeTime: 5
   fragmenteSpeed: 8

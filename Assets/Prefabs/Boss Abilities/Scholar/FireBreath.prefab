@@ -58,5 +58,5 @@ MonoBehaviour:
   damageVolumePrefab: {fileID: 3035194022987544037, guid: 8e47a7b652a80e743ba4b4d5ac34db75, type: 3}
   fireBreathVFXPrefab: {fileID: 389504876379255329, guid: 87a8e744189abb841be47d4fb0c583a0, type: 3}
   breathDuration: 5
-  attackZoneRadius: 6.5
-  attackZoneArchAngle: 90
+  attackZoneRadius: 9
+  attackZoneArchAngle: 60

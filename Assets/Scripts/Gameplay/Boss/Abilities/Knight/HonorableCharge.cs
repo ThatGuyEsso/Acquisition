@@ -17,12 +17,15 @@ public class HonorableCharge : BaseBossAbility
     [SerializeField] private float deceleration;
     [Header("Ability Settings")]
     [SerializeField] private GameObject attackColliderPrefab;
+
+
+    [Header("VFX/SFX Settings")]
     [SerializeField] private GameObject dustVFx;
-    private AttackVolume chargeCollider;
     [SerializeField] private float sfxPlayRate;
+    private AfterImageController afterImageController;
+
     private float currTimeToSFX;
-
-
+    private AttackVolume chargeCollider;
     protected bool isCharging;
     protected bool isStopping;
     protected float currrentChargeTime;
@@ -34,6 +37,7 @@ public class HonorableCharge : BaseBossAbility
     public override void Init()
     {
         base.Init();
+        afterImageController = GetComponent<AfterImageController>();
 
     }
 
@@ -114,7 +118,7 @@ public class HonorableCharge : BaseBossAbility
 
         }
 
-        owner.CycleToNextAttack();
+        if (afterImageController) afterImageController.StartDrawing();
     }
     public void Charge()
     {
@@ -133,8 +137,8 @@ public class HonorableCharge : BaseBossAbility
         isCharging = false;
         rb.velocity = Vector2.zero;
         owner.GetComponent<IBoss>().SetUseRigidBody(false);
-      
-  
+
+        if (afterImageController) afterImageController.StopDrawing();
         currentSpeed = 0;
         owner.GetComponent<IBoss>().PlayAnimation("Idle");
         owner.SetIsBusy(false);
@@ -166,6 +170,8 @@ public class HonorableCharge : BaseBossAbility
         isEnabled = false;
         if (eventListener)
             eventListener.OnShowAttackZone -= BeginCharge;
+
+        if (afterImageController) afterImageController.StopDrawing();
     }
 
     override public void EnableAbility()
@@ -175,6 +181,14 @@ public class HonorableCharge : BaseBossAbility
         {
             eventListener.OnShowAttackZone += BeginCharge;
         }
+        if (owner)
+        {
+            transform.rotation = owner.GetFirePoint().rotation;
+            SpriteRenderer ownerRenderer = owner.GetRenderer();
+            afterImageController = owner.GetAfterimageController();
+            if (ownerRenderer && afterImageController) afterImageController.SetUpRenderer(ownerRenderer,0.1f,0.2f);
+        }
+
     }
 
 }

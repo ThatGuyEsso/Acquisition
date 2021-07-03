@@ -284,8 +284,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.2
-      minScalar: 0.1
+      scalar: 0.25
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1419,8 +1419,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1538,7 +1538,19 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -4661811354567392908, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: 3518450194884932924, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: -7064515311484078053, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: -2527259895666504591, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: -1732439324639098029, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: -4946695069793485010, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: -4587841264515958579, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: 1607172629771673790, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: -8138849378168714151, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: 2692321592389801035, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: -1232926050063938426, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: 8725550157711484851, guid: a395d9331993e06409339425908733c6, type: 3}
+    - sprite: {fileID: 4007835029306791099, guid: a395d9331993e06409339425908733c6, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -2681,7 +2693,7 @@ ParticleSystem:
     inWorldSpace: 0
     multiplyDragByParticleSize: 1
     multiplyDragByParticleVelocity: 1
-    dampen: 0.08
+    dampen: 0.1
     drag:
       serializedVersion: 2
       minMaxState: 0

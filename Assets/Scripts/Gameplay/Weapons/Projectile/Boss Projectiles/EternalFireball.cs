@@ -57,6 +57,7 @@ public class EternalFireball : ProjectileGrenade
         base.OnEnable();
         animator.Play("Idle");
         isBusy = false;
+        absorbCount = 0;
         if (sizeController) sizeController.SetUpGrowSetting(2.5f, 2f, 0.2f);
         if (trigger)  trigger.enabled = true;
     }
@@ -89,6 +90,7 @@ public class EternalFireball : ProjectileGrenade
                 {
                     other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
                     canCreateFragments = false;
+                    DoBreakVFX();
                     KillProjectile();
                 }
 
@@ -103,6 +105,7 @@ public class EternalFireball : ProjectileGrenade
                 {
                     other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
                     canCreateFragments = false;
+                    DoBreakVFX();
                     KillProjectile();
                 }
             }
@@ -143,7 +146,20 @@ public class EternalFireball : ProjectileGrenade
 
     protected override void OnDisable()
     {
-        base.OnDisable();
+        OnKilled?.Invoke();
+        if (isHurt)
+        {
+            isHurt = false;
+            currHurtTime = hurtTime;
+            if (flashVFX) flashVFX.CancelFlash();
+        }
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
+        }
+
+   
+        StopAllCoroutines();
         absorbCount = 0;
     }
 
@@ -223,4 +239,7 @@ public class EternalFireball : ProjectileGrenade
             currentAngle += angleIncrement;
         }
     }
+
+
+  
 }
