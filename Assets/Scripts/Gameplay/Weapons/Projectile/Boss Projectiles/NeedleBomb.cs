@@ -19,7 +19,7 @@ public class NeedleBomb : ProjectileGrenade
     {
         yield return new WaitForSeconds(time);
         canCreateFragments = true;
-        animator.Play(explodeAnim, 0, 0f);
+        DoExplosion();
     }
 
 
@@ -32,7 +32,7 @@ public class NeedleBomb : ProjectileGrenade
                 AudioManager.instance.PlayThroughAudioPlayer(hitSFXname, transform.position, true);
             }
             canCreateFragments = true;
-            animator.Play(explodeAnim, 0, 0f);
+            DoExplosion();
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
         {
@@ -78,6 +78,12 @@ public class NeedleBomb : ProjectileGrenade
                 }
             }
         }
+    }
+
+    public void DoExplosion()
+    {
+        rb.velocity = Vector2.zero;
+        animator.Play(explodeAnim, 0, 0f);
     }
     override public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {

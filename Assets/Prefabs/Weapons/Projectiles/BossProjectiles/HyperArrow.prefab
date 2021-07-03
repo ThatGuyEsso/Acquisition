@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSize: 4
-  growRate: 2
+  growRate: 3
   intialSize: {x: 1, y: 1, z: 1}
   startOnEnable: 1
-  selfDestroy: 1
+  selfDestroy: 0

@@ -38,6 +38,10 @@ public class EssenceBomb : BaseBossAbility
         }
 
         EvaluateRemainingAttacks();
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.PlayThroughAudioPlayer("ElderCastSFX", transform.position);
+        }
 
 
     }

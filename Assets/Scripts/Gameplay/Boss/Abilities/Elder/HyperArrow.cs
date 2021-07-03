@@ -36,6 +36,12 @@ public class HyperArrow : BaseBossAbility
             return;
         }
 
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.PlayThroughAudioPlayer("ElderCastSFX", transform.position);
+
+        }
+
         EvaluateRemainingAttacks();
 
 

@@ -29,6 +29,13 @@ public class ArtilleryZone : MonoBehaviour
         {
             GameManager.instance.OnNewEvent += EvaluateNewGameEvent;
         }
+
+        if (AudioManager.instance)
+        {
+            //AudioManager.instance.PlayThroughAudioPlayer("ElderCastSFX", transform.position);
+      
+        }
+
     }
 
     virtual protected void EvaluateNewGameEvent(GameEvents newEvent)

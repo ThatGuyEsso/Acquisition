@@ -11,6 +11,7 @@ public class EtherealArtillery : BaseBossAbility
     [SerializeField] private float minArtillerySpawnRate;
     [SerializeField] private float maxArtillerySpawnRate;
 
+
     
 
     public void BeginArtilleryBarrage()
@@ -27,6 +28,8 @@ public class EtherealArtillery : BaseBossAbility
 
     public void EvaluateRemainingAttacks()
     {
+      
+
         owner.PlayAnimation("EtherealArtillery_End");
         if (attacksLeft <= 0)
         {
@@ -112,5 +115,7 @@ public class EtherealArtillery : BaseBossAbility
         StopAllCoroutines();
         if(eventListener)
             eventListener.OnShowAttackZone -= BeginArtilleryBarrage;
+
+
     }
 }

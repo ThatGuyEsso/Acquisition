@@ -36,9 +36,14 @@ public class EtheralArrow : BaseBossAbility,IInitialisable
             return;
         }
 
+        if (AudioManager.instance)
+        {
+            AudioManager.instance.PlayThroughAudioPlayer("ElderCastSFX", transform.position);
+         
+        }
+
         EvaluateRemainingAttacks();
-
-
+ 
     }
     public void EvaluateRemainingAttacks()
     {

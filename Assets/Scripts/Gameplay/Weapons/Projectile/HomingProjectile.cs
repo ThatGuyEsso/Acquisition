@@ -129,7 +129,7 @@ public class HomingProjectile : Base_Projectile
 
     protected void FixedUpdate()
     {
-        if (!canHome) return;
+        if (!canHome&&!useProximity) return;
         if (projectileSpeed > 0f)
             rb.velocity = projectileSpeed * transform.up * Time.fixedDeltaTime;
     }

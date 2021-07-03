@@ -9,6 +9,8 @@ public class AttackAnimEventListener: MonoBehaviour
     [SerializeField] private string walkSFX;
     [SerializeField] private GameObject dustVFX;
 
+
+    private AudioPlayer loopedAudioPlayer;
     public Action OnShowAttackZone;
     public Action OnHideAttackZone;
     public Action OnShootProjectile;
@@ -72,5 +74,27 @@ public class AttackAnimEventListener: MonoBehaviour
     {
         if (dustVFX)
             ObjectPoolManager.Spawn(dustVFX, transform.position, transform.rotation);
+    }
+
+
+    public void PlayLoopedSFX(string sfxName)
+    {
+        if(sfxName != string.Empty)
+        {
+            loopedAudioPlayer = AudioManager.instance.PlayThroughAudioPlayer(sfxName, transform.position);
+        }
+    }
+
+    public void PlaySFX(string sfxName)
+    {
+        if (sfxName != string.Empty)
+        {
+            AudioManager.instance.PlayThroughAudioPlayer(sfxName, transform.position);
+        }
+    }
+    public void FadeOutLooped()
+    {
+        if (loopedAudioPlayer) loopedAudioPlayer.BeginFadeOut();
+        loopedAudioPlayer = null;
     }
 }

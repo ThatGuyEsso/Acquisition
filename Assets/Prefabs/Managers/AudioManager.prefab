@@ -332,6 +332,38 @@ MonoBehaviour:
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
     pitchChange: 0.075
+  - name: ElderHurt
+    clip: {fileID: 8300000, guid: 3dd021fd343f55e468f31eb61df1ba2a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.1
+  - name: ElderChannelChant
+    clip: {fileID: 8300000, guid: 83cf84581d3e55f4a927f19680dfe185, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.1
+  - name: ElderCastChant
+    clip: {fileID: 8300000, guid: 5580765b60b51de4292cdf6bf08e754e, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.1
+  - name: ElderCastSFX
+    clip: {fileID: 8300000, guid: f657b9f1dc1fa404abd37c598426bbd1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.075
   soundGroups:
   - name: KnightSteps
     clips:
