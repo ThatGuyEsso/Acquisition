@@ -120,7 +120,10 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
 
     public Vector3 GetVCusorPosition()
     {
-        return vCursor.position;
+        if (vCursor)
+            return vCursor.position;
+        else
+            return Vector3.zero;
     }
 
     public void EnableComponent()

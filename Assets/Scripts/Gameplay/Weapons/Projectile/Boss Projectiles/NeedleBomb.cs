@@ -82,6 +82,7 @@ public class NeedleBomb : ProjectileGrenade
 
     public void DoExplosion()
     {
+        StopAllCoroutines();
         rb.velocity = Vector2.zero;
         animator.Play(explodeAnim, 0, 0f);
     }

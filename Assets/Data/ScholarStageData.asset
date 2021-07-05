@@ -33,7 +33,7 @@ MonoBehaviour:
   - maxAttackCount: 6
     attackRate: 0.5
     coolDown: 5
-    attackRange: 10
+    attackRange: 7
     isManagingBossAttack: 0
     isPriority: 1
     isSuperCloseRange: 0

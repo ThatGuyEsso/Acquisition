@@ -358,12 +358,44 @@ MonoBehaviour:
     pitchChange: 0.1
   - name: ElderCastSFX
     clip: {fileID: 8300000, guid: f657b9f1dc1fa404abd37c598426bbd1, type: 3}
-    volume: 0.5
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.1
+  - name: ElderAwaken
+    clip: {fileID: 8300000, guid: 14668cd231a98884690aa6446aeca944, type: 3}
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
     pitchChange: 0.075
+  - name: ElderDie
+    clip: {fileID: 8300000, guid: 30bfe7777d1b3bc4b9021f6ba1fe45f9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.075
+  - name: ElderSelfDestuct
+    clip: {fileID: 8300000, guid: 81d18359251906141984651eac5913b1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.075
+  - name: ElderHoover
+    clip: {fileID: 8300000, guid: dfa273b7c743289409342684167815e4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.1
   soundGroups:
   - name: KnightSteps
     clips:

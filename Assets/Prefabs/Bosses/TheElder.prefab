@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 1131090914}
   - component: {fileID: 3377212927896823433}
   - component: {fileID: 2115112462}
+  - component: {fileID: 366966660211984381}
   m_Layer: 10
   m_Name: TheElder
   m_TagString: Enemy
@@ -197,9 +198,9 @@ MonoBehaviour:
   bossDeathAnim: ElderDeath
   attackAnimEvents: {fileID: 3377212927896823433}
   animator: {fileID: 1131090909}
-  awakenSFXName: KnightAwaken
+  awakenSFXName: ElderAwaken
   hurtSFX: ElderHurt
-  dieSFX: KnightDie
+  dieSFX: ElderDie
   UI: {fileID: 3768981126912450483, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
   transitionAbilityPrefab: {fileID: 7268594380542491649, guid: 28a3803ba0fd07941a963f44b6ff79b0, type: 3}
   closeCombatAbility: {fileID: 0}
@@ -316,8 +317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1131090909}
-  walkSFX: 
-  dustVFX: {fileID: 0}
+  walkSFX: ElderHoover
+  dustVFX: {fileID: 885410467446443990, guid: 0e91e1a840e882f42b5e10a1a2a18c45, type: 3}
 --- !u!114 &2115112462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +335,27 @@ MonoBehaviour:
   defaultMaskInteractMode: 0
   activeMaskInteractMode: 1
   resetOnDisable: 0
+--- !u!50 &366966660211984381
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292969778363592952}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &2292969778836308925
 GameObject:
   m_ObjectHideFlags: 0

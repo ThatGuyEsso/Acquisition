@@ -130,6 +130,20 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.25
+    functionName: SpawnVFX
+    data: 
+    objectReferenceParameter: {fileID: 885410467446443990, guid: 0e91e1a840e882f42b5e10a1a2a18c45, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.4166666
+    functionName: PlaySFX
+    data: ElderSelfDestuct
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 2
     functionName: OnDie
     data: 

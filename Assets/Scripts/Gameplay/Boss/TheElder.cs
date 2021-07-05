@@ -153,7 +153,6 @@ public class TheElder : BaseBossAI
                     if (isDead)
                     {
                         animator.enabled = true;
-                        animator.Play("KnightDeath");
                     }
                     else
                         animator.Play("Idle");
@@ -165,7 +164,7 @@ public class TheElder : BaseBossAI
                     if (target)
                         navigation.StartAgent(target);
 
-                    animator.Play("Walking");
+                    animator.Play("Move");
                     break;
                 case AIState.Attack:
                     if (isDead) return;

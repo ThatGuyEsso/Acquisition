@@ -29,6 +29,11 @@ public class AttackAnimEventListener: MonoBehaviour
         OnDeathComplete?.Invoke();
        
     }
+    public void SpawnVFX(GameObject vfx)
+    {
+        if (ObjectPoolManager.instance) ObjectPoolManager.Spawn(vfx, transform.position, Quaternion.identity);
+
+    }
     public void OnBeginSFX()
     {
         OnPlaySFX?.Invoke();

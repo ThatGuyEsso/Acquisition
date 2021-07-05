@@ -29,10 +29,11 @@ public class MainMenuUI : MonoBehaviour
                 MusicManager.instance.BeginSongFadeIn("TitleScreenSong", 2f, 10f, 20f);
             }
         }
+        if(raycaster) raycaster.enabled = true;
     }
     public void Play()
     {
-        raycaster.enabled = false;
+        if (raycaster) raycaster.enabled = false;
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         LoadingScreen.instance.SetLoadingScreenColour(Color.black);
 
