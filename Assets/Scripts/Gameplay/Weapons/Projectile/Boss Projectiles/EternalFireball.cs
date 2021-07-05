@@ -200,35 +200,39 @@ public class EternalFireball : ProjectileGrenade
                 Vector2 dir = EssoUtility.GetVectorFromAngle(currentAngle).normalized;
                 projFrag.SetUpProjectile(1.0f, dir, fragmenteSpeed, fragmentLifeTime, count, owner);
 
-                if (owner.GetComponent<IBoss>() != null)
+                if (owner)
                 {
-                    IBoss boss = owner.GetComponent<IBoss>();
-
-                    projFrag.SetHomingTarget(boss.GetTarget());
-                }
-                else
-                {
-                    if (BossRoomManager.instance)
+                    if (owner.GetComponent<IBoss>() != null)
                     {
-                        if (BossRoomManager.instance.GetBoss())
-                            projFrag.SetHomingTarget(BossRoomManager.instance.GetBoss().transform);
+                        IBoss boss = owner.GetComponent<IBoss>();
 
+                        projFrag.SetHomingTarget(boss.GetTarget());
                     }
                     else
                     {
-                        BaseBossAI boss = FindObjectOfType<BaseBossAI>();
-                        if (boss)
+                        if (BossRoomManager.instance)
                         {
-                            projFrag.SetHomingTarget(boss.transform);
+                            if (BossRoomManager.instance.GetBoss())
+                                projFrag.SetHomingTarget(BossRoomManager.instance.GetBoss().transform);
 
                         }
                         else
                         {
-                            if (currentFragment) ObjectPoolManager.Recycle(currentFragment);
-                        }
-                    }
+                            BaseBossAI boss = FindObjectOfType<BaseBossAI>();
+                            if (boss)
+                            {
+                                projFrag.SetHomingTarget(boss.transform);
 
+                            }
+                            else
+                            {
+                                if (currentFragment) ObjectPoolManager.Recycle(currentFragment);
+                            }
+                        }
+
+                    }
                 }
+               
             }
             else
             {

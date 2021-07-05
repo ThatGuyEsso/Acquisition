@@ -28,8 +28,15 @@ public class TheScholar : BaseBossAI
                         }
                         else
                         {
-                            if (currentStageAbilities.Count <= 0) return;
-                            if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
+                            if (currentAttackIndex < currentStageAbilities.Count)
+                            {
+                                if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
+                                else
+                                {
+                                    CycleToNextAttack();
+                                    OnNewState(AIState.Chase);
+                                }
+                            }
                             else
                             {
                                 CycleToNextAttack();
@@ -47,10 +54,24 @@ public class TheScholar : BaseBossAI
                     {
                         OnNewState(AIState.Chase);
                     }
-                    else if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
+                    else if (currentAttackIndex < currentStageAbilities.Count)
                     {
-                        DoAttack();
+                        if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
+                        {
+                            DoAttack();
+                        }
+
+
+
                     }
+                    else if (!isBusy)
+
+                    {
+                        CycleToNextAttack();
+                        OnNewState(AIState.Chase);
+                    }
+
+
                 }
                 else
                 {
@@ -64,8 +85,8 @@ public class TheScholar : BaseBossAI
                         {
                             DoAttack();
                         }
-                    }
 
+                    }
                 }
 
                 break;
@@ -194,10 +215,32 @@ public class TheScholar : BaseBossAI
 
     public override void EndBossFight()
     {
-        GameStateManager.instance.runtimeData.isKnightDefeated = true;
+        GameStateManager.instance.runtimeData.isScholarDefeated = true;
         attackAnimEvents.OnDeathComplete -= EndBossFight;
         isFighting = false;
         if (GameManager.instance)
             GameManager.instance.BeginNewEvent(GameEvents.BossDefeated);
+    }
+
+
+    override protected void SetUpNextStage()
+    {
+        base.SetUpNextStage();
+
+
+        switch (currentStage)
+        {
+            case BossStage.Initial:
+                animator.SetFloat("CastSpeed",1.0f);
+                break;
+            case BossStage.Middle:
+            
+                animator.SetFloat("CastSpeed", 2f);
+                break;
+            case BossStage.End:
+
+                animator.SetFloat("CastSpeed", 3f);
+                break;
+        }
     }
 }

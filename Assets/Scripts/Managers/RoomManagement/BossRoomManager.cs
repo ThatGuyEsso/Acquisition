@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 {
     public static BossRoomManager instance;
-
+    [SerializeField] private BossType bossRoomType;
     [SerializeField] private RoomDoor entranceDoor, exitDoor;
     [SerializeField] private BaseBossAI Boss;
     [SerializeField] private CinemachineVirtualCamera cutsceneCamera;
@@ -124,7 +124,14 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
         RoomManager.instance.BeginCreatePathToHub(exitDoor.corridorSpawn.position,SceneIndex.AccensionHub);
         if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("RoomSpawn", roomCentre.position);
+        if (MusicManager.instance) MusicManager.instance.OnFadeComplete += PlayAccensionMusic;
+        if (MusicManager.instance) MusicManager.instance.BeginSongFadeOut(5f);
+    }
 
+    public void PlayAccensionMusic()
+    {
+        if (MusicManager.instance) MusicManager.instance.OnFadeComplete -= PlayAccensionMusic;
+        if (MusicManager.instance) MusicManager.instance.BeginSongFadeIn("AccensionRoomScore", 2f, 10f, 20f, 3f);
     }
     public void SetUpDoors()
     {
@@ -194,7 +201,25 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
 
             CamShake.instance.DoScreenShake(0.15f, 3f, 0f, 0.5f, 2f);
         }
+        EvaluateSongBossSong();
         GameManager.instance.BeginNewEvent(GameEvents.BossFightStarts);
+     
+    }
+
+    public void EvaluateSongBossSong()
+    {
+        switch (bossRoomType)
+        {
+            case BossType.Knight:
+                if (MusicManager.instance) MusicManager.instance.BeginSongFadeIn("SwordKingBattle", 0.5f, 5f, 10f);
+                break;
+            case BossType.Elder:
+                if (MusicManager.instance) MusicManager.instance.BeginSongFadeIn("ElderBattle", 0.5f, 5f, 10f);
+                break;
+            case BossType.Scholar:
+                if (MusicManager.instance) MusicManager.instance.BeginSongFadeIn("PhoenixBattle", 0.5f, 5f, 10f);
+                break;
+        }
     }
     public void StartBossIntro()
     {
@@ -204,9 +229,11 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
         director.playableAsset = bossIntro;
         director.time = 0f;
         director.Play();
+        if (MusicManager.instance) MusicManager.instance.OnFadeComplete -= PlayAccensionMusic;
     }
     private void OnDestroy()
     {
+        if (MusicManager.instance) MusicManager.instance.OnFadeComplete -= PlayAccensionMusic;
         GameStateManager.instance.OnNewGameState -= EvaluateGameState;
         GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
     }
@@ -226,5 +253,5 @@ public class BossRoomManager : MonoBehaviour,IManager,IInitialisable
     }
 
 
-    
+
 }

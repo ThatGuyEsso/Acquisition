@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 8005489480949347901}
   - component: {fileID: 3694828225809539336}
   - component: {fileID: 8880864229677181422}
+  - component: {fileID: 1410881266239804011}
   m_Layer: 8
   m_Name: HyperArrow
   m_TagString: Projectiles
@@ -304,3 +305,19 @@ MonoBehaviour:
   intialSize: {x: 1, y: 1, z: 1}
   startOnEnable: 1
   selfDestroy: 0
+--- !u!114 &1410881266239804011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095572269299850794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
+  resetOnDisable: 1

@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7365363936026338894}
   - component: {fileID: 3326124833965889941}
   - component: {fileID: 2762934961274228622}
+  - component: {fileID: 2350581962789974961}
   m_Layer: 8
   m_Name: HomingThrust
   m_TagString: Projectiles
@@ -248,6 +249,22 @@ MonoBehaviour:
   proximityPrefab: {fileID: 0}
   useProximity: 0
   autoAssignTarget: 1
+--- !u!114 &2350581962789974961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087995828118112649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
+  resetOnDisable: 1
 --- !u!1 &8311998857645921818
 GameObject:
   m_ObjectHideFlags: 0

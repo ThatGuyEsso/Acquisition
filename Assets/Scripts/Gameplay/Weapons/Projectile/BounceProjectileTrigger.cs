@@ -23,8 +23,10 @@ public class BounceProjectileTrigger : MonoBehaviour
         {
 
             if (!parentProjectile) return;
-
-            parentProjectile.DoBounce(other.GetContact(0));
+            if (other.contactCount > 0)
+                parentProjectile.DoBounce(other.GetContact(0));
+            else
+                parentProjectile.BreakProjectile();
 
 
         }

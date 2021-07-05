@@ -14,6 +14,7 @@ public class AccensionHubManager : MonoBehaviour
         if (instance == false)
         {
             instance = this;
+            
         }
         else
         {
@@ -27,6 +28,7 @@ public class AccensionHubManager : MonoBehaviour
     {
         if (LoadingScreen.instance) LoadingScreen.instance.SetLoadingScreenColour(Color.white);
         if (SceneTransitionManager.instance)SceneTransitionManager.instance.BeginLoadMenuScreen(SceneIndex.MainMenu, UIType.Credits);
+        if (MusicManager.instance) MusicManager.instance.BeginSongFadeOut(5f);
     }
 
 
@@ -38,6 +40,8 @@ public class AccensionHubManager : MonoBehaviour
             {
                 playerEntered = true;
                 WeaponManager.instance.RemoveWeapon();
+
+
             }
         }
     }

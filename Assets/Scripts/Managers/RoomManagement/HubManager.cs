@@ -155,7 +155,7 @@ public class HubManager : MonoBehaviour
     }
     public void TriggerHub( )
     {
-     
+        if (MusicManager.instance) MusicManager.instance.BeginSongFadeIn("HubMelody", 0.5f, 10f, 20f);
         if (runTimeData.hasWeapon == false)
         {
             Debug.Log("Player has no weapons");

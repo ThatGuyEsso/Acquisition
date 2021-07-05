@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 7387923779143078673}
   - component: {fileID: 2749869937383405854}
   - component: {fileID: 6537046043998548329}
+  - component: {fileID: 7789933120955869142}
   m_Layer: 8
   m_Name: NeedleBomb
   m_TagString: Projectiles
@@ -314,3 +315,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7789933120955869142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095572269299850794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
+  resetOnDisable: 1

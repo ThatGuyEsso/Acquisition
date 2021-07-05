@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1487004100516300036}
   - component: {fileID: 3305549361958115574}
   - component: {fileID: -8911681250623646714}
+  - component: {fileID: -2298876291262108039}
   m_Layer: 8
   m_Name: MidChargedArrow
   m_TagString: Projectiles
@@ -122,6 +123,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashColour: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 8
+--- !u!114 &-2298876291262108039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647265956065727434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
+  resetOnDisable: 1
 --- !u!1 &4333514381353449516
 GameObject:
   m_ObjectHideFlags: 0

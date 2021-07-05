@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1965777286473598213}
   - component: {fileID: 1965777286473598212}
   - component: {fileID: 1251209676801754275}
+  - component: {fileID: -8501950443805404704}
   m_Layer: 8
   m_Name: Ethereal Needle
   m_TagString: Projectiles
@@ -213,6 +214,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.32}
   serializedVersion: 2
   m_Radius: 0.09
+--- !u!114 &-8501950443805404704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965777286473598215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
+  resetOnDisable: 1
 --- !u!1 &8708875305593339104
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5669645543157636596}
   - component: {fileID: 5669645543157636592}
   - component: {fileID: 5669645543157636595}
+  - component: {fileID: -6808383673826704822}
   m_Layer: 8
   m_Name: Eternal Fireball
   m_TagString: Projectiles
@@ -242,3 +243,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashColour: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 8
+--- !u!114 &-6808383673826704822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669645543157636586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
+  resetOnDisable: 1

@@ -82,7 +82,8 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
     {
         if (isInitialised)
         {
-            input.Enable();
+            if (input != null)
+                input.Enable();
             input.Aiming.Aim.canceled += _ => StopMovement();
             input.Movement.Move.performed += _ => SetIsCharMoving(true);
             input.Movement.Move.canceled += _ => SetIsCharMoving(false);
@@ -95,7 +96,8 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
 
         if (isInitialised)
         {
-            input.Disable();
+            if (input != null)
+                input.Disable();
             input.Aiming.Aim.canceled -= _ => StopMovement();
             input.Movement.Move.performed -= _ => SetIsCharMoving(true);
             input.Movement.Move.canceled -= _ => SetIsCharMoving(false);

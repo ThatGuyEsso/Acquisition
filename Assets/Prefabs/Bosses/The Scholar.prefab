@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9117400842735764361}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.75, y: 0.00000004470348, z: 0}
+  m_LocalPosition: {x: 1, y: 0.0000015199182, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9117400843208570806}
@@ -133,6 +133,8 @@ GameObject:
   - component: {fileID: 1643762238}
   - component: {fileID: 1643762237}
   - component: {fileID: 283454270}
+  - component: {fileID: 6370110136165871259}
+  - component: {fileID: 5074845680713216480}
   m_Layer: 10
   m_Name: The Scholar
   m_TagString: Enemy
@@ -254,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bf620f13c14744bac3d93dee464faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationRate: 0.1
+  rotationRate: 0.25
   target: {fileID: 0}
 --- !u!114 &7013723237921150126
 MonoBehaviour:
@@ -268,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6be28c84de66a49aa744a5837ef5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationRate: 0.1
+  rotationRate: 0.25
 --- !u!114 &5731821582628676037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,19 +301,19 @@ MonoBehaviour:
   BossName: The Scholar
   maxHealth: 1000
   aiTickRate: 0.25
-  bossDeathAnim: 
   target: {fileID: 0}
   stageData: {fileID: 11400000, guid: 5c5b73f805ef19143b211ce25888e6a5, type: 2}
   bossUIPrefab: {fileID: 3768981126912450485, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
-  awakenAnimName: ScholarAwaken
   firepoint: {fileID: 9117400842735764362}
   navigation: {fileID: 7013723237921150099}
   faceTarget: {fileID: 7013723237921150127}
   faceMovementDirection: {fileID: 7013723237921150126}
-  animator: {fileID: 7013723237921150097}
   maxHurtTime: 0.25
-  attackAnimEvents: {fileID: 5731821582628676037}
   currentStageAbilities: []
+  awakenAnimName: ScholarAwaken
+  bossDeathAnim: ScholarDeath
+  attackAnimEvents: {fileID: 5731821582628676037}
+  animator: {fileID: 7013723237921150097}
   awakenSFXName: KnightAwaken
   hurtSFX: KnightHurt
   dieSFX: KnightDie
@@ -367,6 +369,44 @@ MonoBehaviour:
   renderers: []
   defaultMaskInteractMode: 0
   activeMaskInteractMode: 1
+  resetOnDisable: 0
+--- !u!50 &6370110136165871259
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9117400843208570804}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!58 &5074845680713216480
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9117400843208570804}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.86, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.26
 --- !u!1 &9117400843545789681
 GameObject:
   m_ObjectHideFlags: 0

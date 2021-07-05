@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8315753582471524826}
   - component: {fileID: 8799903909184502860}
   - component: {fileID: 1713462300409229224}
+  - component: {fileID: -4826846406973595106}
   m_Layer: 8
   m_Name: PlayerHomingArrow
   m_TagString: Projectiles
@@ -140,6 +141,22 @@ MonoBehaviour:
   proximityPrefab: {fileID: 0}
   useProximity: 0
   autoAssignTarget: 1
+--- !u!114 &-4826846406973595106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647265956065727434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
+  resetOnDisable: 1
 --- !u!1 &4333514381353449516
 GameObject:
   m_ObjectHideFlags: 0

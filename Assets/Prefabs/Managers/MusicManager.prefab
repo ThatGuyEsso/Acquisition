@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a8407bce40e2a4684c055ad01e7fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primarySource: {fileID: 0}
-  secondarySource: {fileID: 0}
+  primarySource: {fileID: 1354930526020720254}
+  secondarySource: {fileID: 1354930525412509143}
   crossFadeRate: 0
   fadeInRate: 0
   fadeOutRate: 0
-  timeToNextSong: 0
+  minTimeToNextSong: 0
+  maxTimeToNextSong: 0
   musicAudioGroup: {fileID: 0}
   music:
   - name: TitleScreenSong

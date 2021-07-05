@@ -11,6 +11,7 @@ public class BouncingFireAbility : BaseBossAbility
     public void ShootProjectile()
     {
 
+        if (!isEnabled) return;
         attacksLeft--;
         GameObject projectileObject = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
         IInitialisable init = projectileObject.GetComponent<IInitialisable>();
@@ -40,6 +41,7 @@ public class BouncingFireAbility : BaseBossAbility
     }
     public void EvaluateRemainingAttacks()
     {
+        if (!enabled) return;
         if (attacksLeft <= 0)
         {
             eventListener.OnShootProjectile -= ShootProjectile;
@@ -59,8 +61,11 @@ public class BouncingFireAbility : BaseBossAbility
     override public void DisableAbility()
     {
         base.DisableAbility();
-
-        eventListener.OnShootProjectile -= ShootProjectile;
+        StopAllCoroutines();
+        if (eventListener)
+        {
+            eventListener.OnShootProjectile -= ShootProjectile;
+        }
 
     }
 
@@ -74,4 +79,6 @@ public class BouncingFireAbility : BaseBossAbility
             eventListener.OnShootProjectile += ShootProjectile;
         }
     }
+
+  
 }

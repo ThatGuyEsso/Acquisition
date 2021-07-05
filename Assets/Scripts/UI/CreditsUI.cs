@@ -23,6 +23,14 @@ public class CreditsUI : Base_UI
             UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedElement);
 
             if (!Cursor.visible) Cursor.visible = true;
+
+            if (MusicManager.instance)
+            {
+                if (!MusicManager.instance.IsPlaying())
+                {
+                     MusicManager.instance.BeginSongFadeIn("TitleScreenSong", 2f, 10f, 20f);
+                }
+            }
         }
     }
 }

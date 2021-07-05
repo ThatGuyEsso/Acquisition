@@ -162,12 +162,12 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
                 break;
             case GameEvents.PlayerDefeat:
                 WeaponManager.instance.RemoveWeapon();
+                if (MusicManager.instance) MusicManager.instance.StopMusic();
                 OnNewEvent?.Invoke(lastEvent);
-           
                 break;
 
             case GameEvents.BossDefeated:
-          
+                if (MusicManager.instance) MusicManager.instance.BeginSongFadeOut(5f);
                 OnNewEvent?.Invoke(lastEvent);
 
                 break;

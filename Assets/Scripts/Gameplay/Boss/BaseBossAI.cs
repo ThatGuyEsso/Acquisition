@@ -24,22 +24,25 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected string BossName;
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float aiTickRate= 0.25f;
-    [SerializeField] protected string bossDeathAnim;
     public Transform target;
     [SerializeField] protected BossStageData stageData;
     [SerializeField] protected GameObject bossUIPrefab;
-    [SerializeField] protected string awakenAnimName;
-    [Header("Componeents")]
+    [Header("Components")]
     protected SpriteFlash flashVFX;
     [SerializeField] protected Transform firepoint;
     [SerializeField] protected TDNavMeshMovement navigation;
     [SerializeField] protected FaceTarget faceTarget;
     [SerializeField] protected FaceMovementDirection faceMovementDirection;
-    [SerializeField] protected Animator animator;
 
     [SerializeField] protected float maxHurtTime;
-    [SerializeField] protected AttackAnimEventListener attackAnimEvents;
     [SerializeField] protected List<BaseBossAbility> currentStageAbilities = new List<BaseBossAbility>();
+
+    [Header("Animation Settings")]
+    [SerializeField] protected string awakenAnimName;
+    [SerializeField] protected string bossDeathAnim;
+    [SerializeField] protected AttackAnimEventListener attackAnimEvents;
+    [SerializeField] protected Animator animator;
+
     [Header("SFX Settings")]
     [SerializeField] protected string awakenSFXName;
     [SerializeField] protected string hurtSFX;
@@ -71,6 +74,15 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     {
         if (animator.enabled) animator.enabled = false;
         if (inDebug) Init();
+        if (GameManager.instance) GameManager.instance.OnNewEvent += EvaluateeNewGameEvents;
+    }
+
+    public void EvaluateeNewGameEvents(GameEvents gameEvent)
+    {
+        if (gameEvent == GameEvents.PlayerDefeat)
+        {
+            CancelBoss();
+        }
     }
     virtual public void Init()
     {
@@ -187,12 +199,35 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         }
     }
 
+    public void CancelBoss()
+    {
+        if (currentStageAbilities.Count > 0)
+        {
+            foreach (BaseBossAbility ability in currentStageAbilities)
+            {
+                ability.DisableAbility();
+                if (ability.gameObject)
+                    ObjectPoolManager.Recycle(ability.gameObject);
+            }
+            currentStageAbilities.Clear();
+            if (transitionAbility)
+            {
+                if (transitionAbility.isEnabled) transitionAbility.DisableAbility();
 
+                ObjectPoolManager.Recycle(transitionAbility.gameObject);
+            }
+        }
+        OnNewState(AIState.Idle);
+        isFighting = false;
+        
+    }
     virtual public void CycleToNextAttack()
     {
+        if (isDead) return;
         if(currentStage!= BossStage.Transition)
         {
-            currentStageAbilities[currentAttackIndex].DisableAbility();
+            if(currentAttackIndex< currentStageAbilities.Count)
+                currentStageAbilities[currentAttackIndex].DisableAbility();
             currentAttackIndex++;
             if (currentAttackIndex >= currentStageAbilities.Count) currentAttackIndex = 0;
             currentStageAbilities[currentAttackIndex].EnableAbility();
@@ -279,6 +314,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         {
             attackAnimEvents.OnAnimStart -= OnAttackBegin;
             attackAnimEvents.OnAnimEnd -= OnAttackEnd;
+            if (GameManager.instance) GameManager.instance.OnNewEvent -= EvaluateeNewGameEvents;
         }
 
     }
@@ -482,7 +518,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         attackAnimEvents.OnDeathComplete += EndBossFight;
 
         if (AudioManager.instance && dieSFX!=string.Empty) {
-            AudioManager.instance.PlayGroupThroughAudioPlayer(dieSFX, transform.position);
+            AudioManager.instance.PlayThroughAudioPlayer(dieSFX, transform.position);
         }
         animator.Play(bossDeathAnim,0,0f);
         isBusy = false;
@@ -504,8 +540,9 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     }
     virtual public void OnDestroy()
     {
-        if(!inDebug)
-            if (UI) ObjectPoolManager.Recycle(UI.gameObject);
+   
+        if (UI) ObjectPoolManager.Recycle(UI.gameObject);
+        if (GameManager.instance) GameManager.instance.OnNewEvent -= EvaluateeNewGameEvents;
     }
 
     public Transform GetTarget()
@@ -528,4 +565,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         
         return afterImageController;
     }
+
+        
+
+    
 }

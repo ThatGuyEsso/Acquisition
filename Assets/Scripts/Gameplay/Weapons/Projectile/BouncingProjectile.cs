@@ -142,12 +142,22 @@ public class BouncingProjectile : Base_Projectile
     }
     public void Reflect(ContactPoint2D pointOfContact)
     {
-        ContactPoint2D contactPoint = pointOfContact;
-        Vector2 dir = Vector2.Reflect(transform.up, contactPoint.normal);
-        projectileSpeed += 2.0f;
-        rb.velocity = dir * projectileSpeed;
 
-        OrientateToMovement();
+        if (rb)
+        {
+            ContactPoint2D contactPoint = pointOfContact;
+
+            Vector2 dir = Vector2.Reflect(transform.up, contactPoint.normal);
+            projectileSpeed += 2.0f;
+            rb.velocity = dir * projectileSpeed;
+
+            OrientateToMovement();
+        }
+        else
+        {
+            KillProjectile();
+        }
+    
     }
 
 

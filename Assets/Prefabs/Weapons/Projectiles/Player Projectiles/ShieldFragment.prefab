@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8315753582471524826}
   - component: {fileID: 6252321632855776151}
   - component: {fileID: 5326127282160248246}
+  - component: {fileID: -7173466492499030480}
   m_Layer: 8
   m_Name: ShieldFragment
   m_TagString: Projectiles
@@ -133,6 +134,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7173466492499030480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647265956065727434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
+  resetOnDisable: 1
 --- !u!1 &4333514381353449516
 GameObject:
   m_ObjectHideFlags: 0

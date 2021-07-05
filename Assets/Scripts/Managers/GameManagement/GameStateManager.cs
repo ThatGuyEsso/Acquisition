@@ -61,6 +61,8 @@ public class GameStateManager : MonoBehaviour
         OnNewGameState(GameState.StartGame);
         if (AudioManager.instance)
             AudioManager.instance.PlayThroughAudioPlayer("DungeonEcho", Vector3.zero);
+
+        if(MusicManager.instance) MusicManager.instance.BeginSongFadeIn("TitleScreenSong", 0.1f, 10f, 20f);
     }
     public void BeginNewState(GameState newState)
     {

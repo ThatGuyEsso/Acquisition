@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 1131090915}
   - component: {fileID: 1131090914}
   - component: {fileID: 3377212927896823433}
+  - component: {fileID: 2115112462}
   m_Layer: 10
   m_Name: TheElder
   m_TagString: Enemy
@@ -183,22 +184,22 @@ MonoBehaviour:
   BossName: The Elder
   maxHealth: 1000
   aiTickRate: 0.25
-  bossDeathAnim: ElderDeath
   target: {fileID: 0}
   stageData: {fileID: 11400000, guid: dd3c353a73522ae40afb5b1e03359997, type: 2}
   bossUIPrefab: {fileID: 3768981126912450485, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
-  awakenAnimName: AwakenElder
   firepoint: {fileID: 2292969776957785286}
   navigation: {fileID: 1131090911}
   faceTarget: {fileID: 1131090915}
   faceMovementDirection: {fileID: 1131090914}
-  animator: {fileID: 1131090909}
   maxHurtTime: 0.25
-  attackAnimEvents: {fileID: 3377212927896823433}
   currentStageAbilities: []
+  awakenAnimName: AwakenElder
+  bossDeathAnim: ElderDeath
+  attackAnimEvents: {fileID: 3377212927896823433}
+  animator: {fileID: 1131090909}
   awakenSFXName: KnightAwaken
   hurtSFX: ElderHurt
-  dieSFX: 
+  dieSFX: KnightDie
   UI: {fileID: 3768981126912450483, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
   transitionAbilityPrefab: {fileID: 7268594380542491649, guid: 28a3803ba0fd07941a963f44b6ff79b0, type: 3}
   closeCombatAbility: {fileID: 0}
@@ -262,7 +263,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2292969778363592952}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.68
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -287,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bf620f13c14744bac3d93dee464faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationRate: 0
+  rotationRate: 0.1
   target: {fileID: 0}
 --- !u!114 &1131090914
 MonoBehaviour:
@@ -317,6 +318,22 @@ MonoBehaviour:
   animator: {fileID: 1131090909}
   walkSFX: 
   dustVFX: {fileID: 0}
+--- !u!114 &2115112462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292969778363592952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe8308bed6e946b403376b88e4de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultMaskInteractMode: 0
+  activeMaskInteractMode: 1
+  resetOnDisable: 0
 --- !u!1 &2292969778836308925
 GameObject:
   m_ObjectHideFlags: 0

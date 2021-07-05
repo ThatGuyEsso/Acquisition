@@ -39,13 +39,22 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                             }
                             else
                             {
-                                if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
-                                else
+                                if( currentAttackIndex < currentStageAbilities.Count)
+                                {
+                                    if (currentStageAbilities[currentAttackIndex].IsPriority()) OnNewState(AIState.Chase);
+                                    else
+                                    {
+                                        CycleToNextAttack();
+                                        OnNewState(AIState.Chase);
+                                    }
+                                }
+                                else 
                                 {
                                     CycleToNextAttack();
                                     OnNewState(AIState.Chase);
                                 }
-                            }
+
+                        }
                         }
                     }
            
@@ -57,12 +66,26 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                         {
                             OnNewState(AIState.Chase);
                         }
-                        else if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
+                        else if (currentAttackIndex < currentStageAbilities.Count)
                         {
-                            DoAttack();
+                            if (currentStageAbilities[currentAttackIndex].CanAttack() && !isBusy)
+                            {
+                                DoAttack();
+                            }
+                       
+                       
+
                         }
+                        else if (!isBusy)
+
+                        {
+                            CycleToNextAttack();
+                            OnNewState(AIState.Chase);
+                        }
+
+
                     }
-                    else 
+                    else  
                     {
                         if (transitionAbility)
                         {
@@ -74,9 +97,10 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                             {
                                 DoAttack();
                             }
-                        }
 
+                        }
                     }
+               
           
                     break;
             }

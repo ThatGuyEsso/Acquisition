@@ -12,6 +12,7 @@ public class BossExit : MonoBehaviour
         if (other.CompareTag("Player")&&!isTriggered)
         {
             HubManager.instance.BeginBossRoomLoad(bossType);
+            if (MusicManager.instance) MusicManager.instance.BeginSongFadeOut(1.5f);
             isTriggered = true;
            
         }

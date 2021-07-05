@@ -55,7 +55,8 @@ public class ControllerManager : MonoBehaviour, IInitialisable
     {
         if (isInitialised)
         {
-            input.Enable();
+            if(input!=null)
+                input.Enable();
            
         }
  
@@ -64,7 +65,8 @@ public class ControllerManager : MonoBehaviour, IInitialisable
     {
         if (isInitialised)
         {
-            input.Disable();
+            if (input != null)
+                input.Disable();
 
         }
     }
@@ -73,7 +75,8 @@ public class ControllerManager : MonoBehaviour, IInitialisable
     {
         if (isInitialised)
         {
-            input.Disable();
+            if (input != null)
+                input.Disable();
            
         }
     }

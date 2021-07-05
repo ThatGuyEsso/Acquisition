@@ -7,6 +7,9 @@ public class SpriteMaskInteract : MonoBehaviour
     [SerializeField] private List<SpriteRenderer> renderers =new List<SpriteRenderer>();
     [SerializeField] private SpriteMaskInteraction defaultMaskInteractMode;
     [SerializeField] private SpriteMaskInteraction activeMaskInteractMode;
+
+
+    public bool resetOnDisable = false;
     public void Awake()
     {
         SpriteRenderer[] childRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -46,6 +49,12 @@ public class SpriteMaskInteract : MonoBehaviour
                 break;
   
         }
+    }
+
+
+    private void OnDisable()
+    {
+        if (resetOnDisable) DeactiveInteract();
     }
     public void ActiveInteract()
     {
