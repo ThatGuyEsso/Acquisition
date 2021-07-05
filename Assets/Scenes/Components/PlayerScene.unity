@@ -539,6 +539,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2223311544884401197, guid: 3e777ee7b590c5a4fbb4a4c6d46a67fb, type: 3}
+      propertyPath: m_TagString
+      value: Cursor
+      objectReference: {fileID: 0}
     - target: {fileID: 2223311545681273984, guid: 3e777ee7b590c5a4fbb4a4c6d46a67fb, type: 3}
       propertyPath: m_Layer
       value: 5

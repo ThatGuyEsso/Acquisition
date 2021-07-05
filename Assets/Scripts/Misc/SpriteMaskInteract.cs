@@ -52,7 +52,7 @@ public class SpriteMaskInteract : MonoBehaviour
     }
 
 
-    private void OnDisable()
+    private void OnEnable()
     {
         if (resetOnDisable) DeactiveInteract();
     }

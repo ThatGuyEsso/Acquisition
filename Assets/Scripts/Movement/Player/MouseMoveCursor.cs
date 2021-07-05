@@ -123,7 +123,17 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
         if (vCursor)
             return vCursor.position;
         else
-            return Vector3.zero;
+        {
+            vCursor = GameObject.FindGameObjectWithTag("Cursor").transform;
+            if (vCursor)
+            {
+                return vCursor.position;
+            }
+            return Mouse.current.position.ReadValue();
+        }
+          
+            
+        
     }
 
     public void EnableComponent()

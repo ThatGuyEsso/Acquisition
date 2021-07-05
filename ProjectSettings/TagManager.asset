@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - MainMenu
   - Projectiles
+  - Cursor
   layers:
   - Default
   - TransparentFX
