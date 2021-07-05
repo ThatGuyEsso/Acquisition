@@ -44,12 +44,13 @@ public class ArtilleryZone : MonoBehaviour
         {
 
             case GameEvents.PlayerDefeat:
+                StopAllCoroutines();
                 if (gameObject)
                     ObjectPoolManager.Recycle(gameObject);
                 break;
 
             case GameEvents.BossDefeated:
-
+                StopAllCoroutines();
                 if (gameObject)
                     ObjectPoolManager.Recycle(gameObject);
                 break;

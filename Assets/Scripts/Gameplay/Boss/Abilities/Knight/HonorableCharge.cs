@@ -61,6 +61,7 @@ public class HonorableCharge : BaseBossAbility
                     AudioManager.instance.PlayGroupThroughAudioPlayer("KnightSteps", owner.transform.position,true);
                 currTimeToSFX = sfxPlayRate;
                 if (dustVFx) ObjectPoolManager.Spawn(dustVFx, owner.transform.position, owner.transform.rotation);
+                if (CamShake.instance) CamShake.instance.DoScreenShake(0.1f, 2f, 0f, 0.05f, 1.5f);
             }
             else
             {

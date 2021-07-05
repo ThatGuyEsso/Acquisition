@@ -47,8 +47,8 @@ public class OmniSlash : BaseBossAbility
             {
                 attackZone.SetIsPlayerZone(false);
                 attackZone.SetUpDamageVolume(1f, 10f, owner.transform.up, owner.gameObject);
-
-            }
+                if (CamShake.instance) CamShake.instance.DoScreenShake(0.25f, 3f, 0f, 0.15f, 2f);
+            }   
         }
     }
 

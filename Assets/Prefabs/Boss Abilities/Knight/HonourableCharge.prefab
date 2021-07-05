@@ -59,7 +59,7 @@ MonoBehaviour:
   inDebug: 0
   stopChargeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 8320
   maxChargeSpeed: 25
   chargeTime: 0.75
   acceleration: 10

@@ -59,11 +59,24 @@ public class AttackVolume : MonoBehaviour,IVolumes
             else if (other.gameObject.CompareTag("Wall"))
             {
                 OnObstacleHit?.Invoke();
-                Debug.Log("Hit wall");
+         ;
             }
         }
- 
-     
+
+        if (other.gameObject.CompareTag("Obstacles"))
+        {
+
+
+
+            if (other.GetComponent<IDamage>() != null)
+            {
+                other.GetComponent<IDamage>().OnDamage(damage, transform.up, 0f, owner);
+                OnObstacleHit?.Invoke();
+            }
+
+
+
+        }
     }
 
     virtual protected void OnTriggerStay2D(Collider2D other)

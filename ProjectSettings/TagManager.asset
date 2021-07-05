@@ -9,6 +9,7 @@ TagManager:
   - MainMenu
   - Projectiles
   - Cursor
+  - Obstacles
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Characters
   - Triggers
   - BoundsCollider
-  - 
+  - Obstacles
   - 
   - 
   - 

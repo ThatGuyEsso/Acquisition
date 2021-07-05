@@ -155,6 +155,21 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
 
             }
         }
+
+        if (other.gameObject.CompareTag("Obstacles"))
+        {
+
+        
+       
+            if (other.GetComponent<IDamage>() != null)
+            {
+                other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
+                KillProjectile();
+            }
+
+
+      
+        }
         else if (other.gameObject.CompareTag("Enemy"))
         {
             if (other.gameObject != owner)

@@ -103,6 +103,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeObstacle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4162725577967612842, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
+      propertyPath: hitVFX
+      value: 
+      objectReference: {fileID: 5701875958789621029, guid: 9bb2576af49900645ad861c6a2a8fb4b, type: 3}
+    - target: {fileID: 4162725577967612842, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
+      propertyPath: breakVFX
+      value: 
+      objectReference: {fileID: 9022003087826204904, guid: 9d92c85336f8fc241889cfe4ce70fe6e, type: 3}
     m_RemovedComponents:
     - {fileID: 2258025162805376262, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
