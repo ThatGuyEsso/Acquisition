@@ -16,8 +16,15 @@ public class FireBreathAbility : BaseBossAbility
     private DynamicConeCollider damageVolume;
     private GameObject fireBreathVFX;
     private bool isAttacking;
+
+    private AudioPlayer fireBreathSFXPlayer;
     public void BeginFireBreath()
     {
+
+        if (fireBreathSFXPlayer) fireBreathSFXPlayer.KillAudio();
+
+        fireBreathSFXPlayer = AudioManager.instance.PlayThroughAudioPlayer("FireBurning", transform.position);
+
         attacksLeft--;
         isAttacking = true;
         currDuration = breathDuration;
@@ -52,7 +59,8 @@ public class FireBreathAbility : BaseBossAbility
 
         }
 
-
+        if (fireBreathSFXPlayer) fireBreathSFXPlayer.KillAudio();
+        fireBreathSFXPlayer = null;
         fireBreathVFX = null;
         if (damageVolume) ObjectPoolManager.Recycle(damageVolume);
         damageVolume = null;
@@ -154,6 +162,10 @@ public class FireBreathAbility : BaseBossAbility
         if (damageVolume) ObjectPoolManager.Recycle(damageVolume);
         damageVolume = null;
         isAttacking = false;
+
+
+        if (fireBreathSFXPlayer) fireBreathSFXPlayer.KillAudio();
+        fireBreathSFXPlayer = null;
     }
 
 

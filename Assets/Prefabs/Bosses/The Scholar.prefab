@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7013723237921150097}
-  walkSFX: 
+  walkSFX: KnightSteps
   dustVFX: {fileID: 6585081868266106000, guid: 42ba38011733464428d4dc8a05b60d45, type: 3}
 --- !u!114 &6001327530133925513
 MonoBehaviour:
@@ -314,9 +314,9 @@ MonoBehaviour:
   bossDeathAnim: ScholarDeath
   attackAnimEvents: {fileID: 5731821582628676037}
   animator: {fileID: 7013723237921150097}
-  awakenSFXName: KnightAwaken
-  hurtSFX: KnightHurt
-  dieSFX: KnightDie
+  awakenSFXName: ScholarAwaken
+  hurtSFX: ScholarHurt
+  dieSFX: ScholarDie
   UI: {fileID: 0}
   transitionAbilityPrefab: {fileID: 1661473339226164796, guid: af4d2ef0e4294d64f9f3fa83dbbf6c19, type: 3}
   closeCombatAbility: {fileID: 0}

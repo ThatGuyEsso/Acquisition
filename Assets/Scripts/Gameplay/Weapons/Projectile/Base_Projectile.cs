@@ -55,6 +55,13 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
                 if (gameObject)
                     ObjectPoolManager.Recycle(gameObject);
                 break;
+
+
+            case GameEvents.ExitGame:
+
+                if (gameObject)
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
         }
     }
     virtual protected void OnDisable()

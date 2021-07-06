@@ -97,6 +97,13 @@ public class AttackAnimEventListener: MonoBehaviour
             AudioManager.instance.PlayThroughAudioPlayer(sfxName, transform.position);
         }
     }
+    public void PlaySFXAtRandPitch(string sfxName)
+    {
+        if (sfxName != string.Empty)
+        {
+            AudioManager.instance.PlayThroughAudioPlayer(sfxName, transform.position,true);
+        }
+    }
     public void FadeOutLooped()
     {
         if (loopedAudioPlayer) loopedAudioPlayer.BeginFadeOut();

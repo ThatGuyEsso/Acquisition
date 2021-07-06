@@ -396,6 +396,54 @@ MonoBehaviour:
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
     pitchChange: 0.1
+  - name: ScholarAwaken
+    clip: {fileID: 8300000, guid: 59842e45435fee346b9d41ab1bc69a25, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.1
+  - name: ScholarHurt
+    clip: {fileID: 8300000, guid: 2123e8c555f331d4d9e70ff19446d6c0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.1
+  - name: FireCastSFX
+    clip: {fileID: 8300000, guid: e45286e917eb870448db0a6927fa11f9, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.075
+  - name: FireBurning
+    clip: {fileID: 8300000, guid: 3331169b922f505409652316f7dfb2ed, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.075
+  - name: ScholarDie
+    clip: {fileID: 8300000, guid: 2cc38bb990ea77044a8370c466de111b, type: 3}
+    volume: 0.74
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.075
+  - name: ScholarWingFlap
+    clip: {fileID: 8300000, guid: 5744b83289233a645bb53865e74cafce, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    pitchChange: 0.1
   soundGroups:
   - name: KnightSteps
     clips:

@@ -26,7 +26,7 @@ public class MainMenuUI : MonoBehaviour
         {
             if (!MusicManager.instance.IsPlaying())
             {
-                MusicManager.instance.BeginSongFadeIn("TitleScreenSong", 2f, 10f, 20f);
+                if (MusicManager.instance) MusicManager.instance.BeginSongFadeIn("TitleScreenSong", 0.1f, 10f, 20f,5f);
             }
         }
         if(raycaster) raycaster.enabled = true;
