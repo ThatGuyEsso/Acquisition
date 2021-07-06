@@ -8,7 +8,7 @@ public class SoundSettings : MonoBehaviour
     [SerializeField] private AudioMixer musicVolume;
     [SerializeField] private AudioMixer sfxVoulume;
     [SerializeField] private AudioMixer uiVolume;
-
+    [SerializeField] private GameObject firstSelectedElement;
     public void SetMusicVolume(float value)
     {
         musicVolume.SetFloat("MusicVolume", value);
@@ -22,5 +22,21 @@ public class SoundSettings : MonoBehaviour
     public void SetUIVolume(float value)
     {
         uiVolume.SetFloat("UIVolume", value);
+        if(value <= -80f)
+        {
+            if (MusicManager.instance) MusicManager.instance.ToggleMusic(false);
+        }
+        else
+        {
+            if (MusicManager.instance) MusicManager.instance.ToggleMusic(true);
+        }
+    }
+
+    public void OnEnable()
+    {
+        if (UIManager.instance)
+        {
+            UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedElement);
+        }
     }
 }

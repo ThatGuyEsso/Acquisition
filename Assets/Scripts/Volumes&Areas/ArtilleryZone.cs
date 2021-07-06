@@ -18,8 +18,15 @@ public class ArtilleryZone : MonoBehaviour
     private AttackVolume attackZone;
     float currentZoneSize;
     bool isGrowing;
-
+    SpriteRenderer gfx;
+    [SerializeField] private Sprite defaultSprite;
     public System.Action<ArtilleryZone> OnTriggered;
+
+
+    private void Awake()
+    {
+        gfx = GetComponentInChildren<SpriteRenderer>();
+    }
     private void OnEnable()
     {
         transform.localScale = Vector3.zero;
@@ -35,22 +42,23 @@ public class ArtilleryZone : MonoBehaviour
             //AudioManager.instance.PlayThroughAudioPlayer("ElderCastSFX", transform.position);
       
         }
-
+        if (gfx && defaultSprite) gfx.sprite = defaultSprite;
     }
 
     virtual protected void EvaluateNewGameEvent(GameEvents newEvent)
     {
+  
         switch (newEvent)
         {
 
             case GameEvents.PlayerDefeat:
-                StopAllCoroutines();
+        
                 if (gameObject)
                     ObjectPoolManager.Recycle(gameObject);
                 break;
 
             case GameEvents.BossDefeated:
-                StopAllCoroutines();
+           
                 if (gameObject)
                     ObjectPoolManager.Recycle(gameObject);
                 break;
@@ -143,5 +151,9 @@ public class ArtilleryZone : MonoBehaviour
         if (attackZone)
             ObjectPoolManager.Recycle(attackZone.gameObject);
 
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
+        }
     }
 }

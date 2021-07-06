@@ -228,7 +228,7 @@ MonoBehaviour:
   growRate: 3
   intialSize: {x: 0, y: 0, z: 0}
   startOnEnable: 0
-  selfDestroy: 1
+  selfDestroy: 0
 --- !u!114 &5669645543157636595
 MonoBehaviour:
   m_ObjectHideFlags: 0

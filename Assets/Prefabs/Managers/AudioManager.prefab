@@ -342,7 +342,7 @@ MonoBehaviour:
     pitchChange: 0.1
   - name: ElderChannelChant
     clip: {fileID: 8300000, guid: 83cf84581d3e55f4a927f19680dfe185, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -432,7 +432,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2cc38bb990ea77044a8370c466de111b, type: 3}
     volume: 0.74
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
     mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
     pitchChange: 0.075

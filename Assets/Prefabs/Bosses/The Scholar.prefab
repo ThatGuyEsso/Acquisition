@@ -308,6 +308,7 @@ MonoBehaviour:
   navigation: {fileID: 7013723237921150099}
   faceTarget: {fileID: 7013723237921150127}
   faceMovementDirection: {fileID: 7013723237921150126}
+  transitionShieldPrefab: {fileID: 3081464016770205716, guid: 5da652c1d4ccef540966a3267a86e67f, type: 3}
   maxHurtTime: 0.25
   currentStageAbilities: []
   awakenAnimName: ScholarAwaken

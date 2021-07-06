@@ -532,10 +532,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 46442246}
     m_Modifications:
-    - target: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-      propertyPath: m_FlipY
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 118221031589024621, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
       propertyPath: m_Name
       value: SwordKnight
@@ -602,39 +598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6dd4d8eef0f1e47a5e191253a94567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &496832145 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 118221030609055913, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-  m_PrefabInstance: {fileID: 496832142}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &496832146 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 118221030609055912, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-  m_PrefabInstance: {fileID: 496832142}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &496832147 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 118221030609055914, guid: 13c8eff2c4dcddb448a9bef3854b671d, type: 3}
-  m_PrefabInstance: {fileID: 496832142}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &496832148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496832146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ecdda0c44feb94cb3c4e73ca2bd905, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  afterImageObject: {fileID: 2905011447593517038, guid: 2feefa0746f0ecb459574780308c599f, type: 3}
-  targetRenderer: {fileID: 496832147}
-  imageLifeTime: 0
-  timeBetweenImage: 0
-  targetTransform: {fileID: 496832145}
-  startOnEnable: 0
 --- !u!4 &499112220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4189932352378263380, guid: a408d5ce92865574ba12dd0fe16a63fa, type: 3}

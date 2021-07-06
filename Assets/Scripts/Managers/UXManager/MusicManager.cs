@@ -27,6 +27,8 @@ public class MusicManager : MonoBehaviour,IInitialisable,IManager
     bool isFadingIn;
     bool isFadingOut;
 
+    bool isMusicOff;
+
 
     public Action OnSongEnd;
 
@@ -82,6 +84,7 @@ public class MusicManager : MonoBehaviour,IInitialisable,IManager
 
     public void Update()
     {
+        if (isMusicOff) return;
         if (isFadingIn)
         {
             primarySource.volume = Mathf.Lerp(primarySource.volume, currentSongPlaying.volume, Time.deltaTime * fadeInRate);
@@ -110,6 +113,7 @@ public class MusicManager : MonoBehaviour,IInitialisable,IManager
     }
     public void BeginSongFadeIn(string songName, float fadeRate, float minTimeNext, float maxTimeNext)
     {
+        if (isMusicOff) return;
         Sound newSong = GetSong(songName);
 
         if (newSong != null)
@@ -132,6 +136,7 @@ public class MusicManager : MonoBehaviour,IInitialisable,IManager
 
     public void BeginSongFadeIn(string songName, float fadeRate, float minTimeNext, float maxTimeNext,float delay)
     {
+        if (isMusicOff) return;
         Sound newSong = GetSong(songName);
 
         if (newSong != null)
@@ -155,6 +160,7 @@ public class MusicManager : MonoBehaviour,IInitialisable,IManager
 
     public IEnumerator FadeInWithDelay(Sound song, float delay)
     {
+
         yield return new WaitForSeconds(delay);
         DoSongFadeIn(song);
     }
@@ -177,6 +183,7 @@ public class MusicManager : MonoBehaviour,IInitialisable,IManager
 
     public void DoSongFadeIn(Sound song)
     {
+        if (isMusicOff) return;
         StopAllCoroutines();
         primarySource.volume = 0f;
         primarySource.clip = song.clip;
@@ -256,6 +263,18 @@ public class MusicManager : MonoBehaviour,IInitialisable,IManager
         secondarySource.Stop();
         isFadingIn = false;
         isFadingOut = false;
+    }
+
+    public bool IsMusicOff() { return isMusicOff; }
+    public void ToggleMusic(bool isOn)
+    {
+        if (isOn) isMusicOff = false;
+        else
+        {
+            isMusicOff = true;
+            StopAllCoroutines();
+            StopMusic();
+        }
     }
 }
 

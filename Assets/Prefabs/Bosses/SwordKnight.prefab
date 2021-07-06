@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 118221030609055913}
   - component: {fileID: 118221030609055914}
+  - component: {fileID: 496832148}
   m_Layer: 10
   m_Name: GFX
   m_TagString: Untagged
@@ -82,6 +83,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &496832148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118221030609055912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ecdda0c44feb94cb3c4e73ca2bd905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterImageObject: {fileID: 2905011447593517038, guid: 2feefa0746f0ecb459574780308c599f, type: 3}
+  targetRenderer: {fileID: 118221030609055914}
+  imageLifeTime: 0
+  timeBetweenImage: 0
+  targetTransform: {fileID: 118221030609055913}
+  startOnEnable: 0
 --- !u!1 &118221031589024621
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,19 +226,20 @@ MonoBehaviour:
   BossName: Sword-King
   maxHealth: 1000
   aiTickRate: 0.25
-  bossDeathAnim: KnightDeath
   target: {fileID: 0}
   stageData: {fileID: 11400000, guid: 08e82186df2413a488b8bf5cbb9fd8a6, type: 2}
   bossUIPrefab: {fileID: 3768981126912450485, guid: f689c1bd0d43dbc48bceaa74241ec774, type: 3}
-  awakenAnimName: Awaken
   firepoint: {fileID: 118221031614647829}
   navigation: {fileID: 118221031589024617}
   faceTarget: {fileID: 118221031589024618}
   faceMovementDirection: {fileID: 118221031589024596}
-  animator: {fileID: 118221031589024598}
+  transitionShieldPrefab: {fileID: 7820436250809234256, guid: 37def1eb8d1d88f47a3e0f266dc350dc, type: 3}
   maxHurtTime: 0.25
-  attackAnimEvents: {fileID: 118221031589024597}
   currentStageAbilities: []
+  awakenAnimName: Awaken
+  bossDeathAnim: KnightDeath
+  attackAnimEvents: {fileID: 118221031589024597}
+  animator: {fileID: 118221031589024598}
   awakenSFXName: KnightAwaken
   hurtSFX: KnightHurt
   dieSFX: KnightDie
@@ -312,6 +332,7 @@ MonoBehaviour:
   renderers: []
   defaultMaskInteractMode: 0
   activeMaskInteractMode: 1
+  resetOnDisable: 0
 --- !u!114 &848520677018339722
 MonoBehaviour:
   m_ObjectHideFlags: 0

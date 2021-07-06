@@ -192,6 +192,7 @@ MonoBehaviour:
   navigation: {fileID: 1131090911}
   faceTarget: {fileID: 1131090915}
   faceMovementDirection: {fileID: 1131090914}
+  transitionShieldPrefab: {fileID: 7820436250809234256, guid: 37def1eb8d1d88f47a3e0f266dc350dc, type: 3}
   maxHurtTime: 0.25
   currentStageAbilities: []
   awakenAnimName: AwakenElder

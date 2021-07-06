@@ -295,7 +295,7 @@ MonoBehaviour:
   growRate: 2
   intialSize: {x: 1, y: 1, z: 1}
   startOnEnable: 1
-  selfDestroy: 1
+  selfDestroy: 0
 --- !u!95 &6537046043998548329
 Animator:
   serializedVersion: 3

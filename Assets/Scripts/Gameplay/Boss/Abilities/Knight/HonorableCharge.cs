@@ -173,6 +173,25 @@ public class HonorableCharge : BaseBossAbility
             eventListener.OnShowAttackZone -= BeginCharge;
 
         if (afterImageController) afterImageController.StopDrawing();
+        if(isCharging)
+        {
+            isStopping = false;
+            isCharging = false;
+            rb.velocity = Vector2.zero;
+            owner.GetComponent<IBoss>().SetUseRigidBody(false);
+
+            if (afterImageController) afterImageController.StopDrawing();
+            currentSpeed = 0;
+            owner.SetIsBusy(false);
+            if (chargeCollider)
+            {
+                chargeCollider.OnObstacleHit -= StopCharge;
+                chargeCollider.OnPlayerHit -= StopCharge;
+                ObjectPoolManager.Recycle(chargeCollider.gameObject);
+            }
+            chargeCollider = null;
+
+        }
     }
 
     override public void EnableAbility()

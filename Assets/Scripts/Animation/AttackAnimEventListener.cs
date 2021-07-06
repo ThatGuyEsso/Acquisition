@@ -109,4 +109,10 @@ public class AttackAnimEventListener: MonoBehaviour
         if (loopedAudioPlayer) loopedAudioPlayer.BeginFadeOut();
         loopedAudioPlayer = null;
     }
+
+
+    private void OnDisable()
+    {
+        FadeOutLooped();
+    }
 }

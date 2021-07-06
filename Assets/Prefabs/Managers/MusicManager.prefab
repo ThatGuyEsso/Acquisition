@@ -56,7 +56,7 @@ MonoBehaviour:
   music:
   - name: TitleScreenSong
     clip: {fileID: 8300000, guid: 33028ff7a3e0292458a491f24799f773, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -64,7 +64,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: PhoenixBattle
     clip: {fileID: 8300000, guid: bb68c19a5969e424389984976d094b45, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: AccensionRoomScore
     clip: {fileID: 8300000, guid: ff7ada5c8f8db734ea3124b235bcd33c, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -88,7 +88,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: ElderBattle
     clip: {fileID: 8300000, guid: 6523972ab412cab46a85f376f6be6b1b, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
     pitchChange: 0
   - name: SwordKingBattle
     clip: {fileID: 8300000, guid: 49512d9491c09d54e904aa8408d57134, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}

@@ -5,16 +5,27 @@ using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject firstSelectedButton;
+    [SerializeField] private FadeOutImages imageFade;
     [SerializeField] private GraphicRaycaster raycaster;
     bool isMusicPlaying;
 
     private void Awake()
     {
         if (!raycaster)
+        {
             raycaster = GetComponent<GraphicRaycaster>();
+           
+        }
+
     }
     private void OnEnable()
     {
+        if (imageFade) {
+            imageFade.BeginFadeIn(5f);
+            raycaster.enabled = false;
+            imageFade.OnFadeComplete += EnableButtons;
+        }
+        
         if (UIManager.instance)
             UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedButton);
         if (firstSelectedButton.activeInHierarchy)
@@ -26,14 +37,21 @@ public class MainMenuUI : MonoBehaviour
         {
             if (!MusicManager.instance.IsPlaying())
             {
-                if (MusicManager.instance) MusicManager.instance.BeginSongFadeIn("TitleScreenSong", 0.1f, 10f, 20f,5f);
+                if (MusicManager.instance) MusicManager.instance.BeginSongFadeIn("TitleScreenSong", 5f, 10f, 20f,5f);
             }
         }
-        if(raycaster) raycaster.enabled = true;
+     
+    }
+
+    public void EnableButtons()
+    {
+        if (imageFade) imageFade.OnFadeComplete -= EnableButtons;
+        if (raycaster) raycaster.enabled = true;
     }
     public void Play()
     {
         if (raycaster) raycaster.enabled = false;
+        if (imageFade) imageFade.BeginFadeOut(5f);
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         LoadingScreen.instance.SetLoadingScreenColour(Color.black);
 
@@ -43,8 +61,9 @@ public class MainMenuUI : MonoBehaviour
         {
             BeginStartGame();
         }
-        else if(!MusicManager.instance.IsPlaying())
+        else if(!MusicManager.instance.IsPlaying()||MusicManager.instance.IsMusicOff())
         {
+            MusicManager.instance.StopMusic();
             BeginStartGame();
         }
         else

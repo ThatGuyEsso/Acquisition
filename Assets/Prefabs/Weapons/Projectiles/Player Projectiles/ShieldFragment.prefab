@@ -83,7 +83,7 @@ MonoBehaviour:
   flashVFX: {fileID: 0}
   destroyProjectileLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 16576
   breakVFX: {fileID: 8029368237794633155, guid: 10847b4d85d1a724283f82afd2b7d2ef, type: 3}
 --- !u!114 &8315753582471524826
 MonoBehaviour:

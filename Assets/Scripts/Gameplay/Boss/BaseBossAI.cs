@@ -33,6 +33,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected TDNavMeshMovement navigation;
     [SerializeField] protected FaceTarget faceTarget;
     [SerializeField] protected FaceMovementDirection faceMovementDirection;
+    [SerializeField] protected GameObject transitionShieldPrefab;
 
     [SerializeField] protected float maxHurtTime;
     [SerializeField] protected List<BaseBossAbility> currentStageAbilities = new List<BaseBossAbility>();
@@ -68,7 +69,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     protected bool isFighting;
     protected bool isDead;
     protected bool isTransitioning;
-
+    protected GameObject transitionShield;
     public System.Action OnAwakened; 
     protected void Awake()
     {
@@ -216,6 +217,12 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 
                 ObjectPoolManager.Recycle(transitionAbility.gameObject);
             }
+
+        }
+        if (transitionShield)
+        {
+            ObjectPoolManager.Recycle(transitionShield);
+            transitionShield = null;
         }
         OnNewState(AIState.Idle);
         isFighting = false;
@@ -231,6 +238,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             currentAttackIndex++;
             if (currentAttackIndex >= currentStageAbilities.Count) currentAttackIndex = 0;
             currentStageAbilities[currentAttackIndex].EnableAbility();
+
+     
         }
         else
         {
@@ -244,6 +253,13 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     {
 
         currentStage = (BossStage)currentStageIndex;
+
+
+        if (transitionShield)
+        {
+            ObjectPoolManager.Recycle(transitionShield);
+            transitionShield = null;
+        }
         if (currentStageAbilities.Count<=0)
         {
             foreach (BaseBossAbility ability in currentStageAbilities)
@@ -453,6 +469,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 
                     UI.DoHurtUpdate(currentHealth);
                     BeginTransitionStage();
+          
                 }
                 break;
             case BossStage.Middle:
@@ -464,6 +481,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 
                     UI.DoHurtUpdate(currentHealth);
                     BeginTransitionStage();
+                
                 }
                 break;
             case BossStage.End:
@@ -497,7 +515,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         currentStageIndex++;
         Debug.Log("Current Stage index= " + currentStageIndex);
         OnNewState(AIState.Attack);
-        
+        transitionShield = ObjectPoolManager.Spawn(transitionShieldPrefab, transform);
     }
     public void KillBoss()
     {

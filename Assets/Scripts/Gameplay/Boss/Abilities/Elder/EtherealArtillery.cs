@@ -57,23 +57,12 @@ public class EtherealArtillery : BaseBossAbility
         Vector3 spawnPoint = Vector3.zero;
         for (int i = 0; i < nBarrages; i++)
         {
-            if (i == nBarrages - 1)
-            {
-                if (owner.GetTarget())
-                {
-                    spawnPoint = owner.GetTarget().position + (Vector3)Random.insideUnitCircle * 5f;
-                    barrage = ObjectPoolManager.Spawn(artilleryPrefab, spawnPoint, Quaternion.identity);
-                    ArtilleryZone barrageZone = barrage.GetComponent<ArtilleryZone>();
-                    if (barrageZone)
-                    {
-                        barrageZone.SetHomingTarget(owner.GetTarget());
-                    }
-                }
-                
+            
+          
+      
 
-            }
-            else
-            {
+        
+   
                
                 if (BossRoomManager.instance)
                 {
@@ -93,11 +82,22 @@ public class EtherealArtillery : BaseBossAbility
                 ObjectPoolManager.Spawn(artilleryPrefab, spawnPoint, Quaternion.identity);
 
              
-            }
+            
          
             spawnRate = Random.Range(minArtillerySpawnRate, maxArtillerySpawnRate);
             yield return new WaitForSeconds(spawnRate);
         }
+        if (owner.GetTarget())
+        {
+            spawnPoint = owner.GetTarget().position + (Vector3)Random.insideUnitCircle * 5f;
+            barrage = ObjectPoolManager.Spawn(artilleryPrefab, spawnPoint, Quaternion.identity);
+            ArtilleryZone barrageZone = barrage.GetComponent<ArtilleryZone>();
+            if (barrageZone)
+            {
+                barrageZone.SetHomingTarget(owner.GetTarget());
+            }
+        }
+
         EvaluateRemainingAttacks();
     }
     public override void EnableAbility()
