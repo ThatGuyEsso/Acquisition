@@ -245,4 +245,24 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
         if (GameManager.instance)
             GameManager.instance.BeginNewEvent(GameEvents.BossDefeated);
     }
+
+
+    protected override void SetUpNextStage()
+    {
+        base.SetUpNextStage();
+        switch (currentStage)
+        {
+            case BossStage.Initial:
+                animator.SetFloat("ChargeBuildSpeed", 1.0f);
+                break;
+            case BossStage.Middle:
+
+                animator.SetFloat("ChargeBuildSpeed", 2f);
+                break;
+            case BossStage.End:
+
+                animator.SetFloat("ChargeBuildSpeed", 3f);
+                break;
+        }
+    }
 }
