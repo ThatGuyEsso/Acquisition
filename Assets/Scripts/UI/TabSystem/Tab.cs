@@ -19,11 +19,13 @@ public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IP
     public void OnPointerClick(PointerEventData eventData)
     {
         tabManager.OnTabSelected(this);
+        if(AudioManager.instance) AudioManager.instance.PlayUISound("ButtonPress", Vector3.zero, true);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         tabManager.OnTabEnter(this);
+        if (AudioManager.instance) AudioManager.instance.PlayUISound("ButtonHover", Vector3.zero, true);
     }
 
     public void OnPointerExit(PointerEventData eventData)

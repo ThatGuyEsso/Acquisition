@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 public class SettingsUI : Base_UI
 {
-    [SerializeField] private GameObject firstSelectedElement;
+ 
     [SerializeField] private VideoSettings videoSettings;
 
     public override void InitUI(UIType uiType, UIType preUI)
@@ -21,11 +21,5 @@ public class SettingsUI : Base_UI
     }
 
 
-    public void OnEnable()
-    {
-        if (UIManager.instance)
-        {
-            UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedElement);
-        }
-    }
+
 }

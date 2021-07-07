@@ -29,8 +29,9 @@ public class OmniSlash : BaseBossAbility
         attacksLeft--;
         eventListener.OnShowAttackZone -= DoOmniSlash;
         eventListener.OnShootProjectile += SpawnSlashProjectile;
+        eventListener.OnShowAttackZone += CreateAttackZone;
         eventListener.OnHideAttackZone += RemoveAttackZone;
-        CreateAttackZone();
+  
         owner.PlayAnimation("OmniSlash");
 
 

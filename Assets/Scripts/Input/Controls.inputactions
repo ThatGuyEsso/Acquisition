@@ -683,6 +683,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Tabs",
+            "id": "0a4159ac-9c72-458f-94be-bb6567bccfbc",
+            "actions": [
+                {
+                    "name": "NextTab",
+                    "type": "Button",
+                    "id": "d576365e-c3a1-4d44-95ef-ec57c6b908b2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PrevTab",
+                    "type": "Button",
+                    "id": "e20eee16-d188-4ec5-8ae5-68d571149a0a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a457d093-8415-4a1e-94e0-653204159927",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NextTab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f686f21a-0711-4023-a509-9869e5143386",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PrevTab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

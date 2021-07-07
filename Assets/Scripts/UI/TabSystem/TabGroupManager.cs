@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class TabGroupManager : MonoBehaviour
+using UnityEngine.InputSystem;
+public class TabGroupManager : MonoBehaviour, Controls.ITabsActions
 {
     public List<Tab> tabs;
     [SerializeField] private TabSettings settings;
     [SerializeField] private List<GameObject> objectsToSwap;
 
+    private Controls input;
     private Tab selectedTab;
 
     private void Awake()
@@ -15,6 +16,9 @@ public class TabGroupManager : MonoBehaviour
         if(tabs[0] != null)
             selectedTab = tabs[0];
 
+        input = new Controls();
+        input.Tabs.SetCallbacks(this);
+        input.Enable();
         RestTabs();
     }
 
@@ -71,5 +75,59 @@ public class TabGroupManager : MonoBehaviour
             buttons.background.transform.localScale = new Vector3(1, 1, 1);
             
         }
+    }
+
+    public void OnNextTab(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (AudioManager.instance) AudioManager.instance.PlayUISound("ButtonHover", Vector3.zero, true);
+            int currentIndex = GetCurrentTabindex();
+
+            currentIndex++;
+            if (currentIndex >= tabs.Count) currentIndex = 0;
+
+            OnTabSelected(tabs[currentIndex]);
+        }
+
+    }
+
+    public void OnPrevTab(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (AudioManager.instance) AudioManager.instance.PlayUISound("ButtonHover", Vector3.zero, true);
+            int currentIndex = GetCurrentTabindex();
+
+            currentIndex--;
+            if (currentIndex < 0) currentIndex = tabs.Count - 1;
+
+            OnTabSelected(tabs[currentIndex]);
+        }
+
+    }
+
+    public int GetCurrentTabindex()
+    {
+        for(int i=0; i < tabs.Count; i++)
+        {
+            if (tabs[i] == selectedTab) return i;
+        }
+         return 0;
+    }
+    public void OnEnable()
+    {
+        if (input != null) input.Enable();
+    }
+
+
+    public void OnDisable()
+    {
+        if (input != null) input.Disable();
+    }
+
+    public void OnDestroy()
+    {
+        if (input != null) input.Disable();
     }
 }

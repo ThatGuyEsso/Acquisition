@@ -33,12 +33,20 @@ public class FireBreathAbility : BaseBossAbility
 
         fireBreathVFX = ObjectPoolManager.Spawn(fireBreathVFXPrefab, owner.GetFirePoint().position, owner.GetFirePoint().rotation);
 
+
+        StartCoroutine(WaitToCreateAttackVolume(1f));
+    }
+
+
+    public IEnumerator WaitToCreateAttackVolume(float time)
+    {
+        yield return new WaitForSeconds(time);
         if (damageVolume) ObjectPoolManager.Recycle(damageVolume);
         damageVolume = ObjectPoolManager.Spawn(damageVolumePrefab, Vector3.zero, Quaternion.identity).GetComponent<DynamicConeCollider>();
 
         if (damageVolume)
         {
-            damageVolume.SetColliderShape(owner.GetFirePoint().right, attackZoneRadius, attackZoneArchAngle, owner.GetFirePoint().position,60f);
+            damageVolume.SetColliderShape(owner.GetFirePoint().right, attackZoneRadius, attackZoneArchAngle, owner.GetFirePoint().position, 60f);
             IVolumes attackVol = damageVolume.GetComponent<IVolumes>();
             if (attackVol != null)
             {
@@ -47,9 +55,8 @@ public class FireBreathAbility : BaseBossAbility
             }
         }
 
-
     }
- 
+
 
     public void StopFireBreath()
     {
@@ -58,7 +65,7 @@ public class FireBreathAbility : BaseBossAbility
             fireBreathVFX.GetComponent<ParticleSystem>().Stop();
 
         }
-
+        StopAllCoroutines();
         if (fireBreathSFXPlayer) fireBreathSFXPlayer.KillAudio();
         fireBreathSFXPlayer = null;
         fireBreathVFX = null;
@@ -147,6 +154,7 @@ public class FireBreathAbility : BaseBossAbility
     public override void DisableAbility()
     {
         base.DisableAbility();
+        StopAllCoroutines();
         StopAllCoroutines();
         if (eventListener)
             eventListener.OnShowAttackZone -= Lockon;

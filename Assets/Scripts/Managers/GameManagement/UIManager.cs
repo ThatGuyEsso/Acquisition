@@ -132,6 +132,6 @@ public class UIManager : MonoBehaviour, IInitialisable
             Time.timeScale = 1;
     }
 
-
+    public UIType GetPrevUI() { return previousUI; }
 
 }

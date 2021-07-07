@@ -696,6 +696,52 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Tabs"",
+            ""id"": ""0a4159ac-9c72-458f-94be-bb6567bccfbc"",
+            ""actions"": [
+                {
+                    ""name"": ""NextTab"",
+                    ""type"": ""Button"",
+                    ""id"": ""d576365e-c3a1-4d44-95ef-ec57c6b908b2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PrevTab"",
+                    ""type"": ""Button"",
+                    ""id"": ""e20eee16-d188-4ec5-8ae5-68d571149a0a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a457d093-8415-4a1e-94e0-653204159927"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NextTab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f686f21a-0711-4023-a509-9869e5143386"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PrevTab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -753,6 +799,10 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Console = asset.FindActionMap("Console", throwIfNotFound: true);
         m_Console_ToggleConsole = m_Console.FindAction("ToggleConsole", throwIfNotFound: true);
         m_Console_Return = m_Console.FindAction("Return", throwIfNotFound: true);
+        // Tabs
+        m_Tabs = asset.FindActionMap("Tabs", throwIfNotFound: true);
+        m_Tabs_NextTab = m_Tabs.FindAction("NextTab", throwIfNotFound: true);
+        m_Tabs_PrevTab = m_Tabs.FindAction("PrevTab", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1061,6 +1111,47 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public ConsoleActions @Console => new ConsoleActions(this);
+
+    // Tabs
+    private readonly InputActionMap m_Tabs;
+    private ITabsActions m_TabsActionsCallbackInterface;
+    private readonly InputAction m_Tabs_NextTab;
+    private readonly InputAction m_Tabs_PrevTab;
+    public struct TabsActions
+    {
+        private @Controls m_Wrapper;
+        public TabsActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @NextTab => m_Wrapper.m_Tabs_NextTab;
+        public InputAction @PrevTab => m_Wrapper.m_Tabs_PrevTab;
+        public InputActionMap Get() { return m_Wrapper.m_Tabs; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TabsActions set) { return set.Get(); }
+        public void SetCallbacks(ITabsActions instance)
+        {
+            if (m_Wrapper.m_TabsActionsCallbackInterface != null)
+            {
+                @NextTab.started -= m_Wrapper.m_TabsActionsCallbackInterface.OnNextTab;
+                @NextTab.performed -= m_Wrapper.m_TabsActionsCallbackInterface.OnNextTab;
+                @NextTab.canceled -= m_Wrapper.m_TabsActionsCallbackInterface.OnNextTab;
+                @PrevTab.started -= m_Wrapper.m_TabsActionsCallbackInterface.OnPrevTab;
+                @PrevTab.performed -= m_Wrapper.m_TabsActionsCallbackInterface.OnPrevTab;
+                @PrevTab.canceled -= m_Wrapper.m_TabsActionsCallbackInterface.OnPrevTab;
+            }
+            m_Wrapper.m_TabsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @NextTab.started += instance.OnNextTab;
+                @NextTab.performed += instance.OnNextTab;
+                @NextTab.canceled += instance.OnNextTab;
+                @PrevTab.started += instance.OnPrevTab;
+                @PrevTab.performed += instance.OnPrevTab;
+                @PrevTab.canceled += instance.OnPrevTab;
+            }
+        }
+    }
+    public TabsActions @Tabs => new TabsActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -1110,5 +1201,10 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnToggleConsole(InputAction.CallbackContext context);
         void OnReturn(InputAction.CallbackContext context);
+    }
+    public interface ITabsActions
+    {
+        void OnNextTab(InputAction.CallbackContext context);
+        void OnPrevTab(InputAction.CallbackContext context);
     }
 }
