@@ -32,7 +32,7 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
         input.Movement.Move.canceled += _ => SetIsCharMoving(false);
         isInitialised = true;
     }
-    private void SetIsCharMoving(bool moving) { isCharMoving = moving; }
+    public void SetIsCharMoving(bool moving) { isCharMoving = moving; }
     public void LateUpdate()
     {
         if(isMoving|| isCharMoving) MoveCursor();

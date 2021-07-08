@@ -15,7 +15,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
     [SerializeField] private Camera activeCamera;
 
     [SerializeField] private bool inDebug;
-
+    private bool isCharMoving;
     private void Awake()
     {
         if (inDebug) Init();
@@ -28,10 +28,11 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         input.Enable();
 
         input.Aiming.Aim.canceled += _ => StopMovement();
+        input.Movement.Move.performed += _ => SetIsCharMoving(true);
+        input.Movement.Move.canceled += _ => SetIsCharMoving(false);
         isInitialised = true;
-        input.Movement.Move.performed += _ => SetIsMoving(true);
-        input.Movement.Move.canceled += _ => SetIsMoving(false);
     }
+    public void SetIsCharMoving(bool moving) { isCharMoving = moving; }
 
     public void OnAim(InputAction.CallbackContext context)
     {
@@ -47,26 +48,46 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
 
     public void LateUpdate()
     {
-        if (isMoving) MoveCursor();
+        if (isMoving||isCharMoving) MoveCursor();
     }
-    private void SetIsMoving(bool moving) { isMoving = moving; }
+
     public void MoveCursor()
     {
-        if (activeCamera && vCursor)
+        if (isMoving)
         {
-            vCursor.position += (Vector3)movementDirection * magnitude * Time.deltaTime * sensitivity;
-            //clamp to camerea viewport
-            Vector2 point = vCursor.position;
+            if (activeCamera && vCursor)
+            {
+                vCursor.position += (Vector3)movementDirection * magnitude * Time.deltaTime * sensitivity;
+                //clamp to camerea viewport
+                Vector2 point = vCursor.position;
 
-            Vector2 maxBounds = EssoUtility.MaxCamBounds(activeCamera);
+                Vector2 maxBounds = EssoUtility.MaxCamBounds(activeCamera);
 
-            Vector2 minBounds = EssoUtility.MinCamBounds(activeCamera);
+                Vector2 minBounds = EssoUtility.MinCamBounds(activeCamera);
 
-            point.x = Mathf.Clamp(point.x, minBounds.x, maxBounds.x);
-            point.y = Mathf.Clamp(point.y, minBounds.y, maxBounds.y);
-            vCursor.position = point;
+                point.x = Mathf.Clamp(point.x, minBounds.x, maxBounds.x);
+                point.y = Mathf.Clamp(point.y, minBounds.y, maxBounds.y);
+                vCursor.position = point;
 
+            }
         }
+        else if (isCharMoving)
+        {
+            if (activeCamera && vCursor)
+            {
+                Vector2 point = activeCamera.ScreenToWorldPoint(vCursor.transform.position);
+
+                Vector2 maxBounds = EssoUtility.MaxCamBounds(activeCamera);
+
+                Vector2 minBounds = EssoUtility.MinCamBounds(activeCamera);
+
+                point.x = Mathf.Clamp(point.x, minBounds.x, maxBounds.x);
+                point.y = Mathf.Clamp(point.y, minBounds.y, maxBounds.y);
+                vCursor.position = point;
+
+            }
+        }
+
     }
 
     private void StopMovement()
