@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5178756561905980827}
   - component: {fileID: 5178756561905980824}
+  - component: {fileID: 8302794514633087610}
   m_Layer: 0
   m_Name: RoyalSlashAttribute
   m_TagString: Untagged
@@ -49,3 +50,15 @@ MonoBehaviour:
   hitPointBonus: 3
   sizeIncreaseRate: 10
   growDelay: 0.05
+--- !u!114 &8302794514633087610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5178756561905980826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd51ed81f1d1bae4290d54a95e6a29e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
             case GameEvents.ExitGame:
 
                 OnNewEvent?.Invoke(lastEvent);
-                if (MusicManager.instance) MusicManager.instance.BeginSongFadeOut(8f);
+                if (MusicManager.instance) MusicManager.instance.StopMusic();
 
                 break;
 

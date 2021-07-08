@@ -15,7 +15,7 @@ public class SkillOrbPickUp : MonoBehaviour
     [SerializeField] private string displaySFX;
 
     [SerializeField] private GameObject gfx;
-    [SerializeField] private FadeOutSprite fadeControl;
+    [SerializeField] private GFXLightFadeOut fadeControl;
 
 
     bool isFading;
@@ -23,7 +23,7 @@ public class SkillOrbPickUp : MonoBehaviour
     public System.Action<SkillOrbPickUp> OnSkillSelect;
     private void Awake()
     {
-        fadeControl = GetComponent<FadeOutSprite>();
+        fadeControl = GetComponent<GFXLightFadeOut>();
         if(!detectCollider)
         detectCollider = GetComponent<Collider2D>();
     }
