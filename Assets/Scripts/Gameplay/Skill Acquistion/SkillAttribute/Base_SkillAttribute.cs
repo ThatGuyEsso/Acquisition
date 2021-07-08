@@ -91,4 +91,17 @@ public class Base_SkillAttribute : MonoBehaviour
             owner.OnSecondaryAbility -= EvaluateSecondaryAbilityAttribute;
         }
     }
+
+
+    virtual protected void OnDestroy()
+    {
+        if (owner)
+        {
+            owner.OnPrimaryAttack -= EvaluatePrimaryAttackAttribute;
+            owner.OnPrimaryAbility -= EvaluatePrimaryAbilityAttribute;
+
+            owner.OnSecondaryAttack -= EvaluateSecondaryAttackAttribute;
+            owner.OnSecondaryAbility -= EvaluateSecondaryAbilityAttribute;
+        }
+    }
 }

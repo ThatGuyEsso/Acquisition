@@ -99,7 +99,7 @@ public class TDInputMovement : MonoBehaviour, Controls.IMovementActions, IInitia
     public void OnMove(InputAction.CallbackContext context)
     {
         Vector2 dir = context.ReadValue<Vector2>();
-        if (context.performed && dir != Vector2.zero)
+        if (context.performed && dir != Vector2.zero&& dir.magnitude>0.2f)
         {
             magnitude = dir.magnitude;
             movementDir = dir.normalized;

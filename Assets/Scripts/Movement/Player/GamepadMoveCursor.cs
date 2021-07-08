@@ -36,7 +36,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
     public void OnAim(InputAction.CallbackContext context)
     {
         Vector2 dir = context.ReadValue<Vector2>();
-        if (dir != Vector2.zero)
+        if (dir != Vector2.zero && dir.magnitude>0.2f)
         {
             isMoving = true;
             magnitude = dir.magnitude;
