@@ -27,6 +27,8 @@ public class ArtilleryZone : MonoBehaviour
     {
         gfx = GetComponentInChildren<SpriteRenderer>();
     }
+
+       
     private void OnEnable()
     {
         transform.localScale = Vector3.zero;
@@ -118,6 +120,7 @@ public class ArtilleryZone : MonoBehaviour
     {
         if (hometarget)
         {
+            
             target = hometarget;
             isHoming = true;
         }
@@ -147,7 +150,7 @@ public class ArtilleryZone : MonoBehaviour
     {
         StopAllCoroutines();
         animator.enabled = false;
-
+        canHome = true;
         if (attackZone)
             ObjectPoolManager.Recycle(attackZone.gameObject);
 
