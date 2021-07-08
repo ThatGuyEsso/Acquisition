@@ -51,8 +51,18 @@ public class VideoSettings : MonoBehaviour, IInitialisable
     {
         if (UIManager.instance)
         {
+            StartCoroutine(WaitToSelectGameObject());
+
+        }
+    }
+
+    public IEnumerator WaitToSelectGameObject()
+    {
+        if (UIManager.instance)
+        {
+            UIManager.instance.eventSystem.SetSelectedGameObject(null);
+            yield return null;
             UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedElement);
-            
         }
     }
 

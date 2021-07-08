@@ -33,7 +33,7 @@ public class FireBreathAbility : BaseBossAbility
 
         fireBreathVFX = ObjectPoolManager.Spawn(fireBreathVFXPrefab, owner.GetFirePoint().position, owner.GetFirePoint().rotation);
 
-
+        StopAllCoroutines();
         StartCoroutine(WaitToCreateAttackVolume(1f));
     }
 

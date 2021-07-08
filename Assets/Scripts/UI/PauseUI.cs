@@ -27,12 +27,23 @@ public class PauseUI : Base_UI
     public void OnEnable()
     {
         if(UIManager.instance)
+            StartCoroutine(WaitToSelectGameObject());
+
+
+        if (!Cursor.visible) Cursor.visible = true;
+
+
+    }
+
+
+    public IEnumerator WaitToSelectGameObject()
+    {
+        if (UIManager.instance)
+        {
+            UIManager.instance.eventSystem.SetSelectedGameObject(null);
+            yield return null;
             UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedButton);
-
-
-        
-
-
+        }
     }
 
     public override void InitUI(UIType uiType, UIType preUI)

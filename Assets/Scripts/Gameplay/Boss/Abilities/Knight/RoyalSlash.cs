@@ -36,6 +36,8 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
         dynamicAttackZone = ObjectPoolManager.Spawn(attackAreaPrefab, Vector3.zero, Quaternion.identity).GetComponent<DynamicConeCollider>();
       
         dynamicAttackZone.SetColliderShape(owner.GetFirePoint().up, attackRadius, maxAttackAngle, owner.transform.position);
+        AttackVolume attackVol = dynamicAttackZone.GetComponent<AttackVolume>();
+        if (attackVol) attackVol.SetDespawnTime(1f);
         if (CamShake.instance) CamShake.instance.DoScreenShake(0.25f, 2f, 0f, 0.05f, 2f);
     }
 
@@ -56,6 +58,12 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
             //Debug.Log("NO Attacks left");
             StopAllCoroutines();
             owner.CycleToNextAttack();
+            if (eventListener)
+            {
+                eventListener.OnShowAttackZone -= CreateAttackZone;
+                eventListener.OnHideAttackZone -= RemoveAttackZone;
+                eventListener.OnShootProjectile -= ShootProjectile;
+            }
             StartCoroutine(BeginResetAbility(coolDown));
           
         }

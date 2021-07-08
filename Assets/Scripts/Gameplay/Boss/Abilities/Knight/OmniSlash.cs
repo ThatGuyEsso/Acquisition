@@ -39,6 +39,7 @@ public class OmniSlash : BaseBossAbility
 
     public void CreateAttackZone()
     {
+        eventListener.OnShowAttackZone -= CreateAttackZone;
         if (afterImageController) afterImageController.StartDrawing();
         if (attackZonePrefab)
         {
@@ -117,18 +118,20 @@ public class OmniSlash : BaseBossAbility
     public override void DisableAbility()
     {
         base.DisableAbility();
-        if (!eventListener) return;
-        if (isSuperCloseRange)
-        {
-            eventListener.OnAnimEnd -= DisableAbility;
-        }
-        eventListener.OnShowAttackZone -= DoOmniSlash;
         if (attackZone)
         {
             ObjectPoolManager.Recycle(attackZone.gameObject);
             attackZone = null;
         }
         if (afterImageController) afterImageController.StopDrawing();
+        if (!eventListener) return;
+        if (isSuperCloseRange)
+        {
+            eventListener.OnAnimEnd -= DisableAbility;
+        }
+        eventListener.OnShowAttackZone -= CreateAttackZone;
+        eventListener.OnShowAttackZone -= DoOmniSlash;
+     
 
     }
 

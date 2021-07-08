@@ -18,10 +18,11 @@ public class AttackVolume : MonoBehaviour,IVolumes
     protected GameObject owner;
 
 
-
+    
     protected void OnDisable()
     {
         StopAllCoroutines();
+        if (GameManager.instance) GameManager.instance.OnNewEvent -= EvaluateGameEvent;
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
@@ -137,9 +138,27 @@ public class AttackVolume : MonoBehaviour,IVolumes
     }
 
     virtual public void EvaluateGameEvent(GameEvents gameEvent){
-       
+        switch (gameEvent)
+        {
+            case GameEvents.BossDefeated:
+                StopAllCoroutines();
+                if (gameObject) ObjectPoolManager.Recycle(gameObject);
+                break;
+            case GameEvents.PlayerDefeat:
+                StopAllCoroutines();
+                if (gameObject) ObjectPoolManager.Recycle(gameObject);
+                break;
+            case GameEvents.ExitGame:
+                StopAllCoroutines();
+                if (gameObject) ObjectPoolManager.Recycle(gameObject);
+                break;
+        }
     }
 
+    private void OnEnable()
+    {
+        if (GameManager.instance) GameManager.instance.OnNewEvent += EvaluateGameEvent;
+    }
 
     public IEnumerator TimeToDespawn(float time)
     {

@@ -37,10 +37,13 @@ public class UIManager : MonoBehaviour, IInitialisable
     private UIType previousUI = UIType.None;
     private UIType currentActive;
 
+    Controls input;
+
     private void Awake()
     {
         if (inDebug)
             Init();
+
     }
 
     public void Init()
@@ -62,6 +65,26 @@ public class UIManager : MonoBehaviour, IInitialisable
         }
 
         SwitchUI(startingUI);
+
+        input = new Controls();
+        input.Back.GoBack.performed +=_=> GoBack();
+        input.Enable();
+    }
+
+    public void GoBack()
+    {
+
+        if ( previousUI == UIType.None||currentActive == UIType.GameUI || currentActive==UIType.MainMenu) return;
+
+        if (currentActive == UIType.Credits)
+        {
+            SwitchUI(UIType.MainMenu);
+        }else if (currentActive == UIType.PauseMenu)
+        {
+            SwitchUI(UIType.GameUI);
+        }
+        else
+             SwitchUI(previousUI);
     }
 
     public void SwitchUI(UIType type) //changes the UI displayed
@@ -134,4 +157,13 @@ public class UIManager : MonoBehaviour, IInitialisable
 
     public UIType GetPrevUI() { return previousUI; }
 
+
+    private void OnEnable()
+    {
+        if (input != null) input.Enable();
+    }
+    public void OnDisable()
+    {
+        if (input != null) input.Disable();
+    }
 }

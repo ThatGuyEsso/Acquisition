@@ -47,6 +47,23 @@ public class MainMenuUI : MonoBehaviour
     {
         if (imageFade) imageFade.OnFadeComplete -= EnableButtons;
         if (raycaster) raycaster.enabled = true;
+
+        if (UIManager.instance)
+        {
+            StartCoroutine(WaitToSelectGameObject());
+        }
+    }
+
+
+
+    public IEnumerator WaitToSelectGameObject()
+    {
+        if (UIManager.instance)
+        {
+            UIManager.instance.eventSystem.SetSelectedGameObject(null);
+            yield return null;
+            UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedButton);
+        }
     }
     public void Play()
     {

@@ -742,6 +742,33 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Back"",
+            ""id"": ""4f67e53e-b962-4fae-b7ff-f00c0720e8fc"",
+            ""actions"": [
+                {
+                    ""name"": ""GoBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""021f55b0-5349-42d7-ab92-af45362f8340"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f68e12b8-d2c5-4a22-9ca2-2b7c3adf98e9"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""GoBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -803,6 +830,9 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Tabs = asset.FindActionMap("Tabs", throwIfNotFound: true);
         m_Tabs_NextTab = m_Tabs.FindAction("NextTab", throwIfNotFound: true);
         m_Tabs_PrevTab = m_Tabs.FindAction("PrevTab", throwIfNotFound: true);
+        // Back
+        m_Back = asset.FindActionMap("Back", throwIfNotFound: true);
+        m_Back_GoBack = m_Back.FindAction("GoBack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1152,6 +1182,39 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public TabsActions @Tabs => new TabsActions(this);
+
+    // Back
+    private readonly InputActionMap m_Back;
+    private IBackActions m_BackActionsCallbackInterface;
+    private readonly InputAction m_Back_GoBack;
+    public struct BackActions
+    {
+        private @Controls m_Wrapper;
+        public BackActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @GoBack => m_Wrapper.m_Back_GoBack;
+        public InputActionMap Get() { return m_Wrapper.m_Back; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BackActions set) { return set.Get(); }
+        public void SetCallbacks(IBackActions instance)
+        {
+            if (m_Wrapper.m_BackActionsCallbackInterface != null)
+            {
+                @GoBack.started -= m_Wrapper.m_BackActionsCallbackInterface.OnGoBack;
+                @GoBack.performed -= m_Wrapper.m_BackActionsCallbackInterface.OnGoBack;
+                @GoBack.canceled -= m_Wrapper.m_BackActionsCallbackInterface.OnGoBack;
+            }
+            m_Wrapper.m_BackActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @GoBack.started += instance.OnGoBack;
+                @GoBack.performed += instance.OnGoBack;
+                @GoBack.canceled += instance.OnGoBack;
+            }
+        }
+    }
+    public BackActions @Back => new BackActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -1206,5 +1269,9 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnNextTab(InputAction.CallbackContext context);
         void OnPrevTab(InputAction.CallbackContext context);
+    }
+    public interface IBackActions
+    {
+        void OnGoBack(InputAction.CallbackContext context);
     }
 }

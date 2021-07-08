@@ -39,7 +39,7 @@ public class AccensionHubManager : MonoBehaviour
             if (WeaponManager.instance)
             {
                 playerEntered = true;
-                WeaponManager.instance.RemoveWeapon();
+                WeaponManager.instance.DestroyWeapon();
 
 
             }

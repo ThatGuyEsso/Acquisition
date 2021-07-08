@@ -20,7 +20,7 @@ public class CreditsUI : Base_UI
     {
         if (UIManager.instance)
         {
-            UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedElement);
+            StartCoroutine(WaitToSelectGameObject());
 
             if (!Cursor.visible) Cursor.visible = true;
 
@@ -31,6 +31,16 @@ public class CreditsUI : Base_UI
                      MusicManager.instance.BeginSongFadeIn("TitleScreenSong", 2f, 10f, 20f);
                 }
             }
+        }
+    }
+
+    public IEnumerator WaitToSelectGameObject()
+    {
+        if (UIManager.instance)
+        {
+            UIManager.instance.eventSystem.SetSelectedGameObject(null);
+            yield return null;
+            UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedElement);
         }
     }
 }

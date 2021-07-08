@@ -729,6 +729,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Back",
+            "id": "4f67e53e-b962-4fae-b7ff-f00c0720e8fc",
+            "actions": [
+                {
+                    "name": "GoBack",
+                    "type": "Button",
+                    "id": "021f55b0-5349-42d7-ab92-af45362f8340",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f68e12b8-d2c5-4a22-9ca2-2b7c3adf98e9",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GoBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

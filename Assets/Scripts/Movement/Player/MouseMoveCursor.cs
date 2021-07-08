@@ -30,12 +30,28 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
         input.MouseActivity.Move.canceled += _ => StopMovement();
         input.Movement.Move.performed += _ => SetIsCharMoving(true);
         input.Movement.Move.canceled += _ => SetIsCharMoving(false);
+        input.DodgeRoll.Roll.performed += _ => SetIsCharMoving(true);
         isInitialised = true;
     }
     public void SetIsCharMoving(bool moving) { isCharMoving = moving; }
     public void LateUpdate()
     {
         if(isMoving|| isCharMoving) MoveCursor();
+        else
+        {
+           
+                Vector2 point = vCursor.position;
+
+                Vector2 maxBounds = EssoUtility.MaxCamBounds(activeCamera);
+
+                Vector2 minBounds = EssoUtility.MinCamBounds(activeCamera);
+
+                point.x = Mathf.Clamp(point.x, minBounds.x, maxBounds.x);
+                point.y = Mathf.Clamp(point.y, minBounds.y, maxBounds.y);
+                vCursor.position = point;
+     
+
+        }
 
     }
 
