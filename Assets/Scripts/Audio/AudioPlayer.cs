@@ -97,4 +97,9 @@ public class AudioPlayer : MonoBehaviour, IAudio
         if(gameObject)
             ObjectPoolManager.Recycle(gameObject);
     }
+
+    public bool IsPlaying()
+    {
+        return source.isPlaying;
+    }
 }

@@ -53,9 +53,9 @@ public class GFXLightFadeOut : MonoBehaviour
         light2D.intensity = spriteRenderer.color.a;
         if (spriteRenderer.color.a <= 0.05)
         {
-            light2D.intensity = spriteRenderer.color.a;
             spriteRenderer.color = new Vector4(spriteRenderer.color.r,
             spriteRenderer.color.g, spriteRenderer.color.b, 0f);
+            light2D.intensity = spriteRenderer.color.a;
             isFadingOut = false;
             OnFadeComplete?.Invoke();
         }
@@ -68,9 +68,9 @@ public class GFXLightFadeOut : MonoBehaviour
         light2D.intensity = spriteRenderer.color.a;
         if (spriteRenderer.color.a >= 0.95)
         {
-            light2D.intensity = spriteRenderer.color.a;
             spriteRenderer.color = new Vector4(spriteRenderer.color.r,
             spriteRenderer.color.g, spriteRenderer.color.b, 1f);
+            light2D.intensity = spriteRenderer.color.a;
             isFadingIn = false;
             OnFadeComplete?.Invoke();
         }

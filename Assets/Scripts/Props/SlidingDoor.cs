@@ -14,7 +14,7 @@ public class SlidingDoor : MonoBehaviour
     bool isOpen;
     public bool isInteractable =true;
 
-
+    private AudioPlayer slideSoundPlayer;
 
     [SerializeField] Vector2 leftDoorClosedPos, rightDoorClosedPos;
     [SerializeField] Vector2 leftDoorOpenPos, rightDoorOpenPos;
@@ -28,7 +28,29 @@ public class SlidingDoor : MonoBehaviour
 
     }
 
+    virtual protected void OnEnable()
+    {
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent += EvaluateNewGameEvent;
+        }
 
+    }
+
+    virtual protected void EvaluateNewGameEvent(GameEvents newEvent)
+    {
+        switch (newEvent)
+        {
+
+         
+
+            case GameEvents.ExitGame:
+
+                if (slideSoundPlayer) slideSoundPlayer.KillAudio();
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
+        }
+    }
 
 
 
@@ -48,6 +70,8 @@ public class SlidingDoor : MonoBehaviour
                     isOpen = true;
                     rightDoor.position = rightDoorOpenPos;
                     leftDoor.position = leftDoorOpenPos;
+                    if (slideSoundPlayer) slideSoundPlayer.BeginFadeOut();
+                    slideSoundPlayer = null;
                 }
             }
             else
@@ -60,6 +84,8 @@ public class SlidingDoor : MonoBehaviour
                         isOpen = true;
                         rightDoor.position = rightDoorOpenPos;
                         leftDoor.position = leftDoorOpenPos;
+                        if (slideSoundPlayer) slideSoundPlayer.BeginFadeOut();
+                        slideSoundPlayer = null;
                     }
                 }
                 else
@@ -70,6 +96,8 @@ public class SlidingDoor : MonoBehaviour
                         isOpen = true;
                         rightDoor.position = rightDoorOpenPos;
                         leftDoor.position = leftDoorOpenPos;
+                        if (slideSoundPlayer) slideSoundPlayer.BeginFadeOut();
+                        slideSoundPlayer = null;
                     }
                 }
             }
@@ -90,6 +118,8 @@ public class SlidingDoor : MonoBehaviour
                     isClosing = false;
                     rightDoor.position = rightDoorClosedPos;
                     leftDoor.position = leftDoorClosedPos;
+                    if (slideSoundPlayer) slideSoundPlayer.BeginFadeOut();
+                    slideSoundPlayer = null;
                 }
             }
             else
@@ -101,6 +131,8 @@ public class SlidingDoor : MonoBehaviour
                         isClosing = false;
                         rightDoor.position = rightDoorClosedPos;
                         leftDoor.position = leftDoorClosedPos;
+                        if (slideSoundPlayer) slideSoundPlayer.BeginFadeOut();
+                        slideSoundPlayer = null;
                     }
                 }
                 else
@@ -110,6 +142,8 @@ public class SlidingDoor : MonoBehaviour
                         isClosing = false;
                         rightDoor.position = rightDoorClosedPos;
                         leftDoor.position = leftDoorClosedPos;
+                        if (slideSoundPlayer) slideSoundPlayer.BeginFadeOut();
+                        slideSoundPlayer = null;
                     }
                 }
       
@@ -125,7 +159,17 @@ public class SlidingDoor : MonoBehaviour
         {
             isOpening = true;
             isClosing = false;
-            AudioManager.instance.PlayThroughAudioPlayer("DoorOpen", transform.position); //sound to open door
+            if(slideSoundPlayer)
+            {
+                if (!slideSoundPlayer.IsPlaying())
+                    slideSoundPlayer = AudioManager.instance.PlayThroughAudioPlayer("DoorSliding", transform.position); //sound to open door
+            }
+            else
+            {
+             
+                    slideSoundPlayer = AudioManager.instance.PlayThroughAudioPlayer("DoorSliding", transform.position); //sound to open door
+            }
+          
         }
      
     }
@@ -135,9 +179,35 @@ public class SlidingDoor : MonoBehaviour
         {
             isOpening = false;
             isClosing = true;
-            AudioManager.instance.PlayThroughAudioPlayer("DoorClose", transform.position); //sound to close door
+            if (slideSoundPlayer)
+            {
+                if (!slideSoundPlayer.IsPlaying())
+                    slideSoundPlayer = AudioManager.instance.PlayThroughAudioPlayer("DoorSliding", transform.position); //sound to open door
+            }
+            else
+            {
+
+                slideSoundPlayer = AudioManager.instance.PlayThroughAudioPlayer("DoorSliding", transform.position); //sound to open door
+            }
         }
     
+    }
+
+
+    private void OnDestroy()
+    {
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
+        }
     }
 
 

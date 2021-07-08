@@ -187,6 +187,7 @@ public class EternalFireball : ProjectileGrenade
 
     public override void CreateFragments()
     {
+        if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ProjectileExplosion", transform.position, true);
         int count = fragmentCount + absorbCount;
         float angleIncrement = spreadAngle / count;
         float currentAngle = 0f;

@@ -346,7 +346,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.1
   - name: ElderCastChant
     clip: {fileID: 8300000, guid: 5580765b60b51de4292cdf6bf08e754e, type: 3}
@@ -362,7 +362,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.1
   - name: ElderAwaken
     clip: {fileID: 8300000, guid: 14668cd231a98884690aa6446aeca944, type: 3}
@@ -378,7 +378,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.075
   - name: ElderSelfDestuct
     clip: {fileID: 8300000, guid: 81d18359251906141984651eac5913b1, type: 3}
@@ -386,7 +386,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.075
   - name: ElderHoover
     clip: {fileID: 8300000, guid: dfa273b7c743289409342684167815e4, type: 3}
@@ -394,7 +394,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.1
   - name: ScholarAwaken
     clip: {fileID: 8300000, guid: 59842e45435fee346b9d41ab1bc69a25, type: 3}
@@ -402,7 +402,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.1
   - name: ScholarHurt
     clip: {fileID: 8300000, guid: 2123e8c555f331d4d9e70ff19446d6c0, type: 3}
@@ -410,7 +410,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.1
   - name: FireCastSFX
     clip: {fileID: 8300000, guid: e45286e917eb870448db0a6927fa11f9, type: 3}
@@ -418,7 +418,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.075
   - name: FireBurning
     clip: {fileID: 8300000, guid: 3331169b922f505409652316f7dfb2ed, type: 3}
@@ -426,7 +426,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.075
   - name: ScholarDie
     clip: {fileID: 8300000, guid: 2cc38bb990ea77044a8370c466de111b, type: 3}
@@ -434,7 +434,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.075
   - name: ScholarWingFlap
     clip: {fileID: 8300000, guid: 5744b83289233a645bb53865e74cafce, type: 3}
@@ -442,7 +442,31 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-    mixerGroup: {fileID: 24300002, guid: 1837b46c6f93d174ca9c57cc78b1d8f7, type: 2}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0.1
+  - name: HeartBeat
+    clip: {fileID: 8300000, guid: 778be455b7067524cb478f4845eaa3b4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0
+  - name: ProjectileExplosion
+    clip: {fileID: 8300000, guid: 6c1a74d4ecf95a746886649e3067c839, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
+    pitchChange: 0.1
+  - name: DoorSliding
+    clip: {fileID: 8300000, guid: 131e13e1a5e97714b8787cf27eb2da78, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    mixerGroup: {fileID: 24300002, guid: 5a6b6333a9aa8f347b669a1c7f9d9bd1, type: 2}
     pitchChange: 0.1
   soundGroups:
   - name: KnightSteps

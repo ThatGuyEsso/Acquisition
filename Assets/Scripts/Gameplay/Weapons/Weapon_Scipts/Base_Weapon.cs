@@ -270,7 +270,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         secondaryHeld = false;
     }
 
-    public void Delete()
+    virtual public void Delete()
     {
         UnEquip();
         DisableWeapon();

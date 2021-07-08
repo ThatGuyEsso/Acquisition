@@ -111,6 +111,7 @@ public class ProjectileGrenade : Base_Projectile
 
     virtual public void CreateFragments()
     {
+        if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ProjectileExplosion", transform.position, true);
         float angleIncrement = spreadAngle / fragmentCount;
         float currentAngle = 0f;
         GameObject currentFragment;

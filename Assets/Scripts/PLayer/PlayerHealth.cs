@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
 
 
     public Action OnHurt;
-
+    private AudioPlayer lowHealthAudio;
     bool isHurt;
     public void Init()
     {
@@ -86,6 +86,12 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
                 //currentKnockBack = kBackDir * kBackMag;
                 if (flashVFX) flashVFX.Flash();
            
+            }
+            if(currentHitPoint == 0)
+            {
+                if (AudioManager.instance)
+                    lowHealthAudio = AudioManager.instance.PlayThroughAudioPlayer("HeartBeat", transform);
+                    
             }
             OnHurt?.Invoke();
 
@@ -174,6 +180,11 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     }
     public void KillPlayer()
     {
+        if (lowHealthAudio)
+        {
+            lowHealthAudio.KillAudio();
+            lowHealthAudio = null;
+        }
         isDead = true;
         if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("PlayerDeath", transform.position);
    
@@ -192,6 +203,12 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
     public void DisableComponent()
     {
         isHurt = false;
+        if (lowHealthAudio)
+        {
+            lowHealthAudio.KillAudio();
+            lowHealthAudio = null;
+        }
+       
     }
 
     public void ResetComponent()
@@ -202,5 +219,10 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
 
         UpdateHealthDisplay();
         if (flashVFX) flashVFX.CancelFlash();
+        if (lowHealthAudio)
+        {
+            lowHealthAudio.BeginFadeOut();
+            lowHealthAudio = null;
+        }
     }
 }

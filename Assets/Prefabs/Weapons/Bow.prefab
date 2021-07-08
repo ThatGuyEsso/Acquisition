@@ -60,6 +60,7 @@ MonoBehaviour:
   primaryShotLifeTime: 1.25
   secondaryShotSpeed: 15
   secondaryShotLifeTime: 3
+  lightPrefab: {fileID: 4742761072718634283, guid: fc60cff927cc91f45af7000a7170e3ed, type: 3}
   weakCharge: {fileID: 3647265956065727434, guid: 0691adcfb7b2c5949a138faec10a6a00, type: 3}
   midCharge: {fileID: 3647265956065727434, guid: 1b628d14c5727024d8e9cf23eb09c37b, type: 3}
   superCharge: {fileID: 3647265956065727434, guid: 8e203dfb7b8b79a498998b84efdc42ad, type: 3}

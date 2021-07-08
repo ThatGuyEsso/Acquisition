@@ -13,6 +13,7 @@ public class DoorEntryArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (!door) return;
             if (door.gameObject.activeInHierarchy)
             {
                 door.BeginToOpen();
@@ -26,6 +27,7 @@ public class DoorEntryArea : MonoBehaviour
     {
         if (other.CompareTag("Player")&& isInRange)
         {
+            if (!door) return;
             if (door.gameObject.activeInHierarchy &&!door.GetIsOpening()&&!door.GetIsOpen())
             {
                 door.BeginToOpen();

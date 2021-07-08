@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Bow_Weapon : Base_Weapon
 {
@@ -11,19 +12,19 @@ public class Bow_Weapon : Base_Weapon
 
     [SerializeField] private float secondaryShotSpeed;
     [SerializeField] private float secondaryShotLifeTime;
-
+    [SerializeField] private GameObject lightPrefab;
 
 
     [SerializeField] private GameObject weakCharge, midCharge, superCharge;
 
     private MouseMoveCursor vCursor;
-    private int chargeCount=0;
+    private int chargeCount = 0;
     bool isCharging = false;
-
+    private Light2D light2d;
     public override void Init()
     {
         base.Init();
-        vCursor = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseMoveCursor>();
+      
     }
 
     protected override void PrimaryAttack()
@@ -52,7 +53,7 @@ public class Bow_Weapon : Base_Weapon
 
     private void Update()
     {
-        if (!isIdle&&!isBusy)
+        if (!isIdle && !isBusy)
         {
             if (currTimeToIdle <= 0f)
             {
@@ -80,9 +81,9 @@ public class Bow_Weapon : Base_Weapon
         Vector2 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
         GameObject go = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
         IProjectile projectile = go.GetComponent<IProjectile>();
-        if (projectile!=null)
+        if (projectile != null)
         {
-            projectile.SetUpProjectile(primaryAttackDamage, dir, primaryShotSpeed,primaryShotLifeTime, 0,playerTransform.gameObject);
+            projectile.SetUpProjectile(primaryAttackDamage, dir, primaryShotSpeed, primaryShotLifeTime, 0, playerTransform.gameObject);
             OnPrimaryAbility?.Invoke(go);
 
         }
@@ -111,7 +112,14 @@ public class Bow_Weapon : Base_Weapon
         animSolver = solver;
         animSolver.movement.OnWalk += OnRun;
         animSolver.movement.OnStop += OnStop;
-     
+        vCursor = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseMoveCursor>();
+        if (lightPrefab)
+        {
+
+            light2d = ObjectPoolManager.Spawn(lightPrefab, playerTransform).GetComponent<Light2D>();
+            if (light2d) light2d.gameObject.SetActive(false);
+            else ObjectPoolManager.Recycle(lightPrefab);
+        }
         Debug.Log("Equip");
     }
     public override void UnEquip()
@@ -123,6 +131,13 @@ public class Bow_Weapon : Base_Weapon
         attackEvents.OnPlaySFX -= PlayArrowDrawSFX;
         isBusy = false;
         isCharging = false;
+
+        if (light2d)
+        {
+            ObjectPoolManager.Recycle(light2d.gameObject);
+
+        }
+
         Debug.Log("unequip");
     }
     public override void DisableWeapon()
@@ -209,7 +224,7 @@ public class Bow_Weapon : Base_Weapon
 
     public void PlayArrowShotSFX()
     {
-        
+
         if (AudioManager.instance)
         {
             AudioManager.instance.PlayThroughAudioPlayer("BowShot", playerTransform.position);
@@ -245,7 +260,7 @@ public class Bow_Weapon : Base_Weapon
                     OnSecondaryAbility?.Invoke(projObject);
                 }
 
-         
+
             }
             else if (chargeCount == 2)
             {
@@ -257,7 +272,8 @@ public class Bow_Weapon : Base_Weapon
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                     OnSecondaryAbility?.Invoke(projObject);
                 }
-         
+
+
             }
             else if (chargeCount >= 3)
             {
@@ -277,7 +293,11 @@ public class Bow_Weapon : Base_Weapon
             PlayArrowShotSFX();
 
         }
-       
+        if (light2d)
+        {
+            light2d.gameObject.SetActive(false);
+
+        }
 
     }
     private void IncreaseCharge()
@@ -286,7 +306,13 @@ public class Bow_Weapon : Base_Weapon
         chargeCount++;
         if (AudioManager.instance)
         {
-            AudioManager.instance.PlayGThroughAudioPlayerPitchShift("ArrowCharge", playerTransform.position, chargeCount/10f);
+            AudioManager.instance.PlayGThroughAudioPlayerPitchShift("ArrowCharge", playerTransform.position, chargeCount / 10f);
+        }
+        if (light2d)
+        {
+            light2d.gameObject.SetActive(true);
+            light2d.intensity = chargeCount;
+            light2d.pointLightOuterRadius = chargeCount;
         }
 
     }
@@ -316,8 +342,8 @@ public class Bow_Weapon : Base_Weapon
         isBusy = false;
         isCharging = false;
 
-        if(chargeCount>0)
-             StartCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
+        if (chargeCount > 0)
+            StartCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
         else
         {
             canSecondaryFire = true;
@@ -331,4 +357,6 @@ public class Bow_Weapon : Base_Weapon
         base.ResetPrimaryFire();
         if (primaryHeld) PrimaryAttack();
     }
+
 }
+   
