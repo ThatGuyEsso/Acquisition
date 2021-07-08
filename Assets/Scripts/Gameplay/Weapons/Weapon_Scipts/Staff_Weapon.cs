@@ -325,6 +325,9 @@ public class Staff_Weapon : Base_Weapon
     public override void DisableWeapon()
     {
         base.DisableWeapon();
+
+        attackEvents.OnHideAttackZone -= ResetSecondaryFire;
+        StopCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
         if (beamPlayer)
         {
             beamPlayer.KillAudio();
@@ -359,7 +362,8 @@ public class Staff_Weapon : Base_Weapon
     {
         base.EnableWeapon();
         if (!canPrimaryFire) ResetPrimaryFire();
-      
+        if (!canSecondaryFire) ResetSecondaryFire();
+
     }
     public override void ResetSecondaryFire()
     {

@@ -43,7 +43,15 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
             case GameEvents.BossDefeated:
                 currHurtTime = maxHurtTime;
                 currentHitPoint = maxHitPoints;
-
+                if (lowHealthAudio)
+                {
+                    if (lowHealthAudio.IsPlaying())
+                    {
+                        lowHealthAudio.BeginFadeOut();
+                        lowHealthAudio = null;
+                    }
+                 
+                }
                 UpdateHealthDisplay();
                 break;
             case GameEvents.PlayerDefeat:
