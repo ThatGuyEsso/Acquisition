@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2125825006184396039}
   walkSFX: 
+  dustVFX: {fileID: 0}
 --- !u!1 &2210315029612703866
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +369,8 @@ MonoBehaviour:
   targetRenderer: {fileID: 3966443710537326990}
   imageLifeTime: 0.2
   timeBetweenImage: 0.25
+  targetTransform: {fileID: 0}
+  startOnEnable: 0
 --- !u!1 &5722101343650127545
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,9 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e4f8dccc3ca92438d18c43d86b4157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vCursor: {fileID: 0}
-  sensitivity: 20
-  activeCamera: {fileID: 0}
+  rotationRate: 0.2
   inDebug: 0
 --- !u!114 &8957915617564251555
 MonoBehaviour:
@@ -639,6 +640,7 @@ MonoBehaviour:
   inactiveComponentsDuringRoll:
   - {fileID: 8957915617564251555}
   - {fileID: 8957915617564251549}
+  - {fileID: 8957915617564251554}
   tdMovement: {fileID: 8957915617564251555}
   VFXcontroller: {fileID: 5466209163863507360}
   rollVFX: {fileID: 7537864355965410645, guid: 856a4995b795a994391200c5c507b8fb, type: 3}
@@ -732,6 +734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8957915619028398270}
   walkSFX: 
+  dustVFX: {fileID: 0}
 --- !u!114 &8210388423571382205
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -54,7 +54,13 @@ public class FaceCursor : MonoBehaviour,ICharacterComponents
 
     public void EnableComponent()
     {
+
         isEnabled = true;
     }
 
+    private void OnEnable()
+    {
+        if (!virtualCursor.gameObject.activeInHierarchy)
+            enabled = false;
+    }
 }

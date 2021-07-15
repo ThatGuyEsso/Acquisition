@@ -8,15 +8,16 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
     private Controls input;
     private bool isInitialised = false;
     private bool isMoving;
-    private Vector2 movementDirection;
+    private Vector2 aimDirection;
     private float magnitude;
-    [SerializeField] private Transform vCursor;
-    [SerializeField] private float sensitivity;
-    [SerializeField] private Camera activeCamera;
 
-    [SerializeField] private bool inDebug;
     private Vector2 lastScreenPosition;
-    private bool isCharMoving;
+    private float smoothRot;
+
+    [Header("Rotation Settings")]
+    [SerializeField] float rotationRate;
+    [SerializeField] private bool inDebug;
+
     private void Awake()
     {
         if (inDebug) Init();
@@ -30,12 +31,8 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
 
         input.Aiming.Aim.canceled += _ => StopMovement();
         isInitialised = true;
-        input.Movement.Move.performed += _ => SetIsCharMoving(true);
-        input.Movement.Move.canceled += _ => SetIsCharMoving(false);
-        input.DodgeRoll.Roll.performed += _ => SetIsCharMoving(true);
-        isInitialised = true;
+
     }
-    public void SetIsCharMoving(bool moving) { isCharMoving = moving; }
 
     public void OnAim(InputAction.CallbackContext context)
     {
@@ -44,54 +41,34 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         {
             isMoving = true;
             magnitude = dir.magnitude;
-            movementDirection = dir.normalized;
+            aimDirection = dir.normalized;
         
         }
     }
 
     public void LateUpdate()
     {
-        if (isMoving) MoveCursor();
-        else if(isCharMoving)
-        {
-            Vector2 point = activeCamera.ScreenToWorldPoint(lastScreenPosition);
-     
+        if (isMoving) FaceAimDirection();
 
-            Vector2 maxBounds = EssoUtility.MaxCamBounds(activeCamera);
-
-            Vector2 minBounds = EssoUtility.MinCamBounds(activeCamera);
-
-            point.x = Mathf.Clamp(point.x, minBounds.x, maxBounds.x);
-            point.y = Mathf.Clamp(point.y, minBounds.y, maxBounds.y);
-            vCursor.position = point;
-        }
 
     }
     private void SetIsMoving(bool moving) { isMoving = moving; }
-    public void MoveCursor()
+    public void FaceAimDirection()
     {
-        if (activeCamera && vCursor)
-        {
-            vCursor.position += (Vector3)movementDirection * magnitude * Time.deltaTime * sensitivity;
-            //clamp to camerea viewport
-            Vector2 point = vCursor.position;
+     
+        Vector2 toAimDir = aimDirection - (Vector2)transform.up;
+        float targetAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;//get angle to rotate
 
-            Vector2 maxBounds = EssoUtility.MaxCamBounds(activeCamera);
+        //if (targetAngle < 0) targetAngle += 360f;
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.z, targetAngle-90f, ref smoothRot, rotationRate);//rotate player smoothly to target angle
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);//update angle
+    
 
-            Vector2 minBounds = EssoUtility.MinCamBounds(activeCamera);
-
-            point.x = Mathf.Clamp(point.x, minBounds.x, maxBounds.x);
-            point.y = Mathf.Clamp(point.y, minBounds.y, maxBounds.y);
-            vCursor.position = point;
-
-        }
     }
 
     private void StopMovement()
     {
         isMoving = false;
-        lastScreenPosition = activeCamera.WorldToScreenPoint(vCursor.position);
-        movementDirection =Vector2.zero;
     }
     private void OnDestroy()
     {

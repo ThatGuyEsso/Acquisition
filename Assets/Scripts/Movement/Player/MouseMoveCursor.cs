@@ -103,7 +103,7 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
             input.Aiming.Aim.canceled += _ => StopMovement();
             input.Movement.Move.performed += _ => SetIsCharMoving(true);
             input.Movement.Move.canceled += _ => SetIsCharMoving(false);
-
+            vCursor.gameObject.SetActive(true);
         }
 
     }
@@ -118,6 +118,8 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
             input.Movement.Move.performed -= _ => SetIsCharMoving(true);
             input.Movement.Move.canceled -= _ => SetIsCharMoving(false);
             isMoving = false;
+            vCursor.gameObject.SetActive(false);
+
         }
     }
 
@@ -152,6 +154,8 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
         
     }
 
+    
+    
     public void EnableComponent()
     {
         input.Enable();
