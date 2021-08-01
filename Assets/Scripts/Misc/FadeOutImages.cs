@@ -12,6 +12,8 @@ public class FadeOutImages : MonoBehaviour
     bool isFadingIn;
     bool isFadingOut;
     public System.Action OnFadeComplete;
+
+
     public void Awake()
     {
         images = GetComponentsInChildren<Image>();
@@ -44,10 +46,33 @@ public class FadeOutImages : MonoBehaviour
     }
     public void BeginFadeIn(float rate)
     {
+        if(images !=null &&images.Length > 0)
+        {
+            foreach (Image image in images)
+            {
+
+                image.color = new Vector4(image.color.r,
+                 image.color.g, image.color.b, 0f);
+            }
+        }
+       
+        if (textElements !=null && textElements.Length > 0)
+        {
+            foreach (TextMeshProUGUI text in textElements)
+            {
+
+                text.color = new Vector4(text.color.r,
+                 text.color.g, text.color.b, 0f);
+            }
+
+        }
+
         fadeInRate = rate;
         isFadingOut = false;
         isFadingIn = true;
+ 
     }
+
 
 
     public void DoFadeOut()
@@ -108,6 +133,8 @@ public class FadeOutImages : MonoBehaviour
                 OnFadeComplete?.Invoke();
             }
         }
+
+
 
     }
     public void Update()

@@ -181,11 +181,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2926943252183649589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2926943251901947225}
   - {fileID: 8816360393896333164}
+  - {fileID: 6562801194551634241}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237,3 +238,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd51ed81f1d1bae4290d54a95e6a29e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &6446455991592681443
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2926943252183649586}
+    m_Modifications:
+    - target: {fileID: 172730508681385634, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 172730508681385634, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 172730508681385634, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 172730508681385634, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 172730508681385634, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 172730508681385634, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259124992812384696, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
+      propertyPath: displayText
+      value: Phoenix's Grace
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
+--- !u!4 &6562801194551634241 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 172730508681385634, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
+  m_PrefabInstance: {fileID: 6446455991592681443}
+  m_PrefabAsset: {fileID: 0}

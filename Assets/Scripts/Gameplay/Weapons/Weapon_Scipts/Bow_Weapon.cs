@@ -78,7 +78,19 @@ public class Bow_Weapon : Base_Weapon
 
     public override void OnFireProjectile()
     {
-        Vector2 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
+        Transform pointerTransform = null;
+        if (ControllerManager.instance) pointerTransform = ControllerManager.instance.GetActiveCursor();
+
+        Vector2 dir;
+        if (pointerTransform != null)
+        {
+             dir = (pointerTransform.position - firePoint.position).normalized;
+        }
+        else
+        {
+            dir = firePoint.up;
+        }
+   
         GameObject go = ObjectPoolManager.Spawn(primaryProjectile, firePoint.transform.position, Quaternion.identity);
         IProjectile projectile = go.GetComponent<IProjectile>();
         if (projectile != null)
@@ -247,7 +259,20 @@ public class Bow_Weapon : Base_Weapon
         {
             attackEvents.OnChargeIncrease -= IncreaseCharge;
 
-            Vector2 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
+            Vector2 dir;
+
+            Transform pointerTransform = null;
+            if (ControllerManager.instance) pointerTransform = ControllerManager.instance.GetActiveCursor();
+
+            if (pointerTransform != null)
+            {
+                dir = (pointerTransform.position - firePoint.position).normalized;
+            }
+            else
+            {
+                dir = firePoint.up;
+            }
+
             if (chargeCount == 1)
             {
                 GameObject projObject = ObjectPoolManager.Spawn(weakCharge, firePoint.transform.position, Quaternion.identity);

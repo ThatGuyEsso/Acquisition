@@ -14,11 +14,14 @@ public class SkillOrbPickUp : MonoBehaviour
     [SerializeField] private string hideSFX;
     [SerializeField] private string displaySFX;
 
+    [SerializeField] private GameObject SkillDescPrefab;
+
     [SerializeField] private GameObject gfx;
     [SerializeField] private GFXLightFadeOut fadeControl;
 
 
     bool isFading;
+    private PickUpLabel label;
     private Collider2D detectCollider;
     public System.Action<SkillOrbPickUp> OnSkillSelect;
     private void Awake()
@@ -26,6 +29,7 @@ public class SkillOrbPickUp : MonoBehaviour
         fadeControl = GetComponent<GFXLightFadeOut>();
         if(!detectCollider)
         detectCollider = GetComponent<Collider2D>();
+        label = GetComponentInChildren<PickUpLabel>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -39,6 +43,15 @@ public class SkillOrbPickUp : MonoBehaviour
 
             if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("PickUpOrb", transform.position, true);
             OnSkillSelect?.Invoke(this);
+            PlayerBehaviour player = other.GetComponent<PlayerBehaviour>();
+            if (player) player.DisableCharacterComponents();
+            SkillDescUI skillDesc;
+            if (SkillDescPrefab)
+            {
+                skillDesc= ObjectPoolManager.Spawn(SkillDescPrefab).GetComponent<SkillDescUI>();
+                if (skillDesc) skillDesc.playerRef = player;
+            }
+           
             DestroyPickUp();
         }
     }
@@ -53,7 +66,7 @@ public class SkillOrbPickUp : MonoBehaviour
         if (displaySFX != string.Empty) AudioManager.instance.PlayThroughAudioPlayer(displaySFX, transform.position);
         gfx.SetActive(true);
         fadeControl.ShowSprite();
-   
+        if (label) label.SetIsActive(true);
     }
 
     public void DisablePickUp()
@@ -61,7 +74,8 @@ public class SkillOrbPickUp : MonoBehaviour
   
         if (hideSFX != string.Empty) AudioManager.instance.PlayThroughAudioPlayer(hideSFX, transform.position);
         if (detectCollider) detectCollider.enabled = false;
-
+   
+        if (label) label.SetIsActive(false);
     }
 
     public void DisplayOrb()

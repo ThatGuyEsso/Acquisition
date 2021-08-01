@@ -213,18 +213,45 @@ public class Staff_Weapon : Base_Weapon
     private void FireRay()
     {
         RaycastHit2D hit;
-        Vector3 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
+
+        Vector2 dir;
+
+        Transform pointerTransform = null;
+        if (ControllerManager.instance) pointerTransform = ControllerManager.instance.GetActiveCursor();
+
+        if (pointerTransform != null)
+        {
+            dir = (pointerTransform.position - firePoint.position).normalized;
+        }
+        else
+        {
+            dir = firePoint.up;
+        }
+
         hit = Physics2D.Raycast(firePoint.position, dir, beamLength,beamLayers); //fire ray
 
         if (hit) targetPoint = hit.point;
-        else targetPoint = firePoint.position + dir * beamLength;
+        else targetPoint = (Vector2)firePoint.position + dir * beamLength;
 
 
     }
     private void FireDamageRay()
     {
         RaycastHit2D hit;
-        Vector3 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
+        Vector2 dir;
+
+        Transform pointerTransform = null;
+        if (ControllerManager.instance) pointerTransform = ControllerManager.instance.GetActiveCursor();
+
+        if (pointerTransform != null)
+        {
+            dir = (pointerTransform.position - firePoint.position).normalized;
+        }
+        else
+        {
+            dir = firePoint.up;
+        }
+
         hit = Physics2D.Raycast(firePoint.position, dir, beamLength, beamLayers); //fire ray
 
         if (hit.collider)

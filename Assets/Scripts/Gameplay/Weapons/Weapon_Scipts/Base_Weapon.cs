@@ -307,4 +307,10 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     public void SetPrimaryProjectilePrefab(GameObject primPrefab) {  primaryProjectile = primPrefab; }
     public void SetSecondaryProjectile(GameObject secPrefab) { secondaryProjectile = secPrefab; }
+
+
+    public Transform GetPointer()
+    {
+        return null;
+    }
 }

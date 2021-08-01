@@ -11,6 +11,7 @@ public class MusicManager : MonoBehaviour,IInitialisable,IManager
 
     [SerializeField] private AudioSource primarySource;
     [SerializeField] private AudioSource secondarySource;
+    [SerializeField] private List<Sound> tracks;
 
     [SerializeField] private float crossFadeRate;
     [SerializeField] private float fadeInRate;

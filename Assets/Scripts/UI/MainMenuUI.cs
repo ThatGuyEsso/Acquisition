@@ -42,6 +42,7 @@ public class MainMenuUI : MonoBehaviour
         }
      
     }
+    
 
     public void EnableButtons()
     {
@@ -65,6 +66,8 @@ public class MainMenuUI : MonoBehaviour
             UIManager.instance.eventSystem.SetSelectedGameObject(firstSelectedButton);
         }
     }
+
+    
     public void Play()
     {
         if (raycaster) raycaster.enabled = false;

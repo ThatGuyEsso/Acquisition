@@ -7,8 +7,10 @@ public class ControllerManager : MonoBehaviour, IInitialisable
 {
     [SerializeField] private GamepadMoveCursor gamepadCursor;
     [SerializeField] private MouseMoveCursor mouseCursor;
+    public static ControllerManager instance;
     private FaceCursor faceCursor;
     Controls input;
+    public bool rotateToCursor;
 
     bool isInitialised;
 
@@ -21,6 +23,14 @@ public class ControllerManager : MonoBehaviour, IInitialisable
 
     public void Init()
     {
+        if (!instance)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
         input = new Controls();
         input.Enable();
         faceCursor = GetComponent<FaceCursor>();
@@ -29,16 +39,23 @@ public class ControllerManager : MonoBehaviour, IInitialisable
         isInitialised = true;
     }
 
-
-
-    public void SwitchToGampadControls()
+    public Transform GetActiveCursor()
     {
         if (mouseCursor.enabled)
         {
-            gamepadCursor.enabled = true;
-            mouseCursor.enabled = false;
-            if (faceCursor) faceCursor.enabled = false;
+           return mouseCursor.GetCursor();
         }
+        return null;
+    }
+
+    public void SwitchToGampadControls()
+    {
+     
+        gamepadCursor.enabled = true;
+        mouseCursor.enabled = false;
+        if (faceCursor) faceCursor.enabled = false;
+        rotateToCursor = false;
+  
    
     }
 
@@ -50,6 +67,7 @@ public class ControllerManager : MonoBehaviour, IInitialisable
             gamepadCursor.enabled = false;
             mouseCursor.enabled = true;
             if (faceCursor) faceCursor.enabled = true;
+            rotateToCursor = true;
         }
     }
 

@@ -153,13 +153,9 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
                 PostProcessingManager.instance.ApplyMidDamageProfile();
             }
         }
-        else if (currentHitPoint == maxHitPoints - 3)
+        else if (currentHitPoint <= maxHitPoints - 3)
         {
           
-            PostProcessingManager.instance.ApplyMaxDamageProfile();
-        }
-        else if (currentHitPoint <= maxHitPoints - 4)
-        {
             PostProcessingManager.instance.ApplyMaxDamageProfile();
         }
     }

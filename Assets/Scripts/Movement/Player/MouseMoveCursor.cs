@@ -33,6 +33,10 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
         input.DodgeRoll.Roll.performed += _ => SetIsCharMoving(true);
         isInitialised = true;
     }
+    public Transform GetCursor()
+    {
+        return vCursor;
+    }
     public void SetIsCharMoving(bool moving) { isCharMoving = moving; }
     public void LateUpdate()
     {
@@ -118,7 +122,8 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
             input.Movement.Move.performed -= _ => SetIsCharMoving(true);
             input.Movement.Move.canceled -= _ => SetIsCharMoving(false);
             isMoving = false;
-            vCursor.gameObject.SetActive(false);
+            if(vCursor.gameObject.activeInHierarchy)
+                 vCursor.gameObject.SetActive(false);
 
         }
     }

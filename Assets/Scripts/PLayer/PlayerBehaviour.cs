@@ -97,6 +97,7 @@ public class PlayerBehaviour : MonoBehaviour, IInitialisable
             ICharacterComponents[] comps = GetComponents<ICharacterComponents>();
             for(int i=0; i < comps.Length; i++)
             {
+               
                 charComps.Add(comps[i]);
             }
         }
@@ -138,7 +139,11 @@ public class PlayerBehaviour : MonoBehaviour, IInitialisable
 
             }
         }
-
+        if (ControllerManager.instance)
+        {
+            if (!ControllerManager.instance.rotateToCursor)
+                ControllerManager.instance.SwitchToGampadControls();
+        }
     }
 
     public void ResetCharacterComponents()
