@@ -54,6 +54,10 @@ MonoBehaviour:
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 
+  skillDescPrefab: {fileID: 0}
+  swordSkillDescPrefab: {fileID: 4347234151570964361, guid: c3f98644b3e3b744d9491cc113b5f22b, type: 3}
+  bowSkillDescPrefab: {fileID: 32287910273218852, guid: ad13eb1c06d589349925aa470d4fe2da, type: 3}
+  staffSkillDescPrefab: {fileID: 2170491752155063159, guid: 2aa7499887704ad4daa8be241b800461, type: 3}
   gfx: {fileID: 3547051572461807164}
   fadeControl: {fileID: 0}
 --- !u!58 &3180146632195349504
@@ -291,7 +295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4259124992812384696, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
       propertyPath: displayText
-      value: Spread Shot
+      value: Omni Slash
       objectReference: {fileID: 0}
     - target: {fileID: 4259124992812384696, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
       propertyPath: displayTextColour.b

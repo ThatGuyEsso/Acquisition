@@ -274,7 +274,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 272267281369774481, guid: 43719249acc9f774792317038ae3f22b, type: 3}
       propertyPath: hitPoints
-      value: 30
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2690246095368945468, guid: 43719249acc9f774792317038ae3f22b, type: 3}
       propertyPath: m_Name
@@ -567,7 +567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6990881012829606352, guid: c8538b42866ed194983e6bb0f9f60760, type: 3}
       propertyPath: hitPoints
-      value: 25
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8538b42866ed194983e6bb0f9f60760, type: 3}
@@ -633,7 +633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3473839949079374807, guid: ecbeda1fdac2d604f88efa0717cad8d4, type: 3}
       propertyPath: hitPoints
-      value: 18
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecbeda1fdac2d604f88efa0717cad8d4, type: 3}
@@ -9545,7 +9545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6990881012829606352, guid: c8538b42866ed194983e6bb0f9f60760, type: 3}
       propertyPath: hitPoints
-      value: 8
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8538b42866ed194983e6bb0f9f60760, type: 3}

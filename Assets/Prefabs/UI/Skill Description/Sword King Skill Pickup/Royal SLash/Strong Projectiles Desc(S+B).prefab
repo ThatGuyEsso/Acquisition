@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2884341061049820700
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2844143387468414719, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387468414719, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387468414719, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387615452963, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_text
+      value: 'Strong Projectiles (Sword +Bow)
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387615452964, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 484.0826
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387615452964, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 69.6745
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387615452964, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387841476608, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_text
+      value: Slash (Primary Attack)/On Shot fired (Primary Attack)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387841476609, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1100.0511
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387841476609, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143388760909217, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_Name
+      value: Strong Projectiles Desc(S+B)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af815a6351175884dac4fb085ddcbe50, type: 3}

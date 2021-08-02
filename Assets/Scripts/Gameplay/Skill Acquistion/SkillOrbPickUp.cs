@@ -14,8 +14,8 @@ public class SkillOrbPickUp : MonoBehaviour
     [SerializeField] private string hideSFX;
     [SerializeField] private string displaySFX;
 
-    [SerializeField] private GameObject SkillDescPrefab;
-
+    [SerializeField] private GameObject skillDescPrefab;
+    [SerializeField] private GameObject swordSkillDescPrefab, bowSkillDescPrefab, staffSkillDescPrefab;
     [SerializeField] private GameObject gfx;
     [SerializeField] private GFXLightFadeOut fadeControl;
 
@@ -33,30 +33,64 @@ public class SkillOrbPickUp : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")){
+        if (other.CompareTag("Player")) {
             if (WeaponManager.instance) WeaponManager.instance.AddWeaponSkill(skillAttributePrefab);
             if (CamShake.instance)
             {
                 CamShake.instance.DoScreenShake(0.5f, 2f, 0.1f, 0.25f, 2f);
             }
-           if(displayVFXPrefab) ObjectPoolManager.Spawn(displayVFXPrefab, transform.position, transform.rotation);
+            if (displayVFXPrefab) ObjectPoolManager.Spawn(displayVFXPrefab, transform.position, transform.rotation);
 
             if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("PickUpOrb", transform.position, true);
             OnSkillSelect?.Invoke(this);
             PlayerBehaviour player = other.GetComponent<PlayerBehaviour>();
             if (player) player.DisableCharacterComponents();
             SkillDescUI skillDesc;
-            if (SkillDescPrefab)
+            if (skillDescPrefab)
             {
-                skillDesc= ObjectPoolManager.Spawn(SkillDescPrefab).GetComponent<SkillDescUI>();
+                skillDesc = ObjectPoolManager.Spawn(skillDescPrefab).GetComponent<SkillDescUI>();
                 if (skillDesc) skillDesc.playerRef = player;
+
             }
-           
+            else
+            {
+                if (WeaponManager.instance)
+                {
+                    if (WeaponManager.instance.equippedWeapon == null) return;
+                    switch (WeaponManager.instance.equippedWeapon.GetWeaponType())
+                    {
+                        case WeaponType.Sword:
+                            if (swordSkillDescPrefab)
+                            {
+                                skillDesc = ObjectPoolManager.Spawn(swordSkillDescPrefab).GetComponent<SkillDescUI>();
+                                if (skillDesc) skillDesc.playerRef = player;
+                            }
+
+                            break;
+                        case WeaponType.Bow:
+                            if (bowSkillDescPrefab)
+                            {
+                                skillDesc = ObjectPoolManager.Spawn(bowSkillDescPrefab).GetComponent<SkillDescUI>();
+                                if (skillDesc) skillDesc.playerRef = player;
+                            }
+                            break;
+                        case WeaponType.Staff:
+                            if (staffSkillDescPrefab)
+                            {
+                                skillDesc = ObjectPoolManager.Spawn(staffSkillDescPrefab).GetComponent<SkillDescUI>();
+                                if (skillDesc) skillDesc.playerRef = player;
+                            }
+                            break;
+
+                    }
+                }
+
+               
+            }
             DestroyPickUp();
         }
+
     }
-
-
 
     public void EnablePickUp()
     {
@@ -130,5 +164,4 @@ public class SkillOrbPickUp : MonoBehaviour
     }
 
 
-    
 }

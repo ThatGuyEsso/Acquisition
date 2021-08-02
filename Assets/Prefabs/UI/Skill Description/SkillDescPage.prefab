@@ -187,7 +187,6 @@ GameObject:
   - component: {fileID: 4647663051248323522}
   - component: {fileID: 4647663051248323523}
   - component: {fileID: 4647663051248323388}
-  - component: {fileID: 4647663051248323520}
   - component: {fileID: 4647663051248323527}
   - component: {fileID: 4647663051248323526}
   m_Layer: 5
@@ -283,18 +282,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4647663051248323520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4647663051248323389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54bceb4ef7754ea4fbc8766052f142ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4647663051248323527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +295,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstSelectedElement: {fileID: 4647663050692961832}
+  backgroundImage: {fileID: 4647663052003808756}
   raycaster: {fileID: 0}
+  fadeInRate: 5
+  fadeOutRate: 8
+  fadeInOnEnable: 1
+  targetBackgroundOppacity: 0.45
   playerRef: {fileID: 0}
 --- !u!114 &4647663051248323526
 MonoBehaviour:
