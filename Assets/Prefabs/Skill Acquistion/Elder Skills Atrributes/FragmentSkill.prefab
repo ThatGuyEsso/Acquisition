@@ -54,6 +54,10 @@ MonoBehaviour:
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 
+  skillDescPrefab: {fileID: 0}
+  swordSkillDescPrefab: {fileID: 4204317657730540297, guid: eb00120f4c6ea7d469a45058672e4c8a, type: 3}
+  bowSkillDescPrefab: {fileID: 6017514554190006639, guid: 3cb1eab7c1f30fe45bd01c47a949bcd6, type: 3}
+  staffSkillDescPrefab: {fileID: 5272259984645518609, guid: 70679b496fae5634d94ac6da15b23248, type: 3}
   gfx: {fileID: 2706675861299774787}
   fadeControl: {fileID: 0}
 --- !u!58 &4074496819485147007
@@ -263,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4259124992812384696, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
       propertyPath: displayText
-      value: Projectile Fragments
+      value: Hazardous Dodgeroll
       objectReference: {fileID: 0}
     - target: {fileID: 4259124992812384696, guid: 6674cdf71922d5e429c7ebd7fd36e222, type: 3}
       propertyPath: displayTextColour.b

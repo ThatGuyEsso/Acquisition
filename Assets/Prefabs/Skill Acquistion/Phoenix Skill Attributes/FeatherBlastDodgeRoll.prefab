@@ -126,6 +126,10 @@ MonoBehaviour:
   fadeOutRate: 2
   hideSFX: 
   displaySFX: 
+  skillDescPrefab: {fileID: 1971696114157398543, guid: f7dbd56630feff749a172b59f56545f7, type: 3}
+  swordSkillDescPrefab: {fileID: 0}
+  bowSkillDescPrefab: {fileID: 0}
+  staffSkillDescPrefab: {fileID: 0}
   gfx: {fileID: 9166886299071296256}
   fadeControl: {fileID: 0}
 --- !u!58 &7074271671522232636

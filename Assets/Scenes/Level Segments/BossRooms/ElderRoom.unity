@@ -1533,6 +1533,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 46442246}
     m_Modifications:
+    - target: {fileID: 1284014863018844444, guid: 2e3533fb490ce32409a34093fd201e80, type: 3}
+      propertyPath: displayText
+      value: Projectile Fragments
+      objectReference: {fileID: 0}
     - target: {fileID: 2706675861210289449, guid: 2e3533fb490ce32409a34093fd201e80, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1579,7 +1583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2706675861210289454, guid: 2e3533fb490ce32409a34093fd201e80, type: 3}
       propertyPath: m_Name
-      value: HazardZoneSkillOrb
+      value: FragmentSkill
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e3533fb490ce32409a34093fd201e80, type: 3}
@@ -3643,7 +3647,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1804492756579533664, guid: 4c2bb6769c940314c870d1a2e6ce2813, type: 3}
       propertyPath: m_Name
-      value: FragmentSkillOrb
+      value: Hazard SKill
       objectReference: {fileID: 0}
     - target: {fileID: 1804492756579533671, guid: 4c2bb6769c940314c870d1a2e6ce2813, type: 3}
       propertyPath: m_RootOrder
@@ -3688,6 +3692,10 @@ PrefabInstance:
     - target: {fileID: 1804492756579533671, guid: 4c2bb6769c940314c870d1a2e6ce2813, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158995763722926711, guid: 4c2bb6769c940314c870d1a2e6ce2813, type: 3}
+      propertyPath: displayText
+      value: Hazardous Dodgeroll
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c2bb6769c940314c870d1a2e6ce2813, type: 3}

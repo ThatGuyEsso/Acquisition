@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1957965476499189525, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_text
+      value: ++Projectile Size
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957965477923077356, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_text
+      value: +3 Projectile Hit Points
+      objectReference: {fileID: 0}
     - target: {fileID: 2844143387468414719, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
       propertyPath: m_Color.b
       value: 1

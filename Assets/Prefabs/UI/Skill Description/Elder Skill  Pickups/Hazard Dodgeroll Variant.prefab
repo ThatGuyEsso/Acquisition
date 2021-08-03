@@ -1,27 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1957965477058435624
+--- !u!1001 &6063192029603036901
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1017046723, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 185
-      objectReference: {fileID: 0}
     - target: {fileID: 1017046724, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_text
-      value: +3 Reflected Projectile Hit Points
+      value: Spawn damage zone at position.
       objectReference: {fileID: 0}
     - target: {fileID: 1673377084, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 105
+      propertyPath: m_SizeDelta.x
+      value: 986.4188
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673377084, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 71.37453
       objectReference: {fileID: 0}
     - target: {fileID: 1673377085, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_text
-      value: ++Reflected Projectile Size
+      value: 'Applies damage each tick to enemies within zone
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 4347234151570964341, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_Pivot.x
@@ -109,53 +111,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4347234151570964361, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_Name
-      value: Strong Projectiles Desc(Staff)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4347234152293033175, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4347234152293033175, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
-      propertyPath: m_Color.g
-      value: 0.03892333
-      objectReference: {fileID: 0}
-    - target: {fileID: 4347234152293033175, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      value: Hazard Dodgeroll
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152439055627, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_text
-      value: 'Strong Projectiles(Staff)
+      value: 'Hazardous Dodgeroll
 
 '
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152439055628, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 367.8102
-      objectReference: {fileID: 0}
-    - target: {fileID: 4347234152439055628, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 64.0125
+      value: 301.497
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152439055628, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 20.454895
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152716362280, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_text
-      value: On Projectile Reflected (Secondary Attack)
+      value: 'At the start of ''dodgeroll'':'
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152716362281, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 882.9326
+      value: 520.2941
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152716362281, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 19.6315
-      objectReference: {fileID: 0}
-    - target: {fileID: 4347234152716362281, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 265
+      value: -161.68774
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}

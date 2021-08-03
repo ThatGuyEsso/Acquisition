@@ -30,7 +30,7 @@ public class FragmentSkill : Base_SkillAttribute
     {
         if (owner.GetWeaponType()==WeaponType.Bow)
         {
-            AttatchFragmentControlelr(owner.GetWeaponType(), spawnedAbiliity);
+            AttatchFragmentController(owner.GetWeaponType(), spawnedAbiliity);
         }
     }
     override public void EvaluateSecondaryAbilityAttribute(GameObject spawnedAbiliity)
@@ -38,7 +38,7 @@ public class FragmentSkill : Base_SkillAttribute
         switch (owner.GetWeaponType())
         {
             case WeaponType.Sword:
-                AttatchFragmentControlelr(WeaponType.Sword, spawnedAbiliity);
+                AttatchFragmentController(WeaponType.Sword, spawnedAbiliity);
                 break;
             case WeaponType.Bow:
                 break;
@@ -49,7 +49,7 @@ public class FragmentSkill : Base_SkillAttribute
         };
     }
 
-    public void AttatchFragmentControlelr(WeaponType type,GameObject projectile)
+    public void AttatchFragmentController(WeaponType type,GameObject projectile)
     {
         switch (type)
         {

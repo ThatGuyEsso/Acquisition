@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3262548723917187024
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 185279666281513166, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_text
+      value: ++Reflected Projectile Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 321908644100337072, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 71.37453
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459314381798223277, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 687412384441075533, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_text
+      value: Absorbsion( Staff)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501441366341071836, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_text
+      value: Reflect incoming Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941670876182627569, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_text
+      value: 'On Bubble Shield (Secondary Attack) enemy projectile collision '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327539930427955241, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_Name
+      value: Absorbsion(Staff)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621860270893364803, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_text
+      value: ++Shield Size
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f6445c1189a222643ab95a036218fe66, type: 3}
