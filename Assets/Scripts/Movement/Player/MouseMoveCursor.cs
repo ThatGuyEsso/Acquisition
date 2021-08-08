@@ -122,6 +122,7 @@ public class MouseMoveCursor : MonoBehaviour, Controls.IMouseActivityActions, II
             input.Movement.Move.performed -= _ => SetIsCharMoving(true);
             input.Movement.Move.canceled -= _ => SetIsCharMoving(false);
             isMoving = false;
+            if(vCursor)
             if(vCursor.gameObject.activeInHierarchy)
                  vCursor.gameObject.SetActive(false);
 

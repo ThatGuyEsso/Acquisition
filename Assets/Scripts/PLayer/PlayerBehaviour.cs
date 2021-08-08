@@ -142,7 +142,8 @@ public class PlayerBehaviour : MonoBehaviour, IInitialisable
         if (ControllerManager.instance)
         {
             if (!ControllerManager.instance.rotateToCursor)
-                ControllerManager.instance.SwitchToGampadControls();
+                ControllerManager.instance.SwitchToGampadControls
+                    ();
         }
     }
 

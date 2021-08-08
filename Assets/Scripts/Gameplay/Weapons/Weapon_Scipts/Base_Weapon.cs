@@ -90,9 +90,9 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
                 break;
 
             case GameEvents.ExitGame:
-                ObjectPoolManager.Recycle(gameObject);
+                Delete();
                 break;
-
+      
 
         }
     }

@@ -113,7 +113,7 @@ public class HonorableCharge : BaseBossAbility
 
             chargeCollider = ObjectPoolManager.Spawn(attackColliderPrefab, owner.GetFirePoint(), Vector3.zero).GetComponent<AttackVolume>();
 
-            chargeCollider.OnObstacleHit += StopCharge;
+            chargeCollider.WallHit += StopCharge;
             chargeCollider.OnPlayerHit += StopCharge;
             isCharging = true;
 
@@ -145,7 +145,7 @@ public class HonorableCharge : BaseBossAbility
         owner.SetIsBusy(false);
         if (chargeCollider)
         {
-            chargeCollider.OnObstacleHit -= StopCharge;
+            chargeCollider.WallHit -= StopCharge;
             chargeCollider.OnPlayerHit -= StopCharge;
             ObjectPoolManager.Recycle(chargeCollider.gameObject);
         }
@@ -185,7 +185,7 @@ public class HonorableCharge : BaseBossAbility
             owner.SetIsBusy(false);
             if (chargeCollider)
             {
-                chargeCollider.OnObstacleHit -= StopCharge;
+                chargeCollider.WallHit -= StopCharge;
                 chargeCollider.OnPlayerHit -= StopCharge;
                 ObjectPoolManager.Recycle(chargeCollider.gameObject);
             }

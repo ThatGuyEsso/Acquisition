@@ -10,6 +10,7 @@ public class AttackVolume : MonoBehaviour,IVolumes
 
     public Action OnPlayerHit;
     public Action OnObstacleHit;
+    public Action WallHit;
     [SerializeField] protected bool isPlayerZone;
 
     [SerializeField] protected float damage;
@@ -59,7 +60,7 @@ public class AttackVolume : MonoBehaviour,IVolumes
             }
             else if (other.gameObject.CompareTag("Wall"))
             {
-                OnObstacleHit?.Invoke();
+                WallHit?.Invoke();
          ;
             }
         }
@@ -87,7 +88,7 @@ public class AttackVolume : MonoBehaviour,IVolumes
             if (other.CompareTag("Wall"))
             {
 
-                OnObstacleHit?.Invoke();
+                WallHit?.Invoke();
                 Debug.Log("Hit wall");
             }
             else if (other.CompareTag("Enemy"))
@@ -114,7 +115,7 @@ public class AttackVolume : MonoBehaviour,IVolumes
             }
             else if (other.gameObject.CompareTag("Wall"))
             {
-                OnObstacleHit?.Invoke();
+                WallHit?.Invoke();
                 Debug.Log("Hit wall");
             }
         }

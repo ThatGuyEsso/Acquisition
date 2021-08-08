@@ -112,16 +112,52 @@ PrefabInstance:
       value: Strong Projectiles Desc(Staff)
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152293033175, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 09818a7eb1a3bc04d944b1ea4b62d0e5, type: 3}
+    - target: {fileID: 4347234152293033175, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152293033175, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_Color.g
-      value: 0.03892333
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152293033175, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.3500729
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.084732
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5767934
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99852806
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.054238416
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 6.218
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152439055627, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_text

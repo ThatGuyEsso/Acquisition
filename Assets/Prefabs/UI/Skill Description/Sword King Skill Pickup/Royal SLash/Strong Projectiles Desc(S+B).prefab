@@ -15,6 +15,30 @@ PrefabInstance:
       propertyPath: m_text
       value: +3 Projectile Hit Points
       objectReference: {fileID: 0}
+    - target: {fileID: 2844143387468414656, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387468414656, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387468414656, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8258827
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387468414656, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.56384206
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387468414656, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 68.644
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844143387468414719, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ead753d8b4a60ec4e9909634c09e0424, type: 3}
     - target: {fileID: 2844143387468414719, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -139,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844143388760909149, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.209
       objectReference: {fileID: 0}
     - target: {fileID: 2844143388760909217, guid: af815a6351175884dac4fb085ddcbe50, type: 3}
       propertyPath: m_Name

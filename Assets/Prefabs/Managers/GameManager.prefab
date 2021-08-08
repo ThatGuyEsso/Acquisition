@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234853f129116c84ab5c595776340c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshPrefab: {fileID: 4189932352378263382, guid: a408d5ce92865574ba12dd0fe16a63fa, type: 3}
+  tutorialPrefab: {fileID: 4019549758777624879, guid: 51009a99661876848b210cfc06a53ba3, type: 3}
   lastEvent: 0
   inDebug: 0

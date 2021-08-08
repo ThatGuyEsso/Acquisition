@@ -15,6 +15,7 @@ public enum GameEvents
    PlayerDefeat,
    DeathMaskComplete,
    DeathAnimationComplete,
+   PlayerSpawned,
    RespawnPlayer,
    PlayerRespawned,
    BossDefeated,
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
  
     private Transform spawn;
     private GameObject playerObject;
-  
+    [SerializeField] private GameObject tutorialPrefab;
+
     private bool isBound;
     public GameEvents lastEvent;
     public Action<GameEvents> OnNewEvent;
@@ -78,7 +80,11 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
         isSceneLoading = true;
         SceneTransitionManager.instance.OnSceneLoadComplete += OnSceneLoadComplete;
         SceneTransitionManager.instance.BeginSceneLoad(SceneIndex.PlayerScene);
-
+        if (tutorialPrefab)
+        {
+            ObjectPoolManager.Spawn(tutorialPrefab).GetComponent<IInitialisable>().Init();
+    
+        }
         while (isSceneLoading)
         {
             yield return null;
@@ -113,6 +119,7 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
         }
         else
         {
+            BeginNewEvent(GameEvents.PlayerSpawned);
             GameStateManager.instance.BeginNewState(GameState.GameRunning);
         }
 
@@ -195,6 +202,11 @@ public class GameManager : MonoBehaviour,IInitialisable,IManager
                 break;
 
             case GameEvents.BeginGameComplete:
+
+                OnNewEvent?.Invoke(lastEvent);
+
+                break;
+            case GameEvents.PlayerSpawned:
 
                 OnNewEvent?.Invoke(lastEvent);
 
