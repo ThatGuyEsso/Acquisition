@@ -14,6 +14,7 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
     private bool isAddingRoom;
     private bool isClearingRoom;
     public Action OnNewRoomAdded;
+    public Action OnRoomRemoved;
     public Action OnAllRoomsCleared;
     public void BindToGameStateManager()
     {
@@ -75,6 +76,28 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
 
             StartCoroutine(LoadStartingRooms());
         }
+    }
+
+
+    public IEnumerator RemoveRoom(string RoomID)
+    {
+        LevelRoom room = GetRoom(RoomID);
+        if (room){
+            isClearingRoom = true;
+            SceneTransitionManager.instance.OnSceneUnLoadComplete += OnRoomRemoveComplete;
+            SceneTransitionManager.instance.BeginSceneUnLoad(room.gameObject.scene);
+
+            while (isClearingRoom) yield return null;
+
+            loadedRooms.Remove(room);
+        }
+
+    }
+
+    public void OnRoomRemoveComplete()
+    {
+        SceneTransitionManager.instance.OnSceneUnLoadComplete -= OnRoomClearComplete;
+        isClearingRoom = false;
     }
     public IEnumerator RoomCleanUp(SceneIndex sceneToIgnore)
     {
@@ -282,13 +305,17 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
         LevelRoom room = loadedRooms.Find(room => room.ID() == roomID);
         return room;
     }
-    public void RemoveRoom(string roomID)
+    public void RemoveRoomNow(string roomID)
     {
         LevelRoom room =loadedRooms.Find(room => room.ID() == roomID);
         loadedRooms.Remove(room);
         SceneTransitionManager.instance.BeginSceneUnLoad(room.gameObject.scene);
     }
 
+    public void BeginRemoveRoom(string roomID)
+    {
+        StartCoroutine(RemoveRoom(roomID));
+    }
     public void RemoveRoom(RoomType type)
     {
         LevelRoom room = loadedRooms.Find(room => room.GetRoomType() == type);

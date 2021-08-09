@@ -8,7 +8,7 @@ public class HubManager : MonoBehaviour
     [Header("Room Components")]
     [SerializeField] private BossDoor knightDoor, elderDoor, scholarDoor;
     [SerializeField] private WeaponSpawner[] weaponSpawners;
-
+    [SerializeField] private RoomDoor tutorialDoor;
     [Header("Data")]
     [SerializeField] private RunTimeData runTimeData;
     [SerializeField] private float spawnDelay =0.5f;
@@ -16,7 +16,7 @@ public class HubManager : MonoBehaviour
     bool bossRoomsSpawned;
     bool isLoadingRoom;
     bool isBound;
-
+    private string tutorialCorridorID;
 
     private void Awake()
     {
@@ -25,6 +25,7 @@ public class HubManager : MonoBehaviour
         if(instance == false)
         {
             instance = this;
+            if (tutorialDoor) tutorialDoor.gameObject.SetActive(false);
         }
         else
         {
@@ -59,19 +60,44 @@ public class HubManager : MonoBehaviour
     {
         if (!bossRoomsSpawned)
         {
-
+            if (tutorialDoor.gameObject.activeInHierarchy)
+            {
+                elderDoor.gameObject.SetActive(true);
+                StartCoroutine(RemoveTutorialDoor());
+            }
             StartCoroutine(EvaluateRunTimeData());
         }
+  
     }
 
+    public void SetUpTutorialDoor()
+    {
+       
+        if (tutorialDoor)
+        {
+            if (!tutorialDoor.gameObject.activeInHierarchy)
+            {
+                if (bossRoomsSpawned) BeginRemoveBossDoors();
+                elderDoor.gameObject.SetActive(false);
+                tutorialDoor.gameObject.SetActive(true);
+                tutorialDoor.Init();
+                StartCoroutine(SetUpTutorialDoorPath());
+               
+            }
+        }
+    }
 
     private void EvaluateNewGameEvent(GameEvents newEvent)
     {
         switch (newEvent)
         {
             case GameEvents.WeaponPicked:
-              SetUpBossDoors();
-                    
+                EvaluateWeaponPicked();
+
+                if (!TutorialManager.instance.tutorialdata.isStaffTutorialComplete)
+                {
+                    WeaponManager.instance.OnWeaponEquipped += EvaluateNewWeaponPicked;
+                }
                 break;
         }
     }
@@ -79,6 +105,21 @@ public class HubManager : MonoBehaviour
     public void BeginBossRoomLoad(BossType boss)
     {
         StartCoroutine(LoadSelectedBossRoom(boss));
+    }
+
+    public void BeginTutorialRoomLoad( )
+    {
+        StartCoroutine(LoadTutorialRoom());
+    }
+    private IEnumerator LoadTutorialRoom()
+    {
+        isLoadingRoom = true;
+        RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
+        LevelRoom connectingCorridor = RoomManager.instance.GetRoom(tutorialCorridorID);
+        RoomManager.instance.BeginLoadInNewSceneAt(connectingCorridor.GetConnectionPoint().position,
+            SceneIndex.TutorialRoom);
+
+        while (isLoadingRoom) yield return null;
     }
 
     private IEnumerator LoadSelectedBossRoom(BossType boss)
@@ -175,7 +216,20 @@ public class HubManager : MonoBehaviour
     }
 
 
+    public IEnumerator SetUpTutorialDoorPath()
+    {
+        
+        isLoadingRoom = true;
+        RoomManager.instance.OnNewRoomAdded += OnRoomLoadComplete;
+        RoomManager.instance.BeginLoadInNewSceneAt(tutorialDoor.corridorSpawn.position, SceneIndex.LongCorridor);
+        while (isLoadingRoom)
+        {
+            yield return null;
+        }
 
+        tutorialCorridorID = RoomManager.instance.loadedRooms[RoomManager.instance.loadedRooms.Count - 1].ID();
+        AudioManager.instance.PlayThroughAudioPlayer("RoomSpawn", tutorialDoor.gameObject.transform.position); //plays sound when doors are opened
+    }
     public IEnumerator EvaluateRunTimeData()
     {
         bossRoomsSpawned = true;
@@ -291,6 +345,176 @@ public class HubManager : MonoBehaviour
             foreach (WeaponSpawner spawner in weaponSpawners)
             {
                 spawner.OnWeaponReplaced -= EvaluateWeaponReplaced;
+            }
+        }
+    }
+
+
+    public void BeginRemoveBossDoors()
+    {
+        StopAllCoroutines();
+        StartCoroutine(RemoveBossDoors());
+    }
+
+    public IEnumerator RemoveTutorialDoor()
+    {
+        if (tutorialDoor.gameObject.activeInHierarchy)
+        {
+            tutorialDoor.gameObject.SetActive(false);
+            isLoadingRoom = true;
+            RoomManager.instance.OnRoomRemoved += OnRoomLoadComplete;
+            RoomManager.instance.BeginRemoveRoom(tutorialCorridorID);
+            while (isLoadingRoom)
+            {
+                yield return null;
+            }
+        }
+    }
+
+    public IEnumerator RemoveBossDoors()
+    {
+        
+        bossRoomsSpawned = false;
+        if (knightDoor.gameObject.activeInHierarchy)
+        {
+            knightDoor.SetIsDoor(false);
+            knightDoor.SetIsInteractable(false);
+            isLoadingRoom = true;
+            RoomManager.instance.OnRoomRemoved += OnRoomLoadComplete;
+            RoomManager.instance.BeginRemoveRoom(knightDoor.corridorID);
+
+            while (isLoadingRoom)
+            {
+                yield return null;
+            }
+        }
+   
+        if (elderDoor.gameObject.activeInHierarchy)
+        {
+            elderDoor.SetIsDoor(false);
+            elderDoor.SetIsInteractable(false);
+            isLoadingRoom = true;
+            RoomManager.instance.OnRoomRemoved += OnRoomLoadComplete;
+            RoomManager.instance.BeginRemoveRoom(elderDoor.corridorID);
+
+            while (isLoadingRoom)
+            {
+                yield return null;
+            }
+
+        }
+   
+        if (scholarDoor.gameObject.activeInHierarchy)
+        {
+            scholarDoor.SetIsDoor(false);
+            scholarDoor.SetIsInteractable(false);
+            isLoadingRoom = true;
+            RoomManager.instance.OnRoomRemoved += OnRoomLoadComplete;
+            RoomManager.instance.BeginRemoveRoom(scholarDoor.corridorID);
+
+            while (isLoadingRoom)
+            {
+                yield return null;
+            }
+
+        }
+
+    }
+    public void EvaluateWeaponPicked()
+    {
+        if (WeaponManager.instance)
+        {
+            switch (WeaponManager.instance.equippedWeapon.GetWeaponType())
+            {
+                case WeaponType.Sword:
+                    if (TutorialManager.instance)
+                    {
+                        if(TutorialManager.instance.tutorialdata.isSwordTutorialComplete)
+                        {
+                            SetUpBossDoors();
+                        }
+                        else
+                        {
+                            SetUpTutorialDoor();
+                        }
+                    }
+                    break;
+                case WeaponType.Bow:
+                    if (TutorialManager.instance)
+                    {
+                        if (TutorialManager.instance.tutorialdata.isBowTutorialComplete)
+                        {
+                            SetUpBossDoors();
+                        }
+                        else
+                        {
+                            SetUpTutorialDoor();
+                        }
+                    }
+                    break;
+                case WeaponType.Staff:
+                    if (TutorialManager.instance)
+                    {
+                        if (TutorialManager.instance.tutorialdata.isStaffTutorialComplete)
+                        {
+                            SetUpBossDoors();
+                        }
+                        else
+                        {
+                            SetUpTutorialDoor();
+                        }
+                    }
+                    break;
+             
+            }
+        }
+    }
+    public void EvaluateNewWeaponPicked(WeaponType weapon)
+    {
+        if (WeaponManager.instance)
+        {
+            switch (weapon)
+            {
+                case WeaponType.Sword:
+                    if (TutorialManager.instance)
+                    {
+                        if (TutorialManager.instance.tutorialdata.isSwordTutorialComplete)
+                        {
+                            SetUpBossDoors();
+                        }
+                        else
+                        {
+                            SetUpTutorialDoor();
+                        }
+                    }
+                    break;
+                case WeaponType.Bow:
+                    if (TutorialManager.instance)
+                    {
+                        if (TutorialManager.instance.tutorialdata.isBowTutorialComplete)
+                        {
+                            SetUpBossDoors();
+                        }
+                        else
+                        {
+                            SetUpTutorialDoor();
+                        }
+                    }
+                    break;
+                case WeaponType.Staff:
+                    if (TutorialManager.instance)
+                    {
+                        if (TutorialManager.instance.tutorialdata.isStaffTutorialComplete)
+                        {
+                            SetUpBossDoors();
+                        }
+                        else
+                        {
+                            SetUpTutorialDoor();
+                        }
+                    }
+                    break;
+
             }
         }
     }

@@ -36,6 +36,7 @@ public class BossDoor : MonoBehaviour
         {
             doorMode.gameObject.SetActive(false);
             wallMode.SetActive(true);
+            ObjectPoolManager.Spawn(spawnVFX, doorMode.transform.position, Quaternion.identity);
         }
     }
 

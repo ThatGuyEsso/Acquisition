@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour, IInitialisable
 {
-    [SerializeField] private TutorialData tutorialdata;
+    public TutorialData tutorialdata;
     public static TutorialManager instance;
 
     [SerializeField] private List<BaseTutorial> tutorials;

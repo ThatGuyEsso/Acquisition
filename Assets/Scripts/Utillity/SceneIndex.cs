@@ -17,5 +17,6 @@ public enum SceneIndex
     BossRoomScholar = 10,
     LongCorridorLeft = 11,
     LongCorridorRight = 12,
-    AccensionHub = 13
+    AccensionHub = 13,
+    TutorialRoom = 14
 };
