@@ -218,6 +218,7 @@ MonoBehaviour:
   leftOpenSprite: {fileID: 3100439519347387842, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   rightLockedSprite: {fileID: -3451609803654046699, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   rightOpenSprite: {fileID: 8724516985760298479, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
+  spawnVFX: {fileID: 0}
 --- !u!61 &3105207932878151548
 BoxCollider2D:
   m_ObjectHideFlags: 0

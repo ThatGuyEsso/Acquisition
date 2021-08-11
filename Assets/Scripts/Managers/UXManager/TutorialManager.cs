@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour, IInitialisable
 {
-    public TutorialData tutorialdata;
+    public  TutorialData tutorialdata;
     public static TutorialManager instance;
 
     [SerializeField] private List<BaseTutorial> tutorials;
-    [SerializeField] private BaseTutorial movementTutorial;
-    [SerializeField] private BaseTutorial aimTutorial;
+
+    public BaseTutorial movementTutorial;
+    public BaseTutorial aimTutorial;
+    public BaseTutorial dodgeTutorial;
     public void Init()
     {
         if (!tutorialdata) Destroy(gameObject);
@@ -72,10 +74,19 @@ public class TutorialManager : MonoBehaviour, IInitialisable
     }
 
 
+
+
     public void ShowAimTutorial()
     {
         aimTutorial.gameObject.SetActive(true);
         aimTutorial.InitTutorial();
+    }
+
+
+    public void ShowDodgeTutorial()
+    {
+        dodgeTutorial.gameObject.SetActive(true);
+        dodgeTutorial.InitTutorial();
     }
     private void OnDisable()
     {

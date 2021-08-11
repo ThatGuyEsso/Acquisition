@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -22,10 +22,10 @@ public class BaseTutorial : MonoBehaviour
     [SerializeField] protected Color completeTextColour;
 
     protected float labelAlpha;
-    bool isLabelFading;
-    bool isLabelFadingOut;
-    float currAlpha =0f;
- 
+    protected bool isLabelFading;
+    protected bool isLabelFadingOut;
+    protected float currAlpha =0f;
+    public Action OnTutorialComplete;
     
     virtual public void InitTutorial()
     {
@@ -81,6 +81,7 @@ public class BaseTutorial : MonoBehaviour
     {
         labelText.color = completeTextColour;
         Invoke("BeginHideTutorial", 2.5f);
+        OnTutorialComplete?.Invoke();
     }
     virtual protected void FadeInLabel()
     {

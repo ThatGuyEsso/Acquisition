@@ -253,7 +253,7 @@ public class RoomManager : MonoBehaviour, IInitialisable, IManager
 
         foreach(string ID in roomsToRemove)
         {
-            RemoveRoom(ID);
+            RemoveRoomNow(ID);
         }
     }
 

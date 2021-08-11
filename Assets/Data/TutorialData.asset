@@ -16,6 +16,6 @@ MonoBehaviour:
   isMoveTutorialComplete: 0
   isAimTutorialComplete: 0
   isDodgeTutorialComplete: 0
-  isSwordTutorialComplete: 0
+  isSwordTutorialComplete: 1
   isBowTutorialComplete: 0
-  isStaffTutorialComplete: 0
+  isStaffTutorialComplete: 1

@@ -12,14 +12,18 @@ public class HubManager : MonoBehaviour
     [Header("Data")]
     [SerializeField] private RunTimeData runTimeData;
     [SerializeField] private float spawnDelay =0.5f;
+
+    [SerializeField] private bool enableOnAwake=true;
     bool hasTriggered;
     bool bossRoomsSpawned;
     bool isLoadingRoom;
     bool isBound;
     private string tutorialCorridorID;
+    
 
     private void Awake()
     {
+        if (!enableOnAwake) return;
         BindToGameStateManager();
 
         if(instance == false)
@@ -37,6 +41,28 @@ public class HubManager : MonoBehaviour
         {
             AudioManager.instance.PlayThroughAudioPlayer("DungeonBoom", transform.position);
          
+        }
+    }
+
+
+    public void Init()
+    {
+       
+
+        if (instance == false)
+        {
+            instance = this;
+            if (tutorialDoor) tutorialDoor.gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        //As world is started and player enters game audio is playerd
+        if (AudioManager.instance)
+        {
+
         }
     }
     public void BindToGameStateManager()
@@ -60,12 +86,21 @@ public class HubManager : MonoBehaviour
     {
         if (!bossRoomsSpawned)
         {
-            if (tutorialDoor.gameObject.activeInHierarchy)
+            if (tutorialDoor)
             {
-                elderDoor.gameObject.SetActive(true);
-                StartCoroutine(RemoveTutorialDoor());
+                if (tutorialDoor.gameObject.activeInHierarchy)
+                {
+                    elderDoor.gameObject.SetActive(true);
+                    StartCoroutine(RemoveTutorialDoor());
+                }
+                else
+                {
+                    StartCoroutine(EvaluateRunTimeData());
+                }
             }
-            StartCoroutine(EvaluateRunTimeData());
+            else StartCoroutine(EvaluateRunTimeData());
+
+
         }
   
     }
@@ -120,6 +155,8 @@ public class HubManager : MonoBehaviour
             SceneIndex.TutorialRoom);
 
         while (isLoadingRoom) yield return null;
+        TutorialHubManager manager = FindObjectOfType<TutorialHubManager>();
+        if (manager) manager.Init();
     }
 
     private IEnumerator LoadSelectedBossRoom(BossType boss)
