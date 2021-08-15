@@ -11,6 +11,42 @@ PrefabInstance:
       propertyPath: m_text
       value: On 'Dodgeroll' Start
       objectReference: {fileID: 0}
+    - target: {fileID: 1938957239201867943, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 612.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938957239201867943, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 612.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938957239201867943, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938957239201867943, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938957239201867943, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7855272
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938957239201867943, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938957239201867943, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938957239201867943, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.61882716
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938957239201867943, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -76.461
+      objectReference: {fileID: 0}
     - target: {fileID: 2466675043149261352, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -103,6 +139,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Feather Blast
       objectReference: {fileID: 0}
+    - target: {fileID: 3496410841977991173, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bbb2eb83cabcbab419bedba7e8127539, type: 3}
     - target: {fileID: 3509039585955034201, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
       propertyPath: m_text
       value: Multiple Phoenix feathers (Projectiles spawned)
@@ -117,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7893566916079001516, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
       propertyPath: m_Name
-      value: FeatherBlast Desc
+      value: FeatherBlast Desc Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9187693759946224070, guid: 4db794ddf0658b546af29643a42c81fd, type: 3}
       propertyPath: m_text

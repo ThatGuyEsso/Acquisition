@@ -107,13 +107,29 @@ PrefabInstance:
       propertyPath: m_text
       value: Reflect incoming Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 1504504899148724096, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 972e9dc10faeab44fb064047f8a93fd4, type: 3}
     - target: {fileID: 3941670876182627569, guid: f6445c1189a222643ab95a036218fe66, type: 3}
       propertyPath: m_text
       value: 'On Bubble Shield (Secondary Attack) enemy projectile collision '
       objectReference: {fileID: 0}
+    - target: {fileID: 4507016122880012066, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.92757
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507016122880012066, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.92757
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507016122880012066, guid: f6445c1189a222643ab95a036218fe66, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.9039301
+      objectReference: {fileID: 0}
     - target: {fileID: 5327539930427955241, guid: f6445c1189a222643ab95a036218fe66, type: 3}
       propertyPath: m_Name
-      value: Absorbsion(Staff)
+      value: Absorbsion(Staff) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6621860270893364803, guid: f6445c1189a222643ab95a036218fe66, type: 3}
       propertyPath: m_text

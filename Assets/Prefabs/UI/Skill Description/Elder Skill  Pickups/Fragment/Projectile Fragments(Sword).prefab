@@ -30,7 +30,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4204317657730540533}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -254,6 +254,26 @@ PrefabInstance:
     - target: {fileID: 4347234151570964361, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_Name
       value: Projectile Fragments(Sword)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033175, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: baa7d52bf6862a343a0a52c5a4a2c466, type: 3}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.3842667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.9232222
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -94.56252
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -134.804
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152439055627, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_text

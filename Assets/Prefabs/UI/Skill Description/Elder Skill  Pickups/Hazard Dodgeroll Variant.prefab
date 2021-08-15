@@ -111,7 +111,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4347234151570964361, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_Name
-      value: Hazard Dodgeroll
+      value: Hazard Dodgeroll Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033175, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d9aa0e449c2f7534f90f092806921c36, type: 3}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071072
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071065
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347234152293033192, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 4347234152439055627, guid: 04461f5585134ab4eb1ac25a22c617cf, type: 3}
       propertyPath: m_text

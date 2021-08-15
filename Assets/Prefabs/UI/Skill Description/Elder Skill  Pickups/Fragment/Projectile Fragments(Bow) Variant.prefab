@@ -8,16 +8,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4204317656303827031, guid: eb00120f4c6ea7d469a45058672e4c8a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 56576e9191dff4d45918f111e9748c31, type: 3}
+    - target: {fileID: 4204317656303827031, guid: eb00120f4c6ea7d469a45058672e4c8a, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4204317656303827031, guid: eb00120f4c6ea7d469a45058672e4c8a, type: 3}
       propertyPath: m_Color.g
-      value: 0.83036566
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4204317656303827031, guid: eb00120f4c6ea7d469a45058672e4c8a, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204317656303827048, guid: eb00120f4c6ea7d469a45058672e4c8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.3826846
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204317656303827048, guid: eb00120f4c6ea7d469a45058672e4c8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.9238791
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204317656303827048, guid: eb00120f4c6ea7d469a45058672e4c8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -135
       objectReference: {fileID: 0}
     - target: {fileID: 4204317656450898315, guid: eb00120f4c6ea7d469a45058672e4c8a, type: 3}
       propertyPath: m_text
