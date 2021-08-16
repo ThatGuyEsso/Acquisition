@@ -120,6 +120,9 @@ MonoBehaviour:
   movementTutorial: {fileID: 693780245970784652}
   aimTutorial: {fileID: 6053597290159629332}
   dodgeTutorial: {fileID: 9025212753738445547}
+  bowTutorialPrefab: {fileID: 7324090403960612740, guid: 6b5db9c47ce7b0a489cf3c60dcfc56ce, type: 3}
+  swordTutorialPrefab: {fileID: 7351295836017652103, guid: 39db6d90a63af5c48a30355d3d214b27, type: 3}
+  staffTutorialPrefab: {fileID: 969734512020514490, guid: b4b5b1a94e5498f4a9f2709dbe754151, type: 3}
 --- !u!1001 &3478981412335375891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +133,10 @@ PrefabInstance:
     - target: {fileID: 544825728195969312, guid: 8d898620b82a1704a974168e06096314, type: 3}
       propertyPath: m_Name
       value: MovementTutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 544825728195969312, guid: 8d898620b82a1704a974168e06096314, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 544825728195969327, guid: 8d898620b82a1704a974168e06096314, type: 3}
       propertyPath: m_Pivot.x
@@ -244,6 +251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dodgetutotrial
       objectReference: {fileID: 0}
+    - target: {fileID: 5576129710835740866, guid: 78659c74b5189a74c934a0e7af6e9597, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5576129710835740877, guid: 78659c74b5189a74c934a0e7af6e9597, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -356,6 +367,10 @@ PrefabInstance:
     - target: {fileID: 2424871722999788519, guid: 34566b18207efb34399aa2214bd11078, type: 3}
       propertyPath: m_Name
       value: Aim Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424871722999788519, guid: 34566b18207efb34399aa2214bd11078, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2424871722999788520, guid: 34566b18207efb34399aa2214bd11078, type: 3}
       propertyPath: m_Pivot.x

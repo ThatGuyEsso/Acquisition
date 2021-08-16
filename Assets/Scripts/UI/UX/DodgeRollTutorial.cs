@@ -19,7 +19,6 @@ public class DodgeRollTutorial : InputTutorial
         counter.gameObject.SetActive(false);
     }
 
-
     public override void StartTutorial()
     {
         base.StartTutorial();

@@ -155,13 +155,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 10
   projectileSpeed: 0
-  lifeTime: 0
+  lifeTime: 5
   allyRepelForce: 5
   hitSFXname: 
   knockback: 0
   inDebug: 0
   hurtTime: 0.1
-  blockCount: 0
+  blockCount: 2
   flashVFX: {fileID: 0}
   destroyProjectileLayer:
     serializedVersion: 2

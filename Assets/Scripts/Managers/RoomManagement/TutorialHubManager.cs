@@ -22,9 +22,10 @@ public class TutorialHubManager : MonoBehaviour
             instance = this;
       
             entranceDoor.Init();
- 
-           
-       
+            TutorialManager.InTutorial = true;
+
+
+
         }
         else
         {
@@ -36,6 +37,7 @@ public class TutorialHubManager : MonoBehaviour
     {
         if (tutorialTurret) tutorialTurret.OnTurretDestroy -= StartGame;
         if (hubManager) hubManager.SetUpBossDoors();
+        TutorialManager.InTutorial = false;
 
     }
     public void StartTutorial()
@@ -79,21 +81,12 @@ public class TutorialHubManager : MonoBehaviour
     {
       
 
-        if (WeaponManager.instance)
+        if (WeaponManager.instance&&TutorialManager.instance)
         {
-            switch (WeaponManager.instance.equippedWeapon.GetWeaponType())
-            {
-                case WeaponType.Sword:
-
-                    break;
-                case WeaponType.Bow:
-
-                    break;
-                case WeaponType.Staff:
-
-                    break;
-            
+            if ((WeaponManager.instance.equippedWeapon.GetWeaponType() != WeaponType.none)){
+                TutorialManager.instance.ShowWeaponTutorial(WeaponManager.instance.equippedWeapon.GetWeaponType());
             }
+            
         }
     }
 

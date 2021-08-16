@@ -92,6 +92,7 @@ public class HubManager : MonoBehaviour
                 {
                     elderDoor.gameObject.SetActive(true);
                     StartCoroutine(RemoveTutorialDoor());
+                    
                 }
                 else
                 {
@@ -405,6 +406,7 @@ public class HubManager : MonoBehaviour
             {
                 yield return null;
             }
+            StartCoroutine(EvaluateRunTimeData());
         }
     }
 
@@ -475,6 +477,10 @@ public class HubManager : MonoBehaviour
                             SetUpTutorialDoor();
                         }
                     }
+                    else
+                    {
+                        SetUpBossDoors();
+                    }
                     break;
                 case WeaponType.Bow:
                     if (TutorialManager.instance)
@@ -488,6 +494,11 @@ public class HubManager : MonoBehaviour
                             SetUpTutorialDoor();
                         }
                     }
+                    else
+                    {
+                        SetUpBossDoors();
+                    }
+                    
                     break;
                 case WeaponType.Staff:
                     if (TutorialManager.instance)
@@ -500,6 +511,10 @@ public class HubManager : MonoBehaviour
                         {
                             SetUpTutorialDoor();
                         }
+                    }
+                    else
+                    {
+                        SetUpBossDoors();
                     }
                     break;
              

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acc71af548a57947823b5d3d3687488, type: 3}
   m_Name: TutorialData
   m_EditorClassIdentifier: 
-  isTutorialComplete: 0
-  isMoveTutorialComplete: 0
-  isAimTutorialComplete: 0
-  isDodgeTutorialComplete: 0
+  isTutorialComplete: 1
+  isMoveTutorialComplete: 1
+  isAimTutorialComplete: 1
+  isDodgeTutorialComplete: 1
   isSwordTutorialComplete: 1
-  isBowTutorialComplete: 0
+  isBowTutorialComplete: 1
   isStaffTutorialComplete: 1

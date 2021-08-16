@@ -59,6 +59,7 @@ public class UIElementShake : MonoBehaviour
     }
     private void Update()
     {
+        if (Time.timeScale == 0f) return;
         //bobbing time counter
         if (!_shouldBob)
         {

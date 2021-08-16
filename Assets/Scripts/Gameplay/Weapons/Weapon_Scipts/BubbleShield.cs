@@ -64,7 +64,18 @@ public class BubbleShield : MonoBehaviour
                         }
                         else
                         {
-                            if (other) ObjectPoolManager.Recycle(other.gameObject);
+                            if (TutorialManager.instance)
+                            {
+                                if (!TutorialManager.InTutorial)
+                                {
+                                    if (other) ObjectPoolManager.Recycle(other.gameObject);
+                                }
+                            }
+                            else
+                            {
+
+                                if (other) ObjectPoolManager.Recycle(other.gameObject);
+                            }
                         }
                     }
                     if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ShieldHit", transform.position,true);

@@ -80,7 +80,16 @@ public class PlayerHealth : MonoBehaviour, IDamage,IInitialisable,ICharacterComp
         {
             if (CamShake.instance)
                 CamShake.instance.DoScreenShake(0.25f, 5f, 0.05f, 0.5f, 5f);
-            currentHitPoint--;
+
+            if(TutorialManager.instance)
+            {
+                if(!TutorialManager.InTutorial) currentHitPoint--;
+            }
+            else
+            {
+                currentHitPoint--;
+            }
+
         
             if(currentHitPoint < 0)
             {
