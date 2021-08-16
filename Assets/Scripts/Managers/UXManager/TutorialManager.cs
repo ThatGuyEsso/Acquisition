@@ -99,8 +99,9 @@ public class TutorialManager : MonoBehaviour, IInitialisable
     {
         if (swordTutorialPrefab)
         {
-            GameObject tutorialObject = ObjectPoolManager.Spawn(swordTutorialPrefab, transform.position);
-            tutorialObject.transform.SetParent(transform);
+            GameObject tutorialObject = ObjectPoolManager.Spawn(swordTutorialPrefab, transform);
+            tutorialObject.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
+
 
             if (tutorialObject)
             {
@@ -119,9 +120,10 @@ public class TutorialManager : MonoBehaviour, IInitialisable
 
         if (bowTutorialPrefab)
         {
-            GameObject tutorialObject = ObjectPoolManager.Spawn(bowTutorialPrefab, transform.position);
-            tutorialObject.transform.SetParent(transform);
-        
+            GameObject tutorialObject = ObjectPoolManager.Spawn(bowTutorialPrefab, transform);
+            tutorialObject.GetComponent<RectTransform>().sizeDelta= new Vector2(Screen.width, Screen.height);
+
+
 
             if (tutorialObject)
             {
@@ -138,8 +140,8 @@ public class TutorialManager : MonoBehaviour, IInitialisable
     {
         if (staffTutorialPrefab)
         {
-            GameObject tutorialObject = ObjectPoolManager.Spawn(staffTutorialPrefab, transform.position);
-            tutorialObject.transform.SetParent(transform);
+            GameObject tutorialObject = ObjectPoolManager.Spawn(staffTutorialPrefab, transform);
+            tutorialObject.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
 
             if (tutorialObject)
             {

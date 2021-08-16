@@ -8,13 +8,16 @@ public class AttackTutorialHeld : AttackTutorial
 
     float currHeldTime;
     bool isHeld;
+    bool tutorialComplete;
     public override void CompleteTutorial()
     {
         base.CompleteTutorial();
         inputs.Disable();
+        tutorialComplete = true;
     }
     public override void StartTutorial()
     {
+        tutorialComplete = false;
         currHeldTime = timeToHold;
         if (isPrimary)
         {
@@ -33,6 +36,7 @@ public class AttackTutorialHeld : AttackTutorial
 
     public void OnPressed()
     {
+        if (tutorialComplete) return;
         currHeldTime = timeToHold;
         isHeld = true;
     }
