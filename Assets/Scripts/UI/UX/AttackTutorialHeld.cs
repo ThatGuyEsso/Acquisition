@@ -14,9 +14,23 @@ public class AttackTutorialHeld : AttackTutorial
         base.CompleteTutorial();
         inputs.Disable();
         tutorialComplete = true;
+        if (isPrimary&&inputs!=null)
+        {
+            inputs.Attack.PrimaryAttack.started -= _ => OnPressed();
+            inputs.Attack.PrimaryAttack.canceled -= _ => OnReleased();
+        }
+        else
+        {
+            inputs.Attack.SecondaryAttack.started -= _ => OnPressed();
+            inputs.Attack.SecondaryAttack.canceled -= _ => OnReleased();
+        }
     }
     public override void StartTutorial()
     {
+
+        if (tutorialPrompts[tutorialPrompts.Count - 1])
+            tutorialPrompts[tutorialPrompts.Count - 1].OnFadeEnd -= StartTutorial;
+
         tutorialComplete = false;
         currHeldTime = timeToHold;
         if (isPrimary)
@@ -51,6 +65,7 @@ public class AttackTutorialHeld : AttackTutorial
     {
         base.Update();
 
+        if (tutorialComplete) return;
         if (isHeld)
         {
             if(currHeldTime <= 0f)

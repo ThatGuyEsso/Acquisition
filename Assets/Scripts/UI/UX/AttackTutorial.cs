@@ -47,7 +47,7 @@ public class AttackTutorial : InputTutorial
             labelText.color = new Vector4(labelText.color.r,
                   labelText.color.g, labelText.color.b, currAlpha);
             attackDescText.color = new Vector4(attackDescText.color.r,
-        attackDescText.color.g, attackDescText.color.b, currAlpha);
+            attackDescText.color.g, attackDescText.color.b, currAlpha);
 
             isLabelFading = false;
             tutorialPrompts[tutorialPrompts.Count - 1].OnFadeEnd += StartTutorial;
@@ -80,14 +80,16 @@ public class AttackTutorial : InputTutorial
 
             labelImage.color = new Vector4(labelImage.color.r,
                 labelImage.color.g, labelImage.color.b, currAlpha);
+
+            attackDescBG.color = new Vector4(attackDescBG.color.r,
+                attackDescBG.color.g, attackDescBG.color.b, currAlpha);
+
             labelText.color = new Vector4(labelText.color.r,
                   labelText.color.g, labelText.color.b, currAlpha);
             attackDescText.color = new Vector4(attackDescText.color.r,
                 attackDescText.color.g, attackDescText.color.b, currAlpha);
 
 
-            attackDescBG.color = new Vector4(attackDescBG.color.r,
-                attackDescBG.color.g, attackDescBG.color.b, currAlpha);
             isLabelFadingOut = false;
 
         }

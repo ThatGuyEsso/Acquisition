@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5599562116937261457
 MonoBehaviour:
@@ -59,7 +59,7 @@ MonoBehaviour:
   inCompleteTextColour: {r: 1, g: 0.972549, b: 0, a: 1}
   completeTextColour: {r: 0, g: 0.8509804, b: 0.42352942, a: 1}
   isPrimary: 1
-  attackDescBG: {fileID: 2888162761658064142}
+  attackDescBG: {fileID: 954489163100416672}
   attackDescText: {fileID: 954489162314023328}
   timeToHold: 1.5
 --- !u!1001 &5775884047429458549
@@ -322,6 +322,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e13605da98668548b1e8443c2f2ec99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &954489163100416672 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8305851989369168962, guid: 60cf08158092e984aa2d2ac1cdbaf863, type: 3}
+  m_PrefabInstance: {fileID: 9113973614689734370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &954489162314023328 stripped
