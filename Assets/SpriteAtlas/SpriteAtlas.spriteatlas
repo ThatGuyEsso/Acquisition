@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: e02c1e411d52faa4cbf7d7f06bb8e8f1, type: 3}
-    totalSpriteSurfaceArea: 1934336
+    totalSpriteSurfaceArea: 2130944
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -444,6 +444,7 @@ SpriteAtlas:
   - {fileID: -2544418871635768960, guid: 3cba0bf28eaccc14faf736dc8730344b, type: 3}
   - {fileID: 4342531837406100798, guid: 3cba0bf28eaccc14faf736dc8730344b, type: 3}
   - {fileID: 1601939628083462623, guid: 3cba0bf28eaccc14faf736dc8730344b, type: 3}
+  - {fileID: 21300000, guid: 9f5879c681f9a8e4284014e89eeaad68, type: 3}
   - {fileID: -974079020026476145, guid: 7cda1987b3a615143ad533475754006d, type: 3}
   - {fileID: 2095573742549667975, guid: 7cda1987b3a615143ad533475754006d, type: 3}
   - {fileID: -6012419785385868317, guid: 7cda1987b3a615143ad533475754006d, type: 3}
@@ -547,6 +548,10 @@ SpriteAtlas:
   - {fileID: -9171252565929575725, guid: 7cda1987b3a615143ad533475754006d, type: 3}
   - {fileID: -8227827624713504487, guid: 7cda1987b3a615143ad533475754006d, type: 3}
   - {fileID: -2708918661722560327, guid: 7cda1987b3a615143ad533475754006d, type: 3}
+  - {fileID: -1073937443399236648, guid: 9a0ed8e88c276394bb3f4fa28fbffa2a, type: 3}
+  - {fileID: 3993079772417137766, guid: 9a0ed8e88c276394bb3f4fa28fbffa2a, type: 3}
+  - {fileID: 8702029384691890430, guid: 9a0ed8e88c276394bb3f4fa28fbffa2a, type: 3}
+  - {fileID: -7921632514760370546, guid: 9a0ed8e88c276394bb3f4fa28fbffa2a, type: 3}
   - {fileID: 671833273178506951, guid: 2901bd3a51acd1f47902c61f307c1e2f, type: 3}
   - {fileID: -1876910608275514621, guid: 2901bd3a51acd1f47902c61f307c1e2f, type: 3}
   - {fileID: -1835246037459175525, guid: 2901bd3a51acd1f47902c61f307c1e2f, type: 3}
@@ -738,6 +743,12 @@ SpriteAtlas:
   - {fileID: -8707275314339839678, guid: fc7e340b62f92ef4e804d50713d4cf4c, type: 3}
   - {fileID: 5290469148924345517, guid: fc7e340b62f92ef4e804d50713d4cf4c, type: 3}
   - {fileID: 2746736786510814064, guid: fc7e340b62f92ef4e804d50713d4cf4c, type: 3}
+  - {fileID: 6888883963121961722, guid: a4ed5e2b31fb7384eb28dc3841083deb, type: 3}
+  - {fileID: 2976603601518170266, guid: a4ed5e2b31fb7384eb28dc3841083deb, type: 3}
+  - {fileID: 5802828782476029282, guid: a4ed5e2b31fb7384eb28dc3841083deb, type: 3}
+  - {fileID: -5163102146422488461, guid: a4ed5e2b31fb7384eb28dc3841083deb, type: 3}
+  - {fileID: -2549598544672540812, guid: a4ed5e2b31fb7384eb28dc3841083deb, type: 3}
+  - {fileID: 7348851521725819585, guid: a4ed5e2b31fb7384eb28dc3841083deb, type: 3}
   - {fileID: 8684409989630800739, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   - {fileID: 4146270336203641167, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   - {fileID: 2377656159123552313, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
@@ -860,6 +871,7 @@ SpriteAtlas:
   - {fileID: 186819945609833013, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   - {fileID: -8212733572951402364, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   - {fileID: -5352053832930609853, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
+  - {fileID: 21300000, guid: 6499e5ee4e3f9d94cb659e98a76742dc, type: 3}
   - {fileID: -4831882320973833303, guid: ff1a016f77f8aff46afb3aac9fcff8f6, type: 3}
   - {fileID: 8112166097199328050, guid: ff1a016f77f8aff46afb3aac9fcff8f6, type: 3}
   - {fileID: 7327627085682698319, guid: ff1a016f77f8aff46afb3aac9fcff8f6, type: 3}
@@ -1374,6 +1386,7 @@ SpriteAtlas:
   - EndSpriteSheetFile_2
   - EndSpriteSheetFile_9
   - EndSpriteSheetFile_8
+  - TurretOrb
   - New-KnightSpriteSheet_58
   - New-KnightSpriteSheet_71
   - New-KnightSpriteSheet_70
@@ -1477,6 +1490,10 @@ SpriteAtlas:
   - New-KnightSpriteSheet_60
   - New-KnightSpriteSheet_59
   - New-KnightSpriteSheet_61
+  - TurretOrb-Sheet_3
+  - TurretOrb-Sheet_2
+  - TurretOrb-Sheet_1
+  - TurretOrb-Sheet_0
   - New-ElderSpriteSheetFile_119
   - New-ElderSpriteSheetFile_118
   - New-ElderSpriteSheetFile_111
@@ -1668,6 +1685,12 @@ SpriteAtlas:
   - RuneRock-Sheet_10
   - RuneRock-Sheet_42
   - RuneRock-Sheet_11
+  - RuneTurretShoot-Sheet_5
+  - RuneTurretShoot-Sheet_4
+  - RuneTurretShoot-Sheet_1
+  - RuneTurretShoot-Sheet_0
+  - RuneTurretShoot-Sheet_3
+  - RuneTurretShoot-Sheet_2
   - DeepSpriteSheet32x32_118
   - DeepSpriteSheet32x32_119
   - DeepSpriteSheet32x32_114
@@ -1790,6 +1813,7 @@ SpriteAtlas:
   - DeepSpriteSheet32x32_90
   - DeepSpriteSheet32x32_93
   - DeepSpriteSheet32x32_92
+  - RuneTurret
   - New-HubSpriteSheetFile_40
   - New-HubSpriteSheetFile_41
   - New-HubSpriteSheetFile_42

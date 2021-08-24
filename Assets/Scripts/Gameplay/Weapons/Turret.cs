@@ -26,7 +26,10 @@ public class Turret : MonoBehaviour,IDamage
     private float currHealth;
     private float currHurtTime;
     private bool canBeHurt, isHurt;
-
+    private bool canFire;
+    private Animator animator;
+    [SerializeField] private string shootSFX;
+    [SerializeField] private string hurtSFX;
     private void Awake()
     {
         currHurtTime = maxHurtTime;
@@ -39,6 +42,7 @@ public class Turret : MonoBehaviour,IDamage
         flashVFX = GetComponent<SpriteFlash>();
         if(flashVFX)
             flashVFX.Init();
+        if (!animator) animator = GetComponent<Animator>();
     }
 
 
@@ -61,6 +65,7 @@ public class Turret : MonoBehaviour,IDamage
         if(healthUI) healthUI.OnUISpawned -= ActivateTurret;
         rotation.isRotating = true;
         isFiring = true;
+        canFire = true;
     }
 
     public void DeactivateTurret()
@@ -88,12 +93,16 @@ public class Turret : MonoBehaviour,IDamage
     }
     private void Update()
     {
-        if (isFiring)
+        
+        if (isFiring&&canFire)
         {
+
             if(currTimeToFire <= 0f)
             {
-                ShootProjectile();
+            
                 currTimeToFire = fireRate;
+                if (animator) PlayShootAnimation();
+                else ShootProjectile();
             }
             else
             {
@@ -116,13 +125,24 @@ public class Turret : MonoBehaviour,IDamage
         }
     }
 
+
+    public void PlayShootAnimation()
+    {
+        canFire = false;
+        animator.Play("TurretShoot",0,0f);
+    }
     public void ShootProjectile()
     {
         IProjectile proj = ObjectPoolManager.Spawn(projectilePrefab, firepoint.position, firepoint.rotation).GetComponent<IProjectile>();
         if (proj!=null){
             proj.SetUpProjectile(1f, firepoint.transform.up, projectileSpeed, projectileLifeTime, projectileBlockCount, gameObject);
         }
+
+        if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer(shootSFX, transform.position);
+     
     }
+
+    public void ResetCanFire() { canFire = true; }
 
     public void SetCanBeHurt(bool isHurtable) {
         canBeHurt = isHurtable;
@@ -140,7 +160,7 @@ public class Turret : MonoBehaviour,IDamage
             isHurt = true;
             currHealth -= dmg;
             healthUI.DoHurtUpdate(currHealth);
-
+            if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer(hurtSFX, transform.position);
             if (currHealth <= 0)
             {
                 DeactivateTurret();
