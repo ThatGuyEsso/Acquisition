@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
-  primaryAttackDamage: 15
+  primaryAttackDamage: 100
   secondaryAttackDamage: 25
   attributes: []
   primaryProjectile: {fileID: 1087995828118112649, guid: 0ab89758dfb373e439ddbf2eec6cfcce, type: 3}

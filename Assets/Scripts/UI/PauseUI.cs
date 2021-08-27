@@ -9,6 +9,7 @@ public class PauseUI : Base_UI
     {
         AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         uiManager.SetGameToPause(false);
+        if (Cursor.visible) Cursor.visible = false;
     }
 
     public void OnOptions()
@@ -55,6 +56,6 @@ public class PauseUI : Base_UI
     }
     private void OnDisable()
     {
-        if (Cursor.visible) Cursor.visible = false;
+      
     }
 }

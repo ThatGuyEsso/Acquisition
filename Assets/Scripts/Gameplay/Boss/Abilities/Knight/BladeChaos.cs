@@ -6,6 +6,7 @@ public class BladeChaos : BaseBossAbility
 {
  
     [SerializeField] protected GameObject projectilePrefab;
+    [SerializeField] protected GameObject attackZonePrefab;
     [SerializeField] protected float projectileLifeTime;
     [SerializeField] protected float projectileSpeed;
     [SerializeField] protected int projectileBlockCount;
@@ -19,6 +20,7 @@ public class BladeChaos : BaseBossAbility
     bool isAttacking;
     float currTimeToShoot=0;
     float curretAttackTime;
+    protected AttackVolume attackZone;
     public void Update()
     {
         if (isAttacking)
@@ -58,7 +60,31 @@ public class BladeChaos : BaseBossAbility
         
         }
     }
+    public void CreateAttackZone()
+    {
+        if (afterImageController) afterImageController.StartDrawing();
+        if (attackZonePrefab)
+        {
 
+            attackZone = ObjectPoolManager.Spawn(attackZonePrefab, owner.transform.position, Quaternion.identity).GetComponent<AttackVolume>();
+            if (attackZone)
+            {
+                attackZone.SetIsPlayerZone(false);
+                attackZone.SetUpDamageVolume(1f, 10f, owner.transform.up, owner.gameObject);
+                if (CamShake.instance) CamShake.instance.DoScreenShake(0.25f, 3f, 0f, 0.15f, 2f);
+            }
+        }
+    }
+
+    public void RemoveAttackZone()
+    {
+        if (attackZone)
+        {
+            ObjectPoolManager.Recycle(attackZone.gameObject);
+            attackZone = null;
+        }
+
+    }
     public void StartBladeCircus()
     {
         if (afterImageController) afterImageController.StartDrawing();
@@ -67,9 +93,11 @@ public class BladeChaos : BaseBossAbility
         canAttack = false;
         isAttacking = true;
         owner.PlayAnimation("BladeChaos");
+        Invoke("CreateAttackZone", 1f);
     }
     public void StopBladeCircus()
     {
+        RemoveAttackZone();
         isAttacking = false;
         eventListener.OnAnimEnd += EvaluateEnd;
         owner.PlayAnimation("BladeChaosEnd");
@@ -113,6 +141,7 @@ public class BladeChaos : BaseBossAbility
         StopAllCoroutines();
         eventListener.OnAnimEnd -= EvaluateEnd;
         eventListener.OnShowAttackZone -= StartBladeCircus;
+        if (attackZone) RemoveAttackZone();
         if (afterImageController) afterImageController.StopDrawing();
     }
     public override void EnableAbility()

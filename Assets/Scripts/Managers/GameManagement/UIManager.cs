@@ -114,7 +114,8 @@ public class UIManager : MonoBehaviour, IInitialisable
             ui.InitUI(type, previousUI);
 
 
-    
+        if (type == UIType.GameUI) 
+            if (Cursor.visible) Cursor.visible = false;
     }
 
     public void UnloadCurrent() //Unloades the current displayed UI

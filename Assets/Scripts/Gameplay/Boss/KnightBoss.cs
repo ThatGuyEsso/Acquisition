@@ -210,6 +210,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
                     break;
             }
         }
+     
    
     }
 
@@ -246,7 +247,70 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
             GameManager.instance.BeginNewEvent(GameEvents.BossDefeated);
     }
 
+    public override void BeginTransitionStage()
+    {
+        if (!transitionAbility)
+            transitionAbility = ObjectPoolManager.Spawn(transitionAbilityPrefab.gameObject, transform, Vector3.zero).GetComponent<BaseBossAbility>();
 
+
+        if (currentStageAbilities.Count > 0)
+        {
+            foreach (BaseBossAbility ability in currentStageAbilities)
+            {
+                ability.DisableAbility();
+                if (ability.gameObject)
+                    ObjectPoolManager.Recycle(ability.gameObject);
+            }
+            currentStageAbilities.Clear();
+            closeCombatAbility = null;
+        }
+     
+  
+    
+        if(BossRoomManager.instance && GetDistanceToCentre()> 1f)
+        {
+            isBusy = true;
+            currentStage = BossStage.Transition;
+            currentAIState = AIState.Chase;
+            navigation.enabled = true;
+            faceTarget.enabled = false;
+            navigation.MoveToPoint(BossRoomManager.instance.GetRoomCentrePoint());
+            animator.Play("Walking");
+            StartCoroutine(WaitTilleAtCentre());
+            transitionShield = ObjectPoolManager.Spawn(transitionShieldPrefab, transform);
+        }
+        else
+        {
+            InitialiseAbility(transitionAbility);
+            isBusy = false;
+            currentStage = BossStage.Transition;
+            currentStageIndex++;
+            Debug.Log("Current Stage index= " + currentStageIndex);
+            OnNewState(AIState.Attack);
+            transitionShield = ObjectPoolManager.Spawn(transitionShieldPrefab, transform);
+        }
+    }
+
+
+    private IEnumerator WaitTilleAtCentre()
+    {
+        while(GetDistanceToCentre() > 0.2f)
+        {
+            yield return null;
+        }
+        InitialiseAbility(transitionAbility);
+        isBusy = false;
+        currentStage = BossStage.Transition;
+        currentStageIndex++;
+        Debug.Log("Current Stage index= " + currentStageIndex);
+        OnNewState(AIState.Attack);
+
+    }
+    private float GetDistanceToCentre()
+    {
+        return Vector2.Distance(BossRoomManager.instance.GetRoomCentrePoint(), transform.position);
+
+    }
     protected override void SetUpNextStage()
     {
         base.SetUpNextStage();

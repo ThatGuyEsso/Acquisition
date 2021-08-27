@@ -51,6 +51,18 @@ public class TDNavMeshMovement : MonoBehaviour,IInitialisable
 
     }
 
+    public void MoveToPoint(Vector3 point)
+    {
+        StopAllCoroutines();
+        if (navAgent.enabled && gameObject.activeSelf)
+        {
+         
+            if (navAgent.isStopped)
+                navAgent.isStopped = false;
+            navAgent.SetDestination(point);
+        }
+    }
+
 
     private IEnumerator CalculatePath()
     {
