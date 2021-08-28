@@ -933,7 +933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &568606180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14154,6 +14154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheElder
       objectReference: {fileID: 0}
+    - target: {fileID: 2292969778363592952, guid: 7812921d877e7a64a9aed7cc6548dd7e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2292969778363592953, guid: 7812921d877e7a64a9aed7cc6548dd7e, type: 3}
       propertyPath: target
       value: 
@@ -14477,11 +14481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2258025162805376261, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.25
+      value: -14.25
       objectReference: {fileID: 0}
     - target: {fileID: 2258025162805376261, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.25
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 2258025162805376261, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14896,11 +14900,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2258025162805376261, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.25
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 2258025162805376261, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4.75
       objectReference: {fileID: 0}
     - target: {fileID: 2258025162805376261, guid: 0aada158f1097ea458a603c83b39d5ac, type: 3}
       propertyPath: m_LocalPosition.z

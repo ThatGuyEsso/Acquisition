@@ -58,8 +58,10 @@ MonoBehaviour:
   swordCollider: {fileID: 3035194022987544040, guid: 8e47a7b652a80e743ba4b4d5ac34db75, type: 3}
   primaryCollisionRadius: 1.5
   secondaryCollisionRadius: 3
+  cooldownSliderColor: {r: 1, g: 0.8777327, b: 0, a: 1}
   primarySlashSpeed: 7.5
   primarySlashLifeTIme: 0.5
   SecondarySlashSpeed: 15
   SecondarySlashLifeTIme: 1
   secondaryProjectileOffset: {x: 0, y: 0}
+  cooldownSliderPrefab: {fileID: 6674051825833377194, guid: e90745a71be3beb46a8fc66998947a24, type: 3}

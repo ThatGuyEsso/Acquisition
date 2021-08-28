@@ -15,6 +15,24 @@ public class Staff_Weapon : Base_Weapon
     [Header("Staff VFX")]
     [SerializeField] private GameObject  beatEndVFXPrefab;
     [SerializeField] private GameObject channelVFXPreab;
+
+    [Header("Staff Cooldown UX")]
+    [SerializeField] private GameObject cooldownSliderPrefab;
+    [SerializeField] private Color beamCooldownBarColour;
+    [SerializeField] private Color shieldCooldownBarColour;
+    [SerializeField] private float cooldownBarOffset =1.2f;
+
+    //Progress bar management
+    private CooldownSlider primCooldownSlider;
+    private ProgressBar primCooldownProgressBar;
+
+    private CooldownSlider secCooldownSlider;
+    private ProgressBar secCooldownProgressBar;
+
+    private float primCurrFireCooldown;
+    private float secCurrFireCooldown;
+
+
     private LineRenderer line;
     private MouseMoveCursor vCursor;
 
@@ -77,6 +95,7 @@ public class Staff_Weapon : Base_Weapon
         animSolver = solver;
         animSolver.movement.OnWalk += OnRun;
         animSolver.movement.OnStop += OnStop;
+        InitCooldownProgressUI();
     }
     public override void UnEquip()
     {
@@ -87,6 +106,7 @@ public class Staff_Weapon : Base_Weapon
         animSolver.movement.OnWalk -= OnRun;
         animSolver.movement.OnStop -= OnStop;
         inputAction.Attack.PrimaryAttack.canceled -= ctx => ResetPrimaryFire();
+        ClearCooldownProgressBar();
     }
     private void Update()
     {
@@ -139,7 +159,39 @@ public class Staff_Weapon : Base_Weapon
                 currTimeToIdle -= Time.deltaTime;
             }
         }
-  
+        if (!canPrimaryFire)
+        {
+            if(primCurrFireCooldown <= 0)
+            {
+              
+            
+                if (primCooldownProgressBar) primCooldownProgressBar.UpdateSlider(primCurrFireCooldown);
+                HidePrimaryCooldownProgressBar();
+                canPrimaryFire = true;
+            }
+            else
+            {
+                primCurrFireCooldown -= Time.deltaTime;
+                if (primCooldownProgressBar) primCooldownProgressBar.UpdateSlider(primCurrFireCooldown);
+            }
+        }
+
+        if (!canSecondaryFire)
+        {
+            if (secCurrFireCooldown <= 0)
+            {
+            
+             
+                if (secCooldownProgressBar) secCooldownProgressBar.UpdateSlider(secCurrFireCooldown);
+                HideSecondaryCooldownProgressBar();
+                canSecondaryFire = true;
+            }
+            else
+            {
+                secCurrFireCooldown -= Time.deltaTime;
+                if (secCooldownProgressBar) secCooldownProgressBar.UpdateSlider(secCurrFireCooldown);
+            }
+        }
     }
 
 
@@ -311,6 +363,7 @@ public class Staff_Weapon : Base_Weapon
 
     public override void ResetPrimaryFire()
     {
+     
         if(beamEnd)
             if (beamEnd.activeInHierarchy) beamEnd.SetActive(false);
        if(channelVFX)
@@ -324,12 +377,17 @@ public class Staff_Weapon : Base_Weapon
             isDrawing = false;
             isBusy = false;
             line.enabled = false;
-      
-            StartCoroutine(WaitForFirePrimaryRate(primaryFireRate));
+
+           
+            primCurrFireCooldown = primaryFireRate;
+            canPrimaryFire = false;
+            ShowPrimaryCooldownBar();
+
             if (AudioManager.instance) AudioManager.instance.PlayThroughAudioPlayer("ShieldDespawn", transform.position);
         }
-        else
+        else if(canPrimaryFire)
         {
+            animSolver.PlayAnimation("Idle_Staff");
             line.positionCount = 0;
             isFiringPrimary = false;
             isDrawing = false;
@@ -338,15 +396,15 @@ public class Staff_Weapon : Base_Weapon
             attackEvents.OnShootProjectile -= BeginBeam;
             StopCoroutine(WaitForFirePrimaryRate(primaryFireRate));
            
-            canPrimaryFire = true;
+           
         }
         if (beamPlayer)
         {
             beamPlayer.KillAudio();
             beamPlayer = null;
         }
+      
 
-        
     }
 
     public override void DisableWeapon()
@@ -384,7 +442,112 @@ public class Staff_Weapon : Base_Weapon
       
         }
     }
+    public void InitCooldownProgressUI()
+    {
+        if (cooldownSliderPrefab)
+        {
+            primCooldownSlider = ObjectPoolManager.Spawn(cooldownSliderPrefab, transform.position, cooldownSliderPrefab.transform.rotation)
+                .GetComponent<CooldownSlider>();
+            secCooldownSlider = ObjectPoolManager.Spawn(cooldownSliderPrefab, transform.position, cooldownSliderPrefab.transform.rotation)
+              .GetComponent<CooldownSlider>();
+            if (primCooldownSlider)
+            {
+                primCooldownSlider.SetUpCooldownSlider(beamCooldownBarColour, playerTransform, true, -Vector2.up * cooldownBarOffset);
+                primCooldownProgressBar = primCooldownSlider.GetComponent<ProgressBar>();
+                primCooldownProgressBar.InitSlider(primaryFireRate);
+                primCooldownSlider.gameObject.SetActive(false);
+            }
+            if (secCooldownSlider)
+            {
+                secCooldownSlider.SetUpCooldownSlider(shieldCooldownBarColour, playerTransform, true, -Vector2.up * cooldownBarOffset);
+                secCooldownProgressBar = secCooldownSlider.GetComponent<ProgressBar>();
+                secCooldownProgressBar.InitSlider(secondaryFireRate);
+                secCooldownSlider.gameObject.SetActive(false);
+            }
+        }
+    }
 
+
+    public void ShowPrimaryCooldownBar()
+    {
+        if (primCooldownSlider)
+        {
+            primCooldownSlider.gameObject.SetActive(true);
+            if (IsShieldOnCooldown())
+            {
+                primCooldownSlider.SetOffSet(-Vector2.up * (cooldownBarOffset * 1.35f));
+            }
+            else
+            {
+                primCooldownSlider.SetOffSet(-Vector2.up * (cooldownBarOffset));
+            }
+            
+            if (primCooldownProgressBar) primCooldownProgressBar.UpdateSlider(primCurrFireCooldown);
+        }
+    }
+    public void HidePrimaryCooldownProgressBar()
+    {
+        if (primCooldownSlider)
+        {
+            if (primCooldownSlider.gameObject.activeInHierarchy) primCooldownSlider.gameObject.SetActive(false);
+        }
+
+        if (IsShieldOnCooldown())
+        {
+            secCooldownSlider.SetOffSet(-Vector2.up * (cooldownBarOffset));
+        }
+    }
+    public void ShowSecondaryCooldownBar()
+    {
+        if (secCooldownSlider)
+        {
+            secCooldownSlider.gameObject.SetActive(true);
+            if (IsBeamOnCooldown())
+            {
+                secCooldownSlider.SetOffSet(-Vector2.up * (cooldownBarOffset * 1.35f));
+            }
+            else
+            {
+                secCooldownSlider.SetOffSet(-Vector2.up * (cooldownBarOffset));
+            }
+            if (secCooldownProgressBar) secCooldownProgressBar.UpdateSlider(secondaryFireRate);
+        }
+    }
+    public void HideSecondaryCooldownProgressBar()
+    {
+        if (secCooldownSlider)
+        {
+            if (secCooldownSlider.gameObject.activeInHierarchy) secCooldownSlider.gameObject.SetActive(false);
+        }
+
+        if (IsBeamOnCooldown())
+        {
+            primCooldownSlider.SetOffSet(-Vector2.up * (cooldownBarOffset ));
+        }
+     
+    }
+    public bool IsShieldOnCooldown()
+    {
+        if (secCooldownSlider)
+        {
+            return secCooldownSlider.gameObject.activeInHierarchy;
+        }
+        return false;
+    }
+    public bool IsBeamOnCooldown()
+    {
+        if (primCooldownSlider)
+        {
+            return primCooldownSlider.gameObject.activeInHierarchy;
+        }
+        return false;
+    }
+    public void ClearCooldownProgressBar()
+    {
+        if (primCooldownSlider) ObjectPoolManager.Recycle(primCooldownSlider);
+        if (secCooldownSlider) ObjectPoolManager.Recycle(secCooldownSlider);
+    
+    }
     public override void EnableWeapon()
     {
         base.EnableWeapon();
@@ -397,6 +560,9 @@ public class Staff_Weapon : Base_Weapon
         attackEvents.OnHideAttackZone -= ResetSecondaryFire;
 
         isBusy = false;
-        StartCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
+     
+        secCurrFireCooldown = secondaryFireRate;
+        canSecondaryFire = false;
+        ShowSecondaryCooldownBar();
     }
 }

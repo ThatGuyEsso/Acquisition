@@ -13,14 +13,20 @@ public class Bow_Weapon : Base_Weapon
     [SerializeField] private float secondaryShotSpeed;
     [SerializeField] private float secondaryShotLifeTime;
     [SerializeField] private GameObject lightPrefab;
+    [SerializeField] private Color cooldownSliderColor;
 
-
+    [Header("Prefabs")]
     [SerializeField] private GameObject weakCharge, midCharge, superCharge;
+    [SerializeField] private GameObject cooldownSliderPrefab;
 
+    private CooldownSlider cooldownSlider;
+    private ProgressBar cooldownProgressBar;
     private MouseMoveCursor vCursor;
     private int chargeCount = 0;
     bool isCharging = false;
     private Light2D light2d;
+
+    private float currSecFireCooldown;
     public override void Init()
     {
         base.Init();
@@ -72,6 +78,22 @@ public class Bow_Weapon : Base_Weapon
             else
             {
                 currTimeToIdle -= Time.deltaTime;
+            }
+        }
+
+        if (!canSecondaryFire)
+        {
+            if (currSecFireCooldown <= 0f)
+            {
+                canSecondaryFire = true;
+                if (cooldownProgressBar) cooldownProgressBar.UpdateSlider(0f);
+                HideCooldownProgressBar();
+
+            }
+            else
+            {
+                currSecFireCooldown -= Time.deltaTime;
+                if (cooldownProgressBar) cooldownProgressBar.UpdateSlider(currSecFireCooldown);
             }
         }
     }
@@ -132,6 +154,7 @@ public class Bow_Weapon : Base_Weapon
             if (light2d) light2d.gameObject.SetActive(false);
             else ObjectPoolManager.Recycle(lightPrefab);
         }
+        InitCooldownProgressUI();
         Debug.Log("Equip");
     }
     public override void UnEquip()
@@ -149,7 +172,7 @@ public class Bow_Weapon : Base_Weapon
             ObjectPoolManager.Recycle(light2d.gameObject);
 
         }
-
+        ClearCooldownProgressBar();
         Debug.Log("unequip");
     }
     public override void DisableWeapon()
@@ -368,7 +391,12 @@ public class Bow_Weapon : Base_Weapon
         isCharging = false;
 
         if (chargeCount > 0)
-            StartCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
+        {
+            canSecondaryFire = false;
+            currSecFireCooldown = secondaryFireRate;
+            ShowCooldownProgressBar();
+        }
+            
         else
         {
             canSecondaryFire = true;
@@ -376,6 +404,40 @@ public class Bow_Weapon : Base_Weapon
         chargeCount = 0;
     }
 
+    public void InitCooldownProgressUI()
+    {
+        if (cooldownSliderPrefab)
+        {
+            cooldownSlider = ObjectPoolManager.Spawn(cooldownSliderPrefab, transform.position, cooldownSliderPrefab.transform.rotation).GetComponent<CooldownSlider>();
+            if (cooldownSlider)
+            {
+                cooldownSlider.SetUpCooldownSlider(cooldownSliderColor, playerTransform, true,  -Vector2.up*1.2f);
+                cooldownProgressBar = cooldownSlider.GetComponent<ProgressBar>();
+                cooldownProgressBar.InitSlider(secondaryFireRate);
+                cooldownSlider.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void ClearCooldownProgressBar()
+    {
+        if (cooldownSlider) ObjectPoolManager.Recycle(cooldownSlider);
+    }
+    public void ShowCooldownProgressBar()
+    {
+        if (cooldownSlider)
+        {
+            cooldownSlider.gameObject.SetActive(true);
+            if (cooldownProgressBar) cooldownProgressBar.UpdateSlider(currSecFireCooldown);
+        }
+    }
+    public void HideCooldownProgressBar()
+    {
+        if (cooldownSlider)
+        {
+            if (cooldownSlider.gameObject.activeInHierarchy) cooldownSlider.gameObject.SetActive(false);
+        }
+    }
 
     public override void ResetPrimaryFire()
     {

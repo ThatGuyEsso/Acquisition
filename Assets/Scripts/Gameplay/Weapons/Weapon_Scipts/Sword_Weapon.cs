@@ -9,6 +9,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
 
     [SerializeField] private float primaryCollisionRadius = 1.5f;
     [SerializeField] private float secondaryCollisionRadius = 2.5f;
+    [SerializeField] private Color cooldownSliderColor;
 
     [Header("Sword Slash Porjectiles Settings")]
     [SerializeField] private float primarySlashSpeed = 5f;
@@ -22,7 +23,11 @@ public class Sword_Weapon : Base_Weapon, Equipable
 
 
 
+    [SerializeField] private GameObject cooldownSliderPrefab;
 
+    private CooldownSlider cooldownSlider;
+    private ProgressBar cooldownProgressBar;
+    private float currSecFireCooldown;
 
     protected override void PrimaryAttack()
     {
@@ -82,6 +87,21 @@ public class Sword_Weapon : Base_Weapon, Equipable
             else
             {
                 currTimeToIdle -= Time.deltaTime;
+            }
+        }
+        if (!canSecondaryFire)
+        {
+            if (currSecFireCooldown <= 0f)
+            {
+                canSecondaryFire = true;
+                if (cooldownProgressBar) cooldownProgressBar.UpdateSlider(0f);
+                HideCooldownProgressBar();
+
+            }
+            else
+            {
+                currSecFireCooldown -= Time.deltaTime;
+                if (cooldownProgressBar) cooldownProgressBar.UpdateSlider(currSecFireCooldown);
             }
         }
     }
@@ -173,7 +193,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
         animSolver = solver;
         animSolver.movement.OnWalk += OnRun;
         animSolver.movement.OnStop += OnStop;
-
+        InitCooldownProgressUI();
 
     }
 
@@ -224,7 +244,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
     public override void UnEquip()
     {
         base.UnEquip();
-
+        ClearCooldownProgressBar();
     }
 
     public override void OnStop()
@@ -256,7 +276,9 @@ public class Sword_Weapon : Base_Weapon, Equipable
     {
         attackEvents.OnAnimEnd -= ResetSecondaryFire;
         isBusy = false;
-        StartCoroutine(WaitForFireSecondaryRate(secondaryFireRate));
+        canSecondaryFire = false;
+        currSecFireCooldown = secondaryFireRate;
+        ShowCooldownProgressBar();
         Debug.Log("Not busy");
     }
 
@@ -298,5 +320,41 @@ public class Sword_Weapon : Base_Weapon, Equipable
         yield return new WaitForSeconds(time);
         canSecondaryFire = true;
         if (secondaryHeld) SecondaryAttack();
+    }
+
+
+    public void InitCooldownProgressUI()
+    {
+        if (cooldownSliderPrefab)
+        {
+            cooldownSlider = ObjectPoolManager.Spawn(cooldownSliderPrefab, transform.position, cooldownSliderPrefab.transform.rotation).GetComponent<CooldownSlider>();
+            if (cooldownSlider)
+            {
+                cooldownSlider.SetUpCooldownSlider(cooldownSliderColor, playerTransform, true, -Vector2.up * 1.2f);
+                cooldownProgressBar = cooldownSlider.GetComponent<ProgressBar>();
+                cooldownProgressBar.InitSlider(secondaryFireRate);
+                cooldownSlider.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void ClearCooldownProgressBar()
+    {
+        if (cooldownSlider) ObjectPoolManager.Recycle(cooldownSlider);
+    }
+    public void ShowCooldownProgressBar()
+    {
+        if (cooldownSlider)
+        {
+            cooldownSlider.gameObject.SetActive(true);
+            if (cooldownProgressBar) cooldownProgressBar.UpdateSlider(currSecFireCooldown);
+        }
+    }
+    public void HideCooldownProgressBar()
+    {
+        if (cooldownSlider)
+        {
+            if (cooldownSlider.gameObject.activeInHierarchy) cooldownSlider.gameObject.SetActive(false);
+        }
     }
 }

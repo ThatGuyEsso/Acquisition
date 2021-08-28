@@ -65,6 +65,10 @@ MonoBehaviour:
   beamDrawSpeed: 25
   beatEndVFXPrefab: {fileID: 3621552124481258280, guid: 97fa4c09252680c4fa355a6c0318aada, type: 3}
   channelVFXPreab: {fileID: 7215270528015392697, guid: 6175a98f7a9358f4bb0cf236319bd1b2, type: 3}
+  cooldownSliderPrefab: {fileID: 6674051825833377194, guid: e90745a71be3beb46a8fc66998947a24, type: 3}
+  beamCooldownBarColour: {r: 1, g: 0, b: 0, a: 1}
+  shieldCooldownBarColour: {r: 1, g: 0.40739924, b: 0, a: 1}
+  cooldownBarOffset: 1.2
 --- !u!120 &-8837503333671568053
 LineRenderer:
   m_ObjectHideFlags: 0

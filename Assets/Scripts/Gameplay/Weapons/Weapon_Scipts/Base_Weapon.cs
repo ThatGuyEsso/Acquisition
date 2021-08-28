@@ -128,6 +128,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
 
     virtual protected IEnumerator WaitForFireSecondaryRate(float time)
     {
+      
         canSecondaryFire = false;
         yield return new WaitForSeconds(time);
         canSecondaryFire = true;
