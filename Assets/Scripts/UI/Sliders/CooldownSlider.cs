@@ -8,7 +8,7 @@ public class CooldownSlider : MonoBehaviour
     [SerializeField] private Vector2 targetoffset;
 
     [SerializeField] private Image sliderFill;
-    [SerializeField] private Image sliderBackground;
+    //[SerializeField] private Image sliderBackground;
 
     private bool trackTarget;
     private void LateUpdate()
@@ -23,7 +23,7 @@ public class CooldownSlider : MonoBehaviour
     public void SetUpCooldownSlider(Color sliderColour, Transform target,bool isFollowingTarget,Vector2 offset)
     {
         sliderFill.color = sliderColour;
-        sliderBackground.color = sliderColour;
+        //sliderBackground.color = sliderColour;
 
         targetTransfrom = target;
 

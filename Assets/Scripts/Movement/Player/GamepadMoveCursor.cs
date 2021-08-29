@@ -12,6 +12,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
     private float magnitude;
 
     private Vector2 lastScreenPosition;
+    [SerializeField] private GameObject pointer;
     private float smoothRot;
 
     [Header("Rotation Settings")]
@@ -62,7 +63,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         //if (targetAngle < 0) targetAngle += 360f;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.z, targetAngle-90f, ref smoothRot, rotationRate);//rotate player smoothly to target angle
         transform.rotation = Quaternion.Euler(0f, 0f, angle);//update angle
-    
+        
 
     }
 
@@ -87,7 +88,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         if (isInitialised && input != null)
         {
             input.Enable();
-           
+            if (pointer) pointer.gameObject.SetActive(true);
         }
 
     }
@@ -100,6 +101,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
                 input.Disable();
           
                 isMoving = false;
+            if (pointer) pointer.gameObject.SetActive(false);
 
         }
     }
@@ -108,6 +110,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
     {
         if (isInitialised && input != null)
          input.Enable();
+      
     }
 
     public void DisableComponent()
@@ -124,4 +127,10 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
     {
         //
     }
+
+    public GameObject GetCursor()
+    {
+        return pointer;
+    }
+
 }

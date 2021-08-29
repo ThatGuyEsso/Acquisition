@@ -45,6 +45,10 @@ public class ControllerManager : MonoBehaviour, IInitialisable
         {
            return mouseCursor.GetCursor();
         }
+        else if(gamepadCursor.enabled)
+        {
+            return gamepadCursor.GetCursor().transform;
+        }
         return null;
     }
 

@@ -418,6 +418,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 312082508}
     - target: {fileID: 8957915617564251554, guid: 378873da936392f428802512ed3eeb05, type: 3}
+      propertyPath: pointer
+      value: 
+      objectReference: {fileID: 405417369}
+    - target: {fileID: 8957915617564251554, guid: 378873da936392f428802512ed3eeb05, type: 3}
       propertyPath: vCursor
       value: 
       objectReference: {fileID: 524679904}
@@ -478,6 +482,11 @@ PrefabInstance:
 --- !u!4 &405417368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8957915617564251559, guid: 378873da936392f428802512ed3eeb05, type: 3}
+  m_PrefabInstance: {fileID: 405417367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &405417369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9010545854811430487, guid: 378873da936392f428802512ed3eeb05, type: 3}
   m_PrefabInstance: {fileID: 405417367}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &524679903

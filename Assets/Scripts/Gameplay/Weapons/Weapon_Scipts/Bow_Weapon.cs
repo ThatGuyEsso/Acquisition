@@ -21,7 +21,7 @@ public class Bow_Weapon : Base_Weapon
 
     private CooldownSlider cooldownSlider;
     private ProgressBar cooldownProgressBar;
-    private MouseMoveCursor vCursor;
+    private Transform vCursor;
     private int chargeCount = 0;
     bool isCharging = false;
     private Light2D light2d;
@@ -146,7 +146,7 @@ public class Bow_Weapon : Base_Weapon
         animSolver = solver;
         animSolver.movement.OnWalk += OnRun;
         animSolver.movement.OnStop += OnStop;
-        vCursor = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseMoveCursor>();
+        
         if (lightPrefab)
         {
 
@@ -186,7 +186,7 @@ public class Bow_Weapon : Base_Weapon
         {
             attackEvents.OnChargeIncrease -= IncreaseCharge;
 
-            Vector2 dir = (vCursor.GetVCusorPosition() - firePoint.position).normalized;
+            Vector2 dir = (ControllerManager.instance.GetActiveCursor().position - firePoint.position).normalized;
             if (chargeCount == 1)
             {
 
