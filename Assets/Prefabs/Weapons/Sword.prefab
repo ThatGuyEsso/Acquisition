@@ -44,13 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
-  primaryAttackDamage: 100
-  secondaryAttackDamage: 25
+  primaryAttackDamage: 25
+  secondaryAttackDamage: 40
   attributes: []
   primaryProjectile: {fileID: 1087995828118112649, guid: 0ab89758dfb373e439ddbf2eec6cfcce, type: 3}
   secondaryProjectile: {fileID: 1087995828118112649, guid: 45cbcd4562ae33f48b3478dc28a8f10b, type: 3}
-  primaryProjectileDamage: 5
-  secondaryProjectileDamage: 15
+  primaryProjectileDamage: 10
+  secondaryProjectileDamage: 25
   primaryFireRate: 0.25
   secondaryFireRate: 0.5
   timeToIdle: 3

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
-  primaryAttackDamage: 10
+  primaryAttackDamage: 5
   secondaryAttackDamage: 0
   attributes: []
   primaryProjectile: {fileID: 0}
@@ -56,7 +56,7 @@ MonoBehaviour:
   secondaryFireRate: 6
   timeToIdle: 1
   inDebug: 0
-  beamDuration: 3
+  beamDuration: 2.5
   beamTickRate: 0.25
   beamLength: 10
   beamLayers:

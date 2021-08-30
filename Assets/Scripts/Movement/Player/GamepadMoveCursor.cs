@@ -88,7 +88,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         if (isInitialised && input != null)
         {
             input.Enable();
-            if (pointer) pointer.gameObject.SetActive(true);
+
         }
 
     }

@@ -49,7 +49,7 @@ MonoBehaviour:
   attributes: []
   primaryProjectile: {fileID: 3647265956065727434, guid: f9579bf0ffa50f14d8f325632febe209, type: 3}
   secondaryProjectile: {fileID: 0}
-  primaryProjectileDamage: 20
+  primaryProjectileDamage: 15
   secondaryProjectileDamage: 20
   primaryFireRate: 0.5
   secondaryFireRate: 1.5
