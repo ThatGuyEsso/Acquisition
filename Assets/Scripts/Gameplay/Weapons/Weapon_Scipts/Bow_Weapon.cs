@@ -12,12 +12,15 @@ public class Bow_Weapon : Base_Weapon
 
     [SerializeField] private float secondaryShotSpeed;
     [SerializeField] private float secondaryShotLifeTime;
-    [SerializeField] private GameObject lightPrefab;
-    [SerializeField] private Color cooldownSliderColor;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject weakCharge, midCharge, superCharge;
+    [Header("UX Settings")]
+    [SerializeField] private GameObject lightPrefab;
+    [SerializeField] private Color cooldownSliderColor;
     [SerializeField] private GameObject cooldownSliderPrefab;
+    [SerializeField] private GameObject gamePadArrowPrefab;
+    [SerializeField] private float gamePadArrowOffset;
 
     private CooldownSlider cooldownSlider;
     private ProgressBar cooldownProgressBar;
@@ -26,6 +29,7 @@ public class Bow_Weapon : Base_Weapon
     bool isCharging = false;
     private Light2D light2d;
 
+    private GameObject gamepadPointer;
     private float currSecFireCooldown;
     public override void Init()
     {
@@ -53,12 +57,13 @@ public class Bow_Weapon : Base_Weapon
         attackEvents.OnPlaySFX += PlayArrowDrawSFX;
         attackEvents.OnAnimEnd += ResetPrimaryFire;
         animSolver.PlayAnimationFromStart("Primary_Bow");
-
+   
     }
 
 
     private void Update()
     {
+     
         if (!isIdle && !isBusy)
         {
             if (currTimeToIdle <= 0f)
@@ -81,13 +86,14 @@ public class Bow_Weapon : Base_Weapon
             }
         }
 
-        if (!canSecondaryFire)
+        if (!canSecondaryFire&&isEnabled)
         {
             if (currSecFireCooldown <= 0f)
             {
                 canSecondaryFire = true;
                 if (cooldownProgressBar) cooldownProgressBar.UpdateSlider(0f);
                 HideCooldownProgressBar();
+                if (secondaryHeld) SecondaryAttack();
 
             }
             else
@@ -123,6 +129,7 @@ public class Bow_Weapon : Base_Weapon
         }
         attackEvents.OnShootProjectile -= OnFireProjectile;
         PlayArrowShotSFX();
+      
     }
 
     public override void Equip(Transform firePoint, AttackAnimEventListener eventListener, Transform player, TopPlayerGFXSolver solver)
@@ -133,7 +140,9 @@ public class Bow_Weapon : Base_Weapon
             inputAction.Attack.PrimaryAttack.started += ctx => PrimaryAttack();
             inputAction.Attack.PrimaryAttack.started += ctx => OnPrimaryHeld();
             inputAction.Attack.SecondaryAttack.started += ctx => SecondaryAttack();
+            inputAction.Attack.SecondaryAttack.started += ctx => OnSecondaryHeld();
             inputAction.Attack.SecondaryAttack.canceled += ctx => EvaluateChargeShot();
+            inputAction.Attack.SecondaryAttack.canceled += ctx => OnSecondaryReleased();
             inputAction.Attack.PrimaryAttack.canceled += ctx => OnPrimaryReleased();
         }
         else
@@ -155,6 +164,7 @@ public class Bow_Weapon : Base_Weapon
             else ObjectPoolManager.Recycle(lightPrefab);
         }
         InitCooldownProgressUI();
+        isEnabled = true;
         Debug.Log("Equip");
     }
     public override void UnEquip()
@@ -166,13 +176,14 @@ public class Bow_Weapon : Base_Weapon
         attackEvents.OnPlaySFX -= PlayArrowDrawSFX;
         isBusy = false;
         isCharging = false;
-
+        isEnabled = false;
         if (light2d)
         {
             ObjectPoolManager.Recycle(light2d.gameObject);
 
         }
         ClearCooldownProgressBar();
+        HideGamePadPonter();
         Debug.Log("unequip");
     }
     public override void DisableWeapon()
@@ -186,7 +197,19 @@ public class Bow_Weapon : Base_Weapon
         {
             attackEvents.OnChargeIncrease -= IncreaseCharge;
 
-            Vector2 dir = (ControllerManager.instance.GetActiveCursor().position - firePoint.position).normalized;
+            Vector2 dir;
+
+            Transform pointerTransform = null;
+            if (ControllerManager.instance) pointerTransform = ControllerManager.instance.GetActiveCursor();
+
+            if (pointerTransform != null)
+            {
+                dir = (pointerTransform.position - firePoint.position).normalized;
+            }
+            else
+            {
+                dir = firePoint.up;
+            }
             if (chargeCount == 1)
             {
 
@@ -196,6 +219,7 @@ public class Bow_Weapon : Base_Weapon
                 {
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                 }
+                chargeCount = 0;
             }
             else if (chargeCount == 2)
             {
@@ -205,6 +229,7 @@ public class Bow_Weapon : Base_Weapon
                 {
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                 }
+                chargeCount = 0;
             }
             else if (chargeCount >= 3)
             {
@@ -214,6 +239,7 @@ public class Bow_Weapon : Base_Weapon
                 {
                     projectile.ShootProjectile(secondaryShotSpeed, dir, secondaryShotLifeTime);
                 }
+                chargeCount = 0;
             }
             isCharging = false;
         }
@@ -221,6 +247,8 @@ public class Bow_Weapon : Base_Weapon
         {
             isCharging = false;
         }
+        HideGamePadPonter();
+        HideCooldownProgressBar();
     }
 
 
@@ -231,6 +259,7 @@ public class Bow_Weapon : Base_Weapon
         if (!canPrimaryFire) ResetPrimaryFire();
         if (!canSecondaryFire) ResetSecondaryFire();
     }
+
     protected override void SecondaryAttack()
     {
 
@@ -254,7 +283,7 @@ public class Bow_Weapon : Base_Weapon
         OnSecondaryAttack?.Invoke();
         attackEvents.OnPlaySFX += PlayArrowDrawSFX;
         animSolver.PlayAnimationFromStart("Secondary_Bow");
-
+ 
     }
 
     public void PlayArrowShotSFX()
@@ -347,6 +376,7 @@ public class Bow_Weapon : Base_Weapon
 
         }
 
+
     }
     private void IncreaseCharge()
     {
@@ -392,11 +422,19 @@ public class Bow_Weapon : Base_Weapon
 
         if (chargeCount > 0)
         {
+           
             canSecondaryFire = false;
-            currSecFireCooldown = secondaryFireRate;
+            if(currSecFireCooldown<=0f)
+                    currSecFireCooldown = secondaryFireRate;
+            ShowCooldownProgressBar();
+
+        }else if(currSecFireCooldown > 0f)
+        {
+            canSecondaryFire = false;
             ShowCooldownProgressBar();
         }
-            
+
+
         else
         {
             canSecondaryFire = true;
@@ -445,5 +483,63 @@ public class Bow_Weapon : Base_Weapon
         if (primaryHeld) PrimaryAttack();
     }
 
+    public void ShowGamePadPointer()
+    {
+        if (!gamepadPointer)
+        {
+            gamepadPointer = ObjectPoolManager.Spawn(gamePadArrowPrefab, playerTransform.position + firePoint.up * gamePadArrowOffset, firePoint.rotation);
+            gamepadPointer.transform.SetParent(firePoint);
+        }
+        else
+        {
+            gamepadPointer.SetActive(true);
+            gamepadPointer.transform.position = playerTransform.position + firePoint.up * gamePadArrowOffset;
+            gamepadPointer.transform.rotation = firePoint.rotation;
+            gamepadPointer.transform.SetParent(firePoint);
+        }
+    }
+    public void HideGamePadPonter()
+    {
+        if (gamepadPointer)
+        {
+            ObjectPoolManager.Recycle(gamepadPointer);
+            gamepadPointer = null;
+        }
+    }
+
+    protected override void OnPrimaryHeld()
+    {
+        base.OnPrimaryHeld();
+        if (ControllerManager.instance)
+        {
+            if (!ControllerManager.instance.IsUsingMouse())
+            {
+                ShowGamePadPointer();
+            }
+        }
+    }
+    protected override void OnPrimaryReleased()
+    {
+        base.OnPrimaryReleased();
+        HideGamePadPonter();
+    }
+
+    protected override void OnSecondaryHeld()
+    {
+        base.OnSecondaryHeld();
+        if (ControllerManager.instance)
+        {
+            if (!ControllerManager.instance.IsUsingMouse())
+            {
+                ShowGamePadPointer();
+            }
+        }
+    }
+
+    protected override void OnSecondaryReleased()
+    {
+        base.OnSecondaryReleased();
+        HideGamePadPonter();
+    }
 }
    

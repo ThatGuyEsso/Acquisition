@@ -12,7 +12,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
     private float magnitude;
 
     private Vector2 lastScreenPosition;
-    [SerializeField] private GameObject pointer;
+
     private float smoothRot;
 
     [Header("Rotation Settings")]
@@ -101,7 +101,7 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
                 input.Disable();
           
                 isMoving = false;
-            if (pointer) pointer.gameObject.SetActive(false);
+       
 
         }
     }
@@ -128,9 +128,6 @@ public class GamepadMoveCursor : MonoBehaviour, Controls.IAimingActions, IInitia
         //
     }
 
-    public GameObject GetCursor()
-    {
-        return pointer;
-    }
+
 
 }

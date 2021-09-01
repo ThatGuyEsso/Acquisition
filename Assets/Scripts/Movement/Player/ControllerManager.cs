@@ -39,16 +39,15 @@ public class ControllerManager : MonoBehaviour, IInitialisable
         isInitialised = true;
     }
 
+    public bool IsUsingMouse() { return mouseCursor.enabled; }
+
     public Transform GetActiveCursor()
     {
         if (mouseCursor.enabled)
         {
            return mouseCursor.GetCursor();
         }
-        else if(gamepadCursor.enabled)
-        {
-            return gamepadCursor.GetCursor().transform;
-        }
+ 
         return null;
     }
 

@@ -378,8 +378,9 @@ public class Staff_Weapon : Base_Weapon
             isBusy = false;
             line.enabled = false;
 
-           
-            primCurrFireCooldown = primaryFireRate;
+
+            if (primCurrFireCooldown <= 0f)
+                primCurrFireCooldown = primaryFireRate;
             canPrimaryFire = false;
             ShowPrimaryCooldownBar();
 
@@ -397,6 +398,10 @@ public class Staff_Weapon : Base_Weapon
             StopCoroutine(WaitForFirePrimaryRate(primaryFireRate));
            
            
+        }else if (primCurrFireCooldown > 0f)
+        {
+            canPrimaryFire = false;
+            ShowPrimaryCooldownBar();
         }
         if (beamPlayer)
         {
@@ -441,6 +446,8 @@ public class Staff_Weapon : Base_Weapon
             StopCoroutine(PrimaryAttackDuration());
       
         }
+        HidePrimaryCooldownProgressBar();
+        HideSecondaryCooldownProgressBar();
     }
     public void InitCooldownProgressUI()
     {
@@ -472,6 +479,7 @@ public class Staff_Weapon : Base_Weapon
     {
         if (primCooldownSlider)
         {
+            if (primCooldownSlider.gameObject.activeInHierarchy) return;
             primCooldownSlider.gameObject.SetActive(true);
             if (IsShieldOnCooldown())
             {
@@ -501,6 +509,7 @@ public class Staff_Weapon : Base_Weapon
     {
         if (secCooldownSlider)
         {
+            if (secCooldownSlider.gameObject.activeInHierarchy) return;
             secCooldownSlider.gameObject.SetActive(true);
             if (IsBeamOnCooldown())
             {
@@ -555,14 +564,16 @@ public class Staff_Weapon : Base_Weapon
         if (!canSecondaryFire) ResetSecondaryFire();
 
     }
+    
     public override void ResetSecondaryFire()
     {
         attackEvents.OnHideAttackZone -= ResetSecondaryFire;
 
         isBusy = false;
-     
-        secCurrFireCooldown = secondaryFireRate;
+        if(secCurrFireCooldown<=0f)
+            secCurrFireCooldown = secondaryFireRate;
         canSecondaryFire = false;
         ShowSecondaryCooldownBar();
     }
+
 }

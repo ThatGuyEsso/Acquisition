@@ -89,7 +89,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
                 currTimeToIdle -= Time.deltaTime;
             }
         }
-        if (!canSecondaryFire)
+        if (!canSecondaryFire &&isEnabled)
         {
             if (currSecFireCooldown <= 0f)
             {
@@ -194,7 +194,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
         animSolver.movement.OnWalk += OnRun;
         animSolver.movement.OnStop += OnStop;
         InitCooldownProgressUI();
-
+        isEnabled = true;
     }
 
     
@@ -245,6 +245,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
     {
         base.UnEquip();
         ClearCooldownProgressBar();
+    
     }
 
     public override void OnStop()
@@ -274,10 +275,12 @@ public class Sword_Weapon : Base_Weapon, Equipable
 
     override public void ResetSecondaryFire()
     {
+
         attackEvents.OnAnimEnd -= ResetSecondaryFire;
         isBusy = false;
         canSecondaryFire = false;
-        currSecFireCooldown = secondaryFireRate;
+        if (currSecFireCooldown <= 0f)
+            currSecFireCooldown = secondaryFireRate;
         ShowCooldownProgressBar();
         Debug.Log("Not busy");
     }
@@ -297,6 +300,7 @@ public class Sword_Weapon : Base_Weapon, Equipable
         attackEvents.OnShootProjectile -= OnFireProjectile;
         attackEvents.OnAnimEnd -= ResetPrimaryFire;
         DestroyAttackZone();
+        HideCooldownProgressBar();
     }
 
 

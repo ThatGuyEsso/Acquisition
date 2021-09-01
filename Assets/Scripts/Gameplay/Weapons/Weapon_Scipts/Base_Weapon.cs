@@ -53,7 +53,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
     protected float currTimeToIdle;
     protected bool primaryHeld = false;
     protected bool secondaryHeld = false;
-
+    protected bool isEnabled;
     //Abillity actions
     public Action OnPrimaryAttack;
     public Action<GameObject> OnPrimaryAbility;
@@ -196,7 +196,8 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         animSolver = solver;
         animSolver.movement.OnWalk += OnRun;
         animSolver.movement.OnStop += OnStop;
-   
+        isEnabled = true;
+
 
     }
 
@@ -209,6 +210,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         SetCanFire(false);
         animSolver.movement.OnWalk -= OnRun;
         animSolver.movement.OnStop -= OnStop;
+        isEnabled = false;
     }
 
 
@@ -243,6 +245,7 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         secondaryHeld = false;
         isWeaponActive = false;
         isBusy = false;
+        isEnabled = false;
     }
 
     virtual public void EnableWeapon()
@@ -250,23 +253,24 @@ public class Base_Weapon : MonoBehaviour, IInitialisable, Equipable
         if (inputAction != null) inputAction.Enable();
         isWeaponActive = true;
         isBusy = false;
+        isEnabled = true;
     }
 
-    protected void OnPrimaryHeld()
+    virtual protected void OnPrimaryHeld()
     {
         primaryHeld = true;
     }
 
-    protected void OnPrimaryReleased()
+    virtual protected void OnPrimaryReleased()
     {
         primaryHeld = false;
     }
-    protected void OnSecondaryHeld()
+    virtual protected void OnSecondaryHeld()
     {
         secondaryHeld = true;
     }
 
-    protected void OnSecondaryReleased()
+    virtual protected void OnSecondaryReleased()
     {
         secondaryHeld = false;
     }
