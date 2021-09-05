@@ -131,6 +131,8 @@ public class BladeChaos : BaseBossAbility
         projectile.GetComponent<IInitialisable>().Init();
         projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up,
             projectileSpeed, projectileLifeTime,  projectileBlockCount, owner.gameObject);
+
+        OnProjectileSpawned?.Invoke(projectile);
     }
 
 

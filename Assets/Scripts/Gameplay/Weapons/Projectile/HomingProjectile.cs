@@ -131,7 +131,7 @@ public class HomingProjectile : Base_Projectile
     {
         if (!canHome&&!useProximity) return;
         if (projectileSpeed > 0f)
-            rb.velocity = projectileSpeed * transform.up * Time.fixedDeltaTime;
+            rb.velocity = projectileSpeed * transform.up.normalized * Time.fixedDeltaTime;
     }
 
     public override bool IsHoming()

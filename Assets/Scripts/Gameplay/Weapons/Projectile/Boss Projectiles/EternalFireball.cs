@@ -128,7 +128,8 @@ public class EternalFireball : ProjectileGrenade
             ClearProjectile();
         }
 
-      
+        OnCollision?.Invoke();
+
     }
     public void ClearProjectile()
     {
@@ -146,6 +147,7 @@ public class EternalFireball : ProjectileGrenade
 
     protected override void OnDisable()
     {
+   
         OnKilled?.Invoke();
         if (isHurt)
         {

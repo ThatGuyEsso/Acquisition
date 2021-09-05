@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 283454270}
   - component: {fileID: 6370110136165871259}
   - component: {fileID: 5074845680713216480}
+  - component: {fileID: 3770973882589973612}
   m_Layer: 10
   m_Name: The Scholar
   m_TagString: Enemy
@@ -408,6 +409,22 @@ CircleCollider2D:
   m_Offset: {x: -0.86, y: 0}
   serializedVersion: 2
   m_Radius: 0.26
+--- !u!114 &3770973882589973612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9117400843208570804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c54a50efdf2f24f9ad6c51934d9dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordKingBuff: {fileID: 7145386014119836545, guid: 26fb3d0d88963a94f96ae605b21a8e73, type: 3}
+  elderBuff: {fileID: 9045097396588258586, guid: c56a97edaa8ef5a4296df02042de9218, type: 3}
+  scholarBuff: {fileID: 0}
+  runtimeData: {fileID: 11400000, guid: 20e304c4c394970429831bc02f723f34, type: 2}
 --- !u!1 &9117400843545789681
 GameObject:
   m_ObjectHideFlags: 0

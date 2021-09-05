@@ -29,6 +29,9 @@ public class BaseBossAbility : MonoBehaviour, IInitialisable
     protected bool canAttack;
 
 
+    public Action<GameObject> OnProjectileSpawned;
+
+
     public void SetUpAbility(int attackCount,float attackRate,float attackRange, float longCooldown,bool isManagingControls,
         bool isPriority, bool isCloseRange)
     {

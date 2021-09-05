@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 366966660211984381}
   - component: {fileID: 2115112463}
   - component: {fileID: 406913990396177067}
+  - component: {fileID: 4811846603054199527}
   m_Layer: 10
   m_Name: TheElder
   m_TagString: Enemy
@@ -391,6 +392,22 @@ CircleCollider2D:
   m_Offset: {x: 0.13, y: -0.54}
   serializedVersion: 2
   m_Radius: 0.23
+--- !u!114 &4811846603054199527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292969778363592952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c54a50efdf2f24f9ad6c51934d9dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordKingBuff: {fileID: 6212017575759287689, guid: d57b1c983fed22847a60a555883954da, type: 3}
+  elderBuff: {fileID: 0}
+  scholarBuff: {fileID: 0}
+  runtimeData: {fileID: 11400000, guid: 20e304c4c394970429831bc02f723f34, type: 2}
 --- !u!1 &2292969778836308925
 GameObject:
   m_ObjectHideFlags: 0

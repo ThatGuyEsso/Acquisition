@@ -15,6 +15,7 @@ public class EtheralArrow : BaseBossAbility,IInitialisable
    
         attacksLeft--;
         GameObject projectileObject = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
+   
         IInitialisable init = projectileObject.GetComponent<IInitialisable>();
         IProjectile projectile = projectileObject.GetComponent<IProjectile>();
         if (init != null) init.Init();
@@ -28,6 +29,7 @@ public class EtheralArrow : BaseBossAbility,IInitialisable
         {
             projectile.SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, projectileBlockCount, owner.gameObject);
             projectile.SetHomingTarget(owner.target);
+            OnProjectileSpawned?.Invoke(projectileObject);
         }
         else
         {
@@ -35,7 +37,7 @@ public class EtheralArrow : BaseBossAbility,IInitialisable
             if (projectileObject) ObjectPoolManager.Recycle(projectileObject);
             return;
         }
-
+      
         if (AudioManager.instance)
         {
             AudioManager.instance.PlayThroughAudioPlayer("ElderCastSFX", transform.position);

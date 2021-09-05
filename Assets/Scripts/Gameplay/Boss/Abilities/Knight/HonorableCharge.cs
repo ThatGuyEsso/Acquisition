@@ -90,7 +90,7 @@ public class HonorableCharge : BaseBossAbility
             Vector2 direction = chargeDirection * currentSpeed;
             rb.velocity = direction;
 
-            if (currentSpeed <= 0.01f)
+            if (currentSpeed <= 0.1f)
             {
 
                 StopCharge();

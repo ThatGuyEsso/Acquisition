@@ -24,6 +24,7 @@ public class Base_Projectile : MonoBehaviour, IInitialisable, IProjectile, IDama
 
 
     public System.Action OnKilled;
+    public System.Action OnCollision;
     virtual protected void Awake()
     {
         if (inDebug)

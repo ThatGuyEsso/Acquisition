@@ -23,6 +23,7 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
         GameObject projectile = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
         projectile.GetComponent<IInitialisable>().Init();
         projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, projectileBlockCount,owner.gameObject);
+        OnProjectileSpawned?.Invoke(projectile);
     }
     public void CreateAttackZone()
     {

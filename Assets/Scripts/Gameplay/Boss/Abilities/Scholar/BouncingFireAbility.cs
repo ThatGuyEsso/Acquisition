@@ -14,6 +14,7 @@ public class BouncingFireAbility : BaseBossAbility
         if (!isEnabled) return;
         attacksLeft--;
         GameObject projectileObject = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
+     
         IInitialisable init = projectileObject.GetComponent<IInitialisable>();
         IProjectile projectile = projectileObject.GetComponent<IProjectile>();
         if (init != null) init.Init();
@@ -27,6 +28,8 @@ public class BouncingFireAbility : BaseBossAbility
         {
             projectile.SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, projectileBlockCOunt, owner.gameObject);
             projectile.SetHomingTarget(owner.target);
+            OnProjectileSpawned?.Invoke(projectileObject);
+
         }
         else
         {

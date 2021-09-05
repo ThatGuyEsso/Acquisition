@@ -26,6 +26,7 @@ public class FaceTarget : MonoBehaviour
      
 
     }
+    public void SetRotationRate(float rate) { rotationRate = rate; }
 
     public void FaceCurrentTarget(float offset)
     {

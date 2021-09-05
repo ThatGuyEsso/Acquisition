@@ -17,7 +17,7 @@ public class InLargeOverTime : MonoBehaviour
         if(startOnEnable)
              StartGrowing();
     }
-    public void Update()
+    public void LateUpdate()
     {
 
 

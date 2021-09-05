@@ -27,6 +27,7 @@ public class EternalFireballAbility : BaseBossAbility
         {
             projectile.SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, 0, owner.gameObject);
             projectile.SetHomingTarget(owner.target);
+            OnProjectileSpawned?.Invoke(projectileObject);
         }
         else
         {

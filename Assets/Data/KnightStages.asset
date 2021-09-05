@@ -22,8 +22,8 @@ MonoBehaviour:
     isSuperCloseRange: 0
     abilityPrefab: {fileID: 8290753865192258739, guid: 96c9357e396e2fa4e8f64833d94b39ce, type: 3}
   - maxAttackCount: 2
-    attackRate: 4
-    coolDown: 3
+    attackRate: 2
+    coolDown: 2
     attackRange: 15
     isManagingBossAttack: 1
     isPriority: 0

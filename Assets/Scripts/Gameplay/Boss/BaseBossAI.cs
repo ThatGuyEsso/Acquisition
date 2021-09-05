@@ -34,7 +34,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     [SerializeField] protected FaceTarget faceTarget;
     [SerializeField] protected FaceMovementDirection faceMovementDirection;
     [SerializeField] protected GameObject transitionShieldPrefab;
-
+    protected BossBuffManager buffManager;
     [SerializeField] protected float maxHurtTime;
     [SerializeField] protected List<BaseBossAbility> currentStageAbilities = new List<BaseBossAbility>();
 
@@ -70,12 +70,17 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     protected bool isDead;
     protected bool isTransitioning;
     protected GameObject transitionShield;
-    public System.Action OnAwakened; 
+
+    //Events
+    public System.Action OnAwakened;
+    public System.Action<BaseBossAbility> OnAbilityAdded;
+    public System.Action<BaseBossAbility> OnAbilityRemoved;
     protected void Awake()
     {
         if (animator.enabled) animator.enabled = false;
         if (inDebug) Init();
         if (GameManager.instance) GameManager.instance.OnNewEvent += EvaluateeNewGameEvents;
+        if (!buffManager) buffManager = GetComponent<BossBuffManager>();
     }
 
     public void EvaluateeNewGameEvents(GameEvents gameEvent)
@@ -120,6 +125,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         {
             flashVFX.Init();
         }
+        if (buffManager) buffManager.Init();
     }
     public void AwakenBoss()
     {
@@ -208,13 +214,17 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             {
                 ability.DisableAbility();
                 if (ability.gameObject)
+                {
+                    OnAbilityRemoved?.Invoke(ability);
                     ObjectPoolManager.Recycle(ability.gameObject);
+                }
             }
             currentStageAbilities.Clear();
             if (transitionAbility)
             {
                 if (transitionAbility.isEnabled) transitionAbility.DisableAbility();
 
+           
                 ObjectPoolManager.Recycle(transitionAbility.gameObject);
             }
 
@@ -264,8 +274,11 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         {
             foreach (BaseBossAbility ability in currentStageAbilities)
             {
-                if(ability.gameObject)
+                if (ability.gameObject)
+                {
+                    OnAbilityRemoved?.Invoke(ability);
                     ObjectPoolManager.Recycle(ability.gameObject);
+                }
             }
             currentStageAbilities.Clear();
         }
@@ -309,6 +322,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
                 IInitialisable initialise= ability.GetComponent<IInitialisable>();
                 if (initialise != null) initialise.Init();
                 currentStageAbilities.Add(ability);
+                OnAbilityAdded?.Invoke(ability);
             }
         }
         if (currentStageAbilities.Count <= 0) return;
@@ -495,7 +509,11 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     {
         
         if (!transitionAbility)
+        {
             transitionAbility = ObjectPoolManager.Spawn(transitionAbilityPrefab.gameObject, transform, Vector3.zero).GetComponent<BaseBossAbility>();
+         
+
+        }
 
 
         if (currentStageAbilities.Count >0)
@@ -503,8 +521,11 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             foreach (BaseBossAbility ability in currentStageAbilities)
             {
                 ability.DisableAbility();
-                if(ability.gameObject)
+                if (ability.gameObject)
+                {
+                    OnAbilityRemoved?.Invoke(ability);
                     ObjectPoolManager.Recycle(ability.gameObject);
+                }
             }
             currentStageAbilities.Clear();
             closeCombatAbility = null;
@@ -526,8 +547,11 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             foreach (BaseBossAbility ability in currentStageAbilities)
             {
                 ability.DisableAbility();
-                if(ability.gameObject)
+                if (ability.gameObject)
+                {
+                    OnAbilityRemoved?.Invoke(ability);
                     ObjectPoolManager.Recycle(ability.gameObject);
+                }
             }
             currentStageAbilities.Clear();
         }
@@ -561,6 +585,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
    
         if (UI) ObjectPoolManager.Recycle(UI.gameObject);
         if (GameManager.instance) GameManager.instance.OnNewEvent -= EvaluateeNewGameEvents;
+
     }
 
     public Transform GetTarget()

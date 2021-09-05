@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69d1e4f56754ab45bb6d0557f112a0a, type: 3}
   m_Name: RuntimeData
   m_EditorClassIdentifier: 
-  isKnightDefeated: 1
-  isElderDefeated: 1
+  isKnightDefeated: 0
+  isElderDefeated: 0
   isScholarDefeated: 1
-  hasWeapon: 0
+  hasWeapon: 1
   equippedWeapon: 0

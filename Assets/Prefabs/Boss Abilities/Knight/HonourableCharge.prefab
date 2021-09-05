@@ -61,7 +61,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   maxChargeSpeed: 25
-  chargeTime: 0.75
+  chargeTime: 0.35
   acceleration: 10
   deceleration: 2
   attackColliderPrefab: {fileID: 8269005349974401674, guid: b12b46211fbbbdc4a9ef1459842b2a9c, type: 3}

@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 118221031589024599}
   - component: {fileID: 6799094497969091402}
   - component: {fileID: 848520677018339722}
+  - component: {fileID: 6140611534440988664}
   m_Layer: 10
   m_Name: SwordKnight
   m_TagString: Enemy
@@ -347,6 +348,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashColour: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 8
+--- !u!114 &6140611534440988664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118221031589024621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c54a50efdf2f24f9ad6c51934d9dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordKingBuff: {fileID: 0}
+  elderBuff: {fileID: 3751250627421782432, guid: cf942921e350ffe47a476f45b3f94a53, type: 3}
+  scholarBuff: {fileID: 7525544228407054902, guid: 5a59bf4af89a0344faeaecc3dd3ea31f, type: 3}
+  runtimeData: {fileID: 11400000, guid: 20e304c4c394970429831bc02f723f34, type: 2}
 --- !u!1 &118221031614647828
 GameObject:
   m_ObjectHideFlags: 0
