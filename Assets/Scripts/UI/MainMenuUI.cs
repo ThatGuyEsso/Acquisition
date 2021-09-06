@@ -21,7 +21,7 @@ public class MainMenuUI : MonoBehaviour
     private void OnEnable()
     {
         if (imageFade) {
-            imageFade.BeginFadeIn(5f);
+            imageFade.BeginFadeIn(6.5f);
             raycaster.enabled = false;
             imageFade.OnFadeComplete += EnableButtons;
         }

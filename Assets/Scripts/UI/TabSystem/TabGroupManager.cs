@@ -38,6 +38,7 @@ public class TabGroupManager : MonoBehaviour, Controls.ITabsActions
         if (selectedTab == null || button != selectedTab)
         {
             button.background.color = settings.tabHovered;
+            if (AudioManager.instance) AudioManager.instance.PlayUISound("ButtonHover", Vector3.zero, true);
         }
     }
 

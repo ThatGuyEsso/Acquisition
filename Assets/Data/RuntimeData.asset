@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isKnightDefeated: 0
   isElderDefeated: 0
-  isScholarDefeated: 1
-  hasWeapon: 1
-  equippedWeapon: 0
+  isScholarDefeated: 0
+  hasWeapon: 0
+  equippedWeapon: 3

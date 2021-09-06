@@ -63,7 +63,7 @@ public class LoadingScreen : MonoBehaviour, IInitialisable
         {
             currentAlpha = Mathf.Lerp(currentAlpha, 0.0f, Time.deltaTime * fadeOutRate);
 
-            if (currentAlpha <= 0.01)
+            if (currentAlpha <= 0.1f)
             {
                 currentAlpha = 0f;
                 blackScreen.color = new Color(blackScreen.color.r, blackScreen.color.g, blackScreen.color.b, currentAlpha);
