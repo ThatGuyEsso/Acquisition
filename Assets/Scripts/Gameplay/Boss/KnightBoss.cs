@@ -269,11 +269,12 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
         }
 
 
-        currentStage = BossStage.Transition;
+    
         if (BossRoomManager.instance && GetDistanceToCentre()> 1f)
         {
             isBusy = true;
          
+            currentStage = BossStage.Transition;
             currentAIState = AIState.Chase;
             navigation.enabled = true;
             faceTarget.enabled = false;
@@ -281,6 +282,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
             animator.Play("Walking");
             StartCoroutine(WaitTilleAtCentre());
             transitionShield = ObjectPoolManager.Spawn(transitionShieldPrefab, transform);
+
         }
         else
         {
@@ -288,6 +290,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
             isBusy = false;
             currentStageIndex++;
             Debug.Log("Current Stage index= " + currentStageIndex);
+            currentStage = BossStage.Transition;
             OnNewState(AIState.Attack);
             transitionShield = ObjectPoolManager.Spawn(transitionShieldPrefab, transform);
         }

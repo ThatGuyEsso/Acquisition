@@ -51,6 +51,7 @@ public class AbsorbsiveProjectile : HomingProjectile
         sizeController.enabled = true;
      
     }
+
     public override void OnTriggerEnter2D(Collider2D other)
     {
         if (((1 << other.gameObject.layer) & destroyProjectileLayer) != 0)
@@ -126,20 +127,25 @@ public class AbsorbsiveProjectile : HomingProjectile
         projectileDamage += absorbDamageIncrement;
         if (absorbCount > maxAbsorbCount) absorbCount = maxAbsorbCount;
 
-        currTargetSize = transform.localScale + Vector3.one * absorbSizeIncrement;
-        if (currTargetSize.x > maxSize)
+        if (absorbSizeIncrement > 0)
         {
-            currTargetSize = defaultSize + Vector3.one * maxSize;
-            KillProjectile();
-        }
+            currTargetSize = transform.localScale + Vector3.one * absorbSizeIncrement;
+            if (currTargetSize.x > maxSize)
+            {
+                currTargetSize = defaultSize + Vector3.one * maxSize;
+                KillProjectile();
+            }
 
-        if (sizeController)
-        {
-            sizeController.SetUpGrowSetting(currTargetSize.x, 3f, 0.05f);
-            sizeController.StartGrowing();
+            if (sizeController)
+            {
+                sizeController.SetUpGrowSetting(currTargetSize.x, 3f, 0.05f);
+                sizeController.StartGrowing();
+            }
         }
+   
 
 
     }
-
+ 
 }
+

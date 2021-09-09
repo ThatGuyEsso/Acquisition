@@ -34,9 +34,10 @@ public class BossDoor : MonoBehaviour
         }
         else
         {
+            if(!wallMode.activeSelf) ObjectPoolManager.Spawn(spawnVFX, doorMode.transform.position, Quaternion.identity);
             doorMode.gameObject.SetActive(false);
             wallMode.SetActive(true);
-            ObjectPoolManager.Spawn(spawnVFX, doorMode.transform.position, Quaternion.identity);
+         
         }
     }
 

@@ -389,7 +389,7 @@ public class Bow_Weapon : Base_Weapon
         if (light2d)
         {
             light2d.gameObject.SetActive(true);
-            light2d.intensity = chargeCount;
+            light2d.intensity = chargeCount/1.25f;
             light2d.pointLightOuterRadius = chargeCount;
         }
 

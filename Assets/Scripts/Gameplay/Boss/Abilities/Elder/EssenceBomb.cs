@@ -29,6 +29,7 @@ public class EssenceBomb : BaseBossAbility
         if (projectile != null)
         {
             projectile.SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, projectileBlockCount, owner.gameObject);
+            OnProjectileSpawned?.Invoke(projectileObject);
         }
         else
         {

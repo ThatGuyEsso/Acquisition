@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 20
-  projectileSpeed: 350
+  projectileSpeed: 10
   lifeTime: 0
   allyRepelForce: 5
   hitSFXname: ProjectileHit
@@ -167,7 +167,7 @@ MonoBehaviour:
   proximityPrefab: {fileID: 0}
   useProximity: 0
   autoAssignTarget: 1
-  absorbSizeIncrement: 0.25
+  absorbSizeIncrement: 0.5
   absorbDamageIncrement: 10
   maxAbsorbCount: 8
   maxSize: 8

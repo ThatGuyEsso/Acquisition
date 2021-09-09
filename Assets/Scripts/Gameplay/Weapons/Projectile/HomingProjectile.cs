@@ -7,11 +7,11 @@ public class HomingProjectile : Base_Projectile
 {
     protected Transform homingTarget;
     protected FaceTarget orientatonManager;
-    [SerializeField] private GameObject proximityPrefab;
-    [SerializeField] private bool useProximity;
+    [SerializeField] protected GameObject proximityPrefab;
+    [SerializeField] protected bool useProximity;
     protected bool canHome;
     protected HomingProximityDetector detector;
-    [SerializeField] private bool autoAssignTarget;
+    [SerializeField] protected bool autoAssignTarget;
     override protected  void Awake()
     {
         base.Awake();
@@ -37,6 +37,8 @@ public class HomingProjectile : Base_Projectile
         }
 
     }
+
+
     override public void SetHomingTarget(Transform target)
     {
         if (useProximity) return;
@@ -116,6 +118,15 @@ public class HomingProjectile : Base_Projectile
                 }
             }
         }
+        else
+        {
+            Transform newTarget = owner.GetComponent<IBoss>().GetTarget();
+            if (newTarget)
+            {
+                SetHomingTarget(newTarget);
+
+            }
+        }
     }
     override protected void OnDisable()
     {
@@ -127,7 +138,7 @@ public class HomingProjectile : Base_Projectile
     }
 
 
-    protected void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         if (!canHome&&!useProximity) return;
         if (projectileSpeed > 0f)

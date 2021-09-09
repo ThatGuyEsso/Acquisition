@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2243921957713274074, guid: 8305bd09df481444abb4e2e9f5d2fdbc, type: 3}
       propertyPath: sizeMultiplier
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2243921957713274074, guid: 8305bd09df481444abb4e2e9f5d2fdbc, type: 3}
       propertyPath: sizeIncreaseRate
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2243921957713274074, guid: 8305bd09df481444abb4e2e9f5d2fdbc, type: 3}
       propertyPath: abilityToBuffPrefab
