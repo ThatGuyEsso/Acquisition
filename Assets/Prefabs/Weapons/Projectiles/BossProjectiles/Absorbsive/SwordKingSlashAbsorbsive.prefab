@@ -144,7 +144,7 @@ MonoBehaviour:
   flashVFX: {fileID: 0}
   destroyProjectileLayer:
     serializedVersion: 2
-    m_Bits: 8320
+    m_Bits: 128
   breakVFX: {fileID: 2861883374592829103, guid: c4c6b39608e328f4ab3bb04b7c86d4df, type: 3}
   proximityPrefab: {fileID: 0}
   useProximity: 0

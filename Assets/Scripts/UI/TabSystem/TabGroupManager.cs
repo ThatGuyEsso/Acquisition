@@ -63,6 +63,7 @@ public class TabGroupManager : MonoBehaviour, Controls.ITabsActions
                 objectsToSwap[i].SetActive(false);
         }
 
+
     }
 
     public void RestTabs()

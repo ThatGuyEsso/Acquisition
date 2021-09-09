@@ -8,11 +8,15 @@ public class FollowTarget : MonoBehaviour
     [SerializeField] private bool selfDestroy = true;
     [SerializeField] private Transform target;
     [SerializeField] private float followSpeed;
+    [SerializeField] private float rotateRate;
     private bool isFollowing;
     [SerializeField] private Rigidbody2D rb;
     protected FaceTarget orientatonManager;
     private bool addedFaceTarget;
     private Base_Projectile projectile;
+
+    [SerializeField] private bool ownerIsPlayer;
+    [SerializeField] private bool isAProjectile;
     public void SetUpFollower(Transform followTarget, float speed, float rotationRate,bool isProjectile)
     {
         target = followTarget;
@@ -39,7 +43,32 @@ public class FollowTarget : MonoBehaviour
     private void OnEnable()
     {
         if (startOnEnable)
+        {
+
             isFollowing = true;
+            if (ownerIsPlayer&& isAProjectile)
+            {
+                if (BossRoomManager.instance)
+                {
+                    SetUpFollower(BossRoomManager.instance.GetBoss().transform, followSpeed, rotateRate, isAProjectile);
+                }
+                else
+                {
+                    ObjectPoolManager.Recycle(gameObject);
+                }
+             
+            }else if(!ownerIsPlayer && isAProjectile)
+            {
+                if (BossRoomManager.instance)
+                {
+                    SetUpFollower(BossRoomManager.instance.GetBoss().GetTarget(), followSpeed, rotateRate, isAProjectile);
+                }
+                else
+                {
+                    ObjectPoolManager.Recycle(gameObject);
+                }
+            }
+        }
     }
 
 

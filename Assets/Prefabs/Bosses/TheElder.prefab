@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordKingBuff: {fileID: 6212017575759287689, guid: d57b1c983fed22847a60a555883954da, type: 3}
   elderBuff: {fileID: 0}
-  scholarBuff: {fileID: 0}
+  scholarBuff: {fileID: 3193190473821921, guid: 2303d88f1793c994eb18ef5c5797734d, type: 3}
   runtimeData: {fileID: 11400000, guid: 20e304c4c394970429831bc02f723f34, type: 2}
 --- !u!1 &2292969778836308925
 GameObject:

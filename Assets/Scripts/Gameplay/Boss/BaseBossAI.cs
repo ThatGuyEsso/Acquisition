@@ -224,7 +224,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
             {
                 if (transitionAbility.isEnabled) transitionAbility.DisableAbility();
 
-           
+               
+                OnAbilityRemoved?.Invoke(transitionAbility);
                 ObjectPoolManager.Recycle(transitionAbility.gameObject);
             }
 
@@ -262,6 +263,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     virtual protected void SetUpNextStage()
     {
 
+        if (transitionAbility)
+            OnAbilityRemoved?.Invoke(transitionAbility);
         currentStage = (BossStage)currentStageIndex;
 
 
@@ -378,6 +381,7 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
     {
         if (closeCombatAbility&& closeCombatAbility != currentStageAbilities[currentAttackIndex])
         {
+            currentStageAbilities[currentAttackIndex].DisableAbility();
            if (!closeCombatAbility.isEnabled) closeCombatAbility.EnableAbility();
             if (closeCombatAbility.IsManagingAttack()) canLockOn = true;
             else canLockOn = false;
@@ -511,8 +515,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
         if (!transitionAbility)
         {
             transitionAbility = ObjectPoolManager.Spawn(transitionAbilityPrefab.gameObject, transform, Vector3.zero).GetComponent<BaseBossAbility>();
-         
 
+            OnAbilityAdded?.Invoke(transitionAbility);
         }
 
 

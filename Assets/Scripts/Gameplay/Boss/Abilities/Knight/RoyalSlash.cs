@@ -91,6 +91,7 @@ public class RoyalSlash : BaseBossAbility,IInitialisable
             dynamicAttackZone = null;
         }
         if (afterImageController) afterImageController.StopDrawing();
+   
     }
 
     override public void EnableAbility()

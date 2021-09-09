@@ -5,7 +5,7 @@ using UnityEngine;
 public class ElderBuff : Base_BossBuff
 {
     [SerializeField] private float homingSpeed;
-    [SerializeField] private float rotateToTargetRate =0.5f;
+    [SerializeField] private float rotateToTargetRate =0.25f;
     protected override void BindToAbility(BaseBossAbility ability)
     {
         base.BindToAbility(ability);

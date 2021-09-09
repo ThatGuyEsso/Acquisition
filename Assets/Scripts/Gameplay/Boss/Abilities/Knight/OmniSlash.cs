@@ -93,6 +93,10 @@ public class OmniSlash : BaseBossAbility
             GameObject projectile = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
             projectile.GetComponent<IInitialisable>().Init();
             projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed, projectileLifeTime, projectileBlockCount, owner.gameObject);
+
+            projectile = ObjectPoolManager.Spawn(projectilePrefab, owner.GetFirePoint().position, Quaternion.identity);
+            projectile.GetComponent<IInitialisable>().Init();
+            projectile.GetComponent<IProjectile>().SetUpProjectile(1.0f, owner.GetFirePoint().up, projectileSpeed/2, projectileLifeTime, projectileBlockCount, owner.gameObject);
         }
 
     }

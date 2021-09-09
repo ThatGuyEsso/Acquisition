@@ -250,7 +250,10 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
     public override void BeginTransitionStage()
     {
         if (!transitionAbility)
+        {
             transitionAbility = ObjectPoolManager.Spawn(transitionAbilityPrefab.gameObject, transform, Vector3.zero).GetComponent<BaseBossAbility>();
+        
+        }
 
 
         if (currentStageAbilities.Count > 0)
@@ -289,6 +292,8 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
             OnNewState(AIState.Attack);
             transitionShield = ObjectPoolManager.Spawn(transitionShieldPrefab, transform);
         }
+
+        OnAbilityAdded?.Invoke(transitionAbility);
     }
 
 

@@ -90,6 +90,21 @@ public class AbsorbsiveProjectile : HomingProjectile
             }
         }
 
+        if (other.gameObject.CompareTag("Obstacles"))
+        {
+
+
+
+            if (other.GetComponent<IDamage>() != null)
+            {
+                other.GetComponent<IDamage>().OnDamage(projectileDamage, rb.velocity, knockback, owner);
+                KillProjectile();
+            }
+
+
+
+        }
+
 
     }
 

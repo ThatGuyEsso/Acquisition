@@ -57,7 +57,7 @@ public class BaseBossAbility : MonoBehaviour, IInitialisable
         ResetAbility();
     }
 
-    protected IEnumerator BeginRefreshAttack(float time)
+    virtual protected IEnumerator BeginRefreshAttack(float time)
     {
         yield return new WaitForSeconds(time);
         ResetAttack();
@@ -69,7 +69,7 @@ public class BaseBossAbility : MonoBehaviour, IInitialisable
         canAttack = true;
 
     }
-    public void ResetAttack()
+    virtual public void ResetAttack()
     {
 
         canAttack = true;
