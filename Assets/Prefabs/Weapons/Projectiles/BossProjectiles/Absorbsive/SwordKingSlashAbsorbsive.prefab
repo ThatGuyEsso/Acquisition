@@ -149,9 +149,9 @@ MonoBehaviour:
   proximityPrefab: {fileID: 0}
   useProximity: 0
   autoAssignTarget: 0
-  absorbSizeIncrement: 0.625
+  absorbSizeIncrement: 0.5
   absorbDamageIncrement: 8
-  maxAbsorbCount: 0
+  maxAbsorbCount: 8
   maxSize: 8
 --- !u!50 &4546483992930928931
 Rigidbody2D:
@@ -259,7 +259,7 @@ MonoBehaviour:
   growRate: 0
   intialSize: {x: 0, y: 0, z: 0}
   startOnEnable: 0
-  selfDestroy: 1
+  selfDestroy: 0
 --- !u!114 &3862423615649487771
 MonoBehaviour:
   m_ObjectHideFlags: 0

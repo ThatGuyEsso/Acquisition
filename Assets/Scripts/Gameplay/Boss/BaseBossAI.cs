@@ -423,8 +423,8 @@ public abstract class BaseBossAI : MonoBehaviour,IInitialisable,IBoss,IDamage
 
     virtual public void OnDamage(float dmg, Vector2 kBackDir, float kBackMag, GameObject attacker)
     {
-        if (!isFighting) return;
-        if (!isHurt &&currentStage != BossStage.Transition&&!isDead)
+        if (!isFighting||isDead) return;
+        if (!isHurt &&currentStage != BossStage.Transition)
         {
           
             currentHealth -= dmg;

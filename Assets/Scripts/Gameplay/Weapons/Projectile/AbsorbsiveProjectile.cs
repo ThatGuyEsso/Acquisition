@@ -44,7 +44,13 @@ public class AbsorbsiveProjectile : HomingProjectile
         defaultSize = transform.localScale;
         if (sizeController) sizeController.SetInitSize(defaultSize);
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
 
+        sizeController.enabled = true;
+     
+    }
     public override void OnTriggerEnter2D(Collider2D other)
     {
         if (((1 << other.gameObject.layer) & destroyProjectileLayer) != 0)

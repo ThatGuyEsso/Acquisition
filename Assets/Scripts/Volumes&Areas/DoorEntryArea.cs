@@ -42,9 +42,13 @@ public class DoorEntryArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (door.gameObject.activeInHierarchy)
+            if (door.gameObject.activeInHierarchy && door.GetIsOpening() || door.GetIsOpen())
+            {
                 door.BeginToClose();
-        
+
+            }
+
+
         }
     }
 }

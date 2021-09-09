@@ -62,7 +62,7 @@ public class InLargeOverTime : MonoBehaviour
     {
         gameObject.transform.localScale = intialSize;
         if (selfDestroy) 
-        Destroy(this);
+            Destroy(this);
     }
 
 }

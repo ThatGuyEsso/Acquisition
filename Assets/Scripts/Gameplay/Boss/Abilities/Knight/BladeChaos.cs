@@ -135,6 +135,10 @@ public class BladeChaos : BaseBossAbility
         OnProjectileSpawned?.Invoke(projectile);
     }
 
+    private void OnDisable()
+    {
+        RemoveAttackZone();
+    }
 
     public override void DisableAbility()
     {
@@ -143,7 +147,7 @@ public class BladeChaos : BaseBossAbility
         StopAllCoroutines();
         eventListener.OnAnimEnd -= EvaluateEnd;
         eventListener.OnShowAttackZone -= StartBladeCircus;
-        if (attackZone) RemoveAttackZone();
+        RemoveAttackZone();
         if (afterImageController) afterImageController.StopDrawing();
     }
     public override void EnableAbility()

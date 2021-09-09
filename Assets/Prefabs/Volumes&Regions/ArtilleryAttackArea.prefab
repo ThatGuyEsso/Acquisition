@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8081151198412818656}
   - component: {fileID: 8081151198412818657}
   - component: {fileID: 8081151198412818686}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: ArtilleryAttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ab38689d973024caf2cdf9b415c6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerZone: 0
+  damage: 0
 --- !u!58 &8081151198412818686
 CircleCollider2D:
   m_ObjectHideFlags: 0

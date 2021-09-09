@@ -59,7 +59,8 @@ public class RoomDoor : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            CloseDoors();
+            if (!isLocked)
+                CloseDoors();
         }
     }
 }

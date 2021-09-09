@@ -267,13 +267,13 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
             currentStageAbilities.Clear();
             closeCombatAbility = null;
         }
-     
-  
-    
-        if(BossRoomManager.instance && GetDistanceToCentre()> 1f)
+
+
+        currentStage = BossStage.Transition;
+        if (BossRoomManager.instance && GetDistanceToCentre()> 1f)
         {
             isBusy = true;
-            currentStage = BossStage.Transition;
+         
             currentAIState = AIState.Chase;
             navigation.enabled = true;
             faceTarget.enabled = false;
@@ -286,7 +286,6 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
         {
             InitialiseAbility(transitionAbility);
             isBusy = false;
-            currentStage = BossStage.Transition;
             currentStageIndex++;
             Debug.Log("Current Stage index= " + currentStageIndex);
             OnNewState(AIState.Attack);
