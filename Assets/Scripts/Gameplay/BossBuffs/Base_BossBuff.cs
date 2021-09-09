@@ -8,12 +8,37 @@ public class Base_BossBuff : MonoBehaviour
 
     [SerializeField] protected GameObject abilityToBuffPrefab;
     protected BaseBossAbility abilityToBuff;
-
+    protected void EvaluateNewGameEvent(GameEvents newEvent)
+    {
+        switch (newEvent)
+        {
+          
+            case GameEvents.PlayerDefeat:
+                if (abilityToBuff)
+                    UnbindFromAbility(abilityToBuff);
+                if (gameObject)
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
+            
+            
+     
+   
+               
+            case GameEvents.BossDefeated:
+                if (abilityToBuff)
+                    UnbindFromAbility(abilityToBuff);
+                if (gameObject)
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
+         
+        }
+    }
     virtual public void InitBuff(BaseBossAI boss)
     {
         owner = boss;
         boss.OnAbilityAdded += BindToAbility;
         boss.OnAbilityRemoved += UnbindFromAbility;
+        GameManager.instance.OnNewEvent += EvaluateNewGameEvent;
     } 
 
 
@@ -39,5 +64,6 @@ public class Base_BossBuff : MonoBehaviour
     {
         owner.OnAbilityAdded -= BindToAbility;
         owner.OnAbilityRemoved -= UnbindFromAbility;
+        GameManager.instance.OnNewEvent -= EvaluateNewGameEvent;
     }
 }

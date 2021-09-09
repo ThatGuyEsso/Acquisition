@@ -30,7 +30,30 @@ public class BaseBossAbility : MonoBehaviour, IInitialisable
 
 
     public Action<GameObject> OnProjectileSpawned;
+    protected void EvaluateNewGameEvent(GameEvents newEvent)
+    {
+        switch (newEvent)
+        {
 
+            case GameEvents.PlayerDefeat:
+
+                DisableAbility();
+                if (gameObject)
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
+
+
+
+
+
+            case GameEvents.BossDefeated:
+                DisableAbility();
+                if (gameObject)
+                    ObjectPoolManager.Recycle(gameObject);
+                break;
+
+        }
+    }
 
     public void SetUpAbility(int attackCount,float attackRate,float attackRange, float longCooldown,bool isManagingControls,
         bool isPriority, bool isCloseRange)
