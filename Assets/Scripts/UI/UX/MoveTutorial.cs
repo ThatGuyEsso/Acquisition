@@ -15,6 +15,10 @@ public class MoveTutorial : InputTutorial
     {
         base.CompleteTutorial();
         inputs.Disable();
+        TutorialManager.instance.tutorialdata.isMoveTutorialComplete = true;
+        TutorialManager.instance.tutorialdata.EvaluateTutorialComplete();
+        SaveData.Current.SaveTutorialData(TutorialManager.instance.tutorialdata);
+        SerialisationManager.Save(GameStateManager.instance.saveName, SaveData.Current);
     }
 
 }

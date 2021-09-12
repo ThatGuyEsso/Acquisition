@@ -61,6 +61,7 @@ MonoBehaviour:
   isPrimary: 1
   attackDescBG: {fileID: 954489163100416672}
   attackDescText: {fileID: 954489162314023328}
+  weaponType: 2
   timeToHold: 1.5
 --- !u!1001 &5775884047429458549
 PrefabInstance:
@@ -69,6 +70,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 234227410419264016}
     m_Modifications:
+    - target: {fileID: 1002258136545526015, guid: 563eb6457953ae24db6131d3a3c16e0e, type: 3}
+      propertyPath: weaponType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5194089382101138387, guid: 563eb6457953ae24db6131d3a3c16e0e, type: 3}
       propertyPath: m_text
       value: Shield (Press)

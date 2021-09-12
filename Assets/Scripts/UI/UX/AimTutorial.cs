@@ -16,6 +16,10 @@ public class AimTutorial : InputTutorial
     {
         base.CompleteTutorial();
         inputs.Disable();
+        TutorialManager.instance.tutorialdata.isAimTutorialComplete = true;
+        TutorialManager.instance.tutorialdata.EvaluateTutorialComplete();
+        SaveData.Current.SaveTutorialData(TutorialManager.instance.tutorialdata);
+        SerialisationManager.Save(GameStateManager.instance.saveName, SaveData.Current);
     }
 
 }

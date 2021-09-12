@@ -61,7 +61,7 @@ public class TutorialHubManager : MonoBehaviour
         }
         else
         {
-            EvaluateWeaponTutorial();
+            Invoke("BeginWeaponTutorial", 3f);
         }
         tutorialTurret.OnTurretDestroy += StartGame;
         isTriggered = true;

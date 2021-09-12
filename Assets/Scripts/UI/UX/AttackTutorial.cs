@@ -9,11 +9,36 @@ public class AttackTutorial : InputTutorial
 
     [SerializeField] protected Image attackDescBG;
     [SerializeField] protected TextMeshProUGUI attackDescText;
-
+    [SerializeField] protected WeaponType weaponType;
     public override void CompleteTutorial()
     {
         base.CompleteTutorial();
         inputs.Disable();
+
+        switch (weaponType)
+        {
+            case WeaponType.Sword:
+                TutorialManager.instance.tutorialdata.isSwordTutorialComplete = true;
+                TutorialManager.instance.tutorialdata.EvaluateTutorialComplete();
+                SaveData.Current.SaveTutorialData(TutorialManager.instance.tutorialdata);
+                SerialisationManager.Save(GameStateManager.instance.saveName, SaveData.Current);
+                break;
+            case WeaponType.Bow:
+  
+                TutorialManager.instance.tutorialdata.isBowTutorialComplete = true;
+                TutorialManager.instance.tutorialdata.EvaluateTutorialComplete();
+                SaveData.Current.SaveTutorialData(TutorialManager.instance.tutorialdata);
+                SerialisationManager.Save(GameStateManager.instance.saveName, SaveData.Current);
+                break;
+            case WeaponType.Staff:
+
+                TutorialManager.instance.tutorialdata.isStaffTutorialComplete = true;
+                TutorialManager.instance.tutorialdata.EvaluateTutorialComplete();
+                SaveData.Current.SaveTutorialData(TutorialManager.instance.tutorialdata);
+                SerialisationManager.Save(GameStateManager.instance.saveName, SaveData.Current);
+                break;
+  
+        }
     }
 
     public override void StartTutorial()
@@ -30,7 +55,6 @@ public class AttackTutorial : InputTutorial
 
         inputs.Enable();
     }
-
 
     protected override void FadeInLabel()
     {

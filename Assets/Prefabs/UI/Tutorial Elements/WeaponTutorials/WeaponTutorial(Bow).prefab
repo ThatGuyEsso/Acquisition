@@ -24,7 +24,8 @@ MonoBehaviour:
   isPrimary: 0
   attackDescBG: {fileID: 8136955842438859672}
   attackDescText: {fileID: 8136955842154258584}
-  timeToHold: 2
+  weaponType: 1
+  timeToHold: 1.5
 --- !u!1 &7324090403960612740
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,6 +70,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7751101343396473646}
     m_Modifications:
+    - target: {fileID: 5605417308120956203, guid: 60cf08158092e984aa2d2ac1cdbaf863, type: 3}
+      propertyPath: weaponType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6228344197443226401, guid: 60cf08158092e984aa2d2ac1cdbaf863, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

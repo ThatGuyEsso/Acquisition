@@ -23,6 +23,32 @@ public class AttackTutorialHeld : AttackTutorial
         {
             inputs.Attack.SecondaryAttack.started -= _ => OnPressed();
             inputs.Attack.SecondaryAttack.canceled -= _ => OnReleased();
+
+        }
+
+        switch (weaponType)
+        {
+            case WeaponType.Sword:
+                TutorialManager.instance.tutorialdata.isSwordTutorialComplete = true;
+                TutorialManager.instance.tutorialdata.EvaluateTutorialComplete();
+                SaveData.Current.SaveTutorialData(TutorialManager.instance.tutorialdata);
+                SerialisationManager.Save(GameStateManager.instance.saveName, SaveData.Current);
+                break;
+            case WeaponType.Bow:
+
+                TutorialManager.instance.tutorialdata.isBowTutorialComplete = true;
+                TutorialManager.instance.tutorialdata.EvaluateTutorialComplete();
+                SaveData.Current.SaveTutorialData(TutorialManager.instance.tutorialdata);
+                SerialisationManager.Save(GameStateManager.instance.saveName, SaveData.Current);
+                break;
+            case WeaponType.Staff:
+
+                TutorialManager.instance.tutorialdata.isStaffTutorialComplete = true;
+                TutorialManager.instance.tutorialdata.EvaluateTutorialComplete();
+                SaveData.Current.SaveTutorialData(TutorialManager.instance.tutorialdata);
+                SerialisationManager.Save(GameStateManager.instance.saveName, SaveData.Current);
+                break;
+
         }
     }
     public override void StartTutorial()

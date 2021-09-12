@@ -50,6 +50,10 @@ public class DodgeRollTutorial : InputTutorial
     {
         base.CompleteTutorial();
         inputs.Disable();
+        TutorialManager.instance.tutorialdata.isDodgeTutorialComplete = true;
+        TutorialManager.instance.tutorialdata.EvaluateTutorialComplete();
+        SaveData.Current.SaveTutorialData(TutorialManager.instance.tutorialdata);
+        SerialisationManager.Save(GameStateManager.instance.saveName, SaveData.Current);
     }
 
     override protected void FadeOutLabel()

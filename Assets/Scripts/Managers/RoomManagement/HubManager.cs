@@ -59,11 +59,7 @@ public class HubManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //As world is started and player enters game audio is playerd
-        if (AudioManager.instance)
-        {
-
-        }
+     
     }
     public void BindToGameStateManager()
     {

@@ -22,10 +22,12 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject roomManagerPrefab;
     [SerializeField] private GameObject GameManagerPrefab;
     public RunTimeData runtimeData;
+
+    public TutorialData tutorialData;
     public Action<GameState> OnNewGameState;
     public GameState currentGameState;
     private AudioPlayer campFireSFXPlayer;
-
+    public string saveName = "/tutorial";
 
     public void Awake()
     {
@@ -33,6 +35,13 @@ public class GameStateManager : MonoBehaviour
         {
             instance = this;
             runtimeData.ResetData();
+
+            if (SerialisationManager.Load(Application.persistentDataPath + "/tutorialData" + saveName + ".saveData") == null)
+                SaveData.Current = new SaveData();
+            else
+                SaveData.Current = (SaveData)SerialisationManager.Load(Application.persistentDataPath + "/tutorialData" + saveName + ".saveData");
+
+            tutorialData.LoadTutorialData();
             DontDestroyOnLoad(gameObject);
         }
         else
