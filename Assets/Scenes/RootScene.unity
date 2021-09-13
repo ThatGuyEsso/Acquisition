@@ -163,7 +163,9 @@ MonoBehaviour:
   roomManagerPrefab: {fileID: 1483200499070698925, guid: 404a3c64a7192ac4490d046f44c675d1, type: 3}
   GameManagerPrefab: {fileID: 7539691940246337394, guid: c4c0b28fb55609647950561245f8df65, type: 3}
   runtimeData: {fileID: 11400000, guid: 20e304c4c394970429831bc02f723f34, type: 2}
+  tutorialData: {fileID: 11400000, guid: 452bb83ed6a9c504ab221b0025eb52ff, type: 2}
   currentGameState: 0
+  saveName: /tutorial
 --- !u!4 &1703566127
 Transform:
   m_ObjectHideFlags: 0

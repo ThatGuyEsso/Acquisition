@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TutorialData
   m_EditorClassIdentifier: 
   isTutorialComplete: 0
-  isMoveTutorialComplete: 1
-  isAimTutorialComplete: 1
-  isDodgeTutorialComplete: 1
-  isSwordTutorialComplete: 1
+  isMoveTutorialComplete: 0
+  isAimTutorialComplete: 0
+  isDodgeTutorialComplete: 0
+  isSwordTutorialComplete: 0
   isBowTutorialComplete: 0
   isStaffTutorialComplete: 0

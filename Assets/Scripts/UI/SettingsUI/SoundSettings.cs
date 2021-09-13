@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+public enum SoundType
+{
+    Music,
+    UI,
+    SFX
+};
 public class SoundSettings : MonoBehaviour
 {
     [SerializeField] private AudioMixer musicVolume;
@@ -11,18 +17,9 @@ public class SoundSettings : MonoBehaviour
     [SerializeField] private GameObject firstSelectedElement;
     public void SetMusicVolume(float value)
     {
-        musicVolume.SetFloat("MusicVolume", value);
-    }
-
-    public void SetSFXVolume(float value)
-    {
-        sfxVoulume.SetFloat("SFXVolume", value);
-    }
-
-    public void SetUIVolume(float value)
-    {
-        uiVolume.SetFloat("UIVolume", value);
-        if(value <= -80f)
+  
+        musicVolume.SetFloat("MusicVolume", Mathf.Log10(value) * 20f);
+        if (value <= -1e-06)
         {
             if (MusicManager.instance) MusicManager.instance.ToggleMusic(false);
         }
@@ -30,6 +27,18 @@ public class SoundSettings : MonoBehaviour
         {
             if (MusicManager.instance) MusicManager.instance.ToggleMusic(true);
         }
+    }
+
+    public void SetSFXVolume(float value)
+    {
+
+        sfxVoulume.SetFloat("SFXVolume", Mathf.Log10(value) * 20f);
+    }
+
+    public void SetUIVolume(float value)
+    {
+        uiVolume.SetFloat("UIVolume", Mathf.Log10(value) * 20f);
+  
     }
 
     public void OnEnable()
