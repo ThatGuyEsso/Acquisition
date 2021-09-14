@@ -114,8 +114,7 @@ public class UIManager : MonoBehaviour, IInitialisable
             ui.InitUI(type, previousUI);
 
 
-        if (type == UIType.GameUI) 
-            if (Cursor.visible) Cursor.visible = false;
+
     }
 
     public void UnloadCurrent() //Unloades the current displayed UI
@@ -148,7 +147,7 @@ public class UIManager : MonoBehaviour, IInitialisable
         if (SetGamePaused == null)
             return;
 
-        SetGamePaused(pause);
+        SetGamePaused!.Invoke(pause);
 
         if (pause == true)
             Time.timeScale = 0;

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class UI_Input : MonoBehaviour, IInitialisable
 {
-    [SerializeField] private GameObject virtualCursor;
+
     [SerializeField] private bool inDebug = false;
 
     private Controls inputActions;
-    private bool isPaused = false;
+    public static bool isPaused = false;
 
     private void Awake()
     {
@@ -22,7 +22,6 @@ public class UI_Input : MonoBehaviour, IInitialisable
         inputActions.Enable();
 
         inputActions.UI.Pause.performed += ctx => TogglePauseMenu();
-        UIManager.instance.SetGamePaused += OnPaused;
     }
 
 
@@ -30,29 +29,27 @@ public class UI_Input : MonoBehaviour, IInitialisable
     {
         if(inputActions!=null)
             inputActions.Disable();
-        if (UIManager.instance)
-            UIManager.instance.SetGamePaused -= OnPaused;
     }
     virtual protected void OnEnable()
     {
         if (inputActions != null)
             inputActions.Enable();
-        if(UIManager.instance)
-            UIManager.instance.SetGamePaused += OnPaused;
+
     }
     private void OnDestroy()
     {
         if (inputActions != null)
             inputActions.Disable();
-        if (UIManager.instance)
-            UIManager.instance.SetGamePaused -= OnPaused;
+ 
     }
     private void TogglePauseMenu()
     {
+        AudioManager.instance.PlayUISound("ButtonPress", transform.position);
         if (isPaused)
         {
             isPaused = false;
             UIManager.instance.SetGameToPause(false);
+   
 
         }
         else if (!isPaused)
@@ -60,6 +57,7 @@ public class UI_Input : MonoBehaviour, IInitialisable
             isPaused = true;
             UIManager.instance.SetGameToPause(true);
         }
+        OnPaused(isPaused);
     }
 
     private void OnPaused(bool paused)
@@ -67,15 +65,18 @@ public class UI_Input : MonoBehaviour, IInitialisable
         if (paused)
         {
             isPaused = true;
-            virtualCursor.SetActive(false);
+            ControllerManager.instance.GetActiveCursor().gameObject.SetActive(false);
             UIManager.instance.SwitchUI(UIType.PauseMenu);
 
         }
         else if (!paused)
         {
             isPaused = false;
-            virtualCursor.SetActive(true);
+            ControllerManager.instance.GetActiveCursor().gameObject.SetActive(true);
             UIManager.instance.SwitchUI(UIType.GameUI);
+            if (Cursor.visible) Cursor.visible = false;
+
+
         }
     }
 
