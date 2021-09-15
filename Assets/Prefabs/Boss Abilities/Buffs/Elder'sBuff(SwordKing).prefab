@@ -52,6 +52,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6458886137311737190, guid: 7e6bc8583b4c2ee4781a99aeddf30e5d, type: 3}
+      propertyPath: rotateToTargetRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458886137311737190, guid: 7e6bc8583b4c2ee4781a99aeddf30e5d, type: 3}
       propertyPath: abilityToBuffPrefab
       value: 
       objectReference: {fileID: 8290753865192258741, guid: 96c9357e396e2fa4e8f64833d94b39ce, type: 3}

@@ -301,7 +301,7 @@ public class KnightBoss : BaseBossAI,IInitialisable, IBoss,IDamage
 
     private IEnumerator WaitTilleAtCentre()
     {
-        while(GetDistanceToCentre() > 0.2f)
+        while(GetDistanceToCentre() > 1f)
         {
             yield return null;
         }
