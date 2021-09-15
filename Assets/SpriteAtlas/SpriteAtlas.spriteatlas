@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: e02c1e411d52faa4cbf7d7f06bb8e8f1, type: 3}
-    totalSpriteSurfaceArea: 2130944
+    totalSpriteSurfaceArea: 2132992
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -399,6 +399,7 @@ SpriteAtlas:
   - {fileID: -4910578318958618114, guid: 3f65ad32459c7b343b1a77011f468715, type: 3}
   - {fileID: 2164602684124151159, guid: 3f65ad32459c7b343b1a77011f468715, type: 3}
   - {fileID: -1686293075238628562, guid: 3f65ad32459c7b343b1a77011f468715, type: 3}
+  - {fileID: 21300000, guid: ede3dba2437499b49a1a561e9ef09980, type: 3}
   - {fileID: 5584574744622551681, guid: 3cba0bf28eaccc14faf736dc8730344b, type: 3}
   - {fileID: -6020562526725074807, guid: 3cba0bf28eaccc14faf736dc8730344b, type: 3}
   - {fileID: 3203784777236032264, guid: 3cba0bf28eaccc14faf736dc8730344b, type: 3}
@@ -749,6 +750,7 @@ SpriteAtlas:
   - {fileID: -5163102146422488461, guid: a4ed5e2b31fb7384eb28dc3841083deb, type: 3}
   - {fileID: -2549598544672540812, guid: a4ed5e2b31fb7384eb28dc3841083deb, type: 3}
   - {fileID: 7348851521725819585, guid: a4ed5e2b31fb7384eb28dc3841083deb, type: 3}
+  - {fileID: 21300000, guid: 797b0b3be889cb040b0a56b20de20170, type: 3}
   - {fileID: 8684409989630800739, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   - {fileID: 4146270336203641167, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
   - {fileID: 2377656159123552313, guid: b081f55ed9c01f04e8b677acb2faeb6f, type: 3}
@@ -1341,6 +1343,7 @@ SpriteAtlas:
   - ElderSpriteSheetFile_52
   - ElderSpriteSheetFile_51
   - ElderSpriteSheetFile_50
+  - 2x1CornerHubTop
   - EndSpriteSheetFile_32
   - EndSpriteSheetFile_43
   - EndSpriteSheetFile_33
@@ -1691,6 +1694,7 @@ SpriteAtlas:
   - RuneTurretShoot-Sheet_0
   - RuneTurretShoot-Sheet_3
   - RuneTurretShoot-Sheet_2
+  - 2x1CornerHub
   - DeepSpriteSheet32x32_118
   - DeepSpriteSheet32x32_119
   - DeepSpriteSheet32x32_114
